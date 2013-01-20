@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x
+END
+Device.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/Device.java
+END
+SensorSrvClientPortBindingStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SensorSrvClientPortBindingStub.java
+END
+RangeDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/RangeDetails.java
+END
+DeviceStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/DeviceStatus.java
+END
+ProbeValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/ProbeValue.java
+END
+SensorSrvClientProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SensorSrvClientProxy.java
+END
+LocationValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/LocationValue.java
+END
+SensorSrvClient_ServiceLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SensorSrvClient_ServiceLocator.java
+END
+SubRangeType.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SubRangeType.java
+END
+SensorSrvClient_PortType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SensorSrvClient_PortType.java
+END
+ProbeStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/ProbeStatus.java
+END
+TimeRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/TimeRange.java
+END
+DeviceComparisonEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/DeviceComparisonEntry.java
+END
+SubRangeDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SubRangeDetails.java
+END
+SensorSrvClient_Service.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/SensorSrvClient_Service.java
+END
+ProbeRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/ProbeRange.java
+END
+ProbeSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/ProbeSummary.java
+END
+LocationRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/LocationRange.java
+END
+LocationSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/LocationSummary.java
+END
+Point.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/Point.java
+END
+ValueRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/ValueRange.java
+END
+RangeLimit.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/u/veladitya/code/!svn/ver/96/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/sensor/client/_5_x/RangeLimit.java
+END

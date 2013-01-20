@@ -74,24 +74,6 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[compasId]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Code]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
                     <value><![CDATA[type]]></value>
                 </section>
                 <section name="column">
@@ -99,42 +81,6 @@
                 </section>
                 <section name="column">
                     <value><![CDATA[Type]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[skype]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Skype]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[ocs]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[OCS]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[true]]></value>
@@ -316,10 +262,10 @@ void bindData() {
 		$artefact.addAttribute("Name", dataMap.get("cn"));
 		$artefact.addAttribute("address", dataMap.get("street"));	
 		$artefact.addAttribute("type", dataMap.get("type"));
-		$artefact.addAttribute("compasId", dataMap.get("compasId"));
+		//$artefact.addAttribute("compasId", dataMap.get("compasId"));
 		$artefact.addAttribute("description", dataMap.get("description"));
-		$artefact.addAttribute("skype", dataMap.get("skype"));
-		$artefact.addAttribute("ocs", dataMap.get("ocs"));
+		//$artefact.addAttribute("skype", dataMap.get("skype"));
+		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
 				
 	}
 		

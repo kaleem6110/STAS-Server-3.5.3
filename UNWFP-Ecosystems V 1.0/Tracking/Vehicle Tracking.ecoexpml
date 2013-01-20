@@ -24,7 +24,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Device id]]></value>
+                    <value><![CDATA[Vehicle id]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -350,7 +350,7 @@ void bindData() {
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
-			$artefact.addAttribute("time", data.getTime());
+			$artefact.addAttribute("time", data.getTime().replace(".000"," ") );
 			$artefact.addAttribute("deviceId", data.getName());
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMobile(), data.getMail()) );
 			//$artefact.addAttribute("owner", data.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(data.getSn())?"":data.getSn()));
@@ -837,7 +837,7 @@ String getAuthorUrl(){
                             <value><![CDATA[]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[]]></value>
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                     <section name="row">
@@ -851,7 +851,7 @@ String getAuthorUrl(){
                             <value><![CDATA[]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[]]></value>
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                     <section name="row">

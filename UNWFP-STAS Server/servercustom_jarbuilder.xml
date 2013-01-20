@@ -33,5 +33,4 @@
     <target name="buildwithoutrefresh" depends="prepare,package,clean" />
 
     <target name="build" depends="prepare,package,refresh,refresh" />
-	
 </project>

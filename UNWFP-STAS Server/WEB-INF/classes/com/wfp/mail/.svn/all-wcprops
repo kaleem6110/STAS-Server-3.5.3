@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/mail
+END
+Renderable.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/mail/Renderable.java
+END
+Attachment.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/mail/Attachment.java
+END
+RenderableMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/mail/RenderableMessage.java
+END
+RenderablePlainText.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/mail/RenderablePlainText.java
+END

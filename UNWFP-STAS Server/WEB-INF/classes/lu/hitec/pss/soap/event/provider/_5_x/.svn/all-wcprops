@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x
+END
+EventStatusSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventStatusSummary.java
+END
+EventSrvProvider_Service.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProvider_Service.java
+END
+NotificationStatusSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/NotificationStatusSummary.java
+END
+Location.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/Location.java
+END
+EventSrvProviderPortBindingImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProviderPortBindingImpl.java
+END
+Severity.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/Severity.java
+END
+EventRecipient.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventRecipient.java
+END
+EventStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventStatus.java
+END
+EventSrvProviderPortBindingStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProviderPortBindingStub.java
+END
+EventDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventDescription.java
+END
+NotificationStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/NotificationStatus.java
+END
+EventSrvProvider_ServiceLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProvider_ServiceLocator.java
+END
+EventSrvProviderPortBindingSkeleton.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProviderPortBindingSkeleton.java
+END
+EventSrvProvider_PortType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventSrvProvider_PortType.java
+END
+Evt.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/Evt.java
+END
+EventRelatedInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap/event/provider/_5_x/EventRelatedInfo.java
+END

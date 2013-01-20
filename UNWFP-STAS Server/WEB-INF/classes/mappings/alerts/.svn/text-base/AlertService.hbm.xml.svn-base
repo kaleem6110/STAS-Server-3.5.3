@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.wfp.db.platform.model">
+    <class name="AlertService" table="EPIC_ALERT_SERVICE">
+       <id name="id" type="long">
+			<generator class="native" />
+		</id>
+         
+        <property name="templateId" type="long" column="TEMPLATE_ID" />
+        <property name="receivedMsg" type="string" column="RECEIVED_MESSAGE"/>
+        <property name="sendOn" type="timestamp" column="SEND_ON"/>
+        <property name="receivedOn" type="timestamp" column="RECEIVED_ON"/> 
+        <property name="userId" type="string" column="ACK_BY"/>
+	<property name="eventRefId" type="string" column="EVENT_REF_ID"/>
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config
+END
+SynchronizationTrailLog.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config/SynchronizationTrailLog.hbm.xml
+END
+SynchronizationStatusMaster.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config/SynchronizationStatusMaster.hbm.xml
+END
+SynchronizationOprTypesMaster.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config/SynchronizationOprTypesMaster.hbm.xml
+END
+SynchronizationTrailStatusLog.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config/SynchronizationTrailStatusLog.hbm.xml
+END
+SynchronizationDataTypeMaster.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/wfp/synchronize/config/SynchronizationDataTypeMaster.hbm.xml
+END

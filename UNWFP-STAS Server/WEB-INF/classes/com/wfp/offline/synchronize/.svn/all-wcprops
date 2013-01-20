@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/43/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/offline/synchronize
+END
+ISynchronizationServiceConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/u/veladitya/code/!svn/ver/42/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/offline/synchronize/ISynchronizationServiceConstants.java
+END
+ISynchronizationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/u/veladitya/code/!svn/ver/42/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/offline/synchronize/ISynchronizationService.java
+END
+GzipServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/u/veladitya/code/!svn/ver/42/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/offline/synchronize/GzipServlet.java
+END

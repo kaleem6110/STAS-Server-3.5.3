@@ -15,9 +15,9 @@
             <classes dir="WEB-INF/classes">
             	<exclude name="**/*.class" />
             </classes>
-            
-            
-            
+
+
+
             <zipfileset dir="${stascore.dir}/WEB-INF" prefix="WEB-INF">
                 <include name="**.*" />
             </zipfileset>
@@ -38,7 +38,6 @@
 
             <zipfileset dir="${stascore.dir}/admin/" prefix="admin" />
             <zipfileset dir="${stascore.dir}/common/" prefix="common" />
-            <zipfileset dir="${stascore.dir}/config/" prefix="config" />
             <zipfileset dir="${stascore.dir}/dbadmin/" prefix="dbadmin" />
             <zipfileset dir="${stascore.dir}/deploy/" prefix="deploy" />
             <zipfileset dir="${stascore.dir}/ecogroupmapping/" prefix="ecogroupmapping" />
@@ -52,7 +51,6 @@
         	<zipfileset dir="${stascore.dir}/jsp/" prefix="jsp" />
         	<zipfileset dir="${stascore.dir}/models/" prefix="models" />
             <zipfileset dir="${stascore.dir}/processmanager/" prefix="processmanager" />
-            <zipfileset dir="${stascore.dir}/rules/" prefix="rules" />
             <zipfileset dir="${stascore.dir}/security/" prefix="security" />
             <zipfileset dir="${stascore.dir}/situationroom" prefix="situationroom" />
             <zipfileset dir="${stascore.dir}/swf/" prefix="swf" />
@@ -60,8 +58,8 @@
             <zipfileset dir="${stascore.dir}/ve/" prefix="ve" />
             <zipfileset dir="${stascore.dir}/mobile/" prefix="mobile" />
             <zipfileset dir="${stascore.dir}/charts/" prefix="charts" />
-        	<zipfileset dir="${stascore.dir}/tablet/" prefix="tablet" />       	
-        	<zipfileset dir="${stascore.dir}/wfp/" prefix="wfp" />
+        	<zipfileset dir="${stascore.dir}/tablet/" prefix="tablet" />
+
             <zipfileset dir="${stascore.dir}/css/" prefix="css" />
             <zipfileset dir="${stascore.dir}/js/" prefix="js" />
             <zipfileset dir="${stascore.dir}/themes/" prefix="themes" />

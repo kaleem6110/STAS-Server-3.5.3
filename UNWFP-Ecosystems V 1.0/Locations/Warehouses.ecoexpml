@@ -101,7 +101,7 @@
                     <value><![CDATA[Compas Id]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[]]></value>

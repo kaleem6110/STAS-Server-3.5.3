@@ -47,6 +47,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/castor-0.9.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/cfgatewayadapter.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/cglib-2.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/cluster-gvm-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.enterprisehorizons.common.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.enterprisehorizons.conversion.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.enterprisehorizons.db.jar"/>
@@ -60,6 +61,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.enterprisehorizons.magma.stace.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.arra.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.businesspackages.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.cep.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.compliance.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.esri.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.external.services.jar"/>
@@ -71,11 +73,13 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.pm.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.properties.common.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.rules.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.sap.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.search.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.security.extensions.tc.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.security.jaas.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.server.common.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.testdata.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.wfp.server.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/commons-beanutils.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/commons-codec-1.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/commons-collections-3.1.jar"/>
@@ -146,6 +150,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jdom-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jfreechart-1.0.8a.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jgeocoder-0.4.1-jar-with-dependencies.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jgrapht-jdk1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jgroups.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/jing.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/js.jar"/>
@@ -169,6 +174,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/neethi-2.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/ojdbc14.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/opencsv-1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/opencsv-2.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/poi-3.5-beta6-20090622.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/poi-contrib-3.5-beta6-20090622.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/poi-ooxml-3.5-beta6-20090622.jar"/>
@@ -213,9 +219,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/xmlsec-1.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/xpp3-1.1.3.4d_b4.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/com.enterprisehorizons.magma.runtime.models.jar"/>
 	<classpathentry kind="src" path="stascore/WEB-INF/src"/>
-	<classpathentry kind="lib" path="stascore/WEB-INF/lib/cluster-gvm-1.1.jar"/>
-	<classpathentry kind="lib" path="stascore/WEB-INF/lib/com.spacetimeinsight.cep.jar"/>
-	<classpathentry kind="lib" path="C:/Kaleem/Softwares/eclipse-java-indigo-SR2-win32/eclipse/plugins/org.apache.axis_1.4.0.v201005080400/lib/axis-ant.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
