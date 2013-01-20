@@ -1,0 +1,52 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dijit/nls/es
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+common.js
+file
+
+
+
+
+2013-01-13T11:21:01.257892Z
+890b48f17fb1a4c37ad47a43c8e60777
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+loading.js
+file
+
+
+
+
+2013-01-13T11:21:01.273518Z
+4b1d5d982196fef098cee2fbf0e0f722
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

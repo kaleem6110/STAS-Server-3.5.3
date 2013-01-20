@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/alerts
+END
+AlertAcknowledge.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/alerts/AlertAcknowledge.hbm.xml
+END
+MessageTemplate.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/alerts/MessageTemplate.hbm.xml
+END
+AlertService.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/alerts/AlertService.hbm.xml
+END
+RegionMessage.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/alerts/RegionMessage.hbm.xml
+END

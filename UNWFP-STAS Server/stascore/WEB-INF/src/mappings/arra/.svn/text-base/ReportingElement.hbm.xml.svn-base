@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="ReportingElement" table="STI_R_ARRA_REPORTING_ELEMENT">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+        <property name="name" type="string" column="NAME" unique="true"/>
+        <property name="currentStatus" type="string" column="CURRENT_STATUS"/>
+        <property name="ownedBy" type="string" column="OWNED_BY"/>
+     	<many-to-one name="organization" class="com.spacetimeinsight.db.platform.model.Organization" column="ORG_ID" not-null="true" lazy="false"/>
+        <property name="reviewedBy" type="string" column="REVIEWED_BY"/>
+      	<property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>
+        <property name="cycleDate" type="date" column="CYCLE_DATE"/>
+         <property name="comments" type="string" column="COMMENTS" length="2000"/>
+         <property name="isPercentage" type="boolean" column="IS_PERCENTAGE" />
+         <set name="history" lazy="false" cascade="all" order-by="comments_date desc">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingElementHistory"/>
+        </set>
+        <set name="activities" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingActivity"/>
+        </set>
+         <set name="milestones" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingMilestone"/>
+        </set>
+          <set name="accomplishments" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingAccomplishment"/>
+        </set> 
+         <set name="changes" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingChange"/>
+        </set> 
+         <set name="issues" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingIssue"/>
+        </set> 
+         <set name="attachments" lazy="false" cascade="all">
+            <key column="REPORT_ELEMENT_ID"/>
+            <one-to-many class="ReportingActivityAttachment"/>
+        </set> 
+    </class>
+</hibernate-mapping>

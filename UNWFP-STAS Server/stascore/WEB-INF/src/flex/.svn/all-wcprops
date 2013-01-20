@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/flex
+END
+messaging-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/flex/messaging-config.xml
+END
+proxy-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/flex/proxy-config.xml
+END
+services-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/flex/services-config.xml
+END
+remoting-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/flex/remoting-config.xml
+END

@@ -1,0 +1,12 @@
+<situationroom interval="10" serverurl="http://localhost:8080" gekey="ABQIAAAAfSCem-4sdXrrt_sARmNMHxTwM0brOpm-All5BF6PoaKBxRWWERRNDeNph5-y89nKe1Is5U0vfKTT2A" >
+	<window name="Personnel">
+		<ecoexpml file="ServicePersonnel2.ecoexpml" params=""/>
+	</window>
+	<window name="Orders">
+		<ecoexpml file="ServiceOrders.ecoexpml" params=""/>
+	</window>
+	<window name="SGC">
+		<ecoexpml file="ServicePersonnel2.ecoexpml" params=""/>
+		<ecoexpml file="ServiceOrders.ecoexpml" params=""/>
+	</window>
+</situationroom>

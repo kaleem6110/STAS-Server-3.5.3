@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/u/veladitya/code/!svn/ver/126/trunk/UNWFP-STAS%20Server
+END
+servercustom_jarbuilder.properties
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/servercustom_jarbuilder.properties
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/.classpath
+END
+servercustom_jarbuilder.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/servercustom_jarbuilder.xml
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/.project
+END
+war_deployer.properties
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/war_deployer.properties
+END
+war_deployer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/war_deployer.xml
+END

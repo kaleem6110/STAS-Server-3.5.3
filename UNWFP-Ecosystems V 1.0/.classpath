@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.common.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.conversion.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.db.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.sap.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.admin.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.recipes.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.runtime.models.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.server.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.services.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.enterprisehorizons.magma.stace.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.arra.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.businesspackages.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.esri.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.external.services.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.geocoder.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.ibm.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.pi.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.pm.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.rules.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.search.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.security.jaas.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.security.jar"/>
+	<classpathentry exported="true" kind="var" path="MAGMA_PLUGIN_HOME/lib/com.spacetimeinsight.server.common.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

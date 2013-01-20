@@ -1,0 +1,476 @@
+<%@page import="com.enterprisehorizons.magma.server.util.ServerUtils"%>
+<%@ taglib uri="/tags/struts-bean" prefix="bean"%>
+<%@page import="com.enterprisehorizons.magma.server.admin.AdminConfigUtils" %>
+<%@page import="com.spacetimeinsight.security.bean.UserBean"%>
+<%@page import="com.enterprisehorizons.util.StringUtils"%>
+<%
+    if(session == null || session.getAttribute(ServerUtils.USER_BEAN_NAME) == null){
+        response.sendRedirect("/");
+        return;
+    }
+    UserBean userBean = (UserBean) session.getAttribute(ServerUtils.USER_BEAN_NAME);
+    String serverUrl = ServerUtils.getServerContextBaseUrl(request);
+    String url = request.getParameter("url");
+    String qString="";
+    String swfObject = request.getParameter("swfobject");
+    String width = request.getParameter("width");
+    String height = request.getParameter("height");
+    String ispercentage = request.getParameter("ispercentage");
+    String isNewWindow = request.getParameter("isnewwindow");
+    String jsParent = "true".equals(isNewWindow) ? "opener" : "parent";
+    String title = request.getParameter("title");
+    String defaultRange = AdminConfigUtils.getVisibleRange();
+    String isHighlightPlacement = AdminConfigUtils.getHighlightPlacemark();
+    String visibleRange = AdminConfigUtils.getVisibleRange();
+    String languageCd = request.getParameter("languageCd");
+    boolean isXcelsius =  url!=null && url.indexOf("?")>=0 && url.indexOf("xcelcius")>=0; 
+    String dashboardJSUrl = request.getParameter(ServerUtils.PARAM_CUSTOM_JS_URL_DASHBOARD);
+
+	 int index = url.indexOf("?");
+	 if(index > 0) {
+		 qString =url.substring(index+1, url.length());
+		 if(qString.indexOf("~") >= 0) {
+			 qString=qString.replace("~","%26");
+		 }
+		 url = url.substring(0,index);
+	 }
+ 
+    
+    if(title == null) {
+        title = "Space-Time Insight SWF Plugin";
+    }
+    if(swfObject == null) {
+        swfObject = "swfObject";
+    }
+    if(width == null) {
+        width = "100";
+    }
+
+    if(height == null) {
+        height = "100";
+    }
+    
+    //Modified the following code for 11433,the value of width and height should not be more than 100 if ispercentage is true.
+    //This is because scaling of SWF files is not in sync with scaling of JSP file.
+    if(ispercentage == null || "true".equals(ispercentage)) {
+        if(StringUtils.getInt(width) >= 100){
+            width = "100%";
+        }else{
+            width+= "%";
+        }
+        if(StringUtils.getInt(height) >= 100){
+            height = "100%";
+        }else{
+            height+= "%";
+        }
+    }
+
+    if(swfObject != null) {
+        swfObject = swfObject.trim();
+        swfObject = swfObject.replace(" ", "_");
+        if(isXcelsius) {
+            swfObject = swfObject.replace(".", "_");
+        }
+        }
+    
+
+    if(StringUtils.isNull(languageCd)) {
+        languageCd = userBean.getLanguageCd();
+    }
+    if(languageCd == null) {
+        languageCd = "";
+    }
+    if(isHighlightPlacement!=null){
+         qString = qString+"&isHighlightPlacemark=false";
+    }
+    if(visibleRange!=null){
+        qString = qString+"&visibleRange="+visibleRange;
+    }
+    if(isXcelsius) {
+       url = url+"?localeChain="+languageCd; 
+    } else {
+       qString = qString+"&localeChain="+languageCd;
+    }
+  
+%>
+<HTML>
+<HEAD>
+<TITLE><%=title%></TITLE>
+
+<script type="text/javascript" src="<%=ServerUtils.getContextName(request)%>/js/swfobject.js"></script>
+
+<script type="text/javascript">
+
+var isInternetExplorer = navigator.appName.indexOf("Microsoft") != -1;
+var flashObjId = "swf_<%=swfObject%>";
+
+<%
+    if(isXcelsius) {
+%>
+//commented out as there is an error, this will make the xcelsius-dashboard communication not work.
+// Handle all the FSCommand messages in a Flash movie.
+function swf_<%=swfObject%>_DoFSCommand(command, args) {
+    //alert(command);
+    var fsc_FlashIDEObj = isInternetExplorer ? document.all["swf_<%=swfObject%>"] : document["swf_<%=swfObject%>"];
+    var fargs = args.split(",");
+    try {
+        this[command].apply(null, fargs);
+    }
+    catch (e) {
+        alert("function = ["+command+"] does not exist for the arguments ["+args+"]");
+    }
+
+}
+// Hook for Internet Explorer.
+if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
+    document.write('<script language=\"VBScript\"\>\n');
+    document.write('On Error Resume Next\n');
+    document.write('Sub swf_<%=swfObject%>_FSCommand(ByVal command, ByVal args)\n');
+    document.write('    Call swf_<%=swfObject%>_DoFSCommand(command, args)\n');
+    document.write('End Sub\n');
+    document.write('</script\>\n');
+}
+
+<%
+    }
+%>
+
+function refreshDashboards(layerName, dashboardIdToExlcude) {
+    try {
+        <%=jsParent%>.refreshDashboards(layerName, dashboardIdToExlcude);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing dashboards for the layer ['+layerName+']');
+    }
+}
+
+function refreshDashboard(layerName, dashboardId) {
+    try {
+        <%=jsParent%>.refreshDashboard(layerName, dashboardId) ;
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing the dashboard ['+ dashboardId+'] for the layer ['+layerName+']');
+    }
+}
+
+
+function _refresh(){
+    try {
+        <%=jsParent%>._refresh();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing');
+    }
+}
+
+
+function _refreshLink(name){
+    try {
+        <%=jsParent%>._refreshLink(name);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing link ['+name+']');
+    }
+}
+
+
+function _refreshLinkWithParameters(name, params) {
+    try {
+       <%=jsParent%>._refreshLinkWithParameters(name, params);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing link ['+name+'] with parameters ['+params+']');
+    }
+}
+
+function _lookat(coordStr,rangeStr) {
+    try {
+       if(rangeStr =="" || rangeStr == 0 ){
+               <%=jsParent%>._lookat(coordStr,<%=defaultRange %>);
+        }else{
+               <%=jsParent%>._lookat(coordStr,rangeStr);
+            }
+    
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while calling lookingat');
+    }
+}
+
+function _highlight(coordStr) {
+    try {
+        <%=jsParent%>._highlight(coordStr);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while calling highlight');
+    }
+}
+
+function _setHighlightPlacemarkUrl(url) {
+    try {
+        <%=jsParent%>._setHighlightPlacemarkUrl(url);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while calling set highlight placemark url');
+    }
+}
+
+function _setHighlightPlacemarkStyle(style) {
+    try {
+        <%=jsParent%>._setHighlightPlacemarkStyle(style);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while calling set highlight placemark style');
+    }
+}
+
+function _refreshTimeLayers() {
+    try {
+        <%=jsParent%>._refreshTimeLayers();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while refreshing the time layers');
+    }
+}
+
+function _setTimeRange(timeStr){
+    try {
+        <%=jsParent%>._setTimeRange(timeStr);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while setting the time ['+timeStr+']');
+    }
+}
+
+function _getLayerIdByName(layerName) {
+	try {
+        return <%=jsParent%>._getLayerIdByName(layerName);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while invoking dashboard method for ['+layerId+','+dashboardId+']');
+    }
+}
+
+function invokeDashboardMethod(layerId, dashboardId, methodName, methodParams) {
+    try {
+        <%=jsParent%>.invokeDashboardMethod(layerId, dashboardId, methodName, methodParams);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while invoking dashboard method for ['+layerId+','+dashboardId+']');
+    }
+}
+
+function openInfoframe(urlToOpen){
+     try {
+        <%=jsParent%>.openInfoframe(urlToOpen);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while opening the info frame ['+urlToOpen+']');
+    }
+ }
+
+function openInfoframeById(id, urlToOpen){
+     try {
+        <%=jsParent%>.openInfoframeById(id, urlToOpen);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while opening the info frame by id ['+urlToOpen+']');
+    }
+ }
+
+ function openInfoframe(urlToOpen){
+     try {
+        <%=jsParent%>.openInfoframe(urlToOpen);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while opening the info frmae ['+urlToOpen+']');
+    }
+ }
+
+ function openLayerDashboard(layerId, layerName, dashboardName) {
+     try {
+        <%=jsParent%>.openLayerDashboard(layerId, layerName, dashboardName)
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while opening the dashboard by id = ['+dashboardName+']');
+    }     
+ }
+
+ function openDashboardFrameById(id, urlToOpen,layerId,layerName, windowId){
+     try {
+        <%=jsParent%>.openDashboardFrameById(id, urlToOpen,layerId,layerName, windowId);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while opening the dashboard frame ['+urlToOpen+'] by id = ['+id+']');
+    }     
+ }
+
+ function _showRoute(wayPoints){
+     try {
+        <%=jsParent%>._showRoute(wayPoints);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while _showRoute loadwsf');
+    }
+}
+
+function _clearRoute(){
+     try {
+        <%=jsParent%>._clearRoute();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while _clearRoute in loadswf');
+    }
+}
+
+function _selectLayers(layers) {
+     try {
+        <%=jsParent%>._selectLayers(layers);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while selecting the layers['+layers+'] in loadswf');
+    }
+}
+
+function _deSelectLayers(layers) {
+     try {
+        <%=jsParent%>._deSelectLayers(layers);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while deselecting the layers['+layers+'] in loadswf');
+    }
+}
+
+function _getCurrentBoundingBox() {
+     try {
+        return <%=jsParent%>._getCurrentBoundingBox();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while selecting the getting the current boundingbox in loadswf');
+    }
+    return "";
+}
+
+function _getSelectedSessionIds() {
+     try {
+        return <%=jsParent%>._getSelectedSessionIds();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while selecting the getting the selected session ids in loadswf');
+    }
+    return "";
+}
+
+function _getSelectedArtifactNames() {
+     try {
+        return <%=jsParent%>._getSelectedArtifactNames();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while selecting the getting the selected artifact names in loadswf');
+    }
+    return "";
+}
+
+function getViewFormatParams() {
+ try {
+        return <%=jsParent%>.getViewFormatParams();
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while selecting the getting the view format params in loadswf');
+    }
+    return "";
+}
+
+function redirectToLoginPage(){
+   <%=jsParent%>.<%=jsParent%>.refreshSessionInvalid();
+}
+
+ function sessionDetails(){
+   <%=jsParent%>.sessionDetails();
+ }
+ function  showMessages(){
+    var msg = <%=jsParent%>.getMessage();
+    getFlexApp('swf_<%=swfObject%>').showMsgs(msg);
+ }
+
+function ackAllEventMessages(_selectedEventId){
+ <%=jsParent%>.ackAllEventMessages(_selectedEventId);
+}
+/*
+            method to change view from java script 
+            params :_selectedView :Object 
+            0(GE View only)
+            1(Dashboard View Only)
+            2(both GE& dashboard View)
+*/
+function _changeView(_selectedView){
+ <%=jsParent%>.changeView(_selectedView);
+}
+
+function getFlexApp(appName) {
+  if (navigator.appName.indexOf ("Microsoft") !=-1) {
+    return window[appName];
+  } else {
+    return document[appName];
+  }
+}
+
+var dashboardId;
+var ecosisId;
+
+function setEcosysId(ecosid) {
+    this.ecosisId = ecosid;
+
+} 
+
+function setDashboardId(dashbaordId) {
+    this.dashboardId = dashbaordId;
+} 
+
+function _registerDashboardRefreshEvents(ecodashbaordEvents){
+    try{
+        var params = [];
+        params.push(ecodashbaordEvents);
+        params.push(ecosisId);
+        params.push(dashboardId);
+        <%=jsParent%>.registerDashboardForEvents(params);
+    } catch(err){
+        //aletr(err);
+    }
+    
+}
+
+function showControls(dashboardDivId, flag){
+	try {
+        return <%=jsParent%>._showControls(dashboardDivId, flag);
+    } catch (e) {
+        alert('Error ['+e.message+'] occurred while getting the show/hide the dashboardcontrolbar dashboardDivId/flag in loadswf');
+    }
+    return "";
+}
+</script>
+<%
+ if(!StringUtils.isNull(dashboardJSUrl)) {
+%>
+<script type="text/javascript" src="<%=serverUrl+dashboardJSUrl.trim() %>" ></script>
+<%
+    }
+%>
+<style>
+    body { margin: 0px; overflow:auto }
+</style>
+
+</HEAD>
+<BODY>
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+WIDTH="<%=width%>" HEIGHT="<%=height%>" id="swf_<%=swfObject%>">
+<PARAM NAME="movie" VALUE="<%=url%>">
+<PARAM NAME="quality" VALUE="high">
+<PARAM NAME="play" VALUE="true">
+<PARAM NAME="loop" VALUE="true">
+<param name="wmode" value="transparent">
+<param name="FlashVars" value="<%=qString%>">
+<!--[if !IE]>-->
+	<object type="application/x-shockwave-flash" data="<%=url%>" WIDTH="<%=width%>" HEIGHT="<%=height%>">
+		<PARAM NAME="movie" VALUE="<%=url%>">
+		<param name="FlashVars" value="<%=qString%>">
+	<!--<![endif]-->
+		<a href="http://www.adobe.com/go/getflash">
+			<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+		</a>
+	<!--[if !IE]>-->
+	</object>
+	<!--<![endif]-->
+<PARAM NAME='allowScriptAccess' VALUE='always'>
+<EMBED src="<%=url%>" quality="high" bgcolor="#FFFFFF" WIDTH="<%=width%>" HEIGHT="<%=height%>" allowScriptAccess='always'
+NAME="swf_<%=swfObject%>" ALIGN="" TYPE="application/x-shockwave-flash" WMODE="transparent"
+play="true" loop="true">
+</EMBED>
+</OBJECT>
+<!--
+<div id='swfdiv' style="z-index:1"></div>
+-->
+</BODY>
+
+<script>
+function openDashboardHelpWindow(ecoexpml,ecosid,artifactName,dashboardId,dashboardName){
+    var url = '<%=ServerUtils.getContextName(request)%>/jsp/help/dashboardHelpContent.jsp?ecoexpml='+ecoexpml+'&ecosid='+ecosid+'&artifactName='+artifactName+'&dashboardId='+dashboardId+'&dashboardName='+dashboardName;
+    window.open( url, '<bean:message key="dashboard.title.help" bundle="admin"/>', 'left='+screen.width/4+', top='+screen.height/4+', width='+screen.width/2+',height='+screen.height/2+',resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no,scrollbars=yes');
+}
+</script>
+
+</HTML>

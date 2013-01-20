@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo
+END
+html.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/html.js
+END
+OpenAjax.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/OpenAjax.js
+END
+string.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/string.js
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/LICENSE
+END
+jaxer.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/jaxer.js
+END
+_base.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/_base.js
+END
+cookie.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/cookie.js
+END
+AdapterRegistry.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/AdapterRegistry.js
+END
+DeferredList.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/DeferredList.js
+END
+fx.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/fx.js
+END
+date.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/date.js
+END
+robotx.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/robotx.js
+END
+i18n.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/i18n.js
+END
+NodeList-html.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/NodeList-html.js
+END
+robot.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/robot.js
+END
+number.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/number.js
+END
+regexp.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/regexp.js
+END
+currency.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/currency.js
+END
+dojo.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dojo.js
+END
+parser.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/parser.js
+END
+NodeList-fx.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/NodeList-fx.js
+END
+behavior.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/behavior.js
+END
+back.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/back.js
+END
+gears.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/gears.js
+END
+colors.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/colors.js
+END
+build.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/23/trunk/UNWFP-STAS%20Server/stascore/js/dojo/build.txt
+END

@@ -1,0 +1,79 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dojo/cldr
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T02:35:21.855371Z
+24
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+LICENSE
+file
+
+
+
+
+2013-01-13T11:22:05.794924Z
+e7b8219a8068d3fdea5f4381528e5400
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+supplemental.js
+file
+
+
+
+
+2013-01-13T11:22:05.841803Z
+7d5534ce74da1ee01b3b08cb16fc2d6e
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+monetary.js
+file
+
+
+
+
+2013-01-13T11:22:05.857429Z
+78709943d4e52b9f57dfb5a8371e3b51
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+nls
+dir
+
+README
+file
+
+
+
+
+2013-01-13T11:22:05.857429Z
+72ff06ce473d815be4d80e45d9e0eb7a
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

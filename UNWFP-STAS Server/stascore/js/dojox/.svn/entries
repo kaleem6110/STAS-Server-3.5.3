@@ -1,0 +1,442 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dojox
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+html.js
+file
+
+
+
+
+2013-01-13T11:21:53.996992Z
+980d012af18737939faa60ca8b2558cf
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+image
+dir
+
+xmpp
+dir
+
+presentation.js
+file
+
+
+
+
+2013-01-13T11:21:53.996992Z
+f0ad24671ebbd00818737738392b29f9
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+secure
+dir
+
+encoding
+dir
+
+color.js
+file
+
+
+
+
+2013-01-13T11:21:53.996992Z
+8e3943829b1285935e6b2673698ff3c5
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+validate
+dir
+
+dtl.js
+file
+
+
+
+
+2013-01-13T11:21:54.012618Z
+5b1773a1737f440baa0dea9876621c15
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+charting
+dir
+
+validate.js
+file
+
+
+
+
+2013-01-13T11:21:54.012618Z
+eba572ade573ad6c057ecfb69d875574
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+storage
+dir
+
+json
+dir
+
+testing
+dir
+
+fx
+dir
+
+color
+dir
+
+lang
+dir
+
+sketch
+dir
+
+off.js
+file
+
+
+
+
+2013-01-13T11:21:54.012618Z
+cde11b3c04a562899a747f37d8348709
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+robot
+dir
+
+fx.js
+file
+
+
+
+
+2013-01-13T11:21:54.012618Z
+e3dc8eede68091a4fd3d1ef3e0803748
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+collections.js
+file
+
+
+
+
+2013-01-13T11:21:54.028244Z
+d76e3c18b9244ac10a5c664e84259441
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+sketch.js
+file
+
+
+
+
+2013-01-13T11:21:54.028244Z
+898eea2c7e63e2e8a8c49fd9d8ae6d47
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+flash
+dir
+
+sql
+dir
+
+analytics.js
+file
+
+
+
+
+2013-01-13T11:21:54.028244Z
+22d8422ac93d16f33c9200ef10d53c32
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+timing.js
+file
+
+
+
+
+2013-01-13T11:21:54.028244Z
+43d0dffb505ef4290735310892d6b636
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+string
+dir
+
+flash.js
+file
+
+
+
+
+2013-01-13T11:21:54.028244Z
+c42eefcf5ae958326019ba52a0708d89
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+off
+dir
+
+presentation
+dir
+
+collections
+dir
+
+storage.js
+file
+
+
+
+
+2013-01-13T11:21:54.043871Z
+849b07527bfea9b87a67150c4af9c549
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+wire.js
+file
+
+
+
+
+2013-01-13T11:21:54.043871Z
+f8333ff690e6d900bfa86ab11f504592
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+highlight.js
+file
+
+
+
+
+2013-01-13T11:21:54.043871Z
+931df98c0fc3a57f68f246f8b39b54b2
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+widget
+dir
+
+dtl
+dir
+
+gfx
+dir
+
+rpc
+dir
+
+cometd.js
+file
+
+
+
+
+2013-01-13T11:21:54.075124Z
+874ad6aaafdbc2309b5bf8f54f330c5f
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+gfx3d.js
+file
+
+
+
+
+2013-01-13T11:21:54.043871Z
+2edd6f67c9e423462f5d93ef1d8b484f
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+math
+dir
+
+jsonPath.js
+file
+
+
+
+
+2013-01-13T11:21:54.075124Z
+fcf349015a1522f6d72656c3caf82eaa
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+html
+dir
+
+math.js
+file
+
+
+
+
+2013-01-13T11:21:54.075124Z
+822979524339e4836f622934adf0c480
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+wire
+dir
+
+data
+dir
+
+date
+dir
+
+layout
+dir
+
+uuid.js
+file
+
+
+
+
+2013-01-13T11:21:54.075124Z
+2c33615ae5255d8d4841729efc29c9a7
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+LICENSE
+file
+
+
+
+
+2013-01-13T11:21:54.075124Z
+11ab1416e634de9512c8771b59ff9ff3
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+grid
+dir
+
+jsonPath
+dir
+
+editor
+dir
+
+timing
+dir
+
+analytics
+dir
+
+help
+dir
+
+gfx.js
+file
+
+
+
+
+2013-01-13T11:21:54.122003Z
+c13aa0ceb994ff922315aa4b81960dbe
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+xml
+dir
+
+form
+dir
+
+uuid
+dir
+
+av
+dir
+
+io
+dir
+
+highlight
+dir
+
+resources
+dir
+
+sql.js
+file
+
+
+
+
+2013-01-13T11:21:54.122003Z
+87f61cc8cb63de3ff4befaf02cb75d87
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+gfx3d
+dir
+
+cometd
+dir
+
+embed
+dir
+

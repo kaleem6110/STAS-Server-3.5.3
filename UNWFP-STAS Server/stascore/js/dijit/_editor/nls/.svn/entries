@@ -1,0 +1,145 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dijit/_editor/nls
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T02:35:21.855371Z
+24
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+zh
+dir
+
+ca
+dir
+
+pt
+dir
+
+da
+dir
+
+tr
+dir
+
+ru
+dir
+
+de
+dir
+
+sv
+dir
+
+LinkDialog.js
+file
+
+
+
+
+2013-01-13T11:20:56.273070Z
+b4d7e289378496befda9544d5033e615
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+ja
+dir
+
+he
+dir
+
+FontChoice.js
+file
+
+
+
+
+2013-01-13T11:20:56.273070Z
+3d60c2c01811108f127168e5ecca781c
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+fi
+dir
+
+nb
+dir
+
+el
+dir
+
+ar
+dir
+
+pt-pt
+dir
+
+cs
+dir
+
+fr
+dir
+
+es
+dir
+
+ko
+dir
+
+nl
+dir
+
+zh-tw
+dir
+
+pl
+dir
+
+th
+dir
+
+it
+dir
+
+hu
+dir
+
+commands.js
+file
+
+
+
+
+2013-01-13T11:20:56.273070Z
+80b6f76ab8516f2dd311ffd99b546b52
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+sk
+dir
+
+sl
+dir
+

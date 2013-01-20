@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi
+END
+PIServerGroup.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PIServerGroup.hbm.xml
+END
+PIAFEventGroup.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PIAFEventGroup.hbm.xml
+END
+PINotificationTypes.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PINotificationTypes.hbm.xml
+END
+PINotificationListener.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PINotificationListener.hbm.xml
+END
+PiEventGroup.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PiEventGroup.hbm.xml
+END
+PiEventConsumers.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/pi/PiEventConsumers.hbm.xml
+END

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title> </title>
+    <link href="elegant.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="resources/org.apache.wicket.markup.html.WicketEventReference/wicket-event.js"></script>
+<script type="text/javascript" src="resources/org.apache.wicket.ajax.WicketAjaxReference/wicket-ajax.js"></script>
+</head>
+
+  <body>
+    
+      &nbsp;
+      <div style="text-align: center; vertical-align: middle">
+      
+      <table border="0" cellpadding="0" cellspacing="0" style="height: 80%; width: 95%;">
+        <tr>
+          <td style="vertical-align: top;">
+
+            <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+              <tr style="background-color: #bebebe;">
+                <td style="text-align: left; vertical-align: top; width: 5px;">
+                  <img src="images/Widget_topLeft.gif"/>
+                </td>
+                <td class="widget_title" style="text-align: left;">
+                  Maintainence: Case ID - 2498 </td>
+                <td>&nbsp;
+                  
+                </td>
+                <td style="text-align: right; vertical-align: top; width: 5px;">
+                  <img src="images/Widget_topRight.gif"/>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+        <tr>
+          <td style="border: solid #d9d9d9 1px; padding: 3px;">
+          
+            <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+              <tr><!--  style="height: 40px;" -->
+                <td>
+                  <div align="center">
+                  <span>   
+<table width="100% cellpadding="0" cellspacing="0">
+<tr><td align="left">
+<span style="padding-left: 8px;padding-right:8px;"><img src="images/popup/1b.jpg" width="426" height="45"/></span>
+</td>
+</tr>
+<tr><td style="padding-left: 8px;padding-right:8px;">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td width="58px;" style="position: relative; top: -10px;">
+<span class="topGuidedProcedure" style="white-space: nowrap;"></span></td>
+<td width="110px;" style="position: relative; top: -10px;">
+<span class="topGuidedProcedure" style="white-space: nowrap;"></span></td>
+
+
+
+
+
+
+
+
+<td width="65px;" style="position: relative; top: -10px;">
+<span class="topGuidedProcedure" style="white-space: nowrap;"></span></td>
+</tr>
+</table>
+</td></tr>
+</table>
+</span>                  </div>                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+                    <tr style="background-color: #bebebe; height: 30px;">
+                      <td>
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+                          <tr>
+                            <td style="text-align: left; vertical-align: top; width: 5px;">
+                              <img src="images/Widget_topLeft.gif"/>                            </td>
+                            <td align="left" class="label" style="text-align: left;">Equipment Service Request</td>
+                            <td style="text-align: right; vertical-align: top; width: 5px;">
+                              <img src="images/Widget_topRight.gif"/>                            </td>
+                          </tr>
+                        </table>                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border: solid #d9d9d9 1px;" valign="middle">
+                        <div class="geapcontainer" id="geapContainer" style="height: 335px; width:100% overflow: auto; text-align: left; vertical-align: middle;">
+                     		<!--<script type="text/javascript" src="googleearthairlines_files/geapi.js"></script>
+							<script type="text/javascript">
+								ApplicationGE.Plugin("geapContainer");
+								ApplicationGE.OpenKmlFile("c:/temp/SUPreview2.kml",true);	
+								document.getElementById("geapContainer").style.height = 400;
+								document.getElementById("geapContainer").style.width = 985;							    
+							</script>-->
+   					        <table width="100%" border="0" cellpadding="5">
+                              <tr>
+                                <td width="25%"><strong><font size="4">Please Complete </font></strong></td>
+                                <td width="80%">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td width="25%">&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td width="25%"><strong>Equipment</strong></td>
+                                <td>Industrial Cooler (GE CP1948) </td>
+                              </tr>
+                              <tr>
+                                <td width="25%"><strong>Risk</strong></td>
+                                <td>Unusual rise in cooler temperate. Potentially harmful to the products stored. </td>
+                              </tr>
+                            </table>
+                            <table width="100%" border="0" cellpadding="5">
+                              <tr>
+                                <td width="25%"><strong>Service Priority </strong></td>
+                                <td width="30%"> <select name="select">
+                                  <option selected="selected">High</option>
+                                  <option>Medium</option>
+                                  <option>Low</option>
+                                </select>
+                                </td>
+                                <td width="9%"><strong>Department</strong></td>
+                                <td width="41%"><select name="select2">
+                                  <option selected="selected">Shipping</option>
+                                  <option>HR</option>
+                                  <option>IT</option>
+                                  <option>Administration</option>
+                                                                                                                                                                </select></td>
+                              </tr>
+                              <tr>
+                                <td width="25%"><strong>Notifications</strong></td>
+                                <td width="30%"> <select name="select3">
+                                  <option selected="selected">Yes</option>
+                                  <option>No</option>
+                                                                                                </select></td>
+                                <td width="9%"><strong>Component</strong></td>
+                                <td width="41%"><select name="select4">
+                                  <option>HVAC</option>
+                                                                </select></td>
+                              </tr>
+                            </table>
+                            <table width="100%" border="0" cellpadding="5">
+                              <tr>
+                                <td width="25%" valign="top"><strong>Comments</strong></td>
+                                <td width="80%"><p>
+                                  <textarea name="textarea" style="width:85%;" rows="10"></textarea>
+                                </p>
+                                <p>&nbsp; </p></td>
+                              </tr>
+                            </table>
+                          <p>&nbsp;</p>
+                        </div>                      </td>
+                    </tr>
+                  </table>                </td>
+              </tr>
+            </table>
+            
+          </td>
+        </tr>
+        <tr style="background-color: #d9d9d9; height: 25px;">
+          <td align="left" style="text-align: left;">
+            &nbsp;&nbsp;
+            <input class="tblbtn" type="submit" value="Cancel"/>
+            &nbsp;&nbsp;
+            <input class="tblbtn" type="submit" value="Back" onClick='window.open("popup.htm","_self");'/>			
+            &nbsp;
+            <input value="Continue" type="button" onClick='window.open("popup1c.htm","_self");'/>
+            &nbsp;
+          </td>
+        </tr>
+      </table>
+      
+      </div>
+
+    
+  </body>
+
+</html>

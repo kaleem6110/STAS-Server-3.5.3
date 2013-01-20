@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="JobRoles" table="STI_R_ARRA_JOB_ROLES">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+       
+        <property name="code" type="string" column="ROLE_CODE" />
+        <property name="roleDesc" type="string" column="ROLE_DESC"  not-null="true" unique="true"/>
+        <many-to-one name="jobCategory" class="com.spacetimeinsight.arra.db.models.JobCategory" column="JOB_CATEGORY_ID" not-null="true" lazy="false"/>
+        <property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>  
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dojo/cldr/nls/pt-br
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+gregorian.js
+file
+
+
+
+
+2013-01-13T11:22:04.216657Z
+789abb4e2b8264938bcb1b2f7ee52ae9
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

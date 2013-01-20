@@ -1,0 +1,779 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal
+END
+icon_monitor_process.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_monitor_process.png
+END
+icon_monitor.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_monitor.png
+END
+icon_schedule.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_schedule.png
+END
+undo.png
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/undo.png
+END
+icon_templates.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_templates.png
+END
+icon_sessionstatistics.png
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_sessionstatistics.png
+END
+alert.png
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alert.png
+END
+pimonitor.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/pimonitor.png
+END
+piconsumer.png
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/piconsumer.png
+END
+right_bg.png
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/right_bg.png
+END
+icon_user.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_user.png
+END
+btn_add_one_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_add_one_off.png
+END
+icon_shape_to_db_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_shape_to_db_mapping.png
+END
+PIAFEventGroup.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/PIAFEventGroup.png
+END
+icon_task_template.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_task_template.png
+END
+excelIcon.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/excelIcon.jpg
+END
+icon_configure_reports.png
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_configure_reports.png
+END
+banner_bg.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/banner_bg.jpg
+END
+icon_cache.png
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_cache.png
+END
+alertMode.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alertMode.png
+END
+icon_user_group_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_user_group_mapping.png
+END
+icon_wbs_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_wbs_mapping.png
+END
+icon_undeploy_ecosys_files.png
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_undeploy_ecosys_files.png
+END
+piNotification.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/piNotification.png
+END
+navyblue.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/navyblue.jpg
+END
+icon_process_list.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_process_list.png
+END
+forgot.gif
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/forgot.gif
+END
+blue.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/blue.jpg
+END
+icon_manage_config.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_manage_config.png
+END
+hdr_bg.PNG
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/hdr_bg.PNG
+END
+logimage1.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/logimage1.gif
+END
+config.gif
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/config.gif
+END
+signin.PNG
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/signin.PNG
+END
+logimage3.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/logimage3.gif
+END
+error.png
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/error.png
+END
+header_logo.gif
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/header_logo.gif
+END
+icon_view_alerts.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_view_alerts.png
+END
+alertRouteMapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alertRouteMapping.png
+END
+icon_configure_rules.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_configure_rules.png
+END
+icon_ge.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_ge.png
+END
+icon_join_datasources.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_join_datasources.png
+END
+platform.gif
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/platform.gif
+END
+alertMessaging.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alertMessaging.png
+END
+icon_process_mngr.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_process_mngr.png
+END
+move_up.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/move_up.png
+END
+btn_add_all_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_add_all_off.png
+END
+icon_config.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_config.png
+END
+icon_security.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_security.png
+END
+icon_default_report_data.png
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_default_report_data.png
+END
+icon_checklist_items.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_checklist_items.png
+END
+icon_import_export.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_import_export.png
+END
+icon_module_group_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_module_group_mapping.png
+END
+icon_open_id.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_open_id.png
+END
+icon_view_violations.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_view_violations.png
+END
+icon_export.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_export.png
+END
+icon_platform.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_platform.png
+END
+indicator.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/indicator.gif
+END
+btn_remove_one_on.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_remove_one_on.png
+END
+openid.gif
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/openid.gif
+END
+icon_lock.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_lock.png
+END
+icon_error.png
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_error.png
+END
+left_bg.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/left_bg.png
+END
+Thumbs.db
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/Thumbs.db
+END
+icon_message_consumer.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_message_consumer.png
+END
+icon_plus_1.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_plus_1.png
+END
+but.gif
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/but.gif
+END
+btn_move_left_all.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_move_left_all.png
+END
+alerts-main.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alerts-main.png
+END
+icon_down.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_down.png
+END
+icon_cachestatistics.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_cachestatistics.png
+END
+pieventgroup.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/pieventgroup.png
+END
+icon_groups.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_groups.png
+END
+btn_remove_one_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_remove_one_off.png
+END
+icon_org_participant_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_org_participant_mapping.png
+END
+icon_delete_uploaded_files.png
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_delete_uploaded_files.png
+END
+Untitled-2_03.gif
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/Untitled-2_03.gif
+END
+icon_stem.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_stem.png
+END
+customer_logo.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/customer_logo.png
+END
+icon_ad_group_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_ad_group_mapping.png
+END
+icon_datsources.png
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_datsources.png
+END
+btn_add_one_on.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_add_one_on.png
+END
+icon_sgig_reporting.png
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_sgig_reporting.png
+END
+icon_up.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_up.png
+END
+move_down.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/move_down.png
+END
+alertConfig.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alertConfig.png
+END
+btn_move_right_all.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_move_right_all.png
+END
+icon_window_3.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_window_3.png
+END
+downarrow.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/downarrow.gif
+END
+alert-naviagtion.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alert-naviagtion.png
+END
+icon_ecosys_group_mapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_ecosys_group_mapping.png
+END
+alert-source.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alert-source.png
+END
+icon_arrow_up.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_arrow_up.png
+END
+signin.gif
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/signin.gif
+END
+icon_actor_template.png
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_actor_template.png
+END
+icon_warning.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_warning.png
+END
+icon_upload_files.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_upload_files.png
+END
+icon_forgot_pw.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_forgot_pw.png
+END
+btn_remove_all_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_remove_all_off.png
+END
+btn_remove_all_on.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_remove_all_on.png
+END
+btn_move_left_one.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_move_left_one.png
+END
+bg.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/bg.jpg
+END
+toggleBtn.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/toggleBtn.png
+END
+logimage2.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/logimage2.gif
+END
+alertModeMapping.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/alertModeMapping.png
+END
+logimage4.gif
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/logimage4.gif
+END
+loading.gif
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/loading.gif
+END
+icon_choose_datasource.png
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_choose_datasource.png
+END
+icon_dash_1.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_dash_1.png
+END
+pi.png
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/pi.png
+END
+icon_hibernate.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_hibernate.png
+END
+icon_nerc_reports.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_nerc_reports.png
+END
+icon_shape_to_db.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_shape_to_db.png
+END
+icon_rss.png
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_rss.png
+END
+icon_generate_reports.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_generate_reports.png
+END
+icon_import.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_import.png
+END
+icon_compliance_standards.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_compliance_standards.png
+END
+icon_ecoweb_wizard.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_ecoweb_wizard.png
+END
+piserver.png
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/piserver.png
+END
+icon_feed_report_data.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_feed_report_data.png
+END
+icon_tick.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_tick.png
+END
+btn_move_right_one.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_move_right_one.png
+END
+icon_xls.png
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_xls.png
+END
+icon_database_maintenance.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_database_maintenance.png
+END
+btn_add_all_on.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/btn_add_all_on.png
+END
+uparrow.gif
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/uparrow.gif
+END
+customer_logo_blue.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/customer_logo_blue.jpg
+END
+checked.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/checked.png
+END
+blank.png
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/blank.png
+END
+icon_arrow_down.png
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/images/portal/icon_arrow_down.png
+END

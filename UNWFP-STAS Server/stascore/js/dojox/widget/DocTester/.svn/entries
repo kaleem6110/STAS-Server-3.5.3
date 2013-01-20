@@ -1,0 +1,52 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dojox/widget/DocTester
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+DocTester.html
+file
+
+
+
+
+2013-01-13T11:21:26.119494Z
+7ff827913990f3d11aa0b8ea29a19fd6
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+DocTester.css
+file
+
+
+
+
+2013-01-13T11:21:26.119494Z
+af48bdb20e8d3b99636a0b97763d5bbd
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

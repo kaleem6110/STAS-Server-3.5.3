@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd
+END
+move.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/move.js
+END
+autoscroll.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/autoscroll.js
+END
+Mover.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Mover.js
+END
+common.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/common.js
+END
+Manager.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Manager.js
+END
+Moveable.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Moveable.js
+END
+TimedMoveable.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/TimedMoveable.js
+END
+Avatar.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Avatar.js
+END
+Selector.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Selector.js
+END
+Source.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Source.js
+END
+Container.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/24/trunk/UNWFP-STAS%20Server/stascore/js/dojo/dnd/Container.js
+END

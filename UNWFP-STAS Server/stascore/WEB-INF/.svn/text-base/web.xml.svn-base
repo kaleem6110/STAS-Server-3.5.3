@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+
+    <display-name>Space-Time Awareness Server</display-name>
+    <description />
+    <context-param>
+        <param-name>driverPath</param-name>
+        <param-value>stas_config/drivers.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>webpalettemapping</param-name>
+        <param-value>/WEB-INF/PalettePropertyMapping.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ecowebpallette</param-name>
+        <param-value>/WEB-INF/WebEcoPalette.xml</param-value>
+    </context-param>
+    <!--
+        <context-param>
+        <param-name>sti.hibernate.dialect</param-name>
+        <param-value>com.enterprisehorizons.dialect.OracleDialect</param-value>
+        </context-param>
+    -->
+    <listener>
+        <listener-class>
+            com.enterprisehorizons.magma.server.SessionListener
+        </listener-class>
+    </listener>
+    <!-- Http Flex Session attribute and binding listener support -->
+    <listener>
+        <listener-class>flex.messaging.HttpFlexSession</listener-class>
+    </listener>
+  <listener>
+  	<listener-class>com.enterprisehorizons.magma.server.ContextListener</listener-class>
+  </listener>
+    <!-- MessageBroker Servlet -->
+    <servlet>
+        <servlet-name>MessageBrokerServlet</servlet-name>
+        <servlet-class>
+            flex.messaging.MessageBrokerServlet
+        </servlet-class>
+        <init-param>
+            <param-name>services.configuration.file</param-name>
+            <param-value>
+                /WEB-INF/classes/flex/services-config.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SessionHandlerServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.SessionHandlerServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>InitializerServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.InitializerServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MAGMARequestHandler</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.MAGMARequestHandlerServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ExternalUrlAuthenticator</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.ExternalUrlAuthenticatorServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EcoExpmlDeployer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.EcoExpmlDeployerServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DataObjectHelper</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.admin.server.DataObjectHelperServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DataUpdateHelper</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.DataUpdateHelperServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MediaStreamer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.MediaStreamerServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>IconRenderer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.IconRendererServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchData</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.SearchDataServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DashboardData</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.DashboardDataServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>XMLDataRenderer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.XMLDataRendererServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ChartRenderer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.ChartRendererServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ArtifactTimeSpanUpdater</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.ArtifactTimeSpanUpdaterServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DescriptionRenderer</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.DescriptionRendererServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JobRegisterServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.jobs.actions.JobRegisterServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfigurationRefreshServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.admin.uiconfig.util.ConfigurationRefreshServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfigurationRefreshServlet</servlet-name>
+        <url-pattern>/ConfigurationRefreshServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FormatImageServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.FormatImageServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormatImageServlet</servlet-name>
+        <url-pattern>/imageformatter</url-pattern>
+    </servlet-mapping>
+    
+    <!--Mobile Servlets-->
+    <servlet>
+    	<servlet-name>FusionChartRenderer</servlet-name>
+		<jsp-file>/charts/showCharts.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FusionChartRenderer</servlet-name>
+		<url-pattern>/swf/fusioncharts/*</url-pattern>
+	</servlet-mapping>
+
+ 	<servlet>
+		<servlet-name>MobileUserSignoutHandlerServlet</servlet-name>
+		<servlet-class>
+		com.spacetimeinsight.mobile.servlet.MobileUserSignoutHandlerServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MobileUserSignoutHandlerServlet</servlet-name>
+		<url-pattern>/mobileUserSignout</url-pattern>
+	</servlet-mapping>
+
+
+    <!--
+        <servlet>
+        <servlet-name>CacheHandler</servlet-name>
+        <servlet-class>com.spacetimeinsight.admin.cache.servlet.CacheHandlerServlet</servlet-class>
+        </servlet>
+    -->
+    <servlet>
+        <servlet-name>SecurityHandler</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.security.servlet.SecurityHandlerServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>workflow</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.integrations.ras.RASWorkflowController
+        </servlet-class>
+    </servlet>
+    
+    <servlet>
+		<servlet-name>SecurityHandlerServlet</servlet-name>
+		<servlet-class>
+		com.spacetimeinsight.mobile.servlet.SecurityAccountHandlerServlet
+		</servlet-class>
+		</servlet> 
+        <servlet-mapping>
+			<servlet-name>SecurityHandlerServlet</servlet-name>
+			<url-pattern>/securityHandlerServlet</url-pattern>
+         </servlet-mapping>
+
+
+     <servlet>
+        <servlet-name>LayerHandlerServlet</servlet-name>
+        <servlet-class>
+           com.spacetimeinsight.mobile.servlet.LayerProviderServlet
+        </servlet-class>
+        </servlet> 
+        
+        <servlet-mapping>
+            <servlet-name>LayerHandlerServlet</servlet-name>
+            <url-pattern>/layerHandlerServlet</url-pattern>
+         </servlet-mapping>
+    
+    
+        <servlet>
+        <servlet-name>AlertHandlerServlet</servlet-name>
+        <servlet-class>
+           com.spacetimeinsight.mobile.servlet.AlertProviderServlet
+        </servlet-class>
+        </servlet> 
+        
+        <servlet-mapping>
+            <servlet-name>AlertHandlerServlet</servlet-name>
+            <url-pattern>/alertHandlerServlet</url-pattern>
+         </servlet-mapping> 
+         
+         
+        <servlet>
+	        <servlet-name>SettingsHandlerServlet</servlet-name>
+	        <servlet-class>
+	           com.spacetimeinsight.mobile.servlet.MobileSettingsHandlerServlet
+	        </servlet-class>
+        </servlet> 
+        <servlet-mapping>
+            <servlet-name>SettingsHandlerServlet</servlet-name>
+            <url-pattern>/settingsHandlerServlet</url-pattern>
+        </servlet-mapping> 
+        
+        <servlet>
+        <servlet-name>AlertsAcknowledgeHandlerServlet</servlet-name>
+        <servlet-class>
+           com.spacetimeinsight.mobile.servlet.AlertsAcknowledgeHandlerServlet
+        </servlet-class>
+        </servlet> 
+        <servlet-mapping>
+            <servlet-name>AlertsAcknowledgeHandlerServlet</servlet-name>
+            <url-pattern>/alertsAcknowledgeHandler</url-pattern>
+         </servlet-mapping> 
+         
+    <servlet-mapping>
+        <servlet-name>MessageBrokerServlet</servlet-name>
+        <url-pattern>/messagebroker/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GenerateAndViewJasperReportServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.rules.servlet.GenerateAndViewJasperReportServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GenerateAndViewJasperReportServlet</servlet-name>
+        <url-pattern>/generateAndViewJasperReportServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SituationRoomServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.situationroom.SituationRoomServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SituationRoomServlet</servlet-name>
+        <url-pattern>/situationRoom</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FileTransferServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.FileTransferServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileTransferServlet</servlet-name>
+        <url-pattern>/fileTransfer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExpressionBuilderHelperServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.ExpressionBuilderHelperServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExpressionBuilderHelperServlet</servlet-name>
+        <url-pattern>/ExpressionBuilderHelper</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EcoGroupMappingUpdateServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.admin.ecoweb.EcoGroupMappingUpdateServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EcoGroupMappingUpdateServlet</servlet-name>
+        <url-pattern>/ecogroupmapupdate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyPlacesUpdateServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.stas.myplaces.MyPlacesUpdateServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyPlacesUpdateServlet</servlet-name>
+        <url-pattern>/myPlacesUpdate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExcelMetaServlet</servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.ExcelMetaServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcelMetaServlet</servlet-name>
+        <url-pattern>/excelMeta</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FlexFileHandlerServlet </servlet-name>
+        <servlet-class>
+            com.enterprisehorizons.magma.server.FlexFileHandlerServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FlexFileHandlerServlet </servlet-name>
+        <url-pattern>/flexFileHandlerServlet </url-pattern>
+    </servlet-mapping>
+    <!--
+        <servlet>
+        <servlet-name>SpatialViewServlet</servlet-name>
+        <servlet-class>com.spacetimeinsight.rules.servlet.SpatialViewServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>SpatialViewServlet</servlet-name>
+        <url-pattern>/spatialViewServlet</url-pattern>
+        </servlet-mapping>
+    -->
+
+    <servlet-mapping>
+        <servlet-name>workflow</servlet-name>
+        <url-pattern>/workflow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MAGMARequestHandler</servlet-name>
+        <url-pattern>/MAGMARequestHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExternalUrlAuthenticator</servlet-name>
+        <url-pattern>/ExternalUrlAuthenticator</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionHandlerServlet</servlet-name>
+        <url-pattern>/SessionHandler</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MediaStreamer</servlet-name>
+        <url-pattern>/MediaStreamer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>IconRenderer</servlet-name>
+        <url-pattern>/IconRenderer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EcoExpmlDeployer</servlet-name>
+        <url-pattern>/EcoExpmlDeployer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DataObjectHelper</servlet-name>
+        <url-pattern>/DataObjectHelper</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DataUpdateHelper</servlet-name>
+        <url-pattern>/DataUpdateHelper</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchData</servlet-name>
+        <url-pattern>/SearchData</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DashboardData</servlet-name>
+        <url-pattern>/DashboardData</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>XMLDataRenderer</servlet-name>
+        <url-pattern>/XMLDataRenderer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChartRenderer</servlet-name>
+        <url-pattern>/ChartRenderer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ArtifactTimeSpanUpdater</servlet-name>
+        <url-pattern>/ArtifactTimeSpanUpdater</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DescriptionRenderer</servlet-name>
+        <url-pattern>/DescriptionRenderer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>JobRegisterServlet</servlet-name>
+        <url-pattern>/JobRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <!--
+        <servlet-mapping>
+        <servlet-name>CacheHandler</servlet-name>
+        <url-pattern>/CacheHandler</url-pattern>
+        </servlet-mapping>
+    -->
+    <servlet-mapping>
+        <servlet-name>SecurityHandler</servlet-name>
+        <url-pattern>/SecurityHandler</url-pattern>
+    </servlet-mapping>
+
+    <!--  smart visuals servlets - start-->
+    <servlet>
+        <servlet-name>PNGStreamer</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.visualserver.PNGStreamer
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PNGStreamer</servlet-name>
+        <url-pattern>/PNGStreamer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SmartArtServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.visualserver.SmartArtServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SmartArtServlet</servlet-name>
+        <url-pattern>/smartart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyPlacesDeployer</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.stas.myplaces.MyPlacesEcoexpmlDeployServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyPlacesDeployer</servlet-name>
+        <url-pattern>/myPlacesDeployer</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>
+            org.apache.struts.action.ActionServlet
+        </servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/mobile</param-name>
+            <param-value>/WEB-INF/struts-config-mobile.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmissionServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.arra.servlet.SubmissionServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmissionServlet</servlet-name>
+        <url-pattern>/submissionServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProjectManagementReportServlet</servlet-name>
+        <servlet-class>
+            com.spacetimeinsight.arra.actions.ProjectManagementReportServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectManagementReportServlet</servlet-name>
+        <url-pattern>/projectManagementReportServlet</url-pattern>
+    </servlet-mapping>
+
+
+<servlet>
+<servlet-name>mobile</servlet-name>
+<jsp-file>/tablet/ios/stasmobileios.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>mobile</servlet-name>
+<url-pattern>*.plist</url-pattern>
+</servlet-mapping>
+
+
+    <!-- servlet-mapping>
+        <servlet-name>EcoWebInitializerServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+        </servlet-mapping-->
+
+
+    <!-- Standard Action Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <!-- Default to 30 minute session timeouts -->
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <!--
+        <filter>
+        <filter-name>LogRequestDetails</filter-name>
+        <filter-class> com.enterprisehorizons.magma.server.util.RequestDetailsDumpFilter</filter-class>
+        </filter>
+        <filter-mapping>
+        <filter-name>LogRequestDetails</filter-name>
+        <url-pattern>/workflow</url-pattern>
+        <url-pattern>/generateAndViewJasperReportServlet</url-pattern>
+        <url-pattern>/situationRoom</url-pattern>
+        <url-pattern>/MAGMARequestHandler</url-pattern>
+        <url-pattern>/SessionHandler</url-pattern>
+        <url-pattern>/DataHelper</url-pattern>
+        <url-pattern>/MediaStreamer</url-pattern>
+        <url-pattern>/EcoExpmlDeployer</url-pattern>
+        <url-pattern>/DataObjectHelper</url-pattern>
+        <url-pattern>/DataUpdateHelper</url-pattern>
+        <url-pattern>/SearchData</url-pattern>
+        <url-pattern>/DashboardData</url-pattern>
+        <url-pattern>/XMLDataRenderer</url-pattern>
+        <url-pattern>/ChartRenderer</url-pattern>
+        <url-pattern>/ArtifactTimeSpanUpdater</url-pattern>
+        <url-pattern>/DescriptionRenderer</url-pattern>
+        <url-pattern>/SecurityHandler</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        </filter-mapping>
+    -->
+    <!--
+        <filter>
+        <filter-name>UserSessionValidatorFilter</filter-name>
+        <filter-class>
+        com.enterprisehorizons.magma.admin.UserSessionValidatorFilter
+        </filter-class>
+        <init-param>
+        <param-name>redirect</param-name>
+        <param-value>/EcoWebIndex.jsp</param-value>
+        </init-param>
+        </filter>
+
+        <filter-mapping>
+        <filter-name>UserSessionValidatorFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+
+        <filter>
+        <filter-name>EcoAuthenticationFilter</filter-name>
+        <filter-class>
+        com.spacetimeinsight.magma.server.filter.EcoAuthenticationFilter
+        </filter-class>
+        <init-param>
+        <param-name>redirect</param-name>
+        <param-value>http://localhost:8080/web/guest</param-value>
+        </init-param>
+        <init-param>
+        <param-name>remote_host</param-name>
+        <param-value>127.0.0.1</param-value>
+        </init-param>
+        <init-param>
+        <param-name>encrypted_user</param-name>
+        <param-value>true</param-value>
+        </init-param>
+        <init-param>
+        <param-name>LiferayDB</param-name>
+        <param-value>MYSQL</param-value>
+        </init-param>
+        <init-param>
+        <param-name>LiferayDB_ConnectionURL</param-name>
+        <param-value>jdbc:mysql://localhost:3306/liferaydb</param-value>
+        </init-param>
+        <init-param>
+        <param-name>LiferayDB_User</param-name>
+        <param-value>root</param-value>
+        </init-param>
+        <init-param>
+        <param-name>LiferayDB_Password</param-name>
+        <param-value>root</param-value>
+        </init-param>
+        </filter>
+
+        <filter-mapping>
+        <filter-name>EcoAuthenticationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
+    -->
+	<!-- SSO Configuration
+
+	<filter>
+		<filter-name>SpnegoHttpFilter</filter-name>
+		<filter-class>
+			net.sourceforge.spnego.SpnegoHttpFilter
+		</filter-class>
+
+		<init-param>
+			<param-name>spnego.allow.basic</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.allow.localhost</param-name>
+			<param-value>false</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.allow.unsecure.basic</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.login.client.module</param-name>
+			<param-value>spnego-client</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.krb5.conf</param-name>
+			<param-value>C:\Program Files\SpaceTimeAwarenessServer\krb5.conf</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.login.conf</param-name>
+			<param-value>C:\Program Files\SpaceTimeAwarenessServer\login.conf</param-value>
+		</init-param>
+
+
+		<init-param>
+			<param-name>spnego.preauth.username</param-name>
+			<param-value></param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.preauth.password</param-name>
+			<param-value></param-value>
+		</init-param>
+
+
+		<init-param>
+			<param-name>spnego.custom.keytab.path</param-name>
+			<param-value>C:\Program Files\SpaceTimeAwarenessServer\sso.properties</param-value>
+		</init-param>
+
+
+		<init-param>
+			<param-name>spnego.login.server.module</param-name>
+			<param-value>spnego-server</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.prompt.ntlm</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.logger.level</param-name>
+			<param-value>3</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SpnegoHttpFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SSOCacheUserInfoFilter</filter-name>
+		<filter-class>
+			com.spacetimeinsight.magma.server.filter.SSOCacheUserInfoFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SSOCacheUserInfoFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	-->
+    <filter>
+        <filter-name>SessionTimeoutFilter</filter-name>
+        <filter-class>
+            com.spacetimeinsight.magma.server.filter.SessionTimeoutFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionTimeoutFilter</filter-name>
+        <url-pattern>/submissionServlet</url-pattern>
+        <url-pattern>/messagebroker/*</url-pattern>
+    </filter-mapping>
+
+
+    <mime-mapping>
+        <extension>xsd</extension>
+        <mime-type>text/xml</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>kml</extension>
+        <mime-type>application/vnd.google-earth.kml+xml</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>kmz</extension>
+        <mime-type>application/vnd.google-earth.kmz</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>xlsx</extension>
+        <mime-type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</mime-type>
+    </mime-mapping>
+
+    <welcome-file-list id="WelcomeFileList">
+        <welcome-file>sti.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Struts Tag Library Descriptors -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/tags/struts-bean</taglib-uri>
+            <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-html</taglib-uri>
+            <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-logic</taglib-uri>
+            <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-nested</taglib-uri>
+            <taglib-location>
+                /WEB-INF/struts-nested.tld
+            </taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-tiles</taglib-uri>
+            <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/fileupload</taglib-uri>
+            <taglib-location>/WEB-INF/FileUpload.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/tags/model-config</taglib-uri>
+            <taglib-location>/WEB-INF/Model.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+    <resource-ref>
+        <description>STAS DB Connection</description>
+        <res-ref-name>jdbc/STASDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <!--   <resource-ref>
+        <description>Connection Factory</description>
+        <res-ref-name>jms/ConnectionFactory</res-ref-name>
+        <res-auth>Container</res-auth>
+        </resource-ref>
+
+        <resource-ref>
+        <res-ref-name>jms/AlertMessagingTopic</res-ref-name>
+        <res-type>javax.jms.Topic</res-type>
+        </resource-ref>
+
+    <resource-ref>
+		<res-ref-name>jdbc/resdatasource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Unshareable</res-sharing-scope>
+	</resource-ref>
+	<security-role>
+		<role-name>resAdministrators</role-name>
+	</security-role>-->
+        <servlet>
+		<display-name>Apache-Axis Servlet</display-name>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
+		</servlet>
+		<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+		</servlet-mapping>
+	<servlet>
+		<display-name>ZIP Servlet</display-name>
+		<servlet-name>GzipServlet</servlet-name>
+		<servlet-class>com.wfp.offline.synchronize.GzipServlet</servlet-class>
+		<load-on-startup>100</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GzipServlet</servlet-name>
+		<url-pattern>/GzipServlet</url-pattern>
+	</servlet-mapping>
+	        
+</web-app>

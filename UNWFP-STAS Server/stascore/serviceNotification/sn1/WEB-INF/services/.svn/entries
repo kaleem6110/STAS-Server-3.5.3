@@ -1,0 +1,56 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+version.aar
+file
+
+
+
+
+2013-01-13T11:14:34.972078Z
+54e62c3b791a6a47b2418e074e627add
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+has-props
+
+SAEService
+dir
+
+services.list
+file
+
+
+
+
+2013-01-13T11:14:34.972078Z
+b2e274de59f7fbbea01d6b86bff19b09
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

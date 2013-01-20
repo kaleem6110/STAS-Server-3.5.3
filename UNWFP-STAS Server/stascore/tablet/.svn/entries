@@ -1,0 +1,72 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/tablet
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+android
+dir
+
+install.jsp
+file
+
+
+
+
+2013-01-13T11:20:32.411557Z
+af404675bed4dfbe702bed588bd0751e
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+
+download1-iPAD.png
+file
+
+
+
+
+2013-01-13T11:20:32.427184Z
+2d21e029095154e5279d7139af2d8e62
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+has-props
+
+download1-android.png
+file
+
+
+
+
+2013-01-13T11:20:32.427184Z
+06c3ac9d1cd88a8f762f309a1699ba67
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+has-props
+
+ios
+dir
+

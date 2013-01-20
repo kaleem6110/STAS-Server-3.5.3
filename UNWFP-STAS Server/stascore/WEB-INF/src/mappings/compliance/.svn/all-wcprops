@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/compliance
+END
+ComplianceIncidentConfigMap.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/compliance/ComplianceIncidentConfigMap.hbm.xml
+END
+ComplianceReportEOP004.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/compliance/ComplianceReportEOP004.hbm.xml
+END
+ComplianceConfiguration.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/compliance/ComplianceConfiguration.hbm.xml
+END
+ComplianceRASProcesses.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/WEB-INF/src/mappings/compliance/ComplianceRASProcesses.hbm.xml
+END

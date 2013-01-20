@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="EPIC">
+    <section name="reload">
+        <value><![CDATA[true]]></value>
+    </section>
+    <section name="enablelogging">
+        <value><![CDATA[false]]></value>
+    </section>
+    <section name="namespace"/>
+</configuration>

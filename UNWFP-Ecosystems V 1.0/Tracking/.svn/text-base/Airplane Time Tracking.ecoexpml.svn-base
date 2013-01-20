@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="Airplane Time Tracking">
+    <section name="artefact">
+        <section name="name">
+            <value><![CDATA[Airplane Time Tracking]]></value>
+        </section>
+        <section name="artifactname">
+            <section name="script">
+                <value><![CDATA[time]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="type">
+            <value><![CDATA[com.enterprisehorizons.magma.designtime.artifact.GeoArtifact]]></value>
+        </section>
+        <section name="attributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+        </section>
+        <section name="cache">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="isfiltersearchresults">
+            <value><![CDATA[true]]></value>
+        </section>
+        <section name="enableexpressions">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="searchablefields">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[date]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[list]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="experiencedef">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Airplane Time Tracking]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
+                </section>
+                <section name="selected">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="expand">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[5]]></value>
+                </section>
+                <section name="autozoom">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="timesensitive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="params">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[entrypoint]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Artefact]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[ecoexpmodel]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Airplane Time Tracking.ecoexpml]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[artefactname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Airplane Time Tracking]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="blinkrate">
+            <value><![CDATA[1]]></value>
+        </section>
+        <section name="blinkloopcount">
+            <value><![CDATA[2]]></value>
+        </section>
+        <section name="constraints">
+            <section name="constraint">
+                <value><![CDATA[cameraboundary]]></value>
+            </section>
+            <section name="constraint">
+                <value><![CDATA[visibility]]></value>
+                <section name="script">
+                    <value><![CDATA[authorizeDevice()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="listeners"/>
+        <section name="layout">
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getDeviceCaption()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="starttime">
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="endtime">
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[LineString]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.LineStringFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="extrude">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="tessellate">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="globalstyleid">
+                    <value><![CDATA[ ]]></value>
+                </section>
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
+                </section>
+                <section name="isblink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="splinetype">
+                    <value><![CDATA[3]]></value>
+                </section>
+                <section name="generateplacemark">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
+                </section>
+                <section name="generatelegend">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="legendname">
+                    <value><![CDATA[Legend]]></value>
+                </section>
+                <section name="style">
+                    <section name="name">
+                        <section name="script">
+                            <value><![CDATA[name]]></value>
+                            <section name="type">
+                                <value><![CDATA[2]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="makeasglobalstyle">
+                        <value><![CDATA[true]]></value>
+                    </section>
+                    <section name="iconurl">
+                        <section name="script">
+                            <value><![CDATA[getIconUrl()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="iconcolor">
+                        <section name="script">
+                            <value><![CDATA[getLineColor()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                        <section name="transparency">
+                            <value><![CDATA[1.0]]></value>
+                        </section>
+                    </section>
+                    <section name="iconcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="iconscale">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                    <section name="labelcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="labelscale">
+                        <value><![CDATA[0.0]]></value>
+                    </section>
+                    <section name="linecolor">
+                        <section name="script">
+                            <value><![CDATA[getLineColor()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="linecolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="linewidth">
+                        <value><![CDATA[3.0]]></value>
+                    </section>
+                    <section name="fillcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="showhighlightstyles">
+                        <value><![CDATA[true]]></value>
+                    </section>
+                    <section name="highlighticonurl">
+                        <section name="script">
+                            <value><![CDATA[getIconUrl()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="highlighticonscale">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                    <section name="highlightlabelcolor">
+                        <value><![CDATA[#FFFFFF]]></value>
+                    </section>
+                    <section name="highlightlabelscale">
+                        <value><![CDATA[0.5]]></value>
+                    </section>
+                    <section name="highlightlinecolor">
+                        <value><![CDATA[#FFFFFF]]></value>
+                    </section>
+                    <section name="shadertype">
+                        <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="scriptor">
+            <section name="body">
+                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._5_x.LocationValue;
+import com.enterprisehorizons.magma.server.util.ServerUtils;
+import com.enterprisehorizons.magma.server.util.Cache;
+
+private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
+private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
+String serverRootUrl = ServerUtils.getServerBaseUrl();
+com.wfp.security.form.DeviceBean data = null;
+String description = "<p>Soap Tracking job which is scheduled for every eight hours fetches data from  <i>https://middleware.service.emergency.lu/sensorservice/out/soap</i> & caches the data. </p> ";
+String datasource = "Hitec middleware SOAP service & LDAP ";
+String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
+
+String getDatasource(){
+	return datasource;
+}
+
+String getLastRefreshTime(){
+	return lastRefreshTime;
+}
+
+String getDescription(){
+	return description;
+}
+
+static {
+	if(!Cache.contains("$colorCache$")){
+		com.enterprisehorizons.magma.server.util.Cache.store("$colorCache$", new HashMap());
+	}
+}
+
+void bindData() {
+	try
+	{
+		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	 	
+	 	if (data != null)
+	 	{
+			$artefact.setCoordinates(data.getCoordStr());
+			//changed for getting type as Date instead of String for time
+			$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
+			$artefact.addAttribute("name", data.getName());
+		}
+	}
+	catch (Exception e){
+		e.printStackTrace();
+	}
+}
+
+void addAttribute(){
+	if(getName().startsWith("trackMe")){
+		com.wfp.security.form.LDAPUserBean ldapUserBean = com.wfp.utils.LDAPUtils.getLDAPUserBean(getName());
+	if(ldapUserBean == null){
+		return;
+	}
+	
+	if(!com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getCn()) && !("NULL".equalsIgnoreCase(ldapUserBean.getCn()))){
+		$artefact.addAttribute("owner", ldapUserBean.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getSn())?"":ldapUserBean.getSn()));
+	}
+	
+	return;
+	}  
+}
+
+String getDeviceCaption(){
+	return  $artefact.getAttributeValueAsString("name");
+}
+
+String getName() {
+	if($artefact != null){
+		return $artefact.getAttributeValueAsString("name");
+	}
+	return "No Name" ;
+}
+
+double getAltitude(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	
+	return l.getAlt();
+}
+
+double getLat(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	
+	return l.getLat();
+}
+
+double getLng(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	return l.getLng();
+}
+
+String getIconUrl(){
+	return "serverresources/icons/mapicons/airplane-sport.png";
+}
+
+String getIconColor(){
+	return "#FFFFFF";
+}
+
+String[] returnTimeAttributes(){
+	return new String[]  {"time","java.util.Date","Time","false",""};
+}
+
+String getGroupby(){
+	return "name";
+}
+
+String getLineColor(){
+	try{
+		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+		String deviceId =getName();
+	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
+	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
+	 		String color = (String) map.get(deviceId);
+	 	
+	 		if(color == null){ 					
+				color =  "#"+com.enterprisehorizons.util.ColorUtils.getRandomColor();
+				while(color.length() != 7){
+					color =  "#"+com.enterprisehorizons.util.ColorUtils.getRandomColor();
+				}
+				map.put(deviceId, color);
+		 	}
+		 	return color;
+		 }
+	 }catch(Exception e){
+	 	//e.printStackTrace();
+	}
+	return "#FF0000";
+}
+
+void fireDashboardRefreshEvent(){
+	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
+}
+
+boolean authorizeDevice(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	return com.wfp.utils.LDAPUtils.validateVehiclesByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
+}
+
+String getAuthorUrl(){	
+	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
+}]]></value>
+                <section name="type">
+                    <value><![CDATA[1]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="globalstyle">
+            <section name="style">
+                <value><![CDATA[placemarkstyle]]></value>
+                <section name="name">
+                    <value><![CDATA[placemarkstyle]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="iconcolor">
+                    <section name="script">
+                        <value><![CDATA[getLineColor()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                    <section name="transparency">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconheading">
+                    <value><![CDATA[0]]></value>
+                </section>
+                <section name="iconscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="linewidth">
+                    <value><![CDATA[2.0]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="highlighticonscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="highlightlabelcolor">
+                    <value><![CDATA[#FFFFFF]]></value>
+                </section>
+                <section name="highlightlabelscale">
+                    <value><![CDATA[0.5]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+                <section name="shadermaxcolor">
+                    <value><![CDATA[#FF0000]]></value>
+                </section>
+                <section name="shadermincolor">
+                    <value><![CDATA[#000000]]></value>
+                </section>
+                <section name="shadermaxvalue">
+                    <value><![CDATA[255.0]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="legends">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Search]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/AdvancedSearchDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_search.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[advancedsearchdashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="isprogressive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isapplytoartifact">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="isapplytodashboard">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="searchfields">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Date]]></value>
+                        </section>
+                        <section name="column"/>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Search]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Time Tracking]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshonevent">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Artifact data loaded]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="groupattributes">
+                    <section name="row">
+                        <section name="column">
+                            <section name="script">
+                                <value><![CDATA[getGroupby()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Time Tracking]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[0.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Summary Sheet]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[serverresources/epic/SummarySheet.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Datasource]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDatasource()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Description]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDescription()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[serverresources/epic/SummarySheet.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Datasource]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDatasource()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Description]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDescription()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Legend]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.LegendImageFeature]]></value>
+                </section>
+                <section name="legendstyle">
+                    <value><![CDATA[line]]></value>
+                </section>
+                <section name="xpos">
+                    <value><![CDATA[0.9]]></value>
+                </section>
+                <section name="ypos">
+                    <value><![CDATA[0.5]]></value>
+                </section>
+                <section name="legposunits">
+                    <value><![CDATA[fraction]]></value>
+                </section>
+                <section name="fontsize">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="fontcolor">
+                    <value><![CDATA[#FFFFFF]]></value>
+                    <section name="transparency">
+                        <value><![CDATA[0.8]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="datamashups">
+            <section name="datamashup">
+                <value><![CDATA[timetracking]]></value>
+                <section name="driver">
+                    <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataDriver]]></value>
+                </section>
+                <section name="datarendertype">
+                    <value><![CDATA[Collection]]></value>
+                </section>
+                <section name="datasource">
+                    <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataSource]]></value>
+                    <section name="params">
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[coordinatesDataElement]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[coordStr]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[dataTableScope]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[EcosystemSession]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[layerName]]></value>
+                            </section>
+                            <section name="value">
+                                <section name="script">
+                                    <value><![CDATA[getLayerName()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="databinding">
+            <section name="bindingdefinition">
+                <section name="datamashup">
+                    <value><![CDATA[timetracking]]></value>
+                </section>
+                <section name="script">
+                    <value><![CDATA[bindData()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="runtimeattributes">
+            <section name="attributegroup">
+                <section name="name">
+                    <value><![CDATA[addAttribute]]></value>
+                </section>
+                <section name="attributes">
+                    <section name="script">
+                        <value><![CDATA[addAttribute()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section name="reload">
+        <value><![CDATA[true]]></value>
+    </section>
+    <section name="enablelogging">
+        <value><![CDATA[false]]></value>
+    </section>
+    <section name="namespace">
+        <value><![CDATA[]]></value>
+    </section>
+</configuration>

@@ -1,0 +1,40 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/spacetimeinsight
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-05-29T08:49:49.293085Z
+80
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+performance
+dir
+
+custom
+dir
+
+datasource
+dir
+
+webservice
+dir
+

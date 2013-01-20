@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form-validation SYSTEM "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+  <global>
+    <constant>
+      <constant-name>phone</constant-name>
+      <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>zip</constant-name>
+      <constant-value>^\d{5}\d*$</constant-value>
+    </constant>
+  </global>
+  <formset>  
+  	<!--  Form Validator for Login Page -->
+    <form name="loginForm">
+		<field property="login" depends="required,mask,minlength">
+			<arg key="registrationForm.login.displayname" bundle="validator" />
+			<arg name="minlength" key="${var:minlength}" resource="false" />
+			<var>
+			  <var-name>mask</var-name>
+			  <var-value>^\w+$</var-value>
+			</var>
+			<var>
+			  <var-name>minlength</var-name>
+			  <var-value>2</var-value>
+			</var>
+		</field>
+
+		<field property="password" depends="required,mask,minlength">
+			<arg key="registrationForm.password.maskmsg" bundle="validator" />
+			<arg name="minlength" key="${var:minlength}" resource="false" />
+			<var>
+			  <var-name>mask</var-name>
+			  <var-value>^\w+$</var-value>
+			</var>
+			<var>
+			  <var-name>minlength</var-name>
+			  <var-value>6</var-value>
+			</var>
+		</field>
+
+	</form>
+  </formset>
+</form-validation>

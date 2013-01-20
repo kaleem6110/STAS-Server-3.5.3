@@ -1,0 +1,98 @@
+<EcoWebModelRoot>
+<Component id='1' name='Artifact'>
+<Property name='name' type='java.lang.String' ismandatory='true' value='artifact' isscript='false'></Property>
+<Property name='type' type='java.lang.String' ismandatory='true' value='com.enterprisehorizons.magma.designtime.artifact.GeoArtifact' isscript='false'></Property>
+<Property name='body' type='java.lang.String' ismandatory='true' value='body' isscript='false'></Property>
+<Property name='attributes' type='java.lang.String' ismandatory='true' value='' isscript='false'></Property>
+<Property name='cache' type='java.lang.Boolean' ismandatory='true' value='false' isscript='false'></Property>
+<Property name='issearchable' type='java.lang.String' ismandatory='true' value='true' isscript='false'></Property>
+<Property name='isfiltersearchresults' type='java.lang.String' ismandatory='true' value='true' isscript='false'></Property>
+<Property name='searchablefields' type='java.lang.String' ismandatory='true' value='' isscript='false'></Property>
+<Property name='aggregatableattributes' type='java.lang.String' ismandatory='true' value='' isscript='false'></Property>
+<Property name='isindexed' type='java.lang.String' ismandatory='true' value='' isscript='false'></Property>
+</Component>
+
+<Component id='2' name='ArtifactBindData'>
+<Property name='name' type='java.lang.String' ismandatory='false' value='mashupname' isscript='false'></Property>
+<Property name='bindingdefinition' type='java.lang.String' ismandatory='false' value='bindData()' isscript='false'></Property>
+</Component>
+<Component id='3' name='ArtifactMashupBase'>
+<Property name='name' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='datarendertype' type='java.lang.String' ismandatory='false' value='Collection' isscript='false'></Property>
+</Component>
+<Component id='4' name='ArtifactMashupDriver'>
+<Property name='driver' type='java.lang.String' ismandatory='false' value='driver' isscript='false'></Property>
+<Property name='datarendertype' type='java.lang.String' ismandatory='false' value='Collection' isscript='false'></Property>
+<Property name='driverpostprocessor' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='driverpreprocessor' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='5' name='ArtifactMashupDataSource'>
+<Property name='datasource' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='datasourcepostprocessor' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='datasourcepreprocessor' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='6' name='ArtifactExperienceDef'>
+<Property name='autozoom' type='java.lang.String' ismandatory='true' value='false' isscript='false'></Property>
+<Property name='camerasensitive' type='java.lang.String' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='globalstyleid' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='expand' type='java.lang.Boolean' ismandatory='false' value='' isscript='false'></Property>
+<Property name='name' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='refreshrate' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='refreshtype' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='selected' type='java.lang.Boolean' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='summarydashboard' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='timesensitive' type='java.lang.Boolean' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='featuretype' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='7' name='ArtifactFeatureStyle'>
+<Property name='style' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='name' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='iconcolorshader' type='java.lang.Boolean' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='iconurl' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='labelcolorshader' type='java.lang.String' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='iconscale' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='8' name='ArtifactFeatureBaseStyle'>
+<Property name='description' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='editable' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='endtime' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='starttime' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='type' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='latitudeoffset' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='longitudeoffset' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='name' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+<Property name='offsetunits' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='globalstyleid' type='java.lang.String' ismandatory='false' value='def-style' isscript='false'></Property>
+</Component>
+<Component id='9' name='ArtifactListener'>
+<Property name='initializername' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='initializerevent' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+<Property name='onloadname' type='java.lang.Boolean' ismandatory='false' value='false' isscript='false'></Property>
+<Property name='onloadevent' type='java.lang.Boolean' ismandatory='false' value='false' isscript='true'></Property>
+</Component>
+<Component id='10' name='ArtifactLegendBase'>
+<Property name='name' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='type' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='20' name='ArtifactMashupGeoSpreadSheet'>
+<Property name='fileName' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='csvFieldSeparator' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+<Property name='fileType' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='headerRowIndex' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+<Property name='coordinatesColumnIndex' type='java.lang.String' ismandatory='false' value='datasource' isscript='false'></Property>
+<Property name='csvFieldTextQualifier' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+<Property name='name' type='java.lang.String' ismandatory='false' value='' isscript='true'></Property>
+</Component>
+<Component id='70' name='ArtifactLegendMagma'>
+<Property name='url' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='xpos' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='ypos' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='legposunits' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+<Component id='71' name='ArtifactLegendLog'>
+<Property name='descriptiontype' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='flashheight' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='flashurl' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+<Property name='flashwidth' type='java.lang.String' ismandatory='false' value='' isscript='false'></Property>
+</Component>
+</EcoWebModelRoot>

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/u/veladitya/code/!svn/ver/25/trunk/UNWFP-STAS%20Server/stascore/rules
+END
+incidentRules.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/incidentRules.jsp
+END
+updateIncidentRules.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/updateIncidentRules.jsp
+END
+allViolations.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/allViolations.jsp
+END
+allAlerts.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/allAlerts.jsp
+END
+manageRules.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/manageRules.jsp
+END
+rulesHome.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/rulesHome.jsp
+END
+viewIncidentRules.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/rules/viewIncidentRules.jsp
+END

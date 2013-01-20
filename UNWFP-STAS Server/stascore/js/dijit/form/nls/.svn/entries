@@ -1,0 +1,145 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dijit/form/nls
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T02:35:21.855371Z
+24
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+zh
+dir
+
+ca
+dir
+
+pt
+dir
+
+ComboBox.js
+file
+
+
+
+
+2013-01-13T11:21:03.930006Z
+27244875a1dc068d7d91bf4e0c0ba7a5
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+da
+dir
+
+tr
+dir
+
+ru
+dir
+
+de
+dir
+
+sv
+dir
+
+Textarea.js
+file
+
+
+
+
+2013-01-13T11:21:03.930006Z
+2be04720a9b5aac542d681b98f426ed6
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+ja
+dir
+
+he
+dir
+
+fi
+dir
+
+nb
+dir
+
+el
+dir
+
+ar
+dir
+
+pt-pt
+dir
+
+validate.js
+file
+
+
+
+
+2013-01-13T11:21:03.930006Z
+977eda6d6ea60b427ff64dccde01b4af
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+cs
+dir
+
+fr
+dir
+
+es
+dir
+
+ko
+dir
+
+nl
+dir
+
+zh-tw
+dir
+
+pl
+dir
+
+th
+dir
+
+it
+dir
+
+hu
+dir
+
+sk
+dir
+
+sl
+dir
+

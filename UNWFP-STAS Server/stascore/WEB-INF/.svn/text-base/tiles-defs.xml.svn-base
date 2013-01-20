@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name="EcoWeb.layout" path="/ecoweb/layout/ecoWebLayout.jsp">
+		<put name="title" value="EcoWeb" />
+		<!-- <put name="header" value="/ecoweb/common/header.jsp" />  -->	
+		<put name="headerBody" value="/ecoweb/common/headerBody.jsp" />	
+		<!--  <put name="footer" value="/ecoweb/common/footer.jsp" /> -->
+	</definition>
+	
+	<definition name="EcoWebConfig.layout" path="/ecoweb/layout/ecoWebConfigLayout.jsp">
+		<put name="title" value="EcoWeb" />
+		<!-- <put name="header" value="/ecoweb/common/header.jsp" />  -->		
+		<!--  <put name="footer" value="/ecoweb/common/footer.jsp" /> -->
+	</definition>
+	
+	<definition name="AdminRole.layout" path="/ecoweb/layout/adminRoleLayout.jsp">
+		<put name="title" value="EcoWeb" />
+		<!--  <put name="header" value="/ecoweb/common/header.jsp" />-->		
+		<!--  <put name="footer" value="/ecoweb/common/footer.jsp" /> -->
+	</definition>
+	
+	<!--  STI Layout Tiles Definition -->
+	<definition name="STI.Layout" path="/home/stiLayout.jsp">
+		<put name="stiTitle" value="Welcome" />
+		<put name="stiHeader" value="/common/stiHeader.jsp" />	
+		<put name="stiMenu" value="/common/stiMenu.jsp" />			
+		<put name="stiFooter" value="/common/stiFooter.jsp" />
+	</definition>
+	
+    <!--  STI Layout Tiles Definition -->
+	<definition name="PromptPasswordChange.Layout" path="/home/ChangePasswordLayout.jsp">
+	    <put name="stiTitle" value="Welcome" />
+		<put name="stiHeader" value="/common/stiHeader.jsp" />	
+		<put name="stiFooter" value="/common/stiFooter.jsp" />
+		<put name="stiMenu" value="/common/ChangePasswordMenu.jsp" />	
+		<put name="body" value="/security/changePassword.jsp?promptPasswordChange=true" />
+	</definition>
+
+    <definition name="PromptPasswordChangeContext.page" path="/security/changePassword.jsp">
+        <put name="stiTitle" value="Welcome" />
+        <put name="stiHeader" value="/common/stiHeader.jsp" />  
+        <put name="stiFooter" value="/common/stiFooter.jsp" />
+        <put name="stiMenu" value="/common/ChangePasswordMenu.jsp" />   
+        <put name="body" value="/security/changePassword.jsp?promptPasswordChange=false" />
+    </definition>
+    
+    	 	
+	<!-- Manage Roles Tiles Definition -->
+	<definition name="ManageRoles.Page" extends="AdminRole.layout">
+		<put name="title" value="Manage Roles - Home" />
+		<put name="bodyTitle" value=" " />
+		<put name="vision" value=" " />
+		<put name="body" value="/ecogroupmapping/ecoModelSecurityMap.jsp" />
+	</definition>
+	
+	<definition name="EcoModelSecurityMap.Page" extends="AdminRole.layout">
+		<put name="title" value="Manage Roles - Home" />
+		<put name="bodyTitle" value=" " />
+		<put name="vision" value=" " />
+		<put name="body" value="/ecogroupmapping/ecoModelSecurityMap.jsp"/>
+	</definition>
+	<!-- EcoWeb Definitions -->
+		
+	<definition name="WizardHome.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - Home" />
+		<put name="bodyTitle" value="Select EcoSystem Option" />
+		<put name="headerBody" value="" />	
+		<put name="vision" value=" " />
+		<put name="body" value="/ecoweb/jsp/wizardHome.jsp" />
+	</definition>
+	
+	<definition name="NewDSModel.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - New Ecosystem Generation Wizard" />
+		<put name="bodyTitle" value="Select DataSource" />
+		<put name="vision" value=" ---> New Ecosystem" />
+		<put name="headerBody" value="" />
+		<put name="body" value="/ecoweb/jsp/newEcoDataSource.jsp" />
+	</definition>
+	
+	<definition name="EditEcoModel.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - Edit Ecosystem Generation Wizard" />
+		<put name="bodyTitle" value="Select EcoModel" />
+		<put name="vision" value=" ---> Edit EcoModel " />
+		<put name="body" value="/ecoweb/jsp/editEcoModel.jsp" />
+	</definition>
+	
+	<definition name="DeleteEcoModel.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - Delete Ecosystem Generation Wizard" />
+		<put name="bodyTitle" value="Select EcoModel" />
+		<put name="vision" value=" ---> Delete EcoModel " />
+		<put name="body" value="/ecoweb/jsp/deleteEcoModel.jsp" />
+	</definition>
+	
+	<definition name="NewEcoFeature.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - New EcoFeature Generation Wizard" />
+		<put name="bodyTitle" value="Select EcoFeature" />
+		<put name="vision" value=" ---> New Ecosystem ---> New EcoFeature " />
+		<put name="headerBody" value="" />
+		<put name="body" value="/ecoweb/jsp/newEcoFeature.jsp" />
+	</definition>
+	
+	<definition name="NewEcoArtifact.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - New EcoArtifact Generation Wizard" />
+		<put name="bodyTitle" value="Select EcoArtifact" />
+		<put name="vision" value=" ---> New Ecosystem ---> New EcoFeature ---> New EcoArtifact " />
+		<put name="headerBody" value="" />
+		<put name="body" value="/ecoweb/jsp/newEcoArtifact.jsp" />
+	</definition>
+	
+	<definition name="GenerateEcosystem.Page" extends="EcoWeb.layout">
+		<put name="title" value="EcoWeb - New EcoArtifact Generation Wizard" />
+		<put name="bodyTitle" value=" " />
+		<put name="headerBody" value="" />
+		<put name="vision" value=" ---> New Ecosystem ---> New EcoFeature ---> New EcoArtifact ---> Generated EcoSystem " />
+		<put name="body" value="/ecoweb/jsp/ecosystem.jsp" />
+	</definition>
+	
+	<definition name="ConfigureDatasource.Page" extends="EcoWebConfig.layout">
+		<put name="title" value="EcoWeb - Configure Datasource Wizard" />
+		<put name="bodyTitle" value=" " />
+		<put name="vision" value=" " />
+		<put name="body" value="/ecoweb/jsp/configureDatasource.jsp" />
+	</definition>
+	<!--  Adding & Updating By Aditya for New UI/ecoweb/jsp/databaseDatasource.jsp -->
+	
+	<definition name="Login.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Login" />
+		<put name="body" value="/security/login.jsp" />
+	</definition>
+	
+	<definition name="Home.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Home" />
+		<put name="body" value="/home/homeSTI.jsp" />
+	</definition>
+	
+	<definition name="Admin.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Admin" />
+		<put name="body" value="/admin/AdminMain.jsp" />
+	</definition>
+	
+	<definition name="Home.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Welcome" />
+		<put name="body" value="/home/homeSTI.jsp" />
+	</definition> 
+	
+	<definition name="ChangePwd.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Admin" />
+		<put name="body" value="/security/changePassword.jsp" />
+	</definition>
+	
+	
+	
+	
+	<definition name="DBAdmin.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Admin" />
+		<put name="body" value="/dbadmin/dbschemaAdminCategory.jsp" />
+	</definition>
+	
+	<definition name="ShowAllDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Show All Datasources " />
+		<put name="body" value="/ecoweb/jsp/showAllDatasources.jsp" />
+	</definition>
+	
+	<definition name="ConfigureDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure Datasources " />
+		<put name="body" value="/ecoweb/jsp/configureDatasource.jsp" />
+	</definition>
+	
+	<definition name="DatabaseDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Database Datasources " />
+		<put name="body" value="/ecoweb/jsp/databaseDatasource.jsp" />
+	</definition>
+	
+	<definition name="JoinDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Join Datasources " />
+		<put name="body" value="/ecoweb/jsp/joinDatasource.jsp" />
+	</definition>
+	
+	<definition name="HibernateDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Hibernate Datasources " />
+		<put name="body" value="/ecoweb/jsp/hibernateDatasource.jsp" />
+	</definition>
+	
+	<definition name="ExcelDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Excel Datasources " />
+		<put name="body" value="/ecoweb/jsp/excelDatasource.jsp" />
+	</definition>
+	
+	<definition name="RSSFeedDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - RSS Feed Datasources " />
+		<put name="body" value="/ecoweb/jsp/rssFeedDatasource.jsp" />
+	</definition>
+	
+	<definition name="ShapefileDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Shapefile Datasources " />
+		<put name="body" value="/ecoweb/jsp/shapefileDatasource.jsp" />
+	</definition>
+	
+	<definition name="ExcelDatasource.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Excel Datasources " />
+		<put name="body" value="/ecoweb/jsp/excelDatasource.jsp" />
+	</definition>
+	
+	<definition name="ManageJobs.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Manage / Monitor Jobs" />
+		<put name="body" value="/jobs/manageJobs.jsp" />
+	</definition>
+	
+	<definition name="AddJobScheduelrs.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Add Job Schedulers Form" />
+		<put name="body" value="/jobs/addJobSchdHome.jsp" />
+	</definition>
+	
+	<definition name="JobsConfiguration.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Jobs Configure Form" />
+		<put name="body" value="/jobs/jobsConfiguration.jsp" />
+	</definition>
+	
+	<definition name="AddJob.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Add Schedulers Form" />
+		<put name="body" value="/jobs/addJob.jsp" />
+	</definition>
+	
+	<definition name="PIDataExtractor.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure PIDataExtractor Form" />
+		<put name="body" value="/jobs/pIDataExtractor.jsp" />
+	</definition>
+	
+	<definition name="Ecosystem.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure Ecosystem Form" />
+		<put name="body" value="/jobs/ecoSystem.jsp" />
+	</definition>
+	
+	<definition name="URLExtractor.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure URL Extractor Form" />
+		<put name="body" value="/jobs/uRLExtractor.jsp" />
+	</definition>
+	
+	<definition name="FileCleaner.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure File Cleaner Form" />
+		<put name="body" value="/jobs/fileCleanupTimer.jsp" />
+	</definition>
+	
+	<definition name="CustomTimer.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure Custom Job Form" />
+		<put name="body" value="/jobs/customTimer.jsp" />
+	</definition>
+	
+	<definition name="ClearCache.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Configure Cache Form" />
+		<put name="body" value="/jobs/clearcachejob.jsp" />
+	</definition>
+	
+	<definition name="MonitorJobs.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Monitor Jobs" />
+		<put name="body" value="/jobs/startStopJobs.jsp" />
+	</definition>
+	
+	<definition name="ManageConfigurations.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Manage Configurations" />
+		<put name="body" value="/uiconfig/manageConfigurations.jsp" />
+	</definition>
+	
+	<definition name="DeleteFiles.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Delete Uploaded Files" />
+		<put name="body" value="/ecoweb/jsp/displayDelete.jsp" />
+	</definition>
+	
+	<definition name="UnDeployEcosystems.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Undeploy the Ecosystems" />
+		<put name="body" value="/ecoweb/jsp/displayUndeployEco.jsp" />
+	</definition>
+	
+	<definition name="Cache.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Cache " />
+		<put name="body" value="/admin/cache.jsp" />
+	</definition>
+	
+	<definition name="ShapeDatabaseMapping.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Shape to Database Mapping" />
+		<put name="body" value="/admin/shp2dbmappinghome.jsp" />
+	</definition>
+	
+	<definition name="ShapeDatabaseExport.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Shape Database Export" />
+		<put name="body" value="/admin/shp2dbmappingexport.jsp" />
+	</definition>
+	
+	<definition name="GenerateKmlKmz.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Generate KML / KMZ" />
+		<put name="body" value="/common/generateKmlKmzFile.jsp" />
+	</definition>
+	
+	<definition name="MultiFileUpload.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Multi File Upload" />
+		<put name="body" value="/ecoweb/jsp/multiFileUpload.jsp" />
+	</definition>
+	
+	<definition name="EcowebWizard.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Ecoweb Wizard " />
+		<put name="body" value="/ecowebIndex.jsp" />
+	</definition>
+	
+	<definition name="DBAdminSecurity.Page" extends="STI.Layout">
+		<put name="stiTitle" value=" - Database Admin Security" />
+		<put name="body" value="/dbadmin/securityAdmin.jsp" />
+	</definition>
+	
+	<definition name="dbschema.homepage"  path="/dbadmin/masterMaintenanceHome.jsp">
+	</definition>
+	
+	<definition name="dbschema.createViewPage"  path="/dbadmin/createMasterRecordView.jsp">
+	</definition>	
+	
+</tiles-definitions>

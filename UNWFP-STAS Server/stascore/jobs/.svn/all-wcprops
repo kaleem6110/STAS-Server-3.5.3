@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs
+END
+clearcachejob.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/clearcachejob.jsp
+END
+jobsConfiguration.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/jobsConfiguration.jsp
+END
+fileCleanupTimer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/fileCleanupTimer.jsp
+END
+jobHomeMain.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/jobHomeMain.jsp
+END
+customTimer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/customTimer.jsp
+END
+ecoSystem.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/ecoSystem.jsp
+END
+addJobSchdHome.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/addJobSchdHome.jsp
+END
+pIDataExtractor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/pIDataExtractor.jsp
+END
+uRLExtractor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/uRLExtractor.jsp
+END
+startStopJobs.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/startStopJobs.jsp
+END
+addJob.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/jobs/addJob.jsp
+END

@@ -1,0 +1,3023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="Warehouses">
+    <section name="artefact">
+        <section name="name">
+            <value><![CDATA[Warehouse]]></value>
+        </section>
+        <section name="artifactname">
+            <section name="script">
+                <value><![CDATA[Name]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="type">
+            <value><![CDATA[com.enterprisehorizons.magma.designtime.artifact.GeoArtifact]]></value>
+        </section>
+        <section name="attributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[cn]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[address]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Street]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[type]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Type]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[compasId]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Compas Id]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[ocs]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[OCS]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[skype]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Skype]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="cache">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="isfiltersearchresults">
+            <value><![CDATA[true]]></value>
+        </section>
+        <section name="enableexpressions">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="searchablefields">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[Name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[list]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="experiencedef">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Warehouse]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
+                </section>
+                <section name="selected">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="expand">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[onInterval]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[60]]></value>
+                </section>
+                <section name="autozoom">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="timesensitive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="params">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[entrypoint]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Artefact]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[ecoexpmodel]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Warehouses.ecoexpml]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[artefactname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Warehouse]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="blinkrate">
+            <value><![CDATA[1]]></value>
+        </section>
+        <section name="blinkloopcount">
+            <value><![CDATA[2]]></value>
+        </section>
+        <section name="constraints">
+            <section name="constraint">
+                <value><![CDATA[visibility]]></value>
+                <section name="script">
+                    <value><![CDATA[authorizePlaces()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="listeners"/>
+        <section name="layout">
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[cn]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[Placemark]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.PlacemarkFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="extrude">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="globalstyleid">
+                    <value><![CDATA[placemarkstyle]]></value>
+                </section>
+                <section name="isblink">
+                    <value><![CDATA[false]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="scriptor">
+            <section name="body">
+                <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
+
+String serverRootUrl = ServerUtils.getServerBaseUrl();
+private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
+private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdriver;
+String description = "Warehouses: Warehouses are cache using WarehouseCache job from LDAP.<br> Stocks and Waybills: These are retrieved as csv files from compass using Warehouse URL Extractor Job & saved in C:\\stas\\data or /home/sti/stas/data.<br> Stocks Url: http://ets-qa.globalepic.org/api/stock_items/basic<br> Waybills Url: http://ets-qa.globalepic.org/api/loading_details/basic ";
+String datasource = "LDAP & Compass";
+String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
+
+String getDatasource(){
+	return datasource;
+}
+
+String getLastRefreshTime(){
+	return lastRefreshTime;
+}
+
+String getDescription(){
+	return description;
+}
+
+void bindData() {
+	Map dataMap = (Map) $ldapplacesdatamodel;
+	
+	if (dataMap != null)
+ 	{
+		$artefact.setCoordinates(dataMap.get("coord-latitude"), dataMap.get("coord-longitude"));		
+		$artefact.addAttribute("cn", dataMap.get("cn"));
+		$artefact.addAttribute("address", dataMap.get("street"));	
+		$artefact.addAttribute("type", dataMap.get("type"));
+		$artefact.addAttribute("compasId", dataMap.get("externalID"));
+		$artefact.addAttribute("description", dataMap.get("description"));		
+		$artefact.addAttribute("skype", dataMap.get("skype"));
+		$artefact.addAttribute("ocs", dataMap.get("ocs"));
+	}
+		
+}
+
+String getName() {
+	return $artefact.getAttributeValueAsString("cn");
+}
+
+String getType() {
+	return $artefact.getAttributeValueAsString("type");
+}
+
+void addAttribute(){
+   // $artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls("skype:sujalislam", "+971556095794", "tobias.carlander@wfp.org"));
+   String contactDtls = com.wfp.utils.CommonUtils.getContactDtls($artefact.getAttributeValueAsString("skype"), null, $artefact.getAttributeValueAsString("ocs"));
+	if(!(contactDtls == null || "".equalsIgnoreCase(contactDtls ))){
+		$artefact.addAttribute("Contact", contactDtls);
+	}  
+}
+
+String getDashboardURL(){
+	return serverRootUrl+"/swf/SummaryDashboard.swf?dashboardname=Summary&loadbydefault=false&lookatfunction=_lookat&expandall=false&highlighticonscale=1.0&highlightfeaturecount=50&artefactname="+getArtifactName()+"&whCode="+getName()+"&layername="+getLayerName()+"&layerid="+getLayerId()+"&dashboardid=Summary&serverUrl="+serverRootUrl+"&ecosid="+getSessionId()+"&ecoexpmodel=Warehouses.ecoexpml&theme=blue&needsbbox=true&randvalue="+new Date().getTime()+"&layername="+getLayerName()+"&layerid="+getLayerId();
+}
+
+boolean isValidLocation(){
+	try{
+		String country =  $artefact.getAttributeValueAsString("Country");
+		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+		return com.wfp.utils.RBRegionsUtils.validateLocation(country, userbean.getGroupIds());
+	}catch(Exception e){
+		//ignore error
+	}
+	return true;
+}
+
+String getDashboardWHId(){
+	return $artefact.getAttributeValueAsString("compasId");
+}
+
+String getDashboardWBId(){
+	return "Waybill::"+$artefact.getAttributeValueAsString("compasId");
+}
+
+void fireDashboardRefreshEvent(){
+	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
+}
+
+boolean authorizePlaces(){
+	if(getType().indexOf("warehouse") >= 0){
+		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("cn"), userbean.getUserUniqueId());
+	}
+	
+	return false;
+}
+
+String getUserId(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	if(userbean != null){
+		return userbean.getUserUniqueId();
+	}
+	return null;		
+}
+
+String getAuthorUrl(){	
+	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
+}]]></value>
+                <section name="type">
+                    <value><![CDATA[1]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="globalstyle">
+            <section name="style">
+                <value><![CDATA[placemarkstyle]]></value>
+                <section name="name">
+                    <value><![CDATA[placemarkstyle]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <value><![CDATA[serverresources/icons/mapicons/apartment.png]]></value>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconheading">
+                    <value><![CDATA[0]]></value>
+                </section>
+                <section name="iconscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <value><![CDATA[serverresources/icons/mapicons/apartment.png]]></value>
+                </section>
+                <section name="highlighticonscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="highlightlabelcolor">
+                    <value><![CDATA[#FFFFFF]]></value>
+                    <section name="transparency">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                </section>
+                <section name="highlightlabelscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="legends">
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getDashboardWHId()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="chartlinkname">
+                    <value><![CDATA[Stock]]></value>
+                </section>
+                <section name="chartlinkattributename">
+                    <value><![CDATA[Stock]]></value>
+                </section>
+                <section name="dashboardtitle">
+                    <section name="script">
+                        <value><![CDATA[compasId]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="refreshonevent">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Artifact data loaded]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[SI Code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Double]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Number of units(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_net]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Double]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit net weight(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_gross]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Double]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit weight gross(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[project_number]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Project number]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.WarehouseStockExcelRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="periodicrefreshrate">
+                        <value><![CDATA[10]]></value>
+                    </section>
+                    <section name="periodicrefreshrateunits">
+                        <value><![CDATA[mi]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[latitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[17]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[22]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[warehousenameindex]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[18]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getUserId()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="groupattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDashboardWHId()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[0.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getDashboardWBId()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="chartlinkname">
+                    <value><![CDATA[Waybill]]></value>
+                </section>
+                <section name="chartlinkattributename">
+                    <value><![CDATA[Waybill]]></value>
+                </section>
+                <section name="refreshonevent">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Artifact data loaded]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_slug]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Waybill]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_warehouse_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Warehouse]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_consignee_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Consignee]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_consignee_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Consignee Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Destination]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Destination Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_dispatch_date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Dispatch On]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[SI Code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_commodity_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Float]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Number of units(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.WarehouseStockExcelRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="periodicrefreshrate">
+                        <value><![CDATA[10]]></value>
+                    </section>
+                    <section name="periodicrefreshrateunits">
+                        <value><![CDATA[mi]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[key]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[waybillInfo]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[latitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[68]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[73]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[warehousenameindex]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[69]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getUserId()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_slug]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_project_number]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_dispatch_date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDashboardWBId()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[0.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Search]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/AdvancedSearchDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_search.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[advancedsearchdashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="isprogressive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isapplytoartifact">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="isapplytodashboard">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="searchfields">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Search]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Pivot]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/PivotDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[onInterval]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_pivot.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[pivotdashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Warehouse]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[project_number]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Project Number]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[quality_description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Quality]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Double]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[No of Units]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_net]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Float]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit net weight]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_gross]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Float]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit weight gross]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.WarehouseStockExcelRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[onInterval]]></value>
+                    </section>
+                    <section name="periodicrefreshrate">
+                        <value><![CDATA[10]]></value>
+                    </section>
+                    <section name="periodicrefreshrateunits">
+                        <value><![CDATA[mi]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[bypassid]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[Pivot]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[warehousenameindex]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[18]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getUserId()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dimensionattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[project_number]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[commodity_name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[quality_description]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Location]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="measureattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_net]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[sum]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[sum]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_gross]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[sum]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Pivot]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[List]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[address]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[compasId]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[1.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Stock Items]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[onInterval]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Integer]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Number of units(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_net]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Float]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit net weight(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[unit_weight_gross]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Double]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Unit weight gross(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[project_number]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Project number]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[SI Code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.WarehouseStockExcelRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[onInterval]]></value>
+                    </section>
+                    <section name="periodicrefreshrate">
+                        <value><![CDATA[10]]></value>
+                    </section>
+                    <section name="periodicrefreshrateunits">
+                        <value><![CDATA[mi]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[bypassid]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[Stock Items]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[latitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[17]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[22]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getUserId()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[warehousenameindex]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[18]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="summaryattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[SUM]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="groupattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Stock Items]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[0.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Waybills]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[10]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshonevent">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Artifact data loaded]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_slug]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Waybill]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_project_number]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Project Number]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_warehouse_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Warehouse]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_consignee_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Consignee]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_consignee_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Consignee Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Destination]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Destination Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_dispatch_date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.util.Date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Dispatch On]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[SI Code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item.commodity_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity code]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Commodity Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.Integer]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Number of units(Metric Ton)]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.WarehouseStockExcelRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="periodicrefreshrate">
+                        <value><![CDATA[10]]></value>
+                    </section>
+                    <section name="periodicrefreshrateunits">
+                        <value><![CDATA[mi]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[key]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[waybillInfo]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[bypassid]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[Waybills]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[latitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[68]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[73]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getUserId()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[warehousenameindex]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[69]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_slug]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_order_consignee_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_destination_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[waybill_dispatch_date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_si_code]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[stock_item_commodity_name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[number_of_units]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="groupattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[cn]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Waybills]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[0.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Summary Sheet]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[serverresources/epic/SummarySheet.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Datasource]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDatasource()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Description]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDescription()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[serverresources/epic/SummarySheet.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Datasource]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDatasource()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Description]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getDescription()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="datamashups">
+            <section name="datamashup">
+                <value><![CDATA[ldapplaces]]></value>
+                <section name="driver">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.CacheDataDriver]]></value>
+                    <section name="metadata">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[cn]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[java.lang.String]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[compasId]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[java.lang.String]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[type]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[java.lang.String]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[address]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[java.lang.String]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="datasource">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.CacheDataSource]]></value>
+                    <section name="params">
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[key]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[$warehouses$]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="databinding">
+            <section name="bindingdefinition">
+                <section name="datamashup">
+                    <value><![CDATA[ldapplaces]]></value>
+                </section>
+                <section name="script">
+                    <value><![CDATA[bindData()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="runtimeattributes">
+            <section name="attributegroup">
+                <section name="name">
+                    <value><![CDATA[addAttribute]]></value>
+                </section>
+                <section name="attributes">
+                    <section name="script">
+                        <value><![CDATA[addAttribute()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section name="reload">
+        <value><![CDATA[true]]></value>
+    </section>
+    <section name="enablelogging">
+        <value><![CDATA[false]]></value>
+    </section>
+    <section name="namespace">
+        <value><![CDATA[]]></value>
+    </section>
+</configuration>

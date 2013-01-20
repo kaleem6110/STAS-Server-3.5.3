@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <data-sources>
+  </data-sources>
+  <!-- ================================================ Form Bean Definitions
+-->
+  <form-beans>
+    <form-bean name="wizardHomeForm" type="com.enterprisehorizons.magma.ecoweb.form.WizardHomeForm"/>
+    <form-bean name="deleteEcoModelForm" type="com.enterprisehorizons.magma.ecoweb.form.DeleteEcoModelForm"/>
+    <form-bean name="newEcoArtifactForm" type="com.enterprisehorizons.magma.ecoweb.form.NewEcoArtifactForm"/>
+    <form-bean name="newEcoDataSourceForm" type="com.enterprisehorizons.magma.ecoweb.form.NewEcoDataSourceForm"/>
+    <form-bean name="newEcoSuccessForm" type="com.enterprisehorizons.magma.ecoweb.form.NewEcoSuccessForm"/>
+    <form-bean name="editEcoModelForm" type="com.enterprisehorizons.magma.ecoweb.form.EditEcoModelForm"/>
+    <form-bean name="newEcoFeatureForm" type="com.enterprisehorizons.magma.ecoweb.form.NewEcoFeatureForm"/>
+    <form-bean name="selectEcoWizardForm" type="com.enterprisehorizons.magma.ecoweb.form.SelectEcoWizardForm"/>
+    <form-bean name="uploadForm" type="com.enterprisehorizons.magma.ecoweb.upload.form.UploadForm" />
+
+    <form-bean name="ecoSecurityRoleMapForm" type="com.enterprisehorizons.magma.config.forms.EcoSecurityRoleMapForm"/>
+    <form-bean name="ecoCategoryManagerForm" type="com.enterprisehorizons.magma.config.forms.EcoCategoryManagerForm"/>
+
+	<form-bean name="masterMaintenanceHomeForm" type="com.enterprisehorizons.magma.config.dbadmin.form.MasterMaintenanceHomeForm"/>
+	<form-bean name="masterTableViewForm" type="com.enterprisehorizons.magma.config.dbadmin.form.MasterTableViewForm"/>
+	<form-bean name="masterTableRecordCreateForm" type="com.enterprisehorizons.magma.config.dbadmin.form.MasterTableRecordCreateForm"/>
+    <form-bean name="masterTableRecordViewForm" type="com.enterprisehorizons.magma.config.dbadmin.form.MasterTableRecordViewForm"/>
+    <form-bean name="adminMainForm" type="com.spacetimeinsight.admin.form.AdminMainForm"/>
+    <form-bean name="CacheForm" type="com.spacetimeinsight.admin.cache.form.CacheForm"/>
+    <form-bean name="jobHomeForm" type="com.enterprisehorizons.magma.jobs.forms.JobHomeForm"/>
+    <form-bean name="configureJobsForm" type="com.enterprisehorizons.magma.jobs.forms.ConfigureJobsForm"/>
+    <form-bean name="AddJobForm" type="com.enterprisehorizons.magma.jobs.forms.AddJobForm"/>
+    <form-bean name="EcoSystemForm" type="com.enterprisehorizons.magma.jobs.forms.EcoSystemForm"/>
+    <form-bean name="uRLExtractorForm" type="com.enterprisehorizons.magma.jobs.forms.URLExtractorForm"/>
+    <form-bean name="fileCleanupTimerForm" type="com.enterprisehorizons.magma.jobs.forms.FileCleanUpTimerForm"/>
+    <form-bean name="pIDataExtractorForm" type="com.enterprisehorizons.magma.jobs.forms.PIDataExtractorForm"/>
+    <form-bean name="customTimerForm" type="com.enterprisehorizons.magma.jobs.forms.CustomTimerForm"/>
+    <form-bean name="startStopJobForm" type="com.enterprisehorizons.magma.jobs.forms.StartStopJobForm"/>
+    <form-bean name="modelExportImportForm" type="com.enterprisehorizons.magma.config.dbadmin.form.ModelFileExportImportForm"/>
+    <form-bean name="deleteFileForm" type="com.enterprisehorizons.magma.ecoweb.multifileupload.form.DeleteFileForm"/>
+    <form-bean name="unDeployEcoForm" type="com.spacetimeinsight.admin.undeploy.form.UnDeployEcoForm"/>
+    <form-bean name="manageConfigForm" type="com.spacetimeinsight.admin.uiconfig.form.ManageConfigForm"/>
+    <form-bean name="clearcachForm" type="com.enterprisehorizons.magma.jobs.forms.ClearCacheJobForm"/>
+    <form-bean name="loginForm" type="com.spacetimeinsight.security.form.LoginForm"/>
+    <form-bean name="changePasswordForm" type="com.spacetimeinsight.security.form.ChangePasswordForm"/>
+    <!-- Rules -->
+    <form-bean name="rulesForm" type="com.spacetimeinsight.rules.form.ConfigureRulesForm"/>
+    <form-bean name="manageRulesForm" type="com.spacetimeinsight.rules.form.ManageRulesForm"/>
+    <form-bean name="createNercReportForm" type="com.spacetimeinsight.rules.form.CreateNercReportForm"/>
+    <form-bean name="searchNercViolationsForm" type="com.spacetimeinsight.rules.form.SearchNercViolationsForm"/>
+    <form-bean name="searchToGenerateNercReportForm" type="com.spacetimeinsight.rules.form.SearchToGenerateNercReportForm"/>
+    <form-bean name="projectManagementForm" type="com.spacetimeinsight.arra.actions.ProjectManagementForm"/>
+    <form-bean name="importForm" type="com.spacetimeinsight.admin.exportimport.forms.ImportForm"/>
+
+     <!-- Monitor STAS -->
+    <form-bean name="monitorCacheForm" type="com.spacetimeinsight.admin.form.MonitorCacheForm"/>
+    <form-bean name="monitorHttpSessionForm" type="com.spacetimeinsight.admin.form.MonitorHttpSessionForm"/>
+
+ 	 <!-- STAPLE -->
+    
+    <form-bean name="piMonitorForm" type="com.spacetimeinsight.pi.form.PiMonitorForm"/>
+	
+  </form-beans>
+  <!-- ========================================= Global Exception Definitions
+-->
+  <global-exceptions>
+  </global-exceptions>
+  <!--
+  sample exception handler
+          <exception
+              key="expired.password"
+              type="app.ExpiredPasswordException"
+              path="/changePassword.jsp"/>
+          end sample  =========================================== Global Forward Definitions
+  -->
+  <global-forwards>
+    <!-- Default forward to "Welcome" action  Demonstrates using index.jsp to forward
+-->
+	<forward name="welcome" path="/welcome.do"/>
+
+    <forward name="" path="/"/>
+    <forward name="toAdminHome" path="/admin/AdminMain.jsp"/>
+    <forward name="index" path="/WizardHomeAction.do?operation=OnLoad"/>
+    <forward name="wizardDSPage" path="/NewEcoDataSourceAction.do?operation=onLoad"/>
+    <forward name="allJobTypes" path="/configureJobSchdAction.do?operation=view"/>
+  </global-forwards>
+  <!-- =========================================== Action Mapping Definitions
+-->
+  <action-mappings>
+
+	<action path="/welcome"  type="com.spacetimeinsight.security.action.WelcomeAction" scope="request"  parameter="operation">
+      <forward name="loginFailure" path="/security/login.jsp"/>
+     </action>
+  	<!-- Role Management Mappings -->
+  	 <action path="/manageRoles" type="org.apache.struts.actions.ForwardAction"
+  	 	parameter="/ecogroupmapping/ecogroupMap.jsp"/>
+  	 <!--
+  	 parameter="/ecogroupmapping/ecoModelSecurityMap.jsp"/>
+
+     -->
+     <action path="/ecoSecurityRoleMapAction" name="ecoSecurityRoleMapForm" type="com.enterprisehorizons.magma.config.actions.EcoSecurityRoleMapAction" scope="request" input="/viewer/ecoModelSecurityMap.jsp" parameter="operation">
+      <forward name="success" path="/ecogroupmapping/ecoModelSecurityMap.jsp"/>
+     </action>
+
+     <action path="/categoryManagerAction" name="ecoCategoryManagerForm" type="com.enterprisehorizons.magma.config.actions.EcoCategoryManagerAction" scope="request" parameter="operation">
+        <forward name="ManagerPage"  path="/ecogroupmapping/categoryManager.jsp"/>
+     </action>
+
+  	<!-- EcoSystem Generation Through wizard Mapping -->
+
+    <action path="/WizardHomeAction" name="wizardHomeForm" type="com.enterprisehorizons.magma.ecoweb.action.WizardHomeAction" scope="session" validate="true" input="/common/AdminMain.jsp" parameter="operation">
+      <forward name="showEcoModelDtls" path="WizardHome.Page"/>
+      <forward name="newEcoModel" path="NewEcomodel.Page"/>
+      <forward name="ecoModelEdit" path="EditEcoModel.Page"/>
+      <forward name="ecoModelDelete" path="DeleteEcoModel.Page"/>
+      <forward name="configureDatasource" path="/ecoweb/jsp/configureDatasource.jsp"/>
+      <forward name="showAllDatasources" path="/ecoweb/jsp/showAllDatasources.jsp"/>
+      <forward name="showAllJ2EEDatasources" path="/showAllJ2EEDatasource.do" />
+    </action>
+
+    <action path="/NewEcoDataSourceAction" name="newEcoDataSourceForm" type="com.enterprisehorizons.magma.ecoweb.action.NewEcoDataSourceAction" scope="session" validate="true" input="/newEcoDataSource.jsp" parameter="operation">
+      <forward name="showEcoModelDetails" path="/ecoweb/jsp/newEcoDataSource.jsp"/>
+      <forward name="success" path="/ecoweb/jsp/configureDatasource.jsp"/>
+      <forward name="successDS" path="/ecoweb/jsp/newEcoFeature.jsp"/>
+      <forward name="uploadSuccess" path="/ecoweb/jsp/commandDS.jsp"/>
+      <forward name="error" path="NewEcomodel.Page"/>
+      <forward name="toAdminHome" path="/admin/AdminMain.jsp"/>
+    </action>
+
+    <action path="/ConfigureDataSource" name="newEcoDataSourceForm" type="com.enterprisehorizons.magma.ecoweb.action.ConfigureEcoDataSourceAction" scope="session" validate="true" input="/configureDataSource.jsp" parameter="operation">
+      <forward name="success" path="/WizardHomeAction.do?operation=showAllDatasource" redirect="true"/>
+      <forward name="loadJoinDatasource" path="/ecoweb/jsp/joinDatasource.jsp" />
+      <forward name="uploadSuccess" path="/ecoweb/jsp/command.jsp"/>
+      <forward name="error" path="NewEcomodel.Page"/>
+      <forward name="back" path="/WizardHome.Page"/>
+      <forward name="databaseView" path="/ecoweb/jsp/databaseDatasource.jsp"/>
+      <forward name="shapefileView" path="/ecoweb/jsp/shapefileDatasource.jsp"/>
+      <forward name="rssFeedView" path="/ecoweb/jsp/rssFeedDatasource.jsp"/>
+      <forward name="excelView" path="/ecoweb/jsp/excelDatasource.jsp"/>
+      <forward name="hibernateView" path="/ecoweb/jsp/hibernateDatasource.jsp"/>
+      <forward name="successJ2EEDatasource" path="/WizardHomeAction.do?operation=showAllJ2EEDatasource" redirect="true"/>
+      <forward name="viewJ2EEDatasource" path="/dbadmin/modifyJ2EEDatasource.jsp" />
+    </action>
+
+    <!-- staple actiions --> 
+    
+      <action path="/pi" type="org.apache.struts.actions.ForwardAction" scope="request" parameter="/jsp/pi/piMain.jsp"/>
+
+   
+     <action path="/piEventGroup" type="org.apache.struts.actions.ForwardAction" parameter="/jsp/pi/piEventGroup.jsp" />
+     <action path="/piAFEventGroup" type="org.apache.struts.actions.ForwardAction" parameter="/jsp/pi/piAFEventGroup.jsp" />
+     
+      <action path="/piNotificationAction" type="org.apache.struts.actions.ForwardAction" parameter="/jsp/pi/piNotification.jsp" />
+       
+     <action path="/piMonitorAction"  type="org.apache.struts.actions.ForwardAction" parameter="/jsp/pi/piMonitor.jsp" />
+
+    <action path="/piServerGroupAction" type="org.apache.struts.actions.ForwardAction" parameter="/jsp/pi/piServerGroup.jsp" />
+   
+        
+    <!-- staple actiions ends here -->
+
+    <action path="/monitor" type="org.apache.struts.actions.ForwardAction" scope="request" parameter="/admin/monitor.jsp"/>
+    <action path="/monitorCacheAction" name="monitorCacheForm"  type="com.spacetimeinsight.admin.action.MonitorCacheAction" scope="request">
+        <forward name="return" path="/admin/monitorCache.jsp"/>
+     </action>
+      <action path="/monitorHttpSessionAction" name="monitorHttpSessionForm"  type="com.spacetimeinsight.admin.action.MonitorHttpSessionAction" scope="request">
+         <forward name="return" path="/admin/monitorHttpSession.jsp"/>
+     </action>
+
+     <action path="/UpdateDataSource" name="newEcoDataSourceForm" type="com.enterprisehorizons.magma.ecoweb.action.UpdateEcoDataSourceAction" scope="session" validate="true" input="/showAllDatasources.jsp" parameter="operation">
+      <forward name="success" path="/WizardHomeAction.do?operation=showAllDatasource" redirect="true"/>
+      <forward name="successShapefileView" path="/ecoweb/jsp/shapefileDatasource.jsp"/>
+      <forward name="successExcelfileView" path="/ecoweb/jsp/excelDatasource.jsp"/>
+      <forward name="successHibernateView" path="/ecoweb/jsp/hibernateDatasource.jsp"/>
+      <forward name="successJoinMashupView" path="/ecoweb/jsp/joinDatasource.jsp"/>
+      <forward name="successView" path="/ecoweb/jsp/databaseDatasource.jsp"/>
+      <forward name="successRSSFeedView" path="/ecoweb/jsp/rssFeedDatasource.jsp"/>
+      <forward name="uploadSuccess" path="/ecoweb/jsp/command.jsp"/>
+      <forward name="error" path="NewEcomodel.Page"/>
+      <forward name="back" path="/WizardHome.Page"/>
+    </action>
+
+    <action path="/NewEcoFeatureAction" name="newEcoFeatureForm" type="com.enterprisehorizons.magma.ecoweb.action.NewEcoFeatureAction" scope="session" validate="true" input="/newEcoFeature.jsp" parameter="operation">
+      <forward name="success" path="/ecoweb/jsp/newEcoArtifact.jsp"/>
+      <forward name="error" path="/ecoweb/jsp/newEcoFeature.jsp"/>
+      <forward name="back" path="/ecoweb/jsp/newEcoDataSource.jsp"/>
+    </action>
+
+    <action path="/NewEcoArtifactAction" name="newEcoArtifactForm" type="com.enterprisehorizons.magma.ecoweb.action.NewEcoArtifactAction" scope="session" validate="true" input="/newEcoFeature.jsp" parameter="operation">
+      <forward name="success" path="/ecoweb/jsp/ecosystem.jsp"/>
+      <forward name="error" path="/ecoweb/jsp/newEcoArtifact.jsp"/>
+      <forward name="back" path="/ecoweb/jsp/newEcoFeature.jsp"/>
+    </action>
+
+    <action path="/EcoWebAjaxAction" type="com.enterprisehorizons.magma.ecoweb.action.ajax.EcowebAjaxAction" parameter="operation">
+    </action>
+    <action path="/EcoWebWizardAjaxAction" type="com.enterprisehorizons.magma.ecoweb.action.ajax.EcoWebWizardAjaxSupportAction" parameter="operation">
+    </action>
+      <action path="/RulesValidationAjaxAction" type="com.spacetimeinsight.rules.action.RulesValidationAjaxAction" parameter="operation">
+    </action>
+  <action
+      attribute="uploadForm" input="upload.jsp" name="uploadForm" path="/upload" scope="request" type="com.enterprisehorizons.magma.ecoweb.upload.action.UploadAction"  >
+        <forward name="success" path="/success.jsp"/>
+     </action>
+     <action path="/masterMaintenanceHomeAction" name="masterMaintenanceHomeForm" type="com.enterprisehorizons.magma.config.dbadmin.action.MasterMaintenanceHomeAction" scope="request">
+      <forward name="toDbSchemaHome" path="/dbadmin/masterMaintenanceHome.jsp"/>
+      <forward name="toDbSchemaCreate" path="/dbadmin/createMasterRecordView.jsp"/>
+      <forward name="toDbSchemaView" path="/masterTableViewAction.do"/>
+      <forward name="toDbCategoryHome" path="/dbadmin/dbschemaAdminCategory.jsp"></forward>
+      <forward name="toExportAction" path="/modelExportAction.do"></forward>
+      <forward name="toShowExportPage" path="/dbadmin/modelExport.jsp"></forward>
+      <forward name="toImportToExcelAction" path="/dbadmin/modelImport.jsp"></forward>
+    </action>
+
+   <action path="/masterTableViewAction" name="masterTableViewForm" type="com.enterprisehorizons.magma.config.dbadmin.action.MasterTableViewAction" scope="request">
+      <forward name="viewRecord" path="/dbadmin/masterTableView.jsp"/>
+      <forward name="goToMasterHome" path="/masterMaintenanceHomeAction.do"/>
+      <forward name="toDbSchemaCreate" path="/dbadmin/createMasterRecordView.jsp"/>
+      <forward name="goToModifyModelView" path="/modelModifyView.do"/>
+      <forward name="goToDeleteRecord" path="/modelDeleteRecord.do"/>
+      <forward name="goToSecurity" path="/dbadmin/securityAdmin.jsp"/>
+      <forward name="goToSGIG" path="/dbadmin/SGIGAdmin.jsp"/>
+      <forward name="goToPI" path="/jsp/pi/piMain.jsp"></forward>
+      <forward name="goToAlerts" path="/dbadmin/alerts/alertsAdminCategory.jsp"></forward>
+
+    </action>
+ 	<action path="/CacheAction" name="CacheForm" type="com.spacetimeinsight.admin.cache.action.CacheAction" scope="request">
+      <forward name="toCacheHome" path="/admin/cache.jsp"/>
+      <forward name="success" path="/admin/cache.jsp?success=true"/>
+      <forward name="failure" path="/admin/cache.jsp?success=false"/>
+    </action>
+    <action path="/masterTableRecordViewAction" name="masterTableRecordViewForm" type="com.enterprisehorizons.magma.config.dbadmin.action.MasterTableRecordViewAction" scope="request">
+		<forward name="toViewRecord" path="/dbadmin/masterTableRecordView.jsp"/>
+    </action>
+
+    <action path="/modelModifyView" name="masterMaintenanceHomeForm" type="com.enterprisehorizons.magma.config.dbadmin.action.ModelModifyViewAction" scope="request">
+      <forward name="success" path="/dbadmin/modelModifyView.jsp"/>
+    </action>
+
+    <action path="/modelDeleteRecord" name="masterMaintenanceHomeForm" type="com.enterprisehorizons.magma.config.dbadmin.action.ModelDeleteRecordAction" scope="request">
+      <forward name="success" path="/masterTableViewAction.do"/>
+       <forward name="error" path="/dbadmin/masterTableView.jsp"/>
+    </action>
+
+    <action path="/masterTableRecordCreateAction" name="masterTableRecordCreateForm" type="com.enterprisehorizons.magma.config.dbadmin.action.MasterTableRecordCreateAction" scope="request">
+      <forward name="error" path="/masterMaintenanceHomeAction.do"/>
+      <forward name="success" path="/masterTableViewAction.do"/>
+    </action>
+
+    <action path="/modelModifyAction" name="masterTableRecordCreateForm" type="com.enterprisehorizons.magma.config.dbadmin.action.ModelModifyAction" scope="request">
+      <forward name="success" path="/masterTableViewAction.do" />
+      <forward name="error" path="/masterMaintenanceHomeAction.do"/>
+    </action>
+
+    <action path="/modelExportAction" name="modelExportImportForm" type="com.enterprisehorizons.magma.config.dbadmin.action.ModelFileExportImportAction" scope="request">
+      <forward name="viewUploadPage" path="/dbadmin/modelImport.jsp" />
+      <forward name="success" path="/masterMaintenanceHomeAction.do" />
+    </action>
+    <action path="/adminMainAction" name="adminMainForm" type="com.spacetimeinsight.admin.action.AdminMainAction" scope="request">
+      <forward name="success" path="/admin/AdminMain.jsp"/>
+    </action>
+    <action input="multiFileUpload.jsp"  path="/multiUploadAction" scope="request" type="com.enterprisehorizons.magma.ecoweb.multifileupload.MultiFileUploadAction"  >
+       <forward name="success" path="/ecoweb/jsp/command.jsp"/>
+       <forward name="show" path="/jsp/fileupload/flexMultiFileUploadComp.jsp"/>
+       <forward name="mainpage" path="/ecoweb/jsp/multiFileUploadView.jsp"/>
+    </action>
+
+     <!--  Added By Aditya for Datasource Generic UI -->
+      <action path="/showAllJ2EEDatasource" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/showAllJ2EEDatasource.jsp"/>
+     <action path="/createJ2EEDatasource" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/createJ2EEDatasource.jsp"/>
+     <action path="/database" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/databaseDatasource.jsp"/>
+     <action path="/shapefile" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/shapefileDatasource.jsp"/>
+          <!--  Added for Datasource Generic UI Cache/RSS -->
+     <action path="/rssFeed" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/rssFeedDatasource.jsp"/>
+     <!--
+     <action path="/cache" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/cacheDatasource.jsp"/>
+     -->
+     <action path="/excel" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/excelDatasource.jsp"/>
+	     <action path="/hibernate" type="com.enterprisehorizons.magma.ecoweb.action.HibernateDatasourceAction" >
+         <forward name="success" path="/ecoweb/jsp/hibernateDatasource.jsp"/>
+     </action>
+      <action path="/joinmashup" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ecoweb/jsp/joinDatasource.jsp"/>
+      <action path="/adminMain" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/AdminMain.jsp"/>
+      <action path="/dbadmin" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/dbschemaAdminCategory.jsp"/>
+      <action path="/cache" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/cache.jsp"/>
+      <action path="/shapedbMapping" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/shp2dbmappinghome.jsp"/>
+      <action path="/shapedbExport" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/shp2dbmappingexport.jsp"/>
+      <action path="/generateKmlKmz" type="org.apache.struts.actions.ForwardAction"
+              parameter="/common/generateKmlKmzFile.jsp"/>
+      <action path="/ecowebWizard" type="org.apache.struts.actions.ForwardAction"
+            parameter="EcowebWizard.Page"/>
+	  <action path="/dbaAdminSecurity" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/securityAdmin.jsp"/>
+        <action path="/sgigAdmin" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/SGIGAdmin.jsp"/>
+
+      <action path="/showProcessManagerRoot" type="org.apache.struts.actions.ForwardAction"
+            parameter="/processmanager/processManagerRoot.jsp"/>
+
+      <action path="/showPageViewer" type="org.apache.struts.actions.ForwardAction"
+            parameter="/processmanager/pageViewer.jsp"/>
+
+      <action path="/changePwd" type="org.apache.struts.actions.ForwardAction"
+            parameter="ChangePwd.Page"/>
+
+      <!--  Added By Anurag Kirpal for Timers -->
+     <action path="/displayPageAction" name="jobHomeForm"  type="com.enterprisehorizons.magma.jobs.actions.DisplayPageAction" scope="request">
+         <forward name="success" path="/jobs/addJobSchdHome.jsp"/>
+     </action>
+
+     <action path="/configureJobSchdAction" name="configureJobsForm"  type="com.enterprisehorizons.magma.jobs.actions.ConfigureJobSchdAction" scope="request" parameter="operation">
+        <forward name="home" path="/admin/AdminMain.jsp"/>
+         <forward name="ecosystem" path="/ecoSystemAction.do?operation=onViewEcosystem"/>
+         <forward name="ecosystemEdit" path="/ecoSystemAction.do?operation=onViewEcosystem"/>
+         <forward name="filecleanuptimer" path="/fileCleanUpTimerAction.do?operation=onViewFileCleanTimer"/>
+         <forward name="filecleanuptimerEdit" path="/fileCleanUpTimerAction.do?operation=onViewFileCleanTimer"/>
+         <forward name="urlextractor" path="/uRLExtractorAction.do?operation=onViewURLExtractor"/>
+         <forward name="urlextractorEdit" path="/uRLExtractorAction.do?operation=onViewURLExtractor"/>
+         <forward name="custom" path="/customTimerAction.do?operation=onViewCustomTimer"/>
+         <forward name="customEdit" path="/customTimerAction.do?operation=onViewCustomTimer"/>
+         <forward name="default" path="/jobs/jobsConfiguration.jsp"/>
+         <forward name="clearcache" path="/clearcacheAction.do?operation=onViewClearCacheAction"/>
+         <forward name="view" path="/jobs/jobsConfiguration.jsp"/>
+         <forward name="add" path="/addJobAction.do?operation=onAddJobsLoad"/>
+         <forward name="pidataextractorEdit" path="/pIDATAExtractorAction.do?operation=onViewPIDB"/>
+		 <forward name="pidataextractor" path="/pIDATAExtractorAction.do?operation=onViewPIDB"/>
+     </action>
+
+     <action path="/addJobAction" name="AddJobForm"  type="com.enterprisehorizons.magma.jobs.actions.AddJobAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/addJob.jsp"/>
+         <forward name="addJob" path="/jobs/addJob.jsp"/>
+     </action>
+
+      <action path="/JobBaseAction"  type="com.enterprisehorizons.magma.jobs.actions.JobBaseAction" scope="request" parameter="operation">
+     </action>
+
+     <action path="/pIDATAExtractorAction" name="pIDataExtractorForm"  type="com.enterprisehorizons.magma.jobs.actions.PIDATAExtractorAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/pIDataExtractor.jsp"/>
+         <forward name="updatePIDataExtractor" path="/jobs/pIDataExtractor.jsp"/>
+         <forward name="updateSuccess" path="/pIDATAExtractorAction.do?operation=onViewPIDB"/>
+     </action>
+     <action path="/ecoSystemAction" name="EcoSystemForm"  type="com.enterprisehorizons.magma.jobs.actions.EcoSystemAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/ecoSystem.jsp"/>
+         <forward name="updateEcosystem" path="/jobs/ecoSystem.jsp"/>
+         <forward name="updateSuccess" path="/ecoSystemAction.do?operation=onViewEcosystem"/>
+     </action>
+    <action path="/uRLExtractorAction" name="uRLExtractorForm"  type="com.enterprisehorizons.magma.jobs.actions.URLExtractorAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/uRLExtractor.jsp"/>
+         <forward name="updateURLExtractor" path="/jobs/uRLExtractor.jsp"/>
+         <forward name="updateSuccess" path="/uRLExtractorAction.do?operation=onViewURLExtractor"/>
+     </action>
+    <action path="/fileCleanUpTimerAction" name="fileCleanupTimerForm"  type="com.enterprisehorizons.magma.jobs.actions.FileCleanUpTimerAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/fileCleanupTimer.jsp"/>
+         <forward name="updateFileCleanup" path="/jobs/fileCleanupTimer.jsp"/>
+         <forward name="updateSuccess" path="/fileCleanUpTimerAction.do?operation=onViewFileCleanTimer"/>
+     </action>
+    <action path="/customTimerAction" name="customTimerForm"  type="com.enterprisehorizons.magma.jobs.actions.CustomTimerAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/customTimer.jsp"/>
+         <forward name="updateCustom" path="/jobs/customTimer.jsp"/>
+         <forward name="updateSuccess" path="/customTimerAction.do?operation=onViewCustomTimer"/>
+    </action>
+    <!--add by ashutosh-->
+      <action path="/clearcacheAction" name="clearcachForm"  type="com.enterprisehorizons.magma.jobs.actions.ClearCacheAction" scope="request" parameter="operation">
+         <forward name="success" path="/jobs/clearcachejob.jsp"/>
+         <forward name="updateClearCache" path="/jobs/clearcachejob.jsp"/>
+        <forward name="updateSuccess" path="/clearcacheAction.do?operation=onViewClearCacheAction"/>
+    </action>
+    <action path="/startStopAction" name="startStopJobForm"  type="com.enterprisehorizons.magma.jobs.actions.StartStopJobAction" scope="request" parameter="operation">
+        <forward name="toStartStopPage" path="/jobs/startStopJobs.jsp"/>
+        <forward name="toStartStopHomePage" path="AddJobScheduelrs.Page"/>
+     </action>
+    <action  path="/deleteFileAction" name="deleteFileForm" type="com.enterprisehorizons.magma.ecoweb.multifileupload.action.DeleteFileAction" scope="request">
+        <forward name="success" path="/ecoweb/jsp/displayDelete.jsp"/>
+     </action>
+<!--  Added By Anurag Kirpal for undeployment of ecosystems -->
+
+      <action  path="/unDeployEcoAction" name="unDeployEcoForm" type="com.spacetimeinsight.admin.undeploy.action.UnDeployEcoAction" scope="request">
+        <forward name="success" path="/ecoweb/jsp/displayUndeployEco.jsp"/>
+     </action>
+
+<!--  Added By Anurag Kirpal for UI config -->
+
+      <action  path="/manageConfigAction" name="manageConfigForm" type="com.spacetimeinsight.admin.uiconfig.action.ManageConfigAction" scope="request">
+        <forward name="success" path="/uiconfig/manageConfigurations.jsp"/>
+     </action>
+
+      <action input="/security/login.jsp" path="/loginAction" name="loginForm" type="com.spacetimeinsight.security.action.LoginAction" scope="request">
+        <!--forward name="loginSucess" path="Admin.Page"/-->
+        <forward name="loginSucess" path="Home.Page"/>
+        <forward name="promptPassword" path="PromptPasswordChange.Layout"/>
+        <forward name="loginFailure" path="/security/login.jsp"/>
+     </action>
+
+     <action  path="/ssoLoginAction" type="com.spacetimeinsight.security.action.SSOLoginAction" scope="request">
+        <!--forward name="loginSucess" path="Admin.Page"/-->
+        <forward name="loginSucess" path="Home.Page"/>
+        <forward name="promptPassword" path="PromptPasswordChange.Layout"/>
+        <forward name="loginFailure" path="/security/login.jsp"/>
+     </action>
+
+     <action  path="/changePasswordAction" name="changePasswordForm" type="com.spacetimeinsight.security.action.ChangePasswordAction" scope="request">
+       <forward name="passHome" path="/security/changePassword.jsp"/>
+        <forward name="showChangePassPage" path="PromptPasswordChange.Layout"/>
+        <forward name="showChangePassPageContext" path="PromptPasswordChangeContext.page"/>
+     </action>
+      <action  path="/processKMLFile" scope="request" type="com.spacetimeinsight.admin.kmlgen.action.KmlGeneratorAction"  parameter="/common/generateKmlKmzFile.jsp">
+      <forward name="success" path="/common/generateKmlKmzFile.jsp"/>
+     </action>
+      <action  path="/shptodb" scope="request" type="com.spacetimeinsight.admin.shapefiletodatabse.action.ShapeToDataBaseAction"  parameter="/admin/shp2dbmappingexport.jsp">
+      <forward name="exportPage" path="/admin/shp2dbmappingexport.jsp"/>
+       <forward name="mappingPage" path="/admin/shp2dbmappinghome.jsp"/>
+     </action>
+
+     <action path="/situationRoomCarousel" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ge/viewer/SituationRoomCarousel.jsp"/>
+
+    <action path="/geFrame" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ge/viewer/GEFrame.jsp"/>
+
+    <action path="/veFrame" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ve/viewer/VEFrame.jsp"/>
+
+    <action path="/bingFrame" type="org.apache.struts.actions.ForwardAction"
+            parameter="/ve/SLViewer/BingFrame.jsp"/>
+
+    <action path="/offlineSLMap" type="org.apache.struts.actions.ForwardAction"
+            parameter="/jsp/offlineslviewer/offlineSLMap.jsp"/>
+
+    <action path="/arcGISFrame" type="org.apache.struts.actions.ForwardAction"
+            parameter="/esri/viewer/arcGISFrame.jsp"/>
+
+    <action path="/dashboardFrame" type="org.apache.struts.actions.ForwardAction"
+            parameter="/jsp/dashboard/dashboardFrame.jsp"/>
+
+ <!--  Rules Actions -->
+ 	<action path="/incidentRules" type="org.apache.struts.actions.ForwardAction"
+            parameter="/rules/incidentRules.jsp"/>
+
+    <action path="/complianceReportsHome" type="org.apache.struts.actions.ForwardAction"
+            parameter="/rules/reports/complianceReportsHome.jsp"/>
+
+    <action path="/complianceReportsDataFeedHome" type="org.apache.struts.actions.ForwardAction"
+            parameter="/rules/reports/complianceReportsDataFeedHome.jsp"/>
+
+ 	<action path="/ConfigureRules" name="rulesForm" type="com.spacetimeinsight.rules.action.ConfigureRulesAction" scope="session" validate="true" input="/incidentRules.jsp" parameter="operation">
+      <forward name="success" path="/WizardHomeAction.do?operation=showAllDatasource" redirect="true"/>
+      <forward name="incidentRules" path="/rules/incidentRules.jsp" />
+      <forward name="successUpdate" path="/ManageRules.do?operation=viewIncidentRule" redirect="true"/>
+      <forward name="successDelete" path="/RulesHome.do?operation=loadRules" redirect="true"/>
+   	  <forward name="manageRules" path="/rules/manageRules.jsp" />
+      <forward name="viewIncidentRules" path="/rules/viewIncidentRules.jsp" />
+    </action>
+
+    <action path="/ManageRules" name="manageRulesForm" type="com.spacetimeinsight.rules.action.ManageRulesAction" scope="request" validate="true"  parameter="operation">
+          <forward name="incidentRules" path="/rules/incidentRules.jsp" />
+          <forward name="showAllViolations" path="/rules/allViolations.jsp" />
+          <forward name="showAllAlerts" path="/rules/allAlerts.jsp" />
+          <forward name="updateIncidentRules" path="/rules/updateIncidentRules.jsp" />
+          <forward name="viewIncidentRules" path="/rules/viewIncidentRules.jsp" />
+   	  	  <forward name="manageRules" path="/rules/manageRules.jsp" />
+    </action>
+
+    <action path="/RulesHome" name="manageRulesForm" type="com.spacetimeinsight.rules.action.RulesHomeAction" scope="session" validate="true" parameter="operation">
+      <forward name="rulesHome" path="/rules/rulesHome.jsp" />
+      <forward name="manageRules" path="/rules/manageRules.jsp" />
+    </action>
+
+    <action path="/searchNercViolationsAction" name="searchNercViolationsForm" type="com.spacetimeinsight.rules.action.SearchNercViolationsAction" scope="request" validate="true"  parameter="operation">
+          <forward name="searchNercViolations" path="/rules/reports/searchNercViolations.jsp" />
+    </action>
+
+    <action path="/searchToGenerateNercReportAction" name="searchToGenerateNercReportForm" type="com.spacetimeinsight.rules.action.SearchToGenerateNercReportAction" scope="request" validate="true"  parameter="operation">
+          <forward name="searchToGenerateNercReports" path="/rules/reports/searchToGenerateNercReport.jsp" />
+    </action>
+
+
+    <action path="/createNercReportData" name="createNercReportForm" type="com.spacetimeinsight.rules.action.CreateNercReportAction" scope="request" validate="true" input="/rules/reports/searchNercViolations.jsp" parameter="operation">
+      <forward name="frwdCreateNercReport" path="/rules/reports/createNercReportData.jsp" />
+      <forward name="searchNercViolations" path="/searchNercViolationsAction.do?operation=searchNercViolations" />
+      <forward name="showDashboardMessage" path="/rules/reports/showDashboardMessage.jsp" />
+	  <forward name="showAllViolations" path="/ManageRules.do?operation=showAllViolations" />
+    </action>
+
+    <action path="/configRoot" name="manageRulesForm" type="com.spacetimeinsight.config.actions.ConfigAction" scope="session" validate="true" parameter="operation">
+      <forward name="ConfigHome" path="/config/configRoot.jsp" />
+      <forward name="ConfigViewer" path="/config/configViewer.jsp" />
+    </action>
+
+    <action path="/renderProperties" type="org.apache.struts.actions.IncludeAction"
+            parameter="/config/fieldRenderer.jsp"/>
+
+    <action path="/logout" type="org.apache.struts.actions.ForwardAction" parameter="/security/login.jsp"/>
+
+    <action path="/projectManagement" name="projectManagementForm" type="com.spacetimeinsight.arra.actions.ProjectManagementAction" scope="session" validate="true" parameter="operation">
+		<forward name="projectManagementHome" path="/jsp/arra/projectManagementHome.jsp"/>
+		<forward name="projectManagementReport" path="/jsp/arra/projectManagementReport.jsp"/>
+		<forward name="pvmsReportHome" path="/jsp/arra/pvmsReportHome.jsp"/>
+	</action>
+
+
+	<!-- export /import action configurations -->
+	<action path="/exportAdmin" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/exportmasterdata.jsp"/>
+ 	<action path="/export" type="com.spacetimeinsight.admin.exportimport.action.ExportMasterDataAction"
+			parameter="operation">
+			<forward name="errorToExport" path="/admin/exportmasterdata.jsp"/>
+
+	</action>
+	<action path="/importAdmin" type="org.apache.struts.actions.ForwardAction"
+            parameter="/admin/importmasterdata.jsp"/>
+ 	<action path="/import" type="com.spacetimeinsight.admin.exportimport.action.ImportMasterDataAction" name="importForm"
+			parameter="operation">
+			<forward name="errorToImport" path="/admin/importmasterdata.jsp"/>
+	</action>
+
+	<action path="/swfLoader" type="org.apache.struts.actions.ForwardAction"
+  	 	parameter="/common/swfLoader.jsp"/>
+
+    <action path="/manageADGroup"
+	  type="com.enterprisehorizons.magma.config.dbadmin.action.MasterADGroupMapping"  scope="session" >
+         <forward name="success" path="/dbadmin/masterADGroupMapping.jsp"/>
+        </action>
+
+	<action path="/flexMultiFileUploadAction" type="com.spacetimeinsight.admin.fileupload.action.FlexMultiFileUploadAction" scope="session">
+		<forward name="mainpage" path="/jsp/fileupload/flexMultiFileUpload.jsp" />
+	</action>
+
+    <!--  Alert Messaging Systems -->
+ 	<action path="/ams" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/alerts/alertsAdminCategory.jsp"/>
+
+    <action path="/alertRoute" type="org.apache.struts.actions.ForwardAction"
+            parameter="/dbadmin/alerts/alertMap.jsp"/>
+
+	<action path="/dashboardDataRenderer" type="com.spacetimeinsight.renderer.action.DashboardDataRendererAction" scope="session" parameter="operation">
+   </action>
+  </action-mappings>
+
+  <!-- Added the Controller.
+  <controller/>  -->
+
+  <controller processorClass="com.spacetimeinsight.security.STIRequestProcessor" />
+
+  <!-- ======================================== Message Resources Definitions
+-->
+  	<message-resources parameter="config.EcoWebApplicationResources" key="ecoweb"/>
+  	<message-resources parameter="properties.DatasourceApplicationResources" key="datasource"/>
+	<message-resources parameter="dbadmin.DbconfigApplicationResources"/>
+	<message-resources parameter="dbadmin.field.FieldResources" key="dbfield"/>
+	<message-resources parameter="groupmapping.GroupMappingResources" key="GroupMapping" />
+    <message-resources parameter="uploaddelete.UploadDeleteResources" key="delete"/>
+    <message-resources parameter="undeploy.UndeployResources" key="undeploy"/>
+    <message-resources parameter="datasource.DatasourceConfigApplicationResources" key="ds"/>
+    <message-resources parameter="uiconfig.UiconfigResources" key="uiconfig"/>
+    <message-resources parameter="jobs.JobsConfigApplicationResources" key="jobs"/>
+    <message-resources parameter="admin.AdminResources" key="admin"/>
+    <message-resources parameter="admin.StiBuild" key="stibuild"/>
+    <message-resources parameter="admin.buildinfo" key="buildinfo"/>
+    <message-resources parameter="cache.CacheConfigApplicationResources" key="cache"/>
+    <message-resources parameter="kmlgenerate.KmlGenConfigApplicationResources" key="kmlGen"/>
+    <message-resources parameter="shpTodbmapping.ShpdDBMapApplicationResources" key="shpDbMap"/>
+    <message-resources parameter="shapeToDataBase.ShpdDBApplicationResources" key="shptoDb"/>
+    <message-resources parameter="security.SecurityResources" key="security"/>
+    <message-resources parameter="rules.RulesResources" key="rules"/>
+    <message-resources parameter="j2eeDatasources.j2eeDatasourcesApplicationResources" key="j2eeDS"/>
+    <message-resources parameter="commonvalidation.SpecialCharacterValidationApplicationResources" key="splchvalidation"/>
+    <message-resources parameter="exportimport.export" key="export"/>
+    <message-resources parameter="exportimport.import" key="import"/>
+
+  <!-- =============================================== Plug Ins Configuration
+-->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+    <set-property property="moduleAware" value="true"/>
+  </plug-in>
+
+</struts-config>

@@ -1,0 +1,37 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/WEB-INF
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-07-04T19:20:50.038939Z
+126
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+lib
+dir
+
+src
+dir
+
+classes
+dir
+

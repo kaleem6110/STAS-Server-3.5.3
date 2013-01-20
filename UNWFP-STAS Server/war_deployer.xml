@@ -1,0 +1,123 @@
+<project name="MagmaWARBuilder" default="build" basedir=".">
+
+    <property file="war_deployer.properties" />
+
+    <target name="package" description="Packages ${war.name} file">
+        <echo message="Packaging the ${war.name} file...." />
+        <ant antfile="servercustom_jarbuilder.xml"/>
+
+        <war destfile="${dist}/${war.name}" webxml="${stascore.dir}/WEB-INF/web.xml" update="true">
+            <lib dir="${stascore.dir}/WEB-INF/lib">
+                <include name="*.jar" />
+            </lib>
+        	<!-- exclude class files as they will be included in the servercustom jar
+        	-->
+            <classes dir="WEB-INF/classes">
+            	<exclude name="**/*.class" />
+            </classes>
+            
+            
+            
+            <zipfileset dir="${stascore.dir}/WEB-INF" prefix="WEB-INF">
+                <include name="**.*" />
+            </zipfileset>
+
+        	<fileset file="${stascore.dir}/**.*" >
+                <exclude name="*deployer*.xml" />
+                <exclude name="*deployer*.properties" />
+                <exclude name="*jarbuilder*.xml" />
+                <exclude name="*jarbuilder*.properties" />
+            </fileset>
+
+            <fileset file="**.*" >
+                <exclude name="*deployer*.xml" />
+                <exclude name="*deployer*.properties" />
+                <exclude name="*jarbuilder*.xml" />
+                <exclude name="*jarbuilder*.properties" />
+            </fileset>
+
+            <zipfileset dir="${stascore.dir}/admin/" prefix="admin" />
+            <zipfileset dir="${stascore.dir}/common/" prefix="common" />
+            <zipfileset dir="${stascore.dir}/config/" prefix="config" />
+            <zipfileset dir="${stascore.dir}/dbadmin/" prefix="dbadmin" />
+            <zipfileset dir="${stascore.dir}/deploy/" prefix="deploy" />
+            <zipfileset dir="${stascore.dir}/ecogroupmapping/" prefix="ecogroupmapping" />
+            <zipfileset dir="${stascore.dir}/ecoweb/" prefix="ecoweb" />
+            <zipfileset dir="${stascore.dir}/esri/" prefix="esri" />
+            <zipfileset dir="${stascore.dir}/ge/" prefix="ge" />
+            <zipfileset dir="${stascore.dir}/home/" prefix="home" />
+            <zipfileset dir="${stascore.dir}/images/" prefix="images" />
+        	<zipfileset dir="${stascore.dir}/media/" prefix="media" />
+        	<zipfileset dir="${stascore.dir}/jobs/" prefix="jobs" />
+        	<zipfileset dir="${stascore.dir}/jsp/" prefix="jsp" />
+        	<zipfileset dir="${stascore.dir}/models/" prefix="models" />
+            <zipfileset dir="${stascore.dir}/processmanager/" prefix="processmanager" />
+            <zipfileset dir="${stascore.dir}/rules/" prefix="rules" />
+            <zipfileset dir="${stascore.dir}/security/" prefix="security" />
+            <zipfileset dir="${stascore.dir}/situationroom" prefix="situationroom" />
+            <zipfileset dir="${stascore.dir}/swf/" prefix="swf" />
+            <zipfileset dir="${stascore.dir}/uiconfig/" prefix="uiconfig" />
+            <zipfileset dir="${stascore.dir}/ve/" prefix="ve" />
+            <zipfileset dir="${stascore.dir}/mobile/" prefix="mobile" />
+            <zipfileset dir="${stascore.dir}/charts/" prefix="charts" />
+        	<zipfileset dir="${stascore.dir}/tablet/" prefix="tablet" />       	
+        	<zipfileset dir="${stascore.dir}/wfp/" prefix="wfp" />
+            <zipfileset dir="${stascore.dir}/css/" prefix="css" />
+            <zipfileset dir="${stascore.dir}/js/" prefix="js" />
+            <zipfileset dir="${stascore.dir}/themes/" prefix="themes" />
+        	<zipfileset dir="${stascore.dir}/WEB-INF/services" prefix="WEB-INF/services"/>
+        </war>
+
+        <delete includeemptydirs="true" quiet="true">
+            <fileset dir="${magma.webapps.dir}" />
+            <fileset dir="${magma.work.dir}" />
+        </delete>
+
+        <echo message="copying the ${war.name} jar...." />
+        <copy file="${dist}/${war.name}" todir="${dest.dir}/" />
+    </target>
+
+    <target name="refresh" description="refreshes the updated directories">
+        <echo message="refreshing the ${war.name} in the referenced projects...." />
+        <eclipse.refreshLocal resource="${server.project}" depth="infinite" />
+    </target>
+
+
+    <target name="clean" description="deletes the dist directory">
+        <delete dir="${dist}" />
+    </target>
+
+    <target name="copyserverlibs" description="copies the server libraries to the config directory">
+        <copy todir="${server.config.lib.dir}">
+            <fileset dir="${stascore.dir}/WEB-INF/lib/" includes="com.enterprisehorizons.*.jar"/>
+          </copy>
+        <copy todir="${server.config.lib.dir}">
+           <fileset dir="${stascore.dir}/WEB-INF/lib/" includes="com.spacetimeinsight.*.jar"/>
+         </copy>
+    </target>
+
+    <target name="prepare" description="Creates the required directories">
+        <echo message="Creating the required directories...." />
+        <mkdir dir="${dist}" />
+    </target>
+
+    <target name="buildwithoutrefresh" depends="prepare,package,clean" />
+
+    <target name="build" depends="tomcat-stop,prepare,package,clean,refresh,copyserverlibs" />
+
+    <target name="tomcat-start">
+        <java jar="${tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${tomcat.home} -Xms512m -Xmx1024m" />
+        </java>
+    </target>
+
+    <target name="tomcat-stop">
+        <java jar="${tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${tomcat.home}" />
+            <classpath>
+                <pathelement location="${tomcat.home}/lib/catalina.jar" />
+            </classpath>
+            <arg line="stop" />
+        </java>
+    </target>
+</project>

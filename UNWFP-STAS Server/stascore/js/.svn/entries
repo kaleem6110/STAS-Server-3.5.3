@@ -1,0 +1,151 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+ecoweb.js
+file
+
+
+
+
+2013-01-13T11:22:17.858504Z
+81bc19e367909d15e46abb097d1871be
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+swfobject.js
+file
+
+
+
+
+2013-01-13T11:22:17.858504Z
+eaa5417940c71f441b016b12c534665d
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+dijit
+dir
+
+dojox
+dir
+
+common.js
+file
+
+
+
+
+2013-01-13T11:22:17.858504Z
+5626997bc24044aba4e463ffe1a55fb4
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+commonparameter.js
+file
+
+
+
+
+2013-01-13T11:22:17.874131Z
+c8591aafb01b44e13001ff05589ceb3d
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+flexSessionTimeOut.js
+file
+
+
+
+
+2013-01-13T11:22:17.874131Z
+8c5bc619f7292ee70fc314dabce2b12b
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+rules.js
+file
+
+
+
+
+2013-01-13T11:22:17.874131Z
+fbf0a8629201203243a5944d1540a898
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+sessionTimeOut.js
+file
+
+
+
+
+2013-01-13T11:22:17.874131Z
+c8145bf96e9b5140d2a153983835390b
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+windows.js
+file
+
+
+
+
+2013-01-13T11:22:17.874131Z
+d7b93c3c8dd4f7bb270d0e79e8e56694
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+windowsjs
+dir
+
+jobs.js
+file
+
+
+
+
+2013-01-13T11:22:17.889757Z
+1c264b3005750b1d6861805f4354f2dc
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+dojo
+dir
+
+ge
+dir
+

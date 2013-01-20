@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="JobCategory" table="STI_R_ARRA_JOB_CATEGORY">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+        <property name="jobCategory" type="string" column="JOB_CATEGORY" unique="true"  not-null="true"/>
+      	<property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/js/dojox/layout/dnd
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Avatar.js
+file
+
+
+
+
+2013-01-13T11:21:35.885994Z
+e87b6dbec301b172114e488fb86c9669
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+PlottedDnd.js
+file
+
+
+
+
+2013-01-13T11:21:35.901620Z
+b8e405a9872283c15fd0328a89e4573f
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

@@ -1,0 +1,52 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/wfp/offline/synchronize/utils
+https://svn.code.sf.net/u/veladitya/code
+delete
+
+
+2012-04-30T14:39:17.942155Z
+43
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+CommonServiceDBUtils.java
+file
+
+
+
+delete
+2013-01-13T12:10:51.874115Z
+d2771d9ee34dae7a4d8481e453f55ef5
+2012-04-30T14:39:17.942155Z
+43
+veladitya
+
+SynchronizationDBUtils.java
+file
+
+
+
+delete
+2013-01-13T12:10:51.874115Z
+1acee9aa13b3e39176c8ba87f441a13e
+2012-04-30T14:39:17.942155Z
+43
+veladitya
+

@@ -1,0 +1,128 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-Ecosystems%20V%201.0/Locations
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-14T05:42:10.456730Z
+140
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Warehouses.ecosystem
+file
+
+
+
+
+2013-01-08T10:23:51.455672Z
+b7c5e59e82f08c9c1971b5c7eb825dc6
+2012-09-05T17:51:26.169227Z
+137
+veladitya
+has-props
+
+Warehouses.ecoexpml
+file
+
+
+
+
+2013-01-08T10:23:51.486923Z
+703cd27f5920116fba060258f83e64f1
+2012-09-05T17:51:26.169227Z
+137
+veladitya
+
+Guest Houses.ecosystem
+file
+
+
+
+
+2013-01-08T10:23:51.533799Z
+79cb4c9622ae698a7a13500345d2d154
+2012-09-14T05:42:10.456730Z
+140
+veladitya
+has-props
+
+Offices.ecosystem
+file
+
+
+
+
+2013-01-08T10:23:51.611926Z
+4483d9e44965ecf0ac6ab4a4d3054da0
+2012-09-14T05:42:10.456730Z
+140
+veladitya
+has-props
+
+Guest Houses.ecoexpml
+file
+
+
+
+
+2013-01-08T10:23:51.627552Z
+65bb3d445d2c0df429cf90bbf83f7e71
+2012-09-14T05:42:10.456730Z
+140
+veladitya
+
+Offices.ecoexpml
+file
+
+
+
+
+2013-01-08T10:23:51.627552Z
+17b8518eea073278068e53151d35df6e
+2012-09-14T05:42:10.456730Z
+140
+veladitya
+
+Quality Stocks.ecosystem
+file
+
+
+
+
+2013-01-08T10:23:51.627552Z
+dd6b747902eedd9b08f0c0b153c8aa2b
+2012-09-05T17:51:26.169227Z
+137
+veladitya
+has-props
+
+Quality Stocks.ecoexpml
+file
+
+
+
+
+2013-01-08T10:23:51.643177Z
+0c29ab9c87fa60b97558d917e1d393c0
+2012-09-05T17:51:26.169227Z
+137
+veladitya
+

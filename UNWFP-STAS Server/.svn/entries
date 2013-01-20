@@ -1,0 +1,112 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-07-04T19:20:50.038939Z
+126
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+servercustom_jarbuilder.properties
+file
+
+
+
+
+2013-01-13T11:08:45.668497Z
+451076f17622036afc26ed37828c50fb
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+.classpath
+file
+
+
+
+
+2013-01-13T11:08:45.715373Z
+dbda59ec9f8ff267b57cbe9882bd8238
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+stascore
+dir
+
+servercustom_jarbuilder.xml
+file
+
+
+
+
+2013-01-13T11:08:45.730998Z
+d7a03563ba0a550e029bea741a092bb3
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+.project
+file
+
+
+
+
+2013-01-13T11:08:45.762248Z
+a42f4cac1d11f6109cce431c6c8cf1d6
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+WEB-INF
+dir
+
+src
+dir
+
+war_deployer.properties
+file
+
+
+
+
+2013-01-13T11:08:45.762248Z
+95426921bee3015c7ca010d5a2766ad3
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+bin
+dir
+
+war_deployer.xml
+file
+
+
+
+
+2013-01-13T11:08:45.793499Z
+09c5ed8d0e3973df6e952b7a51653f99
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

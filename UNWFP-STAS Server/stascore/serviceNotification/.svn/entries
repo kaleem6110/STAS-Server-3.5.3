@@ -1,0 +1,107 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore/serviceNotification
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-04-25T03:20:58.403009Z
+25
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+serviceGE.html
+file
+
+
+
+
+2013-01-13T11:15:07.003943Z
+52e0974e274d5d39006826d3e875ba18
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+magma_ajax.js
+file
+
+
+
+
+2013-01-13T11:15:07.003943Z
+1adfb6ec5a37dfd320c01291545ae87a
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+sn1
+dir
+
+swfobject.js
+file
+
+
+
+
+2013-01-13T11:15:07.003943Z
+eaa5417940c71f441b016b12c534665d
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+CustomViews.jsp
+file
+
+
+
+
+2013-01-13T11:15:07.003943Z
+98e1343e88661605e2a05209726f3074
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+CustomViews.swf
+file
+
+
+
+
+2013-01-13T11:15:07.019568Z
+ebaf3503f0d481eaca62df7a9c81d761
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+has-props
+
+empImages
+dir
+
+servicePersonelData.jsp
+file
+
+
+
+
+2013-01-13T11:15:07.019568Z
+9d2bf4688120cd6f3ddf6ba4cdc9cbca
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+

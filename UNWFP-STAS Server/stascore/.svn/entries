@@ -1,0 +1,305 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/stascore
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-06-12T13:36:54.367693Z
+94
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+media
+dir
+
+charts
+dir
+
+.project
+file
+
+
+
+
+2013-01-13T12:10:46.827144Z
+f47d67db36ac8e0bd3dc79381a23a0f8
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+.tomcatplugin
+file
+
+
+
+
+2013-01-13T12:10:46.858394Z
+e3c6dc157dd163b01b338ca4f77a9fbd
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+themes
+dir
+
+home
+dir
+
+testCustomJbossCache.jsp
+file
+
+
+
+
+2013-01-13T12:10:46.874019Z
+d20edd1b898d921168af2a56f8a49e88
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+war_deployer.xml
+file
+
+
+
+
+2013-01-13T12:10:46.889645Z
+1a372fcf125beb0c71858f9c8486d148
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+wfp
+dir
+
+build.num
+file
+
+
+
+
+2013-01-13T12:10:46.905270Z
+90bfc3e0f911d893df57d0d9263eb1ed
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+favicon.ico
+file
+
+
+
+
+2013-01-13T12:10:46.920895Z
+17c5825550989f7981d9732d53c99f45
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+has-props
+
+ecogroupmapping
+dir
+
+servercustom_jarbuilder.properties
+file
+
+
+
+
+2013-01-13T12:10:46.936521Z
+451076f17622036afc26ed37828c50fb
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+stasimages
+dir
+
+.classpath
+file
+
+
+
+
+2013-01-13T12:10:46.936521Z
+d3dd855ab3342b2e721a638c49251b75
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+esri
+dir
+
+ecoweb
+dir
+
+images
+dir
+
+serviceNotification
+dir
+
+mobile
+dir
+
+MANIFEST.MF
+file
+
+
+
+
+2013-01-13T12:10:46.952146Z
+05e849c4145974c699b12e75fb5ad218
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+processmanager
+dir
+
+ve
+dir
+
+tablet
+dir
+
+js
+dir
+
+situationroom
+dir
+
+models
+dir
+
+WEB-INF
+dir
+
+war_deployer.properties
+file
+
+
+
+
+2013-01-13T12:10:46.967771Z
+92bb703dcff89bc65b82d2028e3c3e9f
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+ecowebIndex.jsp
+file
+
+
+
+
+2013-01-13T12:10:46.967771Z
+6ca6ec0a12a3d40214a9f1cb74935221
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+css
+dir
+
+admin
+dir
+
+common
+dir
+
+rules
+dir
+
+sti.jsp
+file
+
+
+
+
+2013-01-13T12:10:46.983397Z
+7032a583d074e3e27c58bedd4e5cad28
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+ge
+dir
+
+deploy
+dir
+
+jsp
+dir
+
+jobs
+dir
+
+dbadmin
+dir
+
+cache.jsp
+file
+
+
+
+
+2013-01-13T12:10:46.999022Z
+eabec7b222aba9b84e016cce82df3079
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+swf
+dir
+
+CustomView.jsp
+file
+
+
+
+
+2013-01-13T12:10:46.999022Z
+4911e3fc5a773cb3dd40c1f6541175a4
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+uiconfig
+dir
+
+servercustom_jarbuilder.xml
+file
+
+
+
+
+2013-01-13T12:10:47.014647Z
+d7a03563ba0a550e029bea741a092bb3
+2012-04-25T00:56:36.220061Z
+22
+veladitya
+
+config
+dir
+
+security
+dir
+

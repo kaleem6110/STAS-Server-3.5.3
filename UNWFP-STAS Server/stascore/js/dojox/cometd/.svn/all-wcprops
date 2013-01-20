@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd
+END
+RestChannels.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/RestChannels.js
+END
+_base.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/_base.js
+END
+longPollTransportFormEncoded.js
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/longPollTransportFormEncoded.js
+END
+HttpChannels.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/HttpChannels.js
+END
+timesync.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/timesync.js
+END
+longPollTransportJsonEncoded.js
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/longPollTransportJsonEncoded.js
+END
+callbackPollTransport.js
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/callbackPollTransport.js
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/README
+END
+longPollTransport.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/longPollTransport.js
+END
+timestamp.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/js/dojox/cometd/timestamp.js
+END

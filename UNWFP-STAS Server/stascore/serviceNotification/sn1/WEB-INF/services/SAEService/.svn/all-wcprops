@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService
+END
+jbpm.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/jbpm.cfg.xml
+END
+hibernate_jbpm.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/hibernate_jbpm.cfg.xml
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/applicationContext.xml
+END
+commons-logging.properties
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/commons-logging.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/log4j.properties
+END
+application-override.properties
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/application-override.properties
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/u/veladitya/code/!svn/ver/22/trunk/UNWFP-STAS%20Server/stascore/serviceNotification/sn1/WEB-INF/services/SAEService/application.properties
+END

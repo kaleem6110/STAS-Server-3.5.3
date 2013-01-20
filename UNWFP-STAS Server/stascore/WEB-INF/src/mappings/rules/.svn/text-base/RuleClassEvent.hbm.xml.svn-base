@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="com.spacetimeinsight.db.rules.model">
+	<class name="RuleClassEvent" table="STI_R_EVENT_CLASS">
+		<id name="id" type="long">
+			<generator class="native" />
+		</id>
+		<property name="ruleEventId" type="long" column="RULE_EVENT_ID" not-null="true"/>
+		<property name="className" type="string" column="CLASSNAME" not-null="true"/>
+	</class>
+</hibernate-mapping>

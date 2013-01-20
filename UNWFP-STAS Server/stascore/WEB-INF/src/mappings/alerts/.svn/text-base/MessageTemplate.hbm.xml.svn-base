@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.wfp.db.platform.model">
+	<class name="MessageTemplate" table="STI_C_EMAIL_TEMPLATE">
+		<id name="id" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="name" type="string" column="NAME" />
+		<property name="subject" type="string" column="SUBJECT" />
+		<property name="body" type="string" column="BODY" />
+		<property name="startDate" type="timestamp" column="START_DATETIME" />
+		<property name="endDate" type="timestamp" column="END_DATETIME" />
+		<property name="recurPerDay" type="long" column="RECUR_PER_DAY" />
+		<property name="triggerTime" type="long" column="TRIGGER_TIME" />
+		<property name="updatedBy" type="string" column="UPDATED_BY"/>
+		<property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>    
+        
+	</class>
+</hibernate-mapping>

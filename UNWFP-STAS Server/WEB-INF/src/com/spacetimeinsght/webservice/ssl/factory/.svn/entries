@@ -1,0 +1,40 @@
+8
+
+dir
+190
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/WEB-INF/src/com/spacetimeinsght/webservice/ssl/factory
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-06-14T06:56:49.760489Z
+117
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+CertSSLSocketFactory.java
+file
+
+
+
+
+2013-01-13T12:10:50.405337Z
+98d946f521aaef1eda2dca73441b9250
+2012-06-14T06:56:49.760489Z
+117
+veladitya
+

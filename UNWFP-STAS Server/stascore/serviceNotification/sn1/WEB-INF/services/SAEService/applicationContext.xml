@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+       
+    <!-- post-processors for all standard config annotations -->
+    <context:annotation-config/>
+        
+    <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+                <value>classpath:application-override.properties</value>
+            </list>
+        </property>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+   
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="sae"/>
+    </bean>
+        
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!--enable transactional behaviour using annotations-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    
+    <bean id="attestCertDao" class="com.sae.config.attestCert.server.AttestCertDao"/>
+    <bean id="authenticationDao" class="com.sae.config.authentication.server.AuthenticationDao"/>
+    <bean id="approverDao" class="com.sae.workflow.server.ApproverDao"/>
+    <bean id="userDataDao" class="com.sae.user.services.impl.UserDataDao"/>
+    <bean id="deprovisioningDao" class="com.sae.request.ui.DeprovisionUserDao"/>
+    
+    <bean id="managedServiceLocator" class="com.sae.core.services.ManagedServiceLocator"/>
+    
+    <bean id="authenticationService" class="com.sae.user.services.impl.AuthenticationServiceImpl">
+        <property name="authenticationDao">
+            <ref bean="authenticationDao"/>
+        </property>
+    </bean>
+    <bean id="attestCertService" class="com.sae.config.attestCert.services.impl.AttestCertServiceImpl">
+        <property name="attestCertDao">
+            <ref bean="attestCertDao"/>
+        </property>
+    </bean>
+    <bean id="userDataProviderService" class="com.sae.user.services.impl.UserDataProviderServiceImpl">
+        <property name="authenticationDao">
+            <ref bean="authenticationDao"/>
+        </property>
+        <property name="userDataDao">
+            <ref bean="userDataDao"/>
+        </property>
+    </bean>
+    <bean id="requestSubmitService" class="com.sae.request.service.impl.RequestSubmitServiceImpl"/>
+    <bean id="ruleTemplateService" class="com.sae.config.riskengine.services.impl.RuleTemplateServiceImpl"/>
+    <bean id="riskEngine" class="com.sae.config.riskengine.services.impl.RiskEngineImpl">
+        <property name="ruleTemplateService">
+            <ref bean="ruleTemplateService"/>
+        </property>
+    </bean>
+    
+    <bean id="persistenceUtil" class="com.sae.util.PersistenceUtil"/>
+</beans>
