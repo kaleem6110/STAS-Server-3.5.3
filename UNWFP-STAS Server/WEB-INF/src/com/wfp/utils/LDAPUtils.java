@@ -722,7 +722,7 @@ public class LDAPUtils implements IEPICConstants {
 		String[] attrArray = new String[] {"cn","externalID", "description", "street", "type", "coord-latitude","coord-longitude", "ocs", "skype" };
 		Logger.info("Retrieve all places from ldap with Search Filter = ["+allGroupNamesFilter+"] " +
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn,externalID, description, street, type, coord-latitude,coord-longitude, ocs, skype ]", LDAPUtils.class);
-		return  parseDataAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase), "compasId", "cn", attrArray);	
+		return  parseDataAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase), "externalID", "cn", attrArray);	
 	}
 	
 	public static boolean validatePlanes(String planeId, String[] types){

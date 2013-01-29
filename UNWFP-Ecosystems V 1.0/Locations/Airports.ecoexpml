@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Guest Houses">
+<configuration name="Airports">
     <section name="artefact">
         <section name="name">
-            <value><![CDATA[Offices]]></value>
+            <value><![CDATA[Airport]]></value>
         </section>
         <section name="artifactname">
             <section name="script">
@@ -101,7 +101,7 @@
         <section name="experiencedef">
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Offices]]></value>
+                    <value><![CDATA[Airport]]></value>
                 </section>
                 <section name="type">
                     <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
@@ -135,7 +135,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Guest Houses.ecoexpml]]></value>
+                            <value><![CDATA[Airports.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -143,7 +143,7 @@
                             <value><![CDATA[artefactname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Offices]]></value>
+                            <value><![CDATA[Airport]]></value>
                         </section>
                     </section>
                 </section>
@@ -282,7 +282,7 @@ String getType() {
 }
 
 boolean authorizePlaces(){
-	if(getType().indexOf("guesthouse") >= 0){
+	if(getType().indexOf("airport") >= 0){
 		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("Name"), userbean.getUserUniqueId());
 	}

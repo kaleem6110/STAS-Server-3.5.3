@@ -37,7 +37,7 @@
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[java.util.Date]]></value>
+                    <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[Time]]></value>
@@ -267,7 +267,8 @@ void bindData() {
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
-			$artefact.addAttribute("time",data.getTime() );
+			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.parseDate(data.getTime()) );
+			$artefact.addAttribute("time", data.getTime().replace("T"," ") );
 			$artefact.addAttribute("deviceId", data.getName());			
 		}
 	}

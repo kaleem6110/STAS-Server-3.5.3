@@ -103,8 +103,8 @@ public class CommonUtils implements IEPICConstants{
 		SimpleDateFormat  formatter = new SimpleDateFormat(EPIC_DATE_FORMAT);  
 		Date date;
         try {
-			return date = formatter.parse(datetime);
-			//return PORTAL_SIMPLE_FORMAT.format(date);
+			// return date = formatter.parse(datetime);
+			return PORTAL_SIMPLE_FORMAT.parse(datetime);
 		} catch (ParseException e) {
 			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
 		}  

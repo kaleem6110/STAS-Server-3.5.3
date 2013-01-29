@@ -25,8 +25,9 @@ public interface IEPICConstants {
 	
 	//date formatter
 	public static final String EPIC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";	
-	public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
-	public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(PORTAL_DATE_FORMAT);
+	public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss 'Z'";
+	//public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(PORTAL_DATE_FORMAT);
+	public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(EPIC_DATE_FORMAT);
 	
 	//data filtering
 	public static final String LAYER_STAFF = "Staff";

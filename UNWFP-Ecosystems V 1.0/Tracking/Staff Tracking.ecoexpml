@@ -96,7 +96,7 @@
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[java.util.Date]]></value>
+                    <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[Last Reported]]></value>
@@ -338,6 +338,8 @@ import com.wfp.utils.RBRegionsUtils;
 import com.spacetimeinsight.db.model.util.*;
 import com.spacetimeinsight.db.config.model.*;
 import com.spacetimeinsight.rubberbandregions.Rubberbandregions;
+import java.text.*;
+import java.util.*;
 
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -373,10 +375,11 @@ void bindData() {
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean )$trackingdatamodel;
 	 	
 	 	if (data != null)	{
-			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
+	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
-			$artefact.addAttribute("time", data.getTime().replace("T", " ").replace(".000"," " ) );
+			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDate( com.wfp.utils.CommonUtils.formatDate( data.getTime()) ) );			
+			$artefact.addAttribute("time",data.getTime().replace("T"," ").replace(".000"," " ));				
 			$artefact.addAttribute("deviceId", data.getName());
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
