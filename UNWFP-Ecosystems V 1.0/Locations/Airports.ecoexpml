@@ -281,6 +281,11 @@ String getType() {
 	return $artefact.getAttributeValueAsString("type");
 }
 
+String getIconUrl(){
+		return "serverresources/icons/misc/Airplane.png";
+}
+
+
 boolean authorizePlaces(){
 	if(getType().indexOf("airport") >= 0){
 		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();

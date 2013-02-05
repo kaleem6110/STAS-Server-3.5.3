@@ -422,6 +422,7 @@ String getDeviceCaption(){
 
 String getIconUrl(){
 	return "serverresources/icons/misc/sport_hillclimbing.n.32.png";	
+	
 }
 
 
