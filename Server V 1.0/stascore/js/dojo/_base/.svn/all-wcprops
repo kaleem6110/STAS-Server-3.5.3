@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base
+END
+html.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/html.js
+END
+query.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/query.js
+END
+window.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/window.js
+END
+json.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/json.js
+END
+fx.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/fx.js
+END
+array.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/array.js
+END
+Color.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/Color.js
+END
+Deferred.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/Deferred.js
+END
+lang.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/lang.js
+END
+event.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/event.js
+END
+NodeList.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/NodeList.js
+END
+browser.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/browser.js
+END
+connect.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/connect.js
+END
+declare.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/declare.js
+END
+xhr.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojo/_base/xhr.js
+END

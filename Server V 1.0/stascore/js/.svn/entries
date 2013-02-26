@@ -1,0 +1,154 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-10-05T07:02:29.909232Z
+186
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+ecoweb.js
+file
+
+
+
+
+2013-02-05T11:02:11.838940Z
+c07cbcefc37f4d46be1a8600196b30ed
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+dojox
+dir
+
+flexSessionTimeOut.js
+file
+
+
+
+
+2013-02-05T11:02:11.964940Z
+f8021e232f03e3f971054f52bddd5957
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+windowsjs
+dir
+
+ge
+dir
+
+dojo
+dir
+
+swfobject.js
+file
+
+
+
+
+2013-02-05T11:02:11.924940Z
+eaa5417940c71f441b016b12c534665d
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+datatablesjs
+dir
+
+common.js
+file
+
+
+
+
+2013-02-05T11:02:11.937940Z
+49da55768d1983c3881198f2ac4850bd
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+dijit
+dir
+
+commonparameter.js
+file
+
+
+
+
+2013-02-05T11:02:11.950940Z
+c8591aafb01b44e13001ff05589ceb3d
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+windows.js
+file
+
+
+
+
+2013-02-05T11:02:12.013940Z
+d7b93c3c8dd4f7bb270d0e79e8e56694
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+sessionTimeOut.js
+file
+
+
+
+
+2013-02-05T11:02:12.000940Z
+76876cdf01acbd6c1a024d3fa3a344dc
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+rules.js
+file
+
+
+
+
+2013-02-05T11:02:11.976940Z
+fbf0a8629201203243a5944d1540a898
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+
+jobs.js
+file
+
+
+
+
+2013-02-05T11:02:12.027940Z
+b998e4d6790502a7192191e1198843ec
+2012-09-27T07:07:28.017668Z
+174
+veladitya
+

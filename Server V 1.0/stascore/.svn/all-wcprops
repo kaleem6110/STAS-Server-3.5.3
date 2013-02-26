@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/u/veladitya/code/!svn/ver/195/trunk/Server%20V%201.0/stascore
+END
+servercustom_jarbuilder.properties
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/servercustom_jarbuilder.properties
+END
+servercustom_jarbuilder.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/servercustom_jarbuilder.xml
+END
+.tomcatplugin
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/.tomcatplugin
+END
+MANIFEST.MF
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/MANIFEST.MF
+END
+war_deployer.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/war_deployer.properties
+END
+ecowebIndex.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/ecowebIndex.jsp
+END
+testCustomJbossCache.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/testCustomJbossCache.jsp
+END
+sti.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/sti.jsp
+END
+war_deployer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/war_deployer.xml
+END
+build.num
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/build.num
+END

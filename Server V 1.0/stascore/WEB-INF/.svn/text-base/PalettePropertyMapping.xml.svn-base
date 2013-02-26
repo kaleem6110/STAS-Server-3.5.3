@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+ <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+ "http://castor.org/mapping.dtd">
+   
+ <mapping>  
+   <class name="com.enterprisehorizons.magma.ecoweb.palette.propertysupport.Component" auto-complete="true">
+      <map-to xml="Component"/>
+      <field name="id">
+        <bind-xml node="attribute"></bind-xml>
+      </field>
+      <field name="name">
+         <bind-xml node="attribute"></bind-xml>
+      </field>     
+      <field name="properties" collection="arraylist">
+         <bind-xml node="element" name="Property"></bind-xml>
+      </field>       
+   </class>
+   
+   <class name="com.enterprisehorizons.magma.ecoweb.palette.propertysupport.Property" auto-complete="true">
+      <map-to xml="Property"/> 
+      <field name="name">
+        <bind-xml node="attribute"></bind-xml>       
+      </field>
+      <field name="type">
+        <bind-xml node="attribute"></bind-xml>
+      </field>
+      <field name="mandatory" type="boolean">
+        <bind-xml node="attribute" name="ismandatory"></bind-xml>
+      </field>
+      <field name="value">
+        <bind-xml node="attribute"></bind-xml>
+      </field>
+      <field name="script" type="boolean">
+         <bind-xml node="attribute" name="isscript"></bind-xml>
+      </field>
+   </class>
+   
+   <class name="com.enterprisehorizons.magma.ecoweb.palette.propertysupport.EcoWebModelRoot" auto-complete="true">
+     <map-to xml="EcoWebModelRoot"/>
+     <field name="components" collection="arraylist">              
+       <bind-xml node="element" name="Component" ></bind-xml>     
+     </field>
+   </class>
+                                    
+ </mapping>
+ 
+ 

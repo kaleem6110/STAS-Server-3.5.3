@@ -1,0 +1,191 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data
+END
+CsvStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/CsvStore.js
+END
+AndOrReadStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/AndOrReadStore.js
+END
+XmlStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/XmlStore.js
+END
+ServiceStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/ServiceStore.js
+END
+PicasaStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/PicasaStore.js
+END
+QueryReadStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/QueryReadStore.js
+END
+GoogleSearchStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/GoogleSearchStore.js
+END
+restListener.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/restListener.js
+END
+WikipediaStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/WikipediaStore.js
+END
+OpmlStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/OpmlStore.js
+END
+ClientFilter.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/ClientFilter.js
+END
+FlickrRestStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/FlickrRestStore.js
+END
+FlickrStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/FlickrStore.js
+END
+css.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/css.js
+END
+HtmlTableStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/HtmlTableStore.js
+END
+CssRuleStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/CssRuleStore.js
+END
+S3Store.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/S3Store.js
+END
+KeyValueStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/KeyValueStore.js
+END
+jsonPathStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/jsonPathStore.js
+END
+AtomReadStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/AtomReadStore.js
+END
+PersevereStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/PersevereStore.js
+END
+GoogleFeedStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/GoogleFeedStore.js
+END
+dom.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/dom.js
+END
+HtmlStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/HtmlStore.js
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/README
+END
+CouchDBRestStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/CouchDBRestStore.js
+END
+JsonRestStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/JsonRestStore.js
+END
+AndOrWriteStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/AndOrWriteStore.js
+END
+CssClassStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/CssClassStore.js
+END
+SnapLogicStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/SnapLogicStore.js
+END
+FileStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/data/FileStore.js
+END

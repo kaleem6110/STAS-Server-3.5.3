@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title></title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="Pragma" content="no-cache">
+      <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+      <script type="text/javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1"></script>
+      <script type="text/javascript" src="VEObjects.js"></script>
+      <script type="text/javascript" src="utilFunctions.js"></script>
+      <script type="text/javascript" src="motionpack.js"></script>
+      <script type="text/javascript" src="swfobject.js"></script>
+      <script type="text/javascript">
+	  var auxObjects = [];
+	  var sessionId;
+  	  var currentNetworkLinkName = null;
+      var map = null;
+	  var hasMovedToLocation = false;
+	  var layersArr = new Array();
+	  var lastClickedRange = null;
+	  var lastClickedAuxWindow = null;
+	  var formatterUrl = "http://localhost:8090/ve/formatImg";
+	  var overlayUrl = "http://localhost:8090/ve/veImgOverlay?overlayImageURL=<IMAGEURL>&latitude=<LATITUDE>&longitude=<LONGITUDE>&action=Add";
+	  var tileServerUrl = "http://localhost:8090/ve/tiles?quadKey=%4";
+	  createVETreeObject();
+      function GetMap()
+      {
+         map = new VEMap('map3d');
+         map.LoadMap(new VELatLong(41.8969950321697, -71.1257674424723), 12, 'r', false, VEMapMode.Mode3D, true);
+         //map.Hide3DNavigationControl();
+         //map.HideDashboard();
+         map.AttachEvent("onchangeview", viewChanged);
+         map.AttachEvent("onmouseup", globeWindowEventListener);
+         //map.ShowMessage("Hello World");
+         //addOverlay("test",200,200,"http://localhost:8090/magma/images/magmalogo.png","this is great news");
+         //addControl("Hello",50,50,"<image src=\'http://localhost:8080/magma/images/magmalogo.png\'>");
+         //addPlacemark("hello world","nothing now",41.8969950321697, -71.1257674424723,0);
+         //addPolygon("poly","hello Poly","-71.126647698176,41.89647235056566,395.0 -71.12673752938316,41.8963825193585,395.0 -71.126647698176,41.896292688151334,395.0 -71.12655786696884,41.8963825193585,395.0 -71.126647698176,41.89647235056566,395.0");
+         //addPolygon("poly","hello Poly","-71.11550847760435,41.89577609909026,100 -71.1148931270484,41.8934790753669,200 -71.11042433882659,41.89227437131608,300 -71.10852301472501,41.89482992693624,400 -71.11188390840138,41.89741888199659,500 -71.11550847760435,41.89577609909026,0");
+         addTileLayer();
+      }
+
+      function viewChanged(mapEvent){
+            view = map.GetMapView();
+            topleft = view.TopLeftLatLong;
+            bottomright = view.BottomRightLatLong;
+            topright = view.TopRightLatLong;
+            bottomleft = view.BottomLeftLatLong;
+
+            bboxWest = topleft.Longitude;
+			bboxNorth = topleft.Latitude;
+			bboxSouth = bottomright.Latitude;
+			bboxEast = bottomright.Longitude;
+			queryString = "bboxWest="+bboxWest+"&bboxSouth="+bboxSouth+"&bboxEast="+bboxEast+"&bboxNorth="+bboxNorth;
+			sendToFlash("viewFormat",queryString);
+
+      }
+
+	function globeWindowEventListener(event) {
+		//alert("mouse clicked");
+		var range = map.GetMapView();
+		if(lastClickedAuxWindow != null && range != lastClickedRange) {
+			refreshAuxWindow(lastClickedAuxWindow);
+		} 
+		lastClickedRange = range;
+	}
+
+      function addLayer(name,description){
+        if(layersArr[name]!=null){
+        	removeLayer(name);
+        }
+        hasMovedToLocation = false;
+		layer1 = new VEShapeLayer();
+		layer1.SetTitle(description);
+		layersArr[name] = layer1;
+		map.AddShapeLayer(layer1);
+      }
+
+      function removeLayer(layerName){
+      	var layer = layersArr[layerName];
+      	map.DeleteShapeLayer(layer);
+      }
+
+  	  function addPlacemark(name,description,coordinatesString,style,layerName){
+  	     var layer = layersArr[layerName];
+//  	     alert(name+","+description+","+coordinatesString+","+style+","+layerName+","+layer);
+  	     if(layer==null) return;
+
+  	     var pointsArr = getCoordinatesArray(coordinatesString);
+         var shape = new VEShape(VEShapeType.Pushpin, pointsArr[0]);
+         shape.SetTitle(name);
+         shape.SetDescription(description);
+         if(style!=null && iconStyleArr[style]!=null){
+            //works only for 3d, change when adding code for 3d
+            custIcon = new VECustomIconSpecification();
+            if(iconStyleArr[style].color!=null && iconStyleArr[style].color!="")
+            	custIcon.BackColor = getVEColor(iconStyleArr[style].color);
+            custIcon.Image = getFormattedIconUrl(iconStyleArr[style]);
+         	shape.SetCustomIcon(custIcon);
+         }
+         layer.AddShape(shape);
+         if(!hasMovedToLocation){
+         	map.SetCenter(new VELatLong(latitude, longitude));
+         	hasMovedToLocation = true;
+         }
+      }
+
+      function addPolygon(name,description,coordinatesString,style,layerName){
+  	     var layer = layersArr[layerName];
+  	     if(layer==null) return;
+         var pointsArr = getCoordinatesArray(coordinatesString);
+		 var shape = new VEShape(VEShapeType.Polygon, pointsArr);
+         shape.SetTitle(name);
+         shape.SetDescription(description);
+         shape.SetLineToGround(true);
+         shape.HideIcon();
+         
+         if(style!=null){
+           if(lineStyleArr[style]!=null){
+           	 shape.SetLineColor(getVEColor(lineStyleArr[style].color));
+           }
+           if(polyStyleArr[style]!=null){
+           	 shape.SetFillColor(getVEColor(polyStyleArr[style].color));
+           }
+         }
+         layer.AddShape(shape);
+         if(!hasMovedToLocation){
+         	map.SetCenter(pointsArr[0]);
+         	hasMovedToLocation = true;
+         }
+      }
+
+      function addPolyline(name,description,coordinatesString,style,layerName){
+  	     var layer = layersArr[layerName];
+  	     if(layer==null) return;
+         var pointsArr = getCoordinatesArray(coordinatesString);
+      	 var shape = new VEShape(VEShapeType.Polyline, pointsArr);
+      	 shape.SetTitle(name);
+      	 shape.SetDescription(description);
+         shape.HideIcon();
+         if(style!=null){
+		 	if(lineStyleArr[style]!=null){
+		 		shape.SetLineColor(getVEColor(lineStyleArr[style].color));
+            }
+         }
+      	 layer.AddShape(shape);
+         if(!hasMovedToLocation){
+         	map.SetCenter(pointsArr[0]);
+         	hasMovedToLocation = true;
+         }
+      }
+
+	  function addTileLayer(){
+           var tileSourceSpec = new VETileSourceSpecification("imageOverlay", tileServerUrl);
+           tileSourceSpec.NumServers = 1;
+           tileSourceSpec.MinZoomLevel = 1;
+           tileSourceSpec.MaxZoomLevel = 19;
+           tileSourceSpec.Opacity = 1;
+           tileSourceSpec.ZIndex = 100;
+           map.AddTileLayer(tileSourceSpec, true);
+	  }
+
+	  function getCoordinatesArray(coordinatesString){
+	 	 var coordinatesArr = coordinatesString.split(" ");
+	 	 var pointsArr = new Array();
+		 for(i=0;i<coordinatesArr.length;i++){
+		 	 coord = coordinatesArr[i].split(",");
+			 pointsArr.push(new VELatLong(coord[1]*1,coord[0]*1,coord[2]*1));
+		 }
+		 return pointsArr;
+	  }
+
+	  function showNetworkLinkDialog(){
+         popupWindow("networkLinkWindow.html","NetworkLink",300,200,"no",100,100);
+	  }
+
+	  function networkLinkCallback(nwLinkUrl){
+	    sendToFlash("NetworkLink",nwLinkUrl);
+	  }
+
+	  function getFlashMovieObject(movieName){
+	    if (window.document[movieName]){
+	        return window.document[movieName];
+	    }
+	    if (navigator.appName.indexOf("Microsoft Internet")==-1){
+	      if (document.embeds && document.embeds[movieName])
+	        return document.embeds[movieName];
+	    }else{
+	      return document.getElementById(movieName);
+	    }
+	  }
+
+	  function sendToFlash(method,data) {
+         var flashMovie=getFlashMovieObject("veTree");
+	     flashMovie.sendTextToFlash(method,data);
+	  }
+
+	  function sendDescription(desc){
+	  	  alert(desc);
+	  }
+
+	  var lineStyleArr    = new Array();
+	  var iconStyleArr    = new Array();
+	  var listStyleArr    = new Array();
+	  var labelStyleArr   = new Array();
+	  var polyStyleArr    = new Array();
+	  var balloonStyleArr = new Array();
+
+	  function addLineStyle(id,color,width){
+	  	lineStyleArr[id] = new LineStyle(color,width);
+	  }
+
+	  function addIconStyle(id,color,scale,heading,icon){
+	  	iconStyleArr[id] = new IconStyle(color,scale,heading,icon);
+	  }
+
+	  function addListStyle(id,listItemType,bgColor,ItemIcon){
+	  	listStyleArr[id] = new ListStyle(listItemType,bgColor,ItemIcon);
+	  }
+
+	  function addLabelStyle(id,color,scale){
+	  	labelStyleArr[id] = new LabelStyle(color,scale);
+	  }
+
+	  function addPolyStyle(id,color){
+	  	polyStyleArr[id] = new PolyStyle(color);
+	  }
+
+	  function addBalloonStyle(id,bgColor,text){
+	  	balloonStyleArr[id] = new BalloonStyle(bgColor,text);
+	  }
+
+	  function getVEColor(htmlColor){
+	     //KML color is of the form aabbggrr
+	     Input = htmlColor.toUpperCase();
+   	     var a = parseInt(Input.substring(0, 2),16);
+	     var b = parseInt(Input.substring(2, 4),16);
+	     var g = parseInt(Input.substring(4, 6),16);
+	     var r = parseInt(Input.substring(6, 8),16);
+		 var alpha = Math.round(a/256*10)/10;
+	     return new VEColor(r, g, b, alpha);
+	  }
+
+	  function showOverlayInfo(overlayName,description){
+	  	 hRefLink = "infoWindow.html?infoHtml="+escape(description);
+	     popupWindow(hRefLink,"infoWindow",300,200,"no",100,100);
+	  }
+
+	  function addOverlay(overlayName,top,left,iconPath,description){
+	    hRefLink = "infoWindow.html?infoHtml="+escape(description);
+	    onClickScript = "popupWindow(\""+hRefLink+"\",\"infoWindow\",300,200,\"no\",100,100);";
+	    innerHtml = "<image src='"+iconPath+"' onClick='"+onClickScript+"'>";
+	    addControl(overlayName,top,left,innerHtml);
+	  }
+
+	  function getFormattedIconUrl(iconStyle){
+	    var query = "?";
+		query = query + "file="+iconStyle.icon;
+		if(iconStyle.scale !=null){
+			query = query + "&scale="+iconStyle.scale;
+		}
+		if(iconStyle.color !=null){
+			query = query + "&color="+iconStyle.color;
+		}
+	    return formatterUrl + query;
+	  }
+
+	  /*
+	   * adds a screen overlay control on top of the map
+	   */
+	  function addControl(controlName,top,left,innerHtml){
+	    var el = document.createElement("div");
+	 	el.id = controlName;
+		el.style.top = top;
+		el.style.left = left;
+		el.style.overflow = "visible";
+		el.style.backgroundColor = "transparent";
+		el.innerHTML = innerHtml;
+		map.AddControl(el);
+		addShim(el);
+	  }
+
+	  function addShim(el){
+		var shim = document.createElement("iframe");
+		shim.id = "myShim" + el.id;
+		shim.frameBorder = "0";
+		shim.style.position = "absolute";
+		shim.style.zIndex = "1";
+		shim.style.top  = el.offsetTop;
+		shim.style.left = el.offsetLeft;
+		shim.width  = el.offsetWidth;
+		shim.height = el.offsetHeight;
+//		shim.allowTransparency = "true";
+		shim.style.backgroundColor = "transparent";
+		el.shimElement = shim;
+		el.parentNode.insertBefore(shim, el);
+	  }
+	  
+	  function submitLocation(address){
+	  	map.Find(null,address);
+	  }
+	  
+	function createVETreeObject(){
+		var flashvars = {};
+		var params = {serverUrl: "http://localhost:8090/magma/",
+		              category: "ESM"};
+		var attributes = {
+			id: "searchWin",
+			name: "search",
+			style: "border: 1px solid silver; height: 499px; width: 300px; position:absolute; left:10px;top:215px;"
+		};
+	
+		var veTreeUrl = "VETree2.swf";
+		swfobject.embedSWF(veTreeUrl, "veTree", "300", "500", "9.0.0",flashvars, params, attributes);
+	}
+	
+//************************Aux Window Script
+	function addAuxObject(kmlName,name,url){
+//	    alert(url);
+		for(i=0;i<auxObjects.length;i++){
+			if(auxObjects[i].kmlName!=kmlName){
+				auxObjects.pop();
+			}else if((auxObjects[i].kmlName==kmlName) && (auxObjects[i].name==name)){
+				return;				
+			}
+		}
+		auxObjects.push({kmlName:kmlName,name:name,url:url});
+		refreshButtons();
+	}
+
+	function refreshButtons(){
+		buttonDiv = document.getElementById('buttonWin');
+		innerHtmlCode = "<table width='100%' class='buttonTABLE'>";
+		innerHtmlCode+="<tr width='150' class=\"buttonTR\"><td align='left'>";
+		for(i=0;i<auxObjects.length;i++){
+			innerHtmlCode+=	"<input type='button' class='btn' onclick=\"slideAuxWindow('" + auxObjects[i].name + "');\"  name='"+auxObjects[i].name+"' value='"+auxObjects[i].name+"'/>&nbsp;&nbsp;";
+		}
+		innerHtmlCode+="</td><td width='*'></td></tr></table>"
+		buttonDiv.innerHTML = innerHtmlCode;
+	}
+	
+	function clearButtons(){
+		auxObjects = new Array();
+		buttonDiv = document.getElementById('buttonWin');
+		buttonDiv.innerHTML = "";
+		swfobject.removeSWF('AuxWin');
+		slideup('auxWindowSlide');
+		refreshButtons();
+	}
+	
+	
+	function slideAuxWindow(winName){
+		refreshAuxWindow(winName);
+		showHideAux(winName);
+	}
+	
+	function refreshAuxWindow(winName) {
+	    setProperSessionId();
+		for(i=0;i<auxObjects.length;i++){
+			if(auxObjects[i].name==winName){
+				swfobject.removeSWF('AuxWin');
+				currentNetworkLinkName = auxObjects[i].kmlName;
+				createAuxObject('auxWindow1',winName,auxObjects[i].url);
+			}
+		}
+	}
+	
+	function setSessionId(sessId){
+		sessionId = sessId;
+	}
+	
+	function setProperSessionId(){
+		for(i=0;i<auxObjects.length;i++){
+			tmpUrl = auxObjects[i].url;
+			if(tmpUrl.indexOf(sessionId)!= -1)continue;
+			sessionidPos = tmpUrl.indexOf("ecosid=");
+			if(sessionidPos!=-1){
+				firstPart = tmpUrl.substring(0,sessionidPos+7);
+				secondPart = tmpUrl.substring(tmpUrl.indexOf("&",sessionidPos));
+				auxObjects[i].url = firstPart+sessionId+secondPart
+			}
+		}
+	}	
+	
+	function showHideAux(winName){
+	  var auxWindowObj = document.getElementById('auxWindowSlide');
+	  if(auxWindowObj.style.display == "none"){
+	    slidedown('auxWindowSlide');
+	    lastClickedAuxWindow = winName;
+	  }else if(auxWindowObj.style.display != "none" && lastClickedAuxWindow == winName){
+	    slideup('auxWindowSlide');
+	    lastClickedAuxWindow = null;	  	
+	  }else{
+		lastClickedAuxWindow = winName;
+	  }
+	}
+	
+	function createAuxObject(window,name,url){
+		var flashvars = {};
+		var params = {};
+		var attributes = {
+			id: "AuxWin",
+			name: "AuxWin",
+			quality: "high",
+			bgcolor: "#FFFFFFFF"
+		};
+		swfobject.embedSWF(url, window, "900", "420", "9.0.0",flashvars, params, attributes);
+	}
+//***********Call Back Functions
+	function _lookat(coordStr) {
+		if(coordStr != null) {
+			var coords = coordStr.split(",");
+            var lat =  coords[1];
+            var lon =  coords[0];
+            var altitude = coords[3];
+            map.SetCenter(new VELatLong(lat, lon));
+            map.SetAltitude(altitude);
+		}
+	}
+	
+	function _refresh() {
+		if(currentNetworkLinkName) {
+			sendToFlash("refreshLink",currentNetworkLinkName);
+		}
+	}
+      </script>
+   </head>
+   <body onload="GetMap();">
+	<table class="masterTABLE">
+	<tr>
+		<td>
+			<div style="height: 499px; width: 300px;">
+				<div id="veTree" align="bottom"></div>
+			</div>
+		</td>
+		<td>
+			<div id='map3d_container' style='border: 1px solid silver; height: 499px; width: 900px;' align="top">
+				<div id='map3d' class='mapClass2'></div>
+			</div>
+		</td>
+	</tr>
+	<tr><td colspan="2">
+		<div id="buttonWin" style='height:15x; width:1210px;'>
+
+		</div>
+	</td></tr>
+	<tr><td colspan="2">
+		<div id='auxWindowSlide' style='display:none; overflow:hidden;height:420px; width:1100px;'>
+			<div id='auxWindow1' style='display:none; overflow:hidden;height:420px; width:1100px;'></div>
+		<div>
+	</td></tr>	
+	</table>
+   </body>
+</html>

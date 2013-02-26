@@ -1,0 +1,40 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/masterdata
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T07:16:29.038215Z
+176
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+MasterData.hbm.xml
+file
+
+
+
+
+2013-02-05T11:02:27.347940Z
+55bb45f1ead5b347945d8fe5a03d176c
+2012-09-27T07:16:29.038215Z
+176
+veladitya
+

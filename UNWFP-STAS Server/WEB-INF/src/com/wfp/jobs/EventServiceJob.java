@@ -3,7 +3,7 @@ package com.wfp.jobs;
 import java.util.Date;
 import java.util.List;
 
-import lu.hitec.pss.soap.event.provider._5_x.NotificationStatusSummary;
+import lu.hitec.pss.soap.event.provider._10_x.NotificationStatusSummary;
 
 import com.enterprisehorizons.util.Logger;
 import com.enterprisehorizons.util.StringUtils;
@@ -28,14 +28,17 @@ public class EventServiceJob implements CustomJobTask {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
-		Logger.info("Executing Event Service.... ", EventServiceJob.class);
+		System.out.println("## START EventServiceJob.executeCustomTask : Executing Event Service.... ");
+		Logger.info("Executing Event Service.... ", EventServiceJob.class);		
 		getEventStatus();
 		Logger.info("Completed Executing Event Service.... ", EventServiceJob.class);
+		System.out.println("## END EventServiceJob.executeCustomTask : Executing Event Service.... ");
 		return true;
 	}
 
 
 	private void readMails() {
+		System.out.println("## START EventServiceJob.readMails : .... ");
 		Renderable[] msg = MailRetrieverUtils.getMessages("pop.service.emergency.lu", "sti",
 				"gXx8eyJ6OO6DzJRlnZEz", "pop3");
 		if(msg != null){
@@ -50,24 +53,29 @@ public class EventServiceJob implements CustomJobTask {
 				}				
 			}
 		}
+		System.out.println("## END EventServiceJob.readMails : .... ");
 	}
 	
 	private void getEventStatus(){
 		Logger.info("Event Service.... [Retrieving events from Alert Service table ]", EventServiceJob.class);
+		System.out.println("## START EventServiceJob.getEventStatus : .... ");
 		AlertService eventService = new AlertService();
 		List<AlertService> eventServiceList = eventService.retrieveAll();
 		
 		if(eventServiceList != null && eventServiceList.size()>0){
 			Logger.info("Event Service List.... ["+eventServiceList.size()+" ]", EventServiceJob.class);
+			System.out.println("Event Service List.... ["+eventServiceList.size()+" ]" );
 			for(AlertService tempEvent: eventServiceList){
 				if(!StringUtils.isNull(tempEvent.getEventRefId())){
 					Logger.info("Processing for Event Id ["+tempEvent.getEventRefId()+" ]", EventServiceJob.class);
 					NotificationStatusSummary statusSummary = EventServiceUtils.getNotificationStatusSummary(tempEvent.getEventRefId());
 					if(statusSummary != null && !StringUtils.isNull(statusSummary.getResponseBody())){
 						Logger.info("Processed for staus summary ["+tempEvent.getEventRefId()+" ]", EventServiceJob.class);
+						System.out.println("Processed for staus summary ["+tempEvent.getEventRefId()+" ]");
 						String actualResponse = statusSummary.getResponseBody();
 						Logger.info("Actual Response ["+actualResponse+" ]", EventServiceJob.class);
-						if(statusSummary.getResponseBody().lastIndexOf("-----Original Message-----") > -1){
+						System.out.println("Actual Response ["+actualResponse+" ]");
+						if(actualResponse.lastIndexOf("-----Original Message-----") > -1){
 							actualResponse = statusSummary.getResponseBody().substring(0, statusSummary.getResponseBody().lastIndexOf("-----Original Message-----"));
 						}
 						tempEvent.setReceivedMsg(actualResponse);
@@ -79,6 +87,7 @@ public class EventServiceJob implements CustomJobTask {
 				
 			}
 		}
+		System.out.println("## END EventServiceJob.getEventStatus : .... ");
 	}
 	
 }

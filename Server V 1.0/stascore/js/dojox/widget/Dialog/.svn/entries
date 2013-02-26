@@ -1,0 +1,55 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dojox/widget/Dialog
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Dialog.html
+file
+
+
+
+
+2013-02-05T11:01:48.740940Z
+e40be0a7d8f196349c91f1686a539c67
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+images
+dir
+
+Dialog.css
+file
+
+
+
+
+2013-02-05T11:01:48.749940Z
+84f17e078461ba6e5f724f12f49ff19d
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+

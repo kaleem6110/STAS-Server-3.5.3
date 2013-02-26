@@ -9,15 +9,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lu.hitec.pss.soap.sensor.client._5_x.DeviceStatus;
-import lu.hitec.pss.soap.sensor.client._5_x.LocationRange;
-import lu.hitec.pss.soap.sensor.client._5_x.LocationValue;
-import lu.hitec.pss.soap.sensor.client._5_x.RangeLimit;
-import lu.hitec.pss.soap.sensor.client._5_x.SensorSrvClientPortBindingStub;
-import lu.hitec.pss.soap.sensor.client._5_x.SensorSrvClient_Service;
-import lu.hitec.pss.soap.sensor.client._5_x.SensorSrvClient_ServiceLocator;
-import lu.hitec.pss.soap.sensor.client._5_x.SubRangeType;
-import lu.hitec.pss.soap.sensor.client._5_x.TimeRange;
+import lu.hitec.pss.soap.sensor.client._8_x.DeviceStatus;
+import lu.hitec.pss.soap.sensor.client._8_x.LocationRange;
+import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._8_x.RangeLimit;
+import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClientPortBindingStub;
+import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClient_Service;
+import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClient_ServiceLocator;
+import lu.hitec.pss.soap.sensor.client._8_x.SubRangeType;
+import lu.hitec.pss.soap.sensor.client._8_x.TimeRange;
 
 import org.apache.axis.AxisFault;
 
@@ -25,7 +25,7 @@ import com.enterprisehorizons.constants.CommonConstants;
 import com.enterprisehorizons.exception.EHRuntimeException;
 import com.enterprisehorizons.util.Logger;
 import com.wfp.security.form.DeviceBean;
-
+import com.enterprisehorizons.util.Logger;
 
 public class SensorServiceUtils implements IEPICConstants{    
 	
@@ -69,16 +69,19 @@ public class SensorServiceUtils implements IEPICConstants{
 	
 	@SuppressWarnings("unchecked")
 	public static Map<String, List<DeviceBean>> getEmergencySpotDtls( Date startDate, Date endDate, int lpCount, Map<String, String> paramsMap){
+		Logger.error("START - SensorServiceUtils.getEmergencySpotDtls", SensorServiceUtils.class);
+		//System.out.println("START - SensorServiceUtils.getEmergencySpotDtls");
 		SensorSrvClientPortBindingStub stub = null;
 		try {
 			Map<String, List<DeviceBean>> map = null;
 			stub = getServiceLocatorStub();
-			
+			//System.out.println("##### stub :"+stub );
 			DeviceStatus[] devices = null;
 			try { 
 				devices = stub.getDeviceStatus();
+				//System.out.println("##### devices :"+devices );
 			} catch (RemoteException e) {
-				Logger.error("Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
+				Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
 				e.printStackTrace();
 				throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
 			}
@@ -96,30 +99,40 @@ public class SensorServiceUtils implements IEPICConstants{
 				
 				RangeLimit rl = getRangeLimit(startDate, endDate, subRangetype==null?SubRangeType.CONTINUOUS_LATEST:subRangetype, lpCount);
 				//RangeLimit rl1 = getRangeLimit(startDate, endDate, SubRangeType.CONTINUOUS_OLDEST);
-				 
+				//System.out.println("##### devices.length :"+devices.length );
 				for(int i=0; i<devices.length;i++){
-					
 					if(devices[i].getId().contains("nrap") || devices[i].getId().contains("nreg")){
 						continue;
 					}
 					LocationRange lr = null;
 					try{
 						
-						lr = stub.getLocationRange(devices[i].getId(), rl);
+						//FIXIT					
+						String missionName="Dubai_Exercises";
+						//System.out.println("LDAPUtils.getSSOToken()"+LDAPUtils.getSSOToken()+": devices[i].getId():"+devices[i].getId()+"rl :start :"+rl.getTimeRange().getStart() + ":end: "+rl.getTimeRange().getEnd() );
+						lr = stub.getLocationRange(LDAPUtils.getSSOToken(),devices[i].getId(), missionName,rl);
+						if(lr!=null)
+							{
+								//System.out.println(" lr :"+lr );
+								//System.out.println(" ###### devices[i].getId() :"+devices[i].getId()+":paramsMap.get(staffresourcetype) "+paramsMap.get("staffresourcetype") );
+								if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
+									setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
+									//setAllEmergencyHotspots(devices[i].getId(), lr1, allStaffDevices);
+								}else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
+									setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
+									//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
+								}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
+									setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
+									//setAllEmergencyHotspots(devices[i].getId(), lr1,  allAirplaneDevices);
+								}
+							}
+						
 					}catch(Exception e){
 						Logger.error("Error in retrieving device details ["+devices[i].getId()+"]", SensorServiceUtils.class.getName(), e);
+						System.out.println(" ###### Error in retrieving device details ["+devices[i].getId()+"]");
 						continue;
 					}
-					if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1, allStaffDevices);
-					}else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
-					}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1,  allAirplaneDevices);
-					}
+					
 					
 				}
 				
@@ -163,6 +176,7 @@ public class SensorServiceUtils implements IEPICConstants{
 		// TODO Auto-generated method stub
 		
 		LocationValue[] lv = lr != null ?lr.getVal():null;
+		
 		if(lv != null){
 			
 			for (int j=0; j < lv.length; j++){
@@ -248,12 +262,14 @@ public class SensorServiceUtils implements IEPICConstants{
 	}
 	
 	public static SensorSrvClientPortBindingStub  getServiceLocatorStub(){   
-		
+		Logger.error("START - SensorServiceUtils.getServiceLocatorStub", SensorServiceUtils.class);
+		System.out.println("START - SensorServiceUtils.getServiceLocatorStub"+WFPConfigUtils.getWFPConfigValue("soapgps") );
 		// AxisProperties.setProperty("axis.socketSecureFactory","com.spacetimeinsght.webservice.ssl.factory.CertSSLSocketFactory");
 		SensorSrvClient_Service service =  new SensorSrvClient_ServiceLocator();		
-		  
+		System.out.println("service : "+service );
+		SensorSrvClientPortBindingStub sensorSrvClientPortBindingStub=null;
 		try {
-			return new SensorSrvClientPortBindingStub( 
+			sensorSrvClientPortBindingStub = new SensorSrvClientPortBindingStub( 
 					new java.net.URL(WFPConfigUtils.getWFPConfigValue("soapgps") == null?"http://middleware-qa.service.emergency.lu/sensorservice/out/soap/SensorSrvClient":WFPConfigUtils.getWFPConfigValue("soapgps")),service) ;
 		} catch (AxisFault e) {
 			Logger.error("Error occured while creating stub ["+e.getMessage()+"]", SensorServiceUtils.class);
@@ -262,7 +278,8 @@ public class SensorServiceUtils implements IEPICConstants{
 			Logger.error("Error occured while creating stub ["+e.getMessage()+"]", SensorServiceUtils.class);
 			e.printStackTrace();
 		}
-		return null;
+		System.out.println("sensorSrvClientPortBindingStub : "+sensorSrvClientPortBindingStub );
+		return sensorSrvClientPortBindingStub;
 		
 	}
 	public static void main(String args[]){

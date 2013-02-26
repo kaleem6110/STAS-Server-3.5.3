@@ -1,0 +1,82 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dojox/embed
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Object.js
+file
+
+
+
+
+2013-02-05T11:02:02.272940Z
+b8bae0a3e14862aa301ad27bfe44f2d8
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+Quicktime.js
+file
+
+
+
+
+2013-02-05T11:02:02.284940Z
+66e67b337b2e6fdd5e0bf3bb6155635b
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+Flash.js
+file
+
+
+
+
+2013-02-05T11:02:02.299940Z
+b31898b3a378611167cb76076782c370
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+resources
+dir
+
+IE
+dir
+
+README
+file
+
+
+
+
+2013-02-05T11:02:02.313940Z
+ce9a1bcc1fb146308cd70b0b378396d5
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+

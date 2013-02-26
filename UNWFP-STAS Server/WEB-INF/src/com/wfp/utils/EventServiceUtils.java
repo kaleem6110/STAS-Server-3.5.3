@@ -6,15 +6,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-import lu.hitec.pss.soap.event.provider._5_x.EventDescription;
-import lu.hitec.pss.soap.event.provider._5_x.EventRecipient;
-import lu.hitec.pss.soap.event.provider._5_x.EventSrvProviderPortBindingStub;
-import lu.hitec.pss.soap.event.provider._5_x.EventSrvProvider_Service;
-import lu.hitec.pss.soap.event.provider._5_x.EventSrvProvider_ServiceLocator;
-import lu.hitec.pss.soap.event.provider._5_x.EventStatusSummary;
-import lu.hitec.pss.soap.event.provider._5_x.Evt;
-import lu.hitec.pss.soap.event.provider._5_x.NotificationStatusSummary;
-import lu.hitec.pss.soap.event.provider._5_x.Severity;
+import lu.hitec.pss.soap.event.provider._10_x.EventDescription;
+import lu.hitec.pss.soap.event.provider._10_x.EventRecipient;
+import lu.hitec.pss.soap.event.provider._10_x.EventSrvProviderPortBindingStub;
+import lu.hitec.pss.soap.event.provider._10_x.EventSrvProvider_Service;
+import lu.hitec.pss.soap.event.provider._10_x.EventSrvProvider_ServiceLocator;
+import lu.hitec.pss.soap.event.provider._10_x.EventStatusSummary;
+import lu.hitec.pss.soap.event.provider._10_x.Evt;
+import lu.hitec.pss.soap.event.provider._10_x.NotificationStatusSummary;
+import lu.hitec.pss.soap.event.provider._10_x.Severity;
 
 import org.apache.axis.AxisFault;
 
@@ -273,7 +273,8 @@ public class EventServiceUtils {
 		evt.setSeverity(Severity.CRITICAL);
 		
 		try {
-			return  stub.publishEvent(evt, null);
+			//FIXIT
+			return  stub.publishEvent( "h3u49307403-e443kjqwfd-343kwz7yh3st", evt);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -284,8 +285,8 @@ public class EventServiceUtils {
 	
 	public static String getEventStatus(String eventRef){
 		EventSrvProviderPortBindingStub stub = getServiceLocatorStub();
-		try {
-			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(eventRef);
+		try { //FIXIT - inserted null, below line
+			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(null, eventRef);
 			NotificationStatusSummary[] statusSummary = eventStatusSummary.getNotificationStatusSummaries();
 			if(statusSummary != null){
 				return statusSummary[0].getNotificationStatus().getValue();
@@ -300,8 +301,8 @@ public class EventServiceUtils {
 	public static NotificationStatusSummary getNotificationStatusSummary(String eventRef){
 		Logger.info("Getting notification summary  ["+eventRef+" ]", EventServiceUtils.class);
 		EventSrvProviderPortBindingStub stub = getServiceLocatorStub();
-		try {
-			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(eventRef);
+		try {//FIXIT - inserted nulll, in below line
+			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(null,eventRef);
 			Logger.info("Got notification summary  ["+eventStatusSummary+" ]", EventServiceUtils.class);
 			NotificationStatusSummary[] statusSummary = eventStatusSummary!=null?eventStatusSummary.getNotificationStatusSummaries():null;
 			if(statusSummary != null){

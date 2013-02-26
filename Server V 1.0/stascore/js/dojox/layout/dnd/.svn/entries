@@ -1,0 +1,52 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dojox/layout/dnd
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Avatar.js
+file
+
+
+
+
+2013-02-05T11:01:52.498940Z
+e87b6dbec301b172114e488fb86c9669
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+PlottedDnd.js
+file
+
+
+
+
+2013-02-05T11:01:52.509940Z
+b8e405a9872283c15fd0328a89e4573f
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+

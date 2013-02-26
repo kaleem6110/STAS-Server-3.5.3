@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem
+END
+StormIntensity.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/StormIntensity.hbm.xml
+END
+Substation.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/Substation.hbm.xml
+END
+TieLinePIData.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/TieLinePIData.hbm.xml
+END
+SubstationPIData.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/SubstationPIData.hbm.xml
+END
+PricingNode.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/PricingNode.hbm.xml
+END
+TieLine.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/u/veladitya/code/!svn/ver/176/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings/stem/TieLine.hbm.xml
+END

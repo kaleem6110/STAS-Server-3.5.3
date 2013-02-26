@@ -62,6 +62,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		System.out.println("START SoapTrackingJob.executeCustomTask ");
 		Parameter[] params = parameters.getParameter();
 		
 		if(params != null){
@@ -73,7 +74,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 		
 		
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
-		
+		System.out.println("END SoapTrackingJob.executeCustomTask ");
 		return true;
 	}
 	  
@@ -90,11 +91,11 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 
 	@SuppressWarnings("unchecked")
 	private synchronized boolean getSoapTrackingDtls(int lpCount){
-		
+		System.out.println("START SoapTrackingJob.getSoapTrackingDtls : lpCount "+lpCount );
 		Map<String, List<DeviceBean>> map = SensorServiceUtils.getEmergencySpotDtls(getStartDate().getTime(), getEndDate().getTime(), lpCount, paramsMap);
 		startDateTime = getStartDate().getTime();
 		endDateTime = getEndDate().getTime();
-		//System.out.println("Soap Tracking "+map.size());
+		System.out.println("-------SoapTrackingJob.getSoapTrackingDtls map.size() : "+map.size());
 		if(map != null){
 			for (Map.Entry<String, List<DeviceBean>> entry : map.entrySet())	{
 				Map<String, Map<String, List<DeviceBean>>> deviceDayDtlsMap = null;
@@ -103,6 +104,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 					Calendar startDate = getStartDate();
 					while(startDate.getTime().before(getEndDate().getTime())){
 						for(DeviceBean tempBean: entry.getValue()){
+							//System.out.println("###tempBean : "+tempBean );
 							if(tempBean.getDatetime().after(startDate.getTime()) 
 									&& tempBean.getDatetime().before(getTempEndDate(startDate))){
 								String key = DateUtils.format(startDate.getTime());
@@ -144,6 +146,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 				
 			}
 		}
+		System.out.println("END SoapTrackingJob.getSoapTrackingDtls : lpCount "+lpCount );
 		return true;
 
 	}

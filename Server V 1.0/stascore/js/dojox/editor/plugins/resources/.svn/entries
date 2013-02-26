@@ -1,0 +1,67 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dojox/editor/plugins/resources
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+editorPlugins.css
+file
+
+
+
+
+2013-02-05T11:01:56.024940Z
+89a9ed2c96b8273bdd37ef0a29d9e32c
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+insertTable.html
+file
+
+
+
+
+2013-02-05T11:01:56.033940Z
+dd64735c8198489e2ba84d9da866052b
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+modifyTable.html
+file
+
+
+
+
+2013-02-05T11:01:56.042940Z
+6f34e95f126105d733ae47e61fc36102
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+images
+dir
+

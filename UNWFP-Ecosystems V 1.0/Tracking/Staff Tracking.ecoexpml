@@ -30,7 +30,7 @@
                     <value><![CDATA[Name]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">

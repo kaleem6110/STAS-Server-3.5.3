@@ -1,0 +1,229 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2013-01-31T11:44:14.203030Z
+195
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+media
+dir
+
+.tomcatplugin
+file
+
+
+
+
+2013-02-05T11:19:06.503208Z
+e3c6dc157dd163b01b338ca4f77a9fbd
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+charts
+dir
+
+themes
+dir
+
+home
+dir
+
+testCustomJbossCache.jsp
+file
+
+
+
+
+2013-02-05T11:19:06.517209Z
+d20edd1b898d921168af2a56f8a49e88
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+war_deployer.xml
+file
+
+
+
+
+2013-02-05T11:19:06.525210Z
+550cfb5c3675dfadc13f373cbef2e501
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+build.num
+file
+
+
+
+
+2013-02-05T11:19:06.534211Z
+d381797783473ee0bfb44393ef559ffa
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+ecogroupmapping
+dir
+
+servercustom_jarbuilder.properties
+file
+
+
+
+
+2013-02-05T11:19:06.541212Z
+451076f17622036afc26ed37828c50fb
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+esri
+dir
+
+ecoweb
+dir
+
+images
+dir
+
+mobile
+dir
+
+MANIFEST.MF
+file
+
+
+
+
+2013-02-05T11:19:06.549212Z
+d2a549162b03843c0836e2f78f87080c
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+processmanager
+dir
+
+ve
+dir
+
+tablet
+dir
+
+js
+dir
+
+situationroom
+dir
+
+models
+dir
+
+WEB-INF
+dir
+
+war_deployer.properties
+file
+
+
+
+
+2013-02-05T11:19:06.556213Z
+92bb703dcff89bc65b82d2028e3c3e9f
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+ecowebIndex.jsp
+file
+
+
+
+
+2013-02-05T11:19:06.564214Z
+6ca6ec0a12a3d40214a9f1cb74935221
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+admin
+dir
+
+common
+dir
+
+css
+dir
+
+sti.jsp
+file
+
+
+
+
+2013-02-05T11:19:06.571215Z
+208b6225daafe34836afdb3b184416de
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+ge
+dir
+
+jsp
+dir
+
+deploy
+dir
+
+jobs
+dir
+
+dbadmin
+dir
+
+swf
+dir
+
+uiconfig
+dir
+
+servercustom_jarbuilder.xml
+file
+
+
+
+
+2013-02-05T11:19:06.579215Z
+d7a03563ba0a550e029bea741a092bb3
+2012-09-27T06:49:46.374369Z
+172
+veladitya
+
+security
+dir
+

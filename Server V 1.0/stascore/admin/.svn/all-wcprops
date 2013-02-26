@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin
+END
+monitor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/monitor.jsp
+END
+exportmasterdata.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/exportmasterdata.jsp
+END
+excel2db.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/excel2db.jsp
+END
+admin.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/admin.jsp
+END
+processmaintaindata.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/processmaintaindata.jsp
+END
+shp2dbmappingview.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappingview.jsp
+END
+maintaindata.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/maintaindata.jsp
+END
+monitorHttpSession.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/monitorHttpSession.jsp
+END
+sessionmonitor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/sessionmonitor.jsp
+END
+stasAuthorization.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/stasAuthorization.jsp
+END
+AdminMain.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/AdminMain.jsp
+END
+processshp2dbmapping.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/processshp2dbmapping.jsp
+END
+cepConfiguration.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/cepConfiguration.jsp
+END
+shp2dbmappingexport.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappingexport.jsp
+END
+connectionPoolMonitor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/connectionPoolMonitor.jsp
+END
+shp2dbmappingupdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappingupdate.jsp
+END
+processcache.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/processcache.jsp
+END
+cache.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/cache.jsp
+END
+shp2dbmappingadd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappingadd.jsp
+END
+shp2dbmappingaddselect.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappingaddselect.jsp
+END
+shp2dbmappinghome.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/shp2dbmappinghome.jsp
+END
+monitorCache.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/monitorCache.jsp
+END
+displayVersion.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/displayVersion.jsp
+END
+cachemonitor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/cachemonitor.jsp
+END
+viewTableData.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/viewTableData.jsp
+END
+processTableData.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/processTableData.jsp
+END
+importmasterdata.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/importmasterdata.jsp
+END
+generateecolinks.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/172/trunk/Server%20V%201.0/stascore/admin/generateecolinks.jsp
+END

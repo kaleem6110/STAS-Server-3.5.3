@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!-- Configuration File for STAS Mobile Portal -->
+<struts-config>
+  <data-sources>
+  </data-sources>
+  <!-- ================================================ Form Bean Definitions -->
+  <form-beans>
+    <form-bean name="loginForm" type="com.spacetimeinsight.security.form.LoginForm"/>
+	<form-bean name="changePasswordForm" type="com.spacetimeinsight.security.form.ChangePasswordForm"/>  
+  </form-beans>
+  <global-forwards>
+    <forward name="toAdminHome" path="/mobile/admin/adminMain.jsp"/>
+  </global-forwards>
+  <!-- =========================================== Action Mapping Definitions -->
+  <action-mappings>
+    <action path="/loginAction" name="loginForm" type="com.spacetimeinsight.security.action.LoginAction" scope="request">
+      <forward name="loginSucess" path="Home.Page"/>
+      <forward name="promptPassword" path="PromptPasswordChange.Layout"/>
+      <forward name="loginFailure" path="/security/login.jsp"/>
+    </action>
+    
+	<action  path="/changePasswordAction" name="changePasswordForm" type="com.spacetimeinsight.security.action.ChangePasswordAction" scope="request">
+       <forward name="passHome" path="/security/changePassword.jsp"/>
+        <forward name="showChangePassPage" path="PromptPasswordChange.Layout"/>
+        <forward name="showChangePassPageContext" path="PromptPasswordChangeContext.page"/>
+     </action>
+	
+    <action path="/logout" type="org.apache.struts.actions.ForwardAction" parameter="/mobile/security/login.jsp"/>
+    
+    <action path="/adminMain" type="org.apache.struts.actions.ForwardAction" parameter="/mobile/admin/adminMain.jsp" />
+   
+</action-mappings>  
+  <!-- Added the Controller. -->
+  <controller processorClass="com.spacetimeinsight.security.STIRequestProcessor"/>
+ 
+ <!-- ======================================== Message Resources Definitions -->
+  <message-resources parameter="config.EcoWebApplicationResources" key="ecoweb"/>
+  <message-resources parameter="properties.DatasourceApplicationResources" key="datasource"/>
+  <message-resources parameter="dbadmin.DbconfigApplicationResources"/>
+  <message-resources parameter="dbadmin.field.FieldResources" key="dbfield"/>
+  <message-resources parameter="groupmapping.GroupMappingResources" key="GroupMapping"/>
+  <message-resources parameter="uploaddelete.UploadDeleteResources" key="delete"/>
+  <message-resources parameter="undeploy.UndeployResources" key="undeploy"/>
+  <message-resources parameter="datasource.DatasourceConfigApplicationResources" key="ds"/>
+  <message-resources parameter="uiconfig.UiconfigResources" key="uiconfig"/>
+  <message-resources parameter="jobs.JobsConfigApplicationResources" key="jobs"/>
+  <message-resources parameter="admin.AdminResources" key="admin"/>
+  <message-resources parameter="admin.StiBuild" key="stibuild"/>
+  <message-resources parameter="admin.buildinfo" key="buildinfo"/>
+  <message-resources parameter="cache.CacheConfigApplicationResources" key="cache"/>
+  <message-resources parameter="kmlgenerate.KmlGenConfigApplicationResources" key="kmlGen"/>
+  <message-resources parameter="shpTodbmapping.ShpdDBMapApplicationResources" key="shpDbMap"/>
+  <message-resources parameter="shapeToDataBase.ShpdDBApplicationResources" key="shptoDb"/>
+  <message-resources parameter="security.SecurityResources" key="security"/>
+  <message-resources parameter="rules.RulesResources" key="rules"/>
+  <message-resources parameter="j2eeDatasources.j2eeDatasourcesApplicationResources" key="j2eeDS"/>
+  <message-resources parameter="commonvalidation.SpecialCharacterValidationApplicationResources" key="splchvalidation"/>
+  <message-resources parameter="exportimport.export" key="export"/>
+  <message-resources parameter="exportimport.import" key="import"/>
+
+  <!-- =============================================== Plug Ins Configuration -->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-defs-mobile.xml"/>
+    <set-property property="moduleAware" value="true"/>
+  </plug-in>
+  
+  <!-- disabling the validator plugin  
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+   	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validator-mobile.xml"/>
+  </plug-in>
+   -->
+  
+</struts-config>

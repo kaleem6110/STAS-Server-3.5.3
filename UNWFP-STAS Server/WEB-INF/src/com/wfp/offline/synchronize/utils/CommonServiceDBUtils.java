@@ -878,17 +878,17 @@ public class CommonServiceDBUtils implements ISynchronizationServiceConstants{
 			List<UserPreferences> preferencesList = null; 
 			
 			if(JAASConstants.OPEN_LDAP_DATA_SOURCE.equalsIgnoreCase(JAASAuthenticationTypeInitializer.getInstance().getJAASAuthenticationType())){
-				if(StringUtils.isNull(log.getUserUniqueId())){
+				/*if(StringUtils.isNull(log.getUserUniqueId())){
 					preferencesList = Arrays.asList(RBRegionsUtils.getUserModulePreferences(domainId, 
 							languageId, -2,log.getUserUniqueId(), log.getModuleId().intValue(), UserPreferenecsHelper.PREFERENCE_ID_RBREGIONS) ) ;
 				}else {
 					preferencesList =Arrays.asList(RBRegionsUtils.getUserModulePreferences(domainId, 
-							languageId, -1,log.getUserUniqueId(), log.getModuleId().intValue(), UserPreferenecsHelper.PREFERENCE_ID_RBREGIONS) ) ;
-				}
-			}else {
+							languageId, -1L, log.getModuleId().toString(), UserPreferenecsHelper.PREFERENCE_ID_RBREGIONS) ) ;
+				}*/
+			}/*else {
 				preferencesList = Arrays.asList(RBRegionsUtils.getUserModulePreferences(domainId, 
 						languageId, log.getUserId(),log.getUserUniqueId(), log.getModuleId().intValue(), UserPreferenecsHelper.PREFERENCE_ID_RBREGIONS) ) ;
-			}
+			}*/
 			
 			if(preferencesList != null){ //if there are some regions then ...
 				

@@ -1,0 +1,121 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dojox/charting
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+Chart2D.js
+file
+
+
+
+
+2013-02-05T11:01:42.912940Z
+0f62103fd57691096fed886569a32f79
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+action2d
+dir
+
+widget
+dir
+
+Chart3D.js
+file
+
+
+
+
+2013-02-05T11:01:42.921940Z
+a77ee75a4d4c9537f9638843d6a06461
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+plot2d
+dir
+
+Element.js
+file
+
+
+
+
+2013-02-05T11:01:42.930940Z
+9b914f611d2709be47ebf0d29ee4c9d3
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+plot3d
+dir
+
+themes
+dir
+
+Series.js
+file
+
+
+
+
+2013-02-05T11:01:42.939940Z
+9f03ab0bdeead5d4b5dafea8aebde774
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+scaler
+dir
+
+axis2d
+dir
+
+README
+file
+
+
+
+
+2013-02-05T11:01:42.947940Z
+dd7ced0b9fc609d7e358dc709d7cb220
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+Theme.js
+file
+
+
+
+
+2013-02-05T11:01:42.956940Z
+77b5e4c2d88c2d999bd53ec3de014777
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+

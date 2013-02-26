@@ -1,0 +1,115 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2013-01-31T11:44:14.203030Z
+195
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+servercustom_jarbuilder.properties
+file
+
+
+
+
+2013-02-05T11:19:42.414799Z
+451076f17622036afc26ed37828c50fb
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+
+.classpath
+file
+
+
+
+
+2013-02-05T11:19:42.422799Z
+a47e72ff932c227deb01b0b7cce88264
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+
+dist
+dir
+
+stascore
+dir
+
+servercustom_jarbuilder.xml
+file
+
+
+
+
+2013-02-05T11:19:42.430800Z
+d7a03563ba0a550e029bea741a092bb3
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+
+.project
+file
+
+
+
+
+2013-02-05T11:19:42.437801Z
+d58f872bc48feac455fd62ba3ffc18fa
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+
+WEB-INF
+dir
+
+src
+dir
+
+war_deployer.properties
+file
+
+
+
+
+2013-02-05T11:19:42.444802Z
+95426921bee3015c7ca010d5a2766ad3
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+
+bin
+dir
+
+war_deployer.xml
+file
+
+
+
+
+2013-02-05T11:19:42.452802Z
+550cfb5c3675dfadc13f373cbef2e501
+2012-09-27T07:09:44.672303Z
+175
+veladitya
+

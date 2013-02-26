@@ -1,0 +1,10 @@
+dist = dist
+stascore.dir = stascore
+war.name = stas.war
+#tomcat.home = C:/liferay-portal-5.2.1/tomcat-5.5.27
+tomcat.home = C:/Program Files/SpaceTimeAwarenessServer
+dest.dir = ${tomcat.home}/webapps
+magma.webapps.dir = ${tomcat.home}/webapps/stas
+magma.work.dir = ${tomcat.home}/work/Catalina/localhost/stas
+server.config.lib.dir = C:/stas/config/lib
+server.project = com.spacetimeinsight.wfp.server

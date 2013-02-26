@@ -55,6 +55,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 	
 	public boolean executeCustomTask(Parameters parameters) {
 		Logger.debug("Kaleem ##### START WarehouseStockExcelJob.executeCustomTask", WarehouseStockExcelJob.class );
+		System.out.println("START WarehouseStockExcelJob.executeCustomTask :  " );
 		// TODO Auto-generated method stub
 		Parameter[] params = parameters.getParameter();
 		String filepath = null;
@@ -89,6 +90,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 		PlanningUtils.getWaybillDtls(waybillFile, warehouse);
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
 		Logger.debug("##### END WarehouseStockExcelJob.executeCustomTask : lastRefreshTime :"+lastRefreshTime, WarehouseStockExcelJob.class );
+		System.out.println("END WarehouseStockExcelJob.executeCustomTask :  " );
 		return true;
 	}
 	

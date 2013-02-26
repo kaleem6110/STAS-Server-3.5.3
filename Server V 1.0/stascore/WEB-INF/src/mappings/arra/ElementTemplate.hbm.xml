@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="ElementTemplate" table="STI_C_ARRA_ELEMENT_TEMPLATES">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+        <property name="name" type="string" column="NAME" unique="true" not-null="true"/>
+        <property name="reportingCycle" type="string" column="REPORTING_CYCLE" not-null="true"/>
+        <property name="validationClass" type="string" column="VALIDATION_CLASS"/>
+      <property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>
+             
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/js/dijit/nls/ko
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+common.js
+file
+
+
+
+
+2013-02-05T11:01:34.588940Z
+8067086fbfde7b033615ab59f3ebde81
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+
+loading.js
+file
+
+
+
+
+2013-02-05T11:01:34.597940Z
+08cd2f1c86b73197e96875cf0feeefa0
+2012-09-27T09:11:31.900160Z
+178
+veladitya
+

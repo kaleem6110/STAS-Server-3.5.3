@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp
+END
+displayDelete.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/displayDelete.jsp
+END
+multiFileUploadView.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/multiFileUploadView.jsp
+END
+configureDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/configureDatasource.jsp
+END
+editEcoModel.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/editEcoModel.jsp
+END
+displayDeleteUpload.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/displayDeleteUpload.jsp
+END
+multiFileUpload.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/multiFileUpload.jsp
+END
+commandDS.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/commandDS.jsp
+END
+rssFeedDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/rssFeedDatasource.jsp
+END
+showAllDatasources.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/showAllDatasources.jsp
+END
+success.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/success.jsp
+END
+wizardHome.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/wizardHome.jsp
+END
+joinDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/joinDatasource.jsp
+END
+deleteEcoModel.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/deleteEcoModel.jsp
+END
+excelDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/excelDatasource.jsp
+END
+ecosystem.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/ecosystem.jsp
+END
+shapefileDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/shapefileDatasource.jsp
+END
+hibernateDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/hibernateDatasource.jsp
+END
+displayUndeployEco.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/displayUndeployEco.jsp
+END
+command.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/command.jsp
+END
+cacheDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/cacheDatasource.jsp
+END
+databaseDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/databaseDatasource.jsp
+END
+rssDatasource.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/173/trunk/Server%20V%201.0/stascore/ecoweb/jsp/rssDatasource.jsp
+END

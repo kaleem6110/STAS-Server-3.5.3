@@ -1,0 +1,54 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/ve/SLViewer/ClientBin
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T07:54:33.632894Z
+177
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+BingFrame.xap
+file
+
+
+
+
+2013-02-05T10:59:34.298940Z
+5c369b9d75f04a7b789215950d51f649
+2012-09-27T07:54:33.632894Z
+177
+veladitya
+has-props
+
+BingMap.xap
+file
+
+
+
+
+2013-02-05T10:59:34.332940Z
+5f332645ebc6f4f59fd09cb7b081507d
+2012-09-27T07:54:33.632894Z
+177
+veladitya
+has-props
+

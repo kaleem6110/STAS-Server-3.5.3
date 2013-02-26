@@ -1,0 +1,64 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/jsp
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:20:06.939017Z
+179
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+datatable
+dir
+
+offlineslviewer
+dir
+
+fileupload
+dir
+
+arra
+dir
+
+dashboard
+dir
+
+help
+dir
+
+pi
+dir
+
+readme.txt
+file
+
+
+
+
+2013-02-05T11:13:51.114672Z
+7e9e7d544c52dedca6ea3d44b5cdd0b7
+2012-09-27T09:20:06.939017Z
+179
+veladitya
+
+staslog
+dir
+

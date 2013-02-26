@@ -941,7 +941,7 @@ public class RBRegionsUtils implements IEPICConstants {
 	}
 	
 	public static ArrayCollection sendAlerts(ArrayCollection allDevicesList, String regionName, String subject, String message){
-			
+		System.out.println("## START RBRegionsUtils.sendAlerts(ArrayCollection allDevicesList, String regionName, String subject, String message) : .... ");
 			if(allDevicesList != null){
 				
 				MessageTemplate mt =getRegionMessage(regionName);
@@ -968,6 +968,7 @@ public class RBRegionsUtils implements IEPICConstants {
 					throw new EHRuntimeException("Please select the devices to send an alert");
 				}
 			}
+			System.out.println("## END RBRegionsUtils.sendAlerts(ArrayCollection allDevicesList, String regionName, String subject, String message) : .... ");
 			return null;
 		}
 	public static ArrayCollection sendAlertsByUID(ArrayCollection allDevicesList, String regionName, String subject, String message){

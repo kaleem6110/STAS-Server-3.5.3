@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs
+END
+clearcachejob.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/clearcachejob.jsp
+END
+jobsConfiguration.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/jobsConfiguration.jsp
+END
+fileCleanupTimer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/fileCleanupTimer.jsp
+END
+jobHomeMain.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/jobHomeMain.jsp
+END
+customTimer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/customTimer.jsp
+END
+ecoSystem.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/ecoSystem.jsp
+END
+addJobSchdHome.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/addJobSchdHome.jsp
+END
+pIDataExtractor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/pIDataExtractor.jsp
+END
+uRLExtractor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/uRLExtractor.jsp
+END
+startStopJobs.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/startStopJobs.jsp
+END
+addJob.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/u/veladitya/code/!svn/ver/174/trunk/Server%20V%201.0/stascore/jobs/addJob.jsp
+END

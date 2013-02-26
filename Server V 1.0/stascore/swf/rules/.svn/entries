@@ -1,0 +1,54 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/swf/rules
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2012-09-27T09:40:22.908859Z
+180
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+MultipleRulesMapping.swf
+file
+
+
+
+
+2013-02-05T11:17:52.239782Z
+2b5f7d3db449a178b3d5abe02b1983ff
+2012-09-27T09:40:22.908859Z
+180
+veladitya
+has-props
+
+RulesetMapping.swf
+file
+
+
+
+
+2013-02-05T11:17:52.245783Z
+e2b92e0206574ff7ae36564a4ab1b533
+2012-09-27T09:40:22.908859Z
+180
+veladitya
+has-props
+

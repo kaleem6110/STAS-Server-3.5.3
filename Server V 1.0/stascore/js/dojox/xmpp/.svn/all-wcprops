@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp
+END
+PresenceService.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/PresenceService.js
+END
+xmppSession.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/xmppSession.js
+END
+util.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/util.js
+END
+RosterService.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/RosterService.js
+END
+UserService.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/UserService.js
+END
+ChatService.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/ChatService.js
+END
+TransportSession.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/TransportSession.js
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/README
+END
+sasl.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/178/trunk/Server%20V%201.0/stascore/js/dojox/xmpp/sasl.js
+END

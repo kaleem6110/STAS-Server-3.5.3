@@ -1,0 +1,41 @@
+8
+
+dir
+195
+https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/WEB-INF/lib
+https://svn.code.sf.net/u/veladitya/code
+
+
+
+2013-01-31T11:37:10.684349Z
+193
+veladitya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+03ecc1b0-7920-44d3-af5b-e2233cfab883
+
+com.enterprisehorizons.magma.runtime.models.jar
+file
+
+
+
+
+2013-02-05T11:19:38.837441Z
+ec9ccb73a6c848fcaefdcb5e170f372c
+2013-01-31T11:37:10.684349Z
+193
+veladitya
+has-props
+

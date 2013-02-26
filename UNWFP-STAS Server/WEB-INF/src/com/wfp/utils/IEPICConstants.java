@@ -49,6 +49,7 @@ public interface IEPICConstants {
 	public static final String HEADER_ROW = "headerrowindex";
 	public static final String PARAM_WAREHOUSE = "Warehouse";
 	public static final String PARAM_WAYBILL = "waybillFile";
+	public static final String PARAM_DATECORRECTION = "datecorrection";
 	public static final String PARAM_LATITUDE = "latitude";
 	public static final String PARAM_COORDINATES = "coordinates";
 	
@@ -83,6 +84,8 @@ public interface IEPICConstants {
 	public static final String PROPERTY_LICENSE_PLATE =  "licencePlate";
 	public static final String PROPERTY_UID =  "uid";
 	public static final String PROPERTY_SN =  "sn";
+	public static final String PROPERTY_TITLE = "title";
+	public static final String PROPERTY_MEMBER_OF = "memberOf";
 	public static final String PARAM_ALLGROUPS=  "ldapGroups";
 	public static final String EXTERNAL_ID=  "externalID";
 	public static final String COMPASS_ID=  "compasID:";

@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models
+END
+bus.dae
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/bus.dae
+END
+plane.dae
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/plane.dae
+END
+Substation_Power_2500_KVA_Transformer.dae
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/Substation_Power_2500_KVA_Transformer.dae
+END
+FiberGlassPole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/FiberGlassPole.dae
+END
+Substation_Power_2500_KVA_Transformer.mtl
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/Substation_Power_2500_KVA_Transformer.mtl
+END
+DefaultPole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/DefaultPole.dae
+END
+Electrical_Transmission_Lattice_140.dae
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/Electrical_Transmission_Lattice_140.dae
+END
+ConcreteStreetPole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/ConcreteStreetPole.dae
+END
+WoodenPole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/WoodenPole.dae
+END
+windturbine1.dae
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/windturbine1.dae
+END
+windturbine2.dae
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/windturbine2.dae
+END
+windturbine3.dae
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/windturbine3.dae
+END
+lmore.dae
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/lmore.dae
+END
+windturbine1.mtl
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/windturbine1.mtl
+END
+streetLamp.dae
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/streetLamp.dae
+END
+ConcretePole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/ConcretePole.dae
+END
+streetLamp.mtl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/streetLamp.mtl
+END
+UtilityPole.dae
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/u/veladitya/code/!svn/ver/180/trunk/Server%20V%201.0/stascore/models/UtilityPole.dae
+END

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="com.spacetimeinsight.db.scheduler.model">
+    <class name="StiJob" table="STI_JOB">
+        <id name="id" type="long">
+			<generator class="native" />
+		</id>
+        <property name="name" type="string" column="NAME" not-null="true" />
+        <property name="description" type="string" column="DESCRIPTION" length="500" />
+        <property name="commonJobFlag" type="string" column="COMMON_JOB_FLAG" length="1" />
+        <property name="serverIPID" type="long" column="SERVER_IP_ID" not-null="true"/>
+         <property name="startTypeId" type="long" column="START_TYPE_ID" not-null="true"/>
+         <property name="intervalTypeId" type="long" column="INTERVAL_TYPE_ID" not-null="true"/>
+        <property name="jobTypeMasterId" type="long" column="JOB_TYPE_ID" not-null="true"/>
+         <property name="triggerTypeId" type="long" column="TRIGGER_TYPE_ID" not-null="true"/>
+        <property name="jobPropertyContent" type="string" column="JOB_PROPERTY_CONTENT" length="2048" not-null="true"/>
+        <property name="isDisabled" type="string" column="IS_DISABLED" length="1"/>
+        <property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>
+    </class>
+</hibernate-mapping>

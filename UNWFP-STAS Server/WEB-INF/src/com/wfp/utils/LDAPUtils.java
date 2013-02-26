@@ -36,10 +36,26 @@ import com.wfp.security.form.LDAPUserBean;
  * @author sti-user
  *
  */
+@SuppressWarnings("unchecked")
 public class LDAPUtils implements IEPICConstants {
 	
-	public static String LDAP_PROPERTIES_FILE = IPropertyFileConstants.PROPERTY_DIRECTORY + "ldap.properties";;
+	public static String LDAP_PROPERTIES_FILE = IPropertyFileConstants.PROPERTY_DIRECTORY + "ldap.properties";
+	private static String tokenId;
 	
+	/**
+	 * @return the tokenId
+	 */
+	private static String getTokenId() {
+		return tokenId;
+	}
+
+	/**
+	 * @param tokenId the tokenId to set
+	 */
+	private static void setTokenId(String tokenId) {
+		LDAPUtils.tokenId = tokenId;
+	}
+
 	public static Properties getLDAProperties() {
 		Logger.info("Initializing the ldap properties from ["+LDAP_PROPERTIES_FILE+"]", LDAPUtils.class);
 		return PropertyFilesFactory.getInstance().getProperties(LDAP_PROPERTIES_FILE);
@@ -94,7 +110,23 @@ public class LDAPUtils implements IEPICConstants {
 		return getLDAPContext(LDAPConfigUtils.getProviderUrl(), 
 				LDAPConfigUtils.getSecurityPrincipal(), SecurityDBUtils.getDecreptedPassword(LDAPConfigUtils.getSecurityCredentials()));
 	}
-	
+	/**
+	 * @return
+	 * @throws NamingException
+	 */
+	public static String getSSOToken()throws NamingException
+	{
+		//System.out.println("START - LDAPUtils.getSSOToken");
+		if( getLDAPContext()!= null )
+		{
+			if(getTokenId()==null||getTokenId()==""){
+				setTokenId( java.util.UUID.randomUUID().toString() ); 
+				System.out.println("SETTING: LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
+			}
+		}
+		//System.out.println("START - LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
+		return getTokenId();
+	}
 	/**
 	 * overloaded method to return the LDAP Context usinf user id & password
 	 * @param adminName
@@ -125,6 +157,7 @@ public class LDAPUtils implements IEPICConstants {
 	//	StringBuffer ldapURL = new StringBuffer(STR_LDAP_PROTOCOL).append(host);
 		props.put(Context.SECURITY_PRINCIPAL, adminName);
 		props.put(Context.SECURITY_CREDENTIALS, adminPassword);
+		props.put("trust_credentials_attribute", "TrustedInfo");
 		// connect to my domain controller
 		props.put(Context.PROVIDER_URL, host);
 		Logger.info("Completed creating LDAP Context for host ["+host+"]", LDAPUtils.class);
@@ -151,7 +184,7 @@ public class LDAPUtils implements IEPICConstants {
 			return  getSearchResults(getLDAPContext(), searchCtls, SEARCH_FILTER, LDAP_BASE);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
-			Logger.error("Error occured while searching results ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
+			Logger.error("Error occured while searching results : getSearchResults() :["+e.getLocalizedMessage()+"]", LDAPUtils.class);
 		}
 		return null;
 		
@@ -178,7 +211,7 @@ public class LDAPUtils implements IEPICConstants {
 			return  getSearchResults(getLDAPContext(), searchCtls, searchFilter, searchBase);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
-			Logger.error("Error occured while searching results ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
+			Logger.error("Error occured while searching results  : getSearchResults(String searchFilter, String searchBase) : ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
 		}
 		return null;
 		
@@ -202,7 +235,7 @@ public class LDAPUtils implements IEPICConstants {
 			return  getSearchResults(getLDAPContext(), searchCtls, searchFilter, searchBase);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
-			Logger.error("Error occured while searching results ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
+			Logger.error("Error occured while searching results getSearchResults(SearchControls searchCtls, String searchFilter, String searchBase): ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
 		}
 		return null;		
 	}
@@ -225,7 +258,7 @@ public class LDAPUtils implements IEPICConstants {
 				return  ldapCtx.search(searchBase, searchFilter, searchCtls);
 			} catch (NamingException e) {
 				// TODO Auto-generated catch block
-				Logger.error("Error occured while searching results ["+e.getLocalizedMessage()+"]", LDAPUtils.class);
+				Logger.error("Error occured while searching results getSearchResults(LdapContext ldapCtx, SearchControls searchCtls, String searchFilter, String searchBase):["+e.getLocalizedMessage()+"]", LDAPUtils.class);
 			}
 		}finally{
 			if(ldapCtx != null){

@@ -521,21 +521,21 @@ String getName() {
 
 double getAltitude(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
 	
 	return l.getAlt();
 }
 
 double getLat(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLat();
 }
 
 double getLng(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._5_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLng();
 }

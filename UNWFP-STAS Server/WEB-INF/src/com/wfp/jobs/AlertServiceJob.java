@@ -21,12 +21,15 @@ public class AlertServiceJob implements CustomJobTask {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		System.out.println("## START AlertServiceJob.executeCustomTask : Executing .... ");
 		readMails();
+		System.out.println("## END AlertServiceJob.executeCustomTask : Executing .... ");
 		return true;
 	}
 
 
 	private void readMails() {
+		System.out.println("## START AlertServiceJob.readMails :  .... ");
 		Renderable[] msg = MailRetrieverUtils.getMessages("pop.service.emergency.lu", "sti",
 				"gXx8eyJ6OO6DzJRlnZEz", "pop3");
 		if(msg != null){
@@ -41,6 +44,7 @@ public class AlertServiceJob implements CustomJobTask {
 				}				
 			}
 		}
+		System.out.println("## END AlertServiceJob.readMails :  .... ");
 	}
 	
 }

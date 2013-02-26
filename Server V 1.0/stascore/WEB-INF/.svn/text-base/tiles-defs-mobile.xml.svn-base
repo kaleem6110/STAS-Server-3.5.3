@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <!--  STI Layout Tiles Definition -->
+    <definition name="STI.Layout" path="/mobile/common/stiLayout.jsp">
+        <put name="stiTitle" value="Welcome" />
+        <put name="stiHeader" value="/mobile/common/stiHeader.jsp" />   
+        <put name="stiMenu" value="/mobile/common/stiMenu.jsp" />           
+        <put name="stiFooter" value="/mobile/common/stiFooter.jsp" />
+    </definition>
+    
+    <definition name="PromptPasswordChange.Layout" path="/mobile/security/ChangePasswordLayout.jsp">
+	    <put name="stiTitle" value="Welcome" />
+		<put name="stiHeader" value="/mobile/common/stiHeader.jsp" />	
+		<put name="stiFooter" value="/mobile/common/stiFooter.jsp" />
+		<put name="stiMenu" value="/mobile/common/ChangePasswordMenu.jsp" />	
+		<put name="body" value="/mobile/security/changePassword.jsp?promptPasswordChange=true" />
+	</definition>
+	
+	<definition name="PromptPasswordChangeContext.page" path="/mobile/security/changePassword.jsp">
+        <put name="stiTitle" value="Welcome" />
+        <put name="stiHeader" value="/mobile/common/stiHeader.jsp" />  
+        <put name="stiFooter" value="/mobile/common/stiFooter.jsp" />
+        <put name="stiMenu" value="/mobile/common/ChangePasswordMenu.jsp" />   
+        <put name="body" value="/mobile/security/changePassword.jsp?promptPasswordChange=false" />
+    </definition>
+	
+    <definition name="Login.Page" extends="STI.Layout">
+        <put name="stiTitle" value=" - Login" />
+        <put name="body" value="/mobile/security/login.jsp" />
+    </definition>
+    
+    <definition name="Admin.Page" extends="STI.Layout">
+        <put name="stiTitle" value=" - Admin" />
+        <put name="body" value="/mobile/admin/AdminMain.jsp" />
+    </definition>
+            
+    <definition name="Home.Page" extends="STI.Layout">
+        <put name="stiTitle" value=" - Home" />
+        <put name="body" value="/mobile/common/homeSTI.jsp" />
+    </definition>
+    
+    
+</tiles-definitions>
