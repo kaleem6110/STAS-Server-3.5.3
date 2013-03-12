@@ -326,7 +326,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources/icons/misc/tourist_monument.n.32.png]]></value>
+                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -353,7 +353,7 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources/icons/misc/tourist_monument.n.32.png]]></value>
+                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>

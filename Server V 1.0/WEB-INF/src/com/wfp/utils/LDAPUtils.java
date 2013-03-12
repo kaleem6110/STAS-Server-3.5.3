@@ -116,7 +116,7 @@ public class LDAPUtils implements IEPICConstants {
 		{
 			if(getTokenId()==null||getTokenId()==""){
 				setTokenId( java.util.UUID.randomUUID().toString() ); 
-				System.out.println("SETTING: LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
+				//System.out.println("SETTING: LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
 			}
 		}
 		//System.out.println("START - LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
@@ -360,7 +360,7 @@ public class LDAPUtils implements IEPICConstants {
 			node = FILTER_LDAP_USERS;
 		}
 		Logger.info("Retrieving User ["+userDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
-		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber");
+		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber,personalTitle");
 	}
 	
 	/**
@@ -440,6 +440,7 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setDescription(userbean.getDescription());
 				deviceBean.setLicensePlate(userbean.getLicensePlate());
 				deviceBean.setTitle(userbean.getTitle()); //()
+				deviceBean.setPersonalTitle(userbean.getPersonalTitle());
 			}
 		}		
 	}
@@ -463,6 +464,7 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setDescription(userAttributes.get(PROPERTY_DESCRIPTION)== null?"":userAttributes.get(PROPERTY_DESCRIPTION).toString());
 			deviceBean.setLicensePlate(userAttributes.get(PROPERTY_LICENSE_PLATE)== null?"":userAttributes.get(PROPERTY_LICENSE_PLATE).toString());
 			deviceBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
+			deviceBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
 		}
 	}
 	
@@ -502,6 +504,7 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setDescription(userAttributes.get(PROPERTY_DESCRIPTION)== null?"":userAttributes.get(PROPERTY_DESCRIPTION).toString());
 			userBean.setLicensePlate(userAttributes.get(PROPERTY_LICENSE_PLATE)== null?"":userAttributes.get(PROPERTY_LICENSE_PLATE).toString());
 			userBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
+			userBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
 			
 			return userBean;
 		}

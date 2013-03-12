@@ -62,6 +62,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 		long datecorrection = 0;
 		String keyLocation = null;
 		String waybillFile = null;
+		String appendDate= null;
 		
 		for (int i=0; i< params.length ; i++){
 			if(PARAM_DATECORRECTION.equalsIgnoreCase(params[i].getName())){
@@ -79,9 +80,14 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 			if(PARAM_WAYBILL.equalsIgnoreCase(params[i].getName())){
 				waybillFile = params[i].getValue();
 			}
+			if(PARAM_APPEND_DATE.equalsIgnoreCase(params[i].getName())){
+				appendDate = params[i].getValue();
+			}
 		}
-		filepath =  updateFilePath(filepath,datecorrection);
-		waybillFile = updateFilePath(waybillFile,datecorrection);
+		if( appendDate!=null){
+			filepath =  updateFilePath(filepath,datecorrection);
+			waybillFile = updateFilePath(waybillFile,datecorrection);
+		}
 		
 		Cache.store(CACHE_WAREHOUSES_KEY, LDAPUtils.getAllPlaces());
 		

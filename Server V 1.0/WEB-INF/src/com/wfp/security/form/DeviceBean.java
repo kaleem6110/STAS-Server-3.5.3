@@ -16,6 +16,7 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String latitude;
 	private String longitude;
 	private String time; 
+	private String deviceLocalTime; 
 	private String name;
 	private LocationValue locationValue;
 	private String coordStr = null;
@@ -39,6 +40,7 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String title = "";
 	private boolean startPoint = false;
 	private boolean endPoint = false;
+	private String personalTitle = null;
 	
 	public String getLatitude() {
 		return latitude;
@@ -222,6 +224,24 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	}
 	public void setEndPoint(boolean endPoint) {
 		this.endPoint = endPoint;
+	}
+	public String getDeviceLocalTime() {
+		return deviceLocalTime;
+	}
+	public void setDeviceLocalTime(String deviceLocalTime) {
+		this.deviceLocalTime = deviceLocalTime;
+	}
+	/**
+	 * @return the personalTitle
+	 */
+	public String getPersonalTitle() {
+		return personalTitle;
+	}
+	/**
+	 * @param personalTitle the personalTitle to set
+	 */
+	public void setPersonalTitle(String personalTitle) {
+		this.personalTitle = personalTitle;
 	}
 	
 	

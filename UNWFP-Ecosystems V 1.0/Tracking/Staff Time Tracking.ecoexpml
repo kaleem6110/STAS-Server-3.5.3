@@ -541,7 +541,7 @@ double getLng(){
 }
 
 String getIconUrl(){
-	return "serverresources/icons/misc/sport_hillclimbing.n.32.png";
+	return "serverresources/icons/epic/Staff_Time_Tracking.png";
 }
 
 String getIconColor(){

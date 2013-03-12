@@ -418,7 +418,7 @@ double getLng(){
 }
 
 String getIconUrl(){
-	return "serverresources/icons/mapicons/airplane-sport.png";
+	return "serverresources/icons/epic/Airplane_Time_Tracking.png";
 }
 
 String getIconColor(){

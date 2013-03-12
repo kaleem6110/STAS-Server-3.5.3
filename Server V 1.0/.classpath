@@ -212,6 +212,7 @@
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/xmlsec-1.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="stascore/WEB-INF/lib/xpp3-1.1.3.4d_b4.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/timezonetag.jar"/>
 	<classpathentry kind="src" path="stascore/WEB-INF/src"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

@@ -404,7 +404,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources/icons/misc/Warehouses.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Warehouses.png]]></value>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -431,7 +431,7 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources/icons/misc/Warehouses.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Warehouses.png]]></value>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>
@@ -1684,18 +1684,6 @@ String getAuthorUrl(){
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[quality_description]]></value>
-                        </section>
-                        <section name="column"/>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[Location]]></value>
                         </section>
                         <section name="column"/>
                         <section name="column">

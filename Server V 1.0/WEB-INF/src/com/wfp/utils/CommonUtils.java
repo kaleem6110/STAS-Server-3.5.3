@@ -34,7 +34,7 @@ public class CommonUtils implements IEPICConstants{
 		Date date;
         try {
 			date = formatter.parse(datetime);
-			return PORTAL_SIMPLE_FORMAT.format(date);
+			return NEW_PORTAL_SIMPLE_FORMAT.format(date);
 		} catch (ParseException e) {
 			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
 		}  
@@ -346,7 +346,7 @@ public class CommonUtils implements IEPICConstants{
 	    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
 	    final String utcTime = sdf.format(new Date()); 
 	 
-	    return utcTime; 
+	    return utcTime.replace("T", " ").substring(0, utcTime.length()-5);
 	} 
 	
 	public static String getUTCdatetime(Date datetime) 

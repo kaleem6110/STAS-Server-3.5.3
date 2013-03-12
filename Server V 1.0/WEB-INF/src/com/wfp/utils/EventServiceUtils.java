@@ -205,7 +205,7 @@ public class EventServiceUtils {
 		EventSrvProvider_Service service =  new EventSrvProvider_ServiceLocator();		
 		
 		try {
-			Logger.info("Getting notification summary Service locator  ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]", EventServiceUtils.class);
+			System.out.println(", EventServiceUtils.class :Getting notification summary Service locator  ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]");
 			return new EventSrvProviderPortBindingStub( 
 					new java.net.URL(WFPConfigUtils.getWFPConfigValue("alertservice") == null?"http://middleware.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl":WFPConfigUtils.getWFPConfigValue("alertservice")),
 					service) ;
@@ -265,7 +265,7 @@ public class EventServiceUtils {
 		Evt evt = new Evt();
 		evt.setType("alerting");
 		evt.setDesc(desc);		
-		evt.setSrc("STAS_Engine");
+		evt.setSrc(IEPICConstants.STAS_Engine);//STAS_Engine-dev,STAS_Engine-trn, STAS_Engine-qa
 		evt.setEventRecipient(er);
 		evt.setMissionName("");
 		Calendar cal = Calendar.getInstance();		

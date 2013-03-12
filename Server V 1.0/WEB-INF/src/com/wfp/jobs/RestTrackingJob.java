@@ -1,12 +1,23 @@
 package com.wfp.jobs;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import org.jdom.Element;
 
+import com.enterprisehorizons.util.Logger;
 import com.enterprisehorizons.util.StringUtils;
 import com.enterprisehorizons.util.XMLUtils;
 import com.spacetimeinsight.config.scheduler.Parameter;
@@ -18,6 +29,20 @@ import com.wfp.utils.IEPICConstants;
 import com.wfp.utils.LDAPUtils;
 import com.wfp.utils.ValidateCertificateCall;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Node;
+import java.io.StringReader;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 /**
  * 
  * @author sti-user
@@ -127,6 +152,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
 		is.setTime( element.getContent(0).getValue());
 		is.setName(element.getContent(1).getValue());
+		if(is.getLatitude()!=null &&is.getLongitude()!=null)
+		is.setDeviceLocalTime(getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),is.getTime())/*+" Local"*/);
 		indigoList.add(is);
 		LDAPUtils.setLDAPUserDtls(is);
 	}
@@ -134,5 +161,79 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	public static String getLastRefreshTime() {
 		return lastRefreshTime;
 	}
+	private String getTimeZoneByLatLong(String lat, String longitude, String zuluTime)
+	{
+		String offset= null;
+		StringBuffer sb = new StringBuffer();
+		String uri =EARTH_TOOLS_URL+lat+"/"+longitude;
+		try {
+			
+			URL earthURI = new URL(uri);
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					earthURI.openStream()));
+			String inputLine;
+
+			while ((inputLine = in.readLine()) != null){
+				sb.append(inputLine);
+				//System.out.println(inputLine);
+			}
+			in.close();
+			 DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			 InputSource is = new InputSource();
+			 is.setCharacterStream(new StringReader(sb.toString()));
+
+			 Document doc = db.parse(is);
+		
+			org.w3c.dom.NodeList nList = doc.getElementsByTagName(TIME_ZONE_NODE);
+			
+			if(nList != null){
+				for (int temp = 0; temp < nList.getLength(); temp++) {
+					Node nNode = nList.item(temp);					
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+						 
+						org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
+						org.w3c.dom.NodeList offsetList = eElement.getElementsByTagName(OFFSET_NODE);						
+						org.w3c.dom.Element offsetElement = (org.w3c.dom.Element) offsetList.item(0);
+						offset= getCharacterDataFromElement(offsetElement);
+						
+						DateFormat formatter = new SimpleDateFormat(EPIC_DATE_FORMAT);
+						Date zuluDate =  formatter.parse(zuluTime);
+						boolean decimal= false;
+						if(offset!=null&&offset.trim().indexOf(".")>-1)
+						{
+							offset = offset.substring(0, offset.indexOf("."));
+							decimal=true;
+						}
+						if(Integer.parseInt(offset)>0)
+						{ zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
+						}
+						else  {zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
+						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
+						}
+						
+						offset = formatter.format( zuluDate );
+						//offset=offset.replace("T", " ").substring(0,offset.length()-5 );
+						
+				}
+				}
+				
+				
+			}			
+			}
+		catch (Exception exp) {
+			Logger.error("RestTrackingJob.getTimeZoneByLatLong : Error ocurred ", RestTrackingJob.class, exp );
+		}
+		return offset;
+	}
+	 public static String getCharacterDataFromElement(org.w3c.dom.Element e) {
+		    Node child = e.getFirstChild();
+		    if (child instanceof CharacterData) {
+		      CharacterData cd = (CharacterData) child;
+		      return cd.getData();
+		    }
+		    return "";
+		  }	
+	
 	
 }

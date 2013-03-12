@@ -18,21 +18,19 @@
         <section name="attributes">
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[deviceId]]></value>
+                    <value><![CDATA[vehicleID]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Device id]]></value>
+                    <value><![CDATA[Vehicle ID]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -52,24 +50,6 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[time]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Time]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
                     <value><![CDATA[licensePlate]]></value>
                 </section>
                 <section name="column">
@@ -85,6 +65,58 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[deviceId]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Device id]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -182,7 +214,7 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[onInterval]]></value>
+                    <value><![CDATA[never]]></value>
                 </section>
                 <section name="periodicrefreshrate">
                     <value><![CDATA[180]]></value>
@@ -352,7 +384,8 @@ void bindData() {
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDate(data.getTime() ));
 			
-			$artefact.addAttribute("time", data.getTime().replace("T"," ").replace(".000"," " ));
+			$artefact.addAttribute("time", data.getTime().replace("T"," ").replace(".000"," " ).replace("Z","" ));
+			$artefact.addAttribute("localTime", data.getDeviceLocalTime());	
 			$artefact.addAttribute("deviceId", data.getName());
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMobile(), data.getMail()) );
 			//$artefact.addAttribute("owner", data.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(data.getSn())?"":data.getSn()));
@@ -365,6 +398,7 @@ void bindData() {
 			$artefact.addAttribute("description", data.getDescription());
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
 			//$artefact.addAttribute("reg", data.getVehicleReg());
+			$artefact.addAttribute("vehicleID", data.getCn());
 		}
 	}
 	catch (Exception e){
@@ -381,11 +415,11 @@ String getDeviceCaption(){
 	if(!com.enterprisehorizons.util.StringUtils.isNull($artefact.getAttributeValueAsString("Unit"))){
 		return $artefact.getAttributeValueAsString("Unit");
 	}
-	return  $artefact.getAttributeValueAsString("deviceId");
+	return  $artefact.getAttributeValueAsString("vehicleID");
 }
 
 String getIconUrl(){
-	return "serverresources/icons/mapicons/suv.png";	
+	return "serverresources/icons/epic/Vehicle_Tracking.png";	
 }
 
 boolean isInDangerZone(){
@@ -731,7 +765,7 @@ String getAuthorUrl(){
             </section>
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Tracking]]></value>
+                    <value><![CDATA[List]]></value>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -830,27 +864,13 @@ String getAuthorUrl(){
                 <section name="dashboardattributes">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[deviceId]]></value>
+                            <value><![CDATA[vehicleID]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[time]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[]]></value>
+                            <value><![CDATA[0]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[false]]></value>
@@ -884,6 +904,48 @@ String getAuthorUrl(){
                             <value><![CDATA[]]></value>
                         </section>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[deviceId]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -891,7 +953,7 @@ String getAuthorUrl(){
                             <value><![CDATA[dashboardname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Tracking]]></value>
+                            <value><![CDATA[List]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -970,7 +1032,7 @@ String getAuthorUrl(){
                     <value><![CDATA[never]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_ack.png]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>

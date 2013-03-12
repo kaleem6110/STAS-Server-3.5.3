@@ -23,6 +23,7 @@ public class LDAPUserBean {
 	private String licensePlate = "";
 	private String title ="";
 	private List<String> authorizedGroupsList = null;
+	private String personalTitle =null;
 	
 	public String getOrganization() {
 		return organization;
@@ -134,6 +135,18 @@ public class LDAPUserBean {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	/**
+	 * @return the personalTitle
+	 */
+	public String getPersonalTitle() {
+		return personalTitle;
+	}
+	/**
+	 * @param personalTitle the personalTitle to set
+	 */
+	public void setPersonalTitle(String personalTitle) {
+		this.personalTitle = personalTitle;
 	}
 	
 	

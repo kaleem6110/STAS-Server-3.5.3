@@ -40,7 +40,23 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Time]]></value>
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -110,7 +126,7 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[onInterval]]></value>
+                    <value><![CDATA[never]]></value>
                 </section>
                 <section name="periodicrefreshrate">
                     <value><![CDATA[180]]></value>
@@ -268,7 +284,8 @@ void bindData() {
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
 			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.parseDate(data.getTime()) );
-			$artefact.addAttribute("time", data.getTime().replace("T"," ") );
+			$artefact.addAttribute("time", data.getTime().replace("T"," ").replace(".000"," " ).replace("Z","" ) );
+				$artefact.addAttribute("localTime", data.getDeviceLocalTime());	
 			$artefact.addAttribute("deviceId", data.getName());			
 		}
 	}
@@ -296,7 +313,7 @@ String getDeviceCaption(){
 }
 
 String getIconUrl(){
-		return "serverresources/icons/mapicons/airplane-sport.png";
+		return "serverresources/icons/epic/Airplane_Tracking.png";
 }
 
 boolean isInDangerZone(){
@@ -868,7 +885,7 @@ String getAuthorUrl(){
                     <value><![CDATA[never]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_ack.png]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>

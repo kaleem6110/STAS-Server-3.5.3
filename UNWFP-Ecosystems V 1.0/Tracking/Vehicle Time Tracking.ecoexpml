@@ -354,7 +354,7 @@ double getLng(){
 }
 
 String getIconUrl(){
-	return "serverresources/icons/mapicons/suv.png";
+	return "serverresources/icons/epic/Vehicle_Time_Tracking.png";
 }
 
 String getIconColor(){
@@ -388,7 +388,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources/icons/mapicons/suv.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Vehicle_Time_Tracking.png]]></value>
                 </section>
                 <section name="iconcolor">
                     <section name="script">
