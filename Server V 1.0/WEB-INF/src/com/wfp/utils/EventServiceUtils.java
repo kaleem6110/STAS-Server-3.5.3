@@ -263,7 +263,7 @@ public class EventServiceUtils {
 		desc.setLongDesc(body);
 		//TimeZone.setDefault(TimeZone.getTimeZone("Rome"));
 		Evt evt = new Evt();
-		evt.setType("alerting");
+		evt.setType("ALERT WARNING!!");
 		evt.setDesc(desc);		
 		evt.setSrc(IEPICConstants.STAS_Engine);//STAS_Engine-dev,STAS_Engine-trn, STAS_Engine-qa
 		evt.setEventRecipient(er);

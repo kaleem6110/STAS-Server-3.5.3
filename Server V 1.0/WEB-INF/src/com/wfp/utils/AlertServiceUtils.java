@@ -281,7 +281,7 @@ public class AlertServiceUtils implements IEPICConstants {
 		List<MessageTemplate> regionDtls = DataModelsCache.getInstance().retrieve(MessageTemplate.class.getName());
 		if(regionDtls != null){
 			for (MessageTemplate mt:regionDtls){
-				if(mt != null && mt.getName().equalsIgnoreCase(dangerZoneName)){
+				if(mt != null && mt.getName()!=null&& mt.getName().equalsIgnoreCase(dangerZoneName)){
 					return mt.getId();   
 				}
 			}

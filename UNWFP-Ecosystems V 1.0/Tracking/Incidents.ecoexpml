@@ -472,7 +472,7 @@ String getAuthorUrl(){
             </section>
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Incidents]]></value>
+                    <value><![CDATA[List]]></value>
                 </section>
                 <section name="starttime">
                     <section name="script">
@@ -525,7 +525,7 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -619,7 +619,7 @@ String getAuthorUrl(){
                             <value><![CDATA[dashboardname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Incidents]]></value>
+                            <value><![CDATA[List]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -643,7 +643,7 @@ String getAuthorUrl(){
                             <value><![CDATA[expandall]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

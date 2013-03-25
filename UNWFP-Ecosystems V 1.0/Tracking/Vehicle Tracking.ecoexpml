@@ -89,7 +89,7 @@
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
+                    <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[Timestamp-GMT]]></value>
@@ -105,6 +105,22 @@
             <section name="row">
                 <section name="column">
                     <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[pLocalTime]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
@@ -384,8 +400,8 @@ void bindData() {
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDate(data.getTime() ));
 			
-			$artefact.addAttribute("time", data.getTime().replace("T"," ").replace(".000"," " ).replace("Z","" ));
-			$artefact.addAttribute("localTime", data.getDeviceLocalTime());	
+			$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime() ) );		
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
 			$artefact.addAttribute("deviceId", data.getName());
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMobile(), data.getMail()) );
 			//$artefact.addAttribute("owner", data.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(data.getSn())?"":data.getSn()));
@@ -399,6 +415,9 @@ void bindData() {
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
 			//$artefact.addAttribute("reg", data.getVehicleReg());
 			$artefact.addAttribute("vehicleID", data.getCn());
+			
+			 
+			 $artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
 		}
 	}
 	catch (Exception e){
@@ -786,7 +805,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[onInterval]]></value>
+                    <value><![CDATA[never]]></value>
                 </section>
                 <section name="periodicrefreshrate">
                     <value><![CDATA[60]]></value>
@@ -805,7 +824,7 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -814,7 +833,10 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isallowtimeselection">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="datefield">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -834,7 +856,7 @@ String getAuthorUrl(){
                         <value><![CDATA[false]]></value>
                     </section>
                     <section name="refreshtype">
-                        <value><![CDATA[onInterval]]></value>
+                        <value><![CDATA[never]]></value>
                     </section>
                     <section name="periodicrefreshrate">
                         <value><![CDATA[60]]></value>
@@ -1726,7 +1748,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_summarysheet.png]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>

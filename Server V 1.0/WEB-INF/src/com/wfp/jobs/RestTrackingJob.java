@@ -197,6 +197,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 						offset= getCharacterDataFromElement(offsetElement);
 						
 						DateFormat formatter = new SimpleDateFormat(EPIC_DATE_FORMAT);
+						DateFormat formatter2 = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
 						Date zuluDate =  formatter.parse(zuluTime);
 						boolean decimal= false;
 						if(offset!=null&&offset.trim().indexOf(".")>-1)
@@ -212,7 +213,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
 						}
 						
-						offset = formatter.format( zuluDate );
+						offset = formatter2.format( zuluDate );
 						//offset=offset.replace("T", " ").substring(0,offset.length()-5 );
 						
 				}
@@ -222,7 +223,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 			}			
 			}
 		catch (Exception exp) {
-			Logger.error("RestTrackingJob.getTimeZoneByLatLong : Error ocurred ", RestTrackingJob.class, exp );
+			Logger.error("RestTrackingJob.getTimeZoneByLatLong : Error ocurred @ :"+uri, RestTrackingJob.class, exp );
 		}
 		return offset;
 	}

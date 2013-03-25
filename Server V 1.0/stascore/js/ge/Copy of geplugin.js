@@ -39,7 +39,7 @@ var ge = null;
     var defaultKmlUrlList = new Array();
     var defaultStaticKmlUrlList = new Array();
     var isStandAlone = typeof(parent.sendJSObjectToFlash) == 'undefined';
-    var autoZoom = 'false';
+
 
     function init() {
       var earthOptions = [];
@@ -330,24 +330,35 @@ var ge = null;
          parent.openDashboardFrameById(id,urlToOpen,layerId,layerName,windowId);
    }
    /**
-	 * this method get called once KML is generated and sent out to GE Extended
-	 * data contains KML document level extended data like created by , creation
-	 * time .. starttime , endtime , timeformat , time slic , begin & end etc
-	 */
-   	function onLoadComplete(){
-   		if(ge!=null){   	
-   			var extents = ge.getTime().getControl().getExtents();
-   			var begin = extents.getBegin().get();    
-   			var end = extents.getEnd().get(); 
-
-   			if(autoZoom!='true' && begin!='' && end!=''){
-   				extents.getBegin().set(begin);
-   				extents.getEnd().set(end);
-   				ge.getTime().setTimePrimitive(extents);
+    * this method get called once KML is generated and sent out to GE
+    *  Extended data contains KML document level extended data
+    * like created by , creation time .. starttime , endtime , timeformat , time slic , begin & end etc
+    */
+   	function onLoadComplete(extData){
+		if(ge!=null && extData!=null){
+		   	var splitRS = extData.split(","); 
+		   	var begin='';
+		   	var end='';
+		   	var autoZoom=false;
+		   	for( i = 0; i < splitRS.length; i++){ 
+				if(splitRS[i].indexOf("begin")>=0){
+					begin=splitRS[i].substr(7);
+				}
+				if(splitRS[i].indexOf("end")>=0){
+					end=splitRS[i].substr(5);
+				}
+				if(splitRS[i].indexOf("autozoom=true")>=0){
+					autoZoom=true;
+				}
+		    } 
+		    if(!autoZoom && begin!='' && end!=''){
+		   		var timeSpan = ge.createTimeSpan('optional_id'+Math.random());
+		   		timeSpan.getBegin().set(begin);
+		    	timeSpan.getEnd().set(end);
+		   		ge.getTime().setTimePrimitive(timeSpan);
 		    }
 	 	}	
   	}
-   	
     function enableAutoRefresh(flag) {
         autoRefresh = flag;
     }
@@ -675,7 +686,6 @@ var ge = null;
                     linkParams = kmlUrl[i].split(",");
                     refreshMode = getRefreshMode(linkParams[2]);
                     viewRefreshMode = getViewRefreshMode(linkParams[3]);
-                    autoZoom = linkParams[4];
                     if(isFetchKml) {
                         loadFetchKml(name, linkParams[0]);
                     } else {

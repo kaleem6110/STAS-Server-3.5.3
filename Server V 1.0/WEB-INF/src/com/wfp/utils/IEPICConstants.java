@@ -24,10 +24,10 @@ public interface IEPICConstants {
 	public static final String PARAM_XPR = "/gpx/wpt";
 	
 	//date formatter
-	public static final String EPIC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";	
-	//public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
-	public static final String PORTAL_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-	public static final String NEW_PORTAL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	public static final String EPIC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+	public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy'T'HH:mm:ss.SSS'Z'";	
+	public static final String NEW_PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
+	//public static final String OLD_PORTAL_DATE_FORMAT = NEW_PORTAL_DATE_FORMAT;
 	public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(PORTAL_DATE_FORMAT);
 	public static final SimpleDateFormat NEW_PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
 	
@@ -145,7 +145,7 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//REST URI kmohammed
-	public static final String SENSOR_REST_URI ="http://middleware-qa.globalepic.lu/sensorservice/out/rest/loc";
+	public static final String SENSOR_REST_URI ="http://middleware.globalepic.lu/sensorservice/out/rest/loc";
 	public static final String STAS_Engine ="STAS_Engine-dev";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";

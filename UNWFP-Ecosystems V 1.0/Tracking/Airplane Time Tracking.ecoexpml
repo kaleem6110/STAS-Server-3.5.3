@@ -362,7 +362,7 @@ void bindData() {
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			$artefact.addAttribute("time",data.getTime().replace("T", " ") );
+			$artefact.addAttribute("time",data.getTime() );
 			$artefact.addAttribute("name", data.getName());
 		}
 	}
@@ -682,7 +682,7 @@ String getAuthorUrl(){
             </section>
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Time Tracking]]></value>
+                    <value><![CDATA[List]]></value>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -787,7 +787,7 @@ String getAuthorUrl(){
                             <value><![CDATA[dashboardname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Time Tracking]]></value>
+                            <value><![CDATA[List]]></value>
                         </section>
                     </section>
                     <section name="param">

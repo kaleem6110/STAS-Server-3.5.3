@@ -35,6 +35,7 @@ public class CommonUtils implements IEPICConstants{
         try {
 			date = formatter.parse(datetime);
 			return NEW_PORTAL_SIMPLE_FORMAT.format(date);
+			//return PORTAL_SIMPLE_FORMAT.format(date);
 		} catch (ParseException e) {
 			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
 		}  
@@ -125,7 +126,8 @@ public class CommonUtils implements IEPICConstants{
 		}
 		try {
 			
-			return PORTAL_SIMPLE_FORMAT.format(datetime);
+			//return PORTAL_SIMPLE_FORMAT.format(datetime);
+			return NEW_PORTAL_SIMPLE_FORMAT.format(datetime);
 		} catch (Exception e) {
 			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
 		}  
@@ -351,7 +353,8 @@ public class CommonUtils implements IEPICConstants{
 	
 	public static String getUTCdatetime(Date datetime) 
 	{ 
-	    final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss z"); 
+	    //Kaleem final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss z");
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss z");
 	    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
 	    final String utcTime = sdf.format(datetime); 
 	 
@@ -370,11 +373,26 @@ public class CommonUtils implements IEPICConstants{
 	public static Date stringDateToDate(String StrDate) 
 	{ 
 	    Date dateToReturn = null; 
-	    SimpleDateFormat dateFormat = new SimpleDateFormat(PORTAL_DATE_FORMAT); 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT); 
 	 
 	    try 
 	    { 
 	        dateToReturn = (Date)dateFormat.parse(StrDate); 
+	    } 
+	    catch (ParseException e) 
+	    { 
+	        e.printStackTrace(); 
+	    } 
+	 
+	    return dateToReturn; 
+	} 
+	public static Date stringDateToISODate(String StrDate) 
+	{ 
+	    Date dateToReturn = null; 
+	    try 
+	    { 
+	    	SimpleDateFormat sdf = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT); 
+	        dateToReturn = (Date)sdf.parse(StrDate); 
 	    } 
 	    catch (ParseException e) 
 	    { 

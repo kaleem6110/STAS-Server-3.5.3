@@ -7,6 +7,7 @@ import com.enterprisehorizons.db.util.BaseDBSearchCriteriaDateFormatter;
 public class PostgresSearchCriteriaDateFormatter extends
 		BaseDBSearchCriteriaDateFormatter {
 	public static final String DEFAULT_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
+	//public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 		
 	public PostgresSearchCriteriaDateFormatter() {
 		super.setDateFormat(DEFAULT_DATE_FORMAT);

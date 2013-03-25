@@ -107,9 +107,6 @@ public class SensorServiceUtils implements IEPICConstants{
 					LocationRange lr = null;
 					try{
 						
-						//FIXIT					
-						String mission="Dubai_Exercises";
-						
 						if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null))
 						{						
 								List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
@@ -127,6 +124,7 @@ public class SensorServiceUtils implements IEPICConstants{
 							//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
 						}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
 							List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
+							//System.out.println("####Line:130: SensorServiceUtils: Planes : missionList : "+missionList +" device : "+devices[i].getId() );
 							if( missionList!=null&&missionList.size()>0 ){
 							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
 							setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
