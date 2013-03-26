@@ -84,6 +84,10 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		
+		//Map<String,String> orgMap = LDAPUtils.getAllOrganizations();
+		//System.out.println(" orgMap "+ orgMap );
+		
 		Parameter[] params = parameters.getParameter();
 
 		for (int i=0; i< params.length ; i++){
@@ -94,7 +98,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
 		return true;
 	}
-	
+
 	private void getRestTrackingDtls(){
 		List<DeviceBean> staffList =null;
 		List<DeviceBean> vehicleList =null;

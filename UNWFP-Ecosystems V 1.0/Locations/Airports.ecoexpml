@@ -72,6 +72,22 @@
                     <value><![CDATA[]]></value>
                 </section>
             </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[type]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Type]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
         </section>
         <section name="cache">
             <value><![CDATA[false]]></value>
@@ -542,6 +558,50 @@ String getAuthorUrl(){
                             <section name="column">
                                 <value><![CDATA[]]></value>
                             </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[address]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>

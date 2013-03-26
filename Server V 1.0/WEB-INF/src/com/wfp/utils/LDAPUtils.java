@@ -647,6 +647,7 @@ public class LDAPUtils implements IEPICConstants {
 		return parseDataAsList(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
 	}
 	
+	
 	/**
 	 * Map<taskforceId, List<domainIds>>
 	 * @return
@@ -705,6 +706,17 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieve all places from ldap with Search Filter = ["+allGroupNamesFilter+"] " +
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn,externalID, description, street, type, coord-latitude,coord-longitude, ocs, skype ]", LDAPUtils.class);
 		return  parseDataAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase), "externalID", "cn", attrArray);	
+	}
+	public static Map<String, String> getAllOrganizations(){
+		System.out.println(" # START getAllOrganizations : ");
+		String allGroupNamesFilter = "(!(objectClass=person))";
+		String allGroupsSearchBase = getLDAPConfigValue(ORGANIZATION_SEARCHBASE); ;
+		String[] attrArray = new String[] {PROPERTY_CN, PROPERTY_DESCRIPTION};
+		Logger.info("Retrieve all organizations from ldap with Search Filter = ["+allGroupNamesFilter+"] " +
+				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn, description ]", LDAPUtils.class);
+		System.out.println(" # END getAllOrganizations : "+ allGroupNamesFilter + " : "+ allGroupsSearchBase );
+		
+		return parseAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase),PROPERTY_CN, PROPERTY_DESCRIPTION);	
 	}
 	
 	public static boolean validatePlanes(String planeId, String[] types){
@@ -1217,6 +1229,48 @@ public class LDAPUtils implements IEPICConstants {
 			}
 		}
 		return false;
+	}
+	public static Map<String, String>  parseAsMap(NamingEnumeration searchResults, String keyAttribute, String valueAttribute){
+		Logger.info("# START parseAsMap : Formatting the data as MAP", LDAPUtils.class);
+		System.out.println("# START parseAsMap : Formatting the data as MAP: "+searchResults );
+		Map<String, String> resultMap = new HashMap<String, String>();		
+		if(searchResults == null){
+			return null;
+		}
+		// Loop through the search results
+		while (searchResults.hasMoreElements()) {
+			SearchResult sr = null;
+			List<String> strList = new ArrayList<String>();
+			try {
+				sr = (SearchResult) searchResults.next();
+			
+			} catch (NamingException e1) {
+				Logger.error("No Search results on LDAP ", LDAPUtils.class);
+			}
+			if(sr == null ){
+				Logger.error("No Search results on LDAP ", LDAPUtils.class);
+				return null;
+			}			
+			Attributes attrs = sr.getAttributes();		
+			if (attrs != null) 
+			{
+				try{
+					for (NamingEnumeration ae = attrs.getAll(); ae.hasMore();) {
+					
+						//System.out.println(" attrs : "+attrs.get(keyAttribute) + ": "+ attrs.get(valueAttribute));
+						//if(attrs.get(keyAttribute)!=null && attrs.get(keyAttribute)!=null)
+						//resultMap.put(attrs.get(keyAttribute).toString(),attrs.get(valueAttribute).toString() );
+				}
+			}catch(NamingException ne){ne.printStackTrace(); }
+			
+			}
+			else 
+			{
+				Logger.info("No attributes found on LDAP", LDAPUtils.class);
+			}
+		}
+		System.out.println("# END parseAsMap : Formatting the data as MAP");
+		return resultMap;
 	}
 
 }

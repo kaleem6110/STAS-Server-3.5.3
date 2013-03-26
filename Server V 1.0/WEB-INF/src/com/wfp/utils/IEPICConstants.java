@@ -75,6 +75,8 @@ public interface IEPICConstants {
 	public static final String FILTER_LDAP_USERS =  "(objectClass=person)";
 	public static final String FILTER_LDAP_VEHICLES =  "(objectClass=vehicle)";
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
+	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
+	public static final String GROUP_SEARCHBASE =  "groups.search.base";
 	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o", "communicationURI", "title", "telephoneNumber","personalTitle"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
@@ -145,8 +147,8 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//REST URI kmohammed
-	public static final String SENSOR_REST_URI ="http://middleware.globalepic.lu/sensorservice/out/rest/loc";
-	public static final String STAS_Engine ="STAS_Engine-dev";
+	public static final String SENSOR_REST_URI ="http://middleware-qa.globalepic.lu/sensorservice/out/rest/loc";
+	public static final String STAS_Engine ="STAS_Engine-qa";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
 	public static final String OFFSET_NODE = "offset";
