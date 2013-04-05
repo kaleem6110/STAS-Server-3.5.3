@@ -147,8 +147,8 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//REST URI kmohammed
-	public static final String SENSOR_REST_URI ="http://middleware-qa.globalepic.lu/sensorservice/out/rest/loc";
-	public static final String STAS_Engine ="STAS_Engine-qa";
+	public static final String SENSOR_REST_URI ="http://middleware.globalepic.lu/sensorservice/out/rest/loc";
+	public static final String STAS_Engine ="STAS_Engine";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
 	public static final String OFFSET_NODE = "offset";

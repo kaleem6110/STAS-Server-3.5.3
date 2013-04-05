@@ -43,7 +43,7 @@
                     <value><![CDATA[Fleet]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -59,7 +59,7 @@
                     <value><![CDATA[Unit]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -653,7 +653,7 @@ String getLineColor(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="dashboardtype">
                     <value><![CDATA[summarydashboard]]></value>
@@ -729,7 +729,7 @@ String getLineColor(){
                             <value><![CDATA[loadbydefault]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

@@ -96,15 +96,63 @@
                     <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Updated Date]]></value>
+                    <value><![CDATA[Timestamp-GMT]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[Updated_Date_Text]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTimeText]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
         </section>
         <section name="cache">
@@ -152,13 +200,13 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[onInterval]]></value>
+                    <value><![CDATA[never]]></value>
                 </section>
                 <section name="periodicrefreshrate">
                     <value><![CDATA[60]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[true]]></value>
@@ -250,12 +298,12 @@ String datasource = "Geo-RSS feed";
 String lastRefreshTime = com.wfp.utils.CommonUtils.getUTCdatetimeAsString();
 
 String getDatasource(){
-	return datasource;
+	return datasource;  
 }
-
+  
 String getLastRefreshTime(){
 	return lastRefreshTime;
-}
+}  
 
 String getDescription(){
 	return description;
@@ -265,15 +313,27 @@ void bindData() {
 	
     com.enterprisehorizons.conversion.rss.RSSFeedRecord data = $rssfeedmashupdatamodel;
     String[] attributeNames = data.getAttributeNames();
+   
+   
     $artefact.setCoordinates(data.getCoordinates());
+    com.enterprisehorizons.magma.models.util.Coordinate[] c = data.getCoordinates();
+ 	
     $artefact.addAttribute("Author", data.getAttributeValue("Author"));
 	$artefact.addAttribute("Title", data.getAttributeValue("Title"));
 	
-	$artefact.addAttribute("Updated_Date", data.getAttributeValue("Updated Date"));
+	String gmtDate = formatDate(data.getAttributeValue("Updated Date").toString()) ;
+	//$artefact.addAttribute("Updated_Date",  com.wfp.utils.CommonUtils.parseDate( gmtDate ,"dd MMM yyyy hh:mm:ss" ) );
+	$artefact.addAttribute("Updated_Date", data.getAttributeValue("Updated Date") );
+	$artefact.addAttribute("Updated_Date_Text", com.wfp.utils.CommonUtils.formatDate((Date)data.getAttributeValue("Updated Date") ) );
+	 
+	String localTime = com.wfp.utils.CommonUtils.getTimeZoneByLatLong( c[0].y+"", c[0].x+"" ,gmtDate , "dd MMM yyyy hh:mm:ss" );
+	$artefact.addAttribute("localTime", localTime );
+	$artefact.addAttribute("localTimeText", localTime );
 	$artefact.addAttribute("Link", data.getAttributeValue("Link"));
 	
 	addAttribute((String)data.getAttributeValue("Description"));
-            
+	//System.out.println(c[0].y+": " +c[0].x+"" );
+             
 }
 
 void addAttribute(String desc){
@@ -289,7 +349,7 @@ void addAttribute(String desc){
 	String targetImg = "<div width=100% height=100%> <a href='#' onclick=\"openInfoframe('"+imgUrl+"')\">Launch</a></div>";
 	$artefact.addAttribute("Image", targetImg);
 	
-	if(list != null){
+	if(list != null){ 
 		int i=1; 
 		for (String temp: list){
 			if(!(temp.endsWith(".jpg")|| temp.endsWith(".gif") || temp.endsWith(".png"))){
@@ -319,10 +379,22 @@ void getFormattedGEString(String desc){
 	//desc = "<iframe width='100%' height='100%' src='"+imgUrl+"' ></iframe> <a href='#' onclick='javascript:window.open('"+imgUrl+"')'> open </a>";
 	return ;
 }
-
+ 
 String getAuthorUrl(){	
 	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
-}]]></value>
+}
+String formatDate(String date) {
+		
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm:ss"); 
+		String day = date.substring(8,10);
+		String month = date.substring(4,7);
+		String year = date.substring(date.length()-5,date.length());
+		String time = date.substring(11,19);		
+		String newDateStr = day+ " "+month+" "+year.trim()+" "+time;
+		//System.out.println(newDateStr);		  
+	    return newDateStr;
+		
+	}]]></value>
                 <section name="type">
                     <value><![CDATA[1]]></value>
                 </section>
@@ -435,12 +507,34 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isapplytoartifact">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="isapplytodashboard">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="isapplytodashboard">
+                    <value><![CDATA[true]]></value>
+                </section>
                 <section name="searchfields">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Title]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[Updated_Date]]></value>
@@ -518,7 +612,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="dashboardtype">
                     <value><![CDATA[summarydashboard]]></value>
@@ -595,6 +689,12 @@ String getAuthorUrl(){
                         <section name="column">
                             <value><![CDATA[text]]></value>
                         </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
                     </section>
                     <section name="row">
                         <section name="column">
@@ -603,6 +703,12 @@ String getAuthorUrl(){
                         <section name="column">
                             <value><![CDATA[text]]></value>
                         </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
                     </section>
                     <section name="row">
                         <section name="column">
@@ -610,6 +716,24 @@ String getAuthorUrl(){
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>
@@ -627,7 +751,7 @@ String getAuthorUrl(){
                             <value><![CDATA[loadbydefault]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -840,6 +964,14 @@ String getAuthorUrl(){
                         <section name="row">
                             <section name="column">
                                 <value><![CDATA[Link]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[java.lang.String]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[georss]]></value>
                             </section>
                             <section name="column">
                                 <value><![CDATA[java.lang.String]]></value>

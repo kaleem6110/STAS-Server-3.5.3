@@ -269,7 +269,7 @@ void bindData() {
 		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
 				
 	}
-		
+		 
 }
  
 String getName() {
@@ -442,20 +442,44 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isapplytoartifact">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="isapplytodashboard">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="searchfields">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[Name]]></value>
+                            <value><![CDATA[name]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[Text]]></value>
                         </section>
-                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[address]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
                     </section>
                 </section>
                 <section name="flashparameters">
@@ -509,14 +533,14 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="dashboardtype">
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -617,7 +641,7 @@ String getAuthorUrl(){
                             <value><![CDATA[loadbydefault]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

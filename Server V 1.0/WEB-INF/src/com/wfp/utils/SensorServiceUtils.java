@@ -219,6 +219,7 @@ public class SensorServiceUtils implements IEPICConstants{
 				in.setDatetime(lv[j].getTime().getTime());
 				String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
 				in.setTime(datetime);
+				in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(String.valueOf(lv[j].getLat()),String.valueOf(lv[j].getLat()),datetime, NEW_PORTAL_DATE_FORMAT) );
 				in.setLocationValue(lv[j]);
 				LDAPUtils.setLDAPUserDtls(in);
 				allEmergencyDtls.add(in);				

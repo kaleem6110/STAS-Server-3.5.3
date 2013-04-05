@@ -234,7 +234,7 @@
                     <value><![CDATA[5]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[true]]></value>
@@ -449,16 +449,6 @@ String description = "<p>Soap Tracking job which is scheduled for every eight ho
 String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
-String getStartEndDate( int offset)
-{
- Date d = new Date();
-String dateStr ="2013-"+(d.getMonth()+1)+"-"+(d.getDate()-offset)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-
- return dateStr;
- 
-  }
-
-
 String getDatasource(){
 	return datasource;
 }
@@ -488,6 +478,7 @@ try
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));		
 			$artefact.addAttribute("time",	data.getTime() );
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
 			$artefact.addAttribute("name", data.getName());
 			$artefact.addAttribute("Organization", data.getOrganization());
 			$artefact.addAttribute("title", data.getTitle());
@@ -495,8 +486,7 @@ try
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
 			$artefact.addAttribute("Mail", com.wfp.utils.CommonUtils.getMailDtls(data.getMail()));
 			$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
-			//$artefact.addAttribute("startDate",  "01/01/2013 00:00:00"  );
-			//$artefact.addAttribute("endDate",  "03/20/2013 00:00:00" );
+			
 		
 			
 			
@@ -820,22 +810,6 @@ String getAuthorUrl(){
                 <section name="name">
                     <value><![CDATA[List]]></value>
                 </section>
-                <section name="starttime">
-                    <section name="script">
-                        <value><![CDATA[startDate]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="endtime">
-                    <section name="script">
-                        <value><![CDATA[endDate]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
                 </section>
@@ -864,14 +838,14 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="dashboardtype">
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -879,27 +853,11 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="starttime">
-                    <section name="script">
-                        <value><![CDATA[startDate]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="endtime">
-                    <section name="script">
-                        <value><![CDATA[endDate]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="datefielddateformat">
-                    <value><![CDATA[YYYY-MM-DD HH:JJ:SS]]></value>
+                <section name="datefield">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -1010,7 +968,7 @@ String getAuthorUrl(){
                             <value><![CDATA[loadbydefault]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

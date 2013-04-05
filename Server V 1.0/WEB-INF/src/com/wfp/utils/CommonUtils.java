@@ -1,5 +1,10 @@
 package com.wfp.utils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.URL;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,10 +14,19 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+
 import com.enterprisehorizons.magma.designtime.artifact.IGeoArtifact;
 import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.util.Logger;
 import com.enterprisehorizons.util.StringUtils;
+import com.wfp.jobs.RestTrackingJob;
 /**
  * Common Utility class 
  * @author sti-user
@@ -401,5 +415,80 @@ public class CommonUtils implements IEPICConstants{
 	 
 	    return dateToReturn; 
 	} 
+	public static String getTimeZoneByLatLong(String lat, String longitude, String zuluTime, String inputDateFormat)
+	{
+		String offset= null;
+		StringBuffer sb = new StringBuffer();
+		String uri =EARTH_TOOLS_URL+lat+"/"+longitude;
+		try {
+			
+			URL earthURI = new URL(uri);
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					earthURI.openStream()));
+			String inputLine;
+
+			while ((inputLine = in.readLine()) != null){
+				sb.append(inputLine);
+				//System.out.println(inputLine);
+			}
+			in.close();
+			 DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			 InputSource is = new InputSource();
+			 is.setCharacterStream(new StringReader(sb.toString()));
+
+			 Document doc = db.parse(is);
+		
+			org.w3c.dom.NodeList nList = doc.getElementsByTagName(TIME_ZONE_NODE);
+			
+			if(nList != null){
+				for (int temp = 0; temp < nList.getLength(); temp++) {
+					Node nNode = nList.item(temp);					
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+						 
+						org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
+						org.w3c.dom.NodeList offsetList = eElement.getElementsByTagName(OFFSET_NODE);						
+						org.w3c.dom.Element offsetElement = (org.w3c.dom.Element) offsetList.item(0);
+						offset= getCharacterDataFromElement(offsetElement);
+						
+						DateFormat formatter = new SimpleDateFormat(inputDateFormat);
+						Date zuluDate =  formatter.parse(zuluTime);
+						if( !inputDateFormat.equals(NEW_PORTAL_DATE_FORMAT))formatter = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
+					
+						boolean decimal= false;
+						if(offset!=null&&offset.trim().indexOf(".")>-1)
+						{
+							offset = offset.substring(0, offset.indexOf("."));
+							decimal=true;
+						}
+						if(Integer.parseInt(offset)>0)
+						{ zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
+						}
+						else  {zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
+						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
+						}
+						
+						offset = formatter.format( zuluDate );
+						//offset=offset.replace("T", " ").substring(0,offset.length()-5 );
+						
+				}
+				}
+				
+				
+			}			
+			}
+		catch (Exception exp) {
+			Logger.error("CommonUtils.getTimeZoneByLatLong : Error ocurred @ :"+uri, RestTrackingJob.class, exp );
+		}
+		return offset;
+	}
+	 public static String getCharacterDataFromElement(org.w3c.dom.Element e) {
+		    Node child = e.getFirstChild();
+		    if (child instanceof CharacterData) {
+		      CharacterData cd = (CharacterData) child;
+		      return cd.getData();
+		    }
+		    return "";
+		  }	
 	
 }

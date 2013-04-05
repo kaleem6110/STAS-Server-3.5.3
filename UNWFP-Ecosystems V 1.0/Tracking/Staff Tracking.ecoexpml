@@ -102,7 +102,7 @@
                     <value><![CDATA[Timestamp-GMT]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">
@@ -120,7 +120,7 @@
                     <value><![CDATA[Timestamp-GMT]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -204,7 +204,7 @@
             <value><![CDATA[true]]></value>
         </section>
         <section name="enableexpressions">
-            <value><![CDATA[false]]></value>
+            <value><![CDATA[true]]></value>
         </section>
         <section name="searchablefields">
             <section name="row">
@@ -261,7 +261,7 @@
                     <value><![CDATA[30]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[true]]></value>
@@ -430,7 +430,7 @@ void bindData() {
 			
 			$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime() )  );					
 			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-					
+			  		
 			$artefact.addAttribute("deviceId", data.getName());			
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
@@ -448,7 +448,7 @@ void bindData() {
 	catch (Exception e){
 		e.printStackTrace();
 	}
-}
+} 
 
 String getFullName(com.wfp.security.form.DeviceBean data){
 	String fullName = "";
@@ -746,7 +746,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isreloadconfiguration">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -775,7 +775,7 @@ String getAuthorUrl(){
                     </section>
                 </section>
                 <section name="isprogressive">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="isapplytoartifact">
                     <value><![CDATA[true]]></value>
@@ -784,6 +784,48 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="searchfields">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[owner]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[title]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Organization]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Date]]></value>
+                        </section>
+                        <section name="column"/>
+                    </section>
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[deviceId]]></value>
@@ -808,58 +850,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[owner]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[autocomplete]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[Organization]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[autocomplete]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
                             <value><![CDATA[Phone]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[autocomplete]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[time]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Date]]></value>
-                        </section>
-                        <section name="column"/>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[localTime]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Date]]></value>
-                        </section>
-                        <section name="column"/>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[title]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[Text]]></value>
@@ -923,16 +914,49 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="dashboardtype">
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
                 <section name="helpcontent">
-                    <value><![CDATA[This is place for help text for Staff Tracking Ecosystem.
+                    <value><![CDATA[Staff Tracking Ecosystem - Help
+Clicking on Tracking-> Last known position -> Staff Tracking will bring you to this page. 
+The Staff tracking layer will display all digital radio that are activated for GPS tracking. 
+There are three areas for each layer 
+1.	Left hand swing panel :   Select  Layer of interest
+2.	MAP :  Google Earth map to visualize objects from the selected layer  on a map 
+3.	List display : Attributes of the selected layer that is visualized on the map 
 
-blah blah blahh......................]]></value>
+
+List Display 
+
+TOP Menu bar on list display 
+Count: Displays the total number of objects visualized on the map 
+History:  Provides a list of filters applied to the list display
+From:  - To:  Provides filter capabilities for the list display.  Click on   once you have entered a date range to filter on 
+
+Favourites:    This feature allows you to save a particular list display for future reference.  
+
+Refresh Dashboard:    refreshes the dashboard with any new tracked objects 
+
+Download:   provides a feature to download the List display in three different formats PNG, JPG or CSV.
+
+Setting:   switches to configuration view where you can change the following
+1.	Columns displayed on the list display
+Simple drag and drop to change the view presented on list display.
+Note:   The setting is not saved and is only visible for that particular instance.   Save the setting using favourites for future reference.
+2.	Filter based on date range as specified above
+3.	Set favourites as specified above
+Select favourites if you want the list displayed according to the settings in 1 above.
+SORTING
+Click on the column heading to sort by that field.  If you want to sort within then click on the little upward facing arrow   that appears at the right hand side of the column heading
+Sorting by Timestamp and Name will be visualized as below, where 1 against the column Timestamp denotes that this is the first sort field and 2 against column Name is the second field sorted.  If you want to sort further click the arrow on the right hand side of the column name as described
+ 
+Clicking on the column heading to restore default and resort by selecting the fields as required.
+ 
+]]></value>
                 </section>
                 <section name="isshowcontrolbar">
                     <value><![CDATA[true]]></value>
@@ -1092,7 +1116,7 @@ blah blah blahh......................]]></value>
                             <value><![CDATA[loadbydefault]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

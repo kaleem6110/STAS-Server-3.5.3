@@ -85,8 +85,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	
 	public boolean executeCustomTask(Parameters parameters) {
 		
-		//Map<String,String> orgMap = LDAPUtils.getAllOrganizations();
-		//System.out.println(" orgMap "+ orgMap );
+		Map<String,String> orgMap = LDAPUtils.getAllOrganizations();
+		System.out.println(" orgMap "+ orgMap );
 		
 		Parameter[] params = parameters.getParameter();
 
@@ -157,7 +157,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setTime( element.getContent(0).getValue());
 		is.setName(element.getContent(1).getValue());
 		if(is.getLatitude()!=null &&is.getLongitude()!=null)
-		is.setDeviceLocalTime(getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),is.getTime())/*+" Local"*/);
+		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),is.getTime(),EPIC_DATE_FORMAT) );
 		indigoList.add(is);
 		LDAPUtils.setLDAPUserDtls(is);
 	}
@@ -165,80 +165,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	public static String getLastRefreshTime() {
 		return lastRefreshTime;
 	}
-	private String getTimeZoneByLatLong(String lat, String longitude, String zuluTime)
-	{
-		String offset= null;
-		StringBuffer sb = new StringBuffer();
-		String uri =EARTH_TOOLS_URL+lat+"/"+longitude;
-		try {
-			
-			URL earthURI = new URL(uri);
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					earthURI.openStream()));
-			String inputLine;
-
-			while ((inputLine = in.readLine()) != null){
-				sb.append(inputLine);
-				//System.out.println(inputLine);
-			}
-			in.close();
-			 DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			 InputSource is = new InputSource();
-			 is.setCharacterStream(new StringReader(sb.toString()));
-
-			 Document doc = db.parse(is);
-		
-			org.w3c.dom.NodeList nList = doc.getElementsByTagName(TIME_ZONE_NODE);
-			
-			if(nList != null){
-				for (int temp = 0; temp < nList.getLength(); temp++) {
-					Node nNode = nList.item(temp);					
-					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-						 
-						org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
-						org.w3c.dom.NodeList offsetList = eElement.getElementsByTagName(OFFSET_NODE);						
-						org.w3c.dom.Element offsetElement = (org.w3c.dom.Element) offsetList.item(0);
-						offset= getCharacterDataFromElement(offsetElement);
-						
-						DateFormat formatter = new SimpleDateFormat(EPIC_DATE_FORMAT);
-						DateFormat formatter2 = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
-						Date zuluDate =  formatter.parse(zuluTime);
-						boolean decimal= false;
-						if(offset!=null&&offset.trim().indexOf(".")>-1)
-						{
-							offset = offset.substring(0, offset.indexOf("."));
-							decimal=true;
-						}
-						if(Integer.parseInt(offset)>0)
-						{ zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
-						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
-						}
-						else  {zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
-						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
-						}
-						
-						offset = formatter2.format( zuluDate );
-						//offset=offset.replace("T", " ").substring(0,offset.length()-5 );
-						
-				}
-				}
-				
-				
-			}			
-			}
-		catch (Exception exp) {
-			Logger.error("RestTrackingJob.getTimeZoneByLatLong : Error ocurred @ :"+uri, RestTrackingJob.class, exp );
-		}
-		return offset;
-	}
-	 public static String getCharacterDataFromElement(org.w3c.dom.Element e) {
-		    Node child = e.getFirstChild();
-		    if (child instanceof CharacterData) {
-		      CharacterData cd = (CharacterData) child;
-		      return cd.getData();
-		    }
-		    return "";
-		  }	
+	
 	
 	
 }
