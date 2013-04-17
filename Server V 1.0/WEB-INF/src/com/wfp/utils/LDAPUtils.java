@@ -1256,13 +1256,10 @@ public class LDAPUtils implements IEPICConstants {
 			{
 				try{
 					for (NamingEnumeration ae = attrs.getAll(); ae.hasMore();) {
-						 Attribute attr = (Attribute) ae.next();
-						         
-				          System.out.println("attribute: " + attr.getID());
+						 Attribute attr = (Attribute) ae.next();        
+				        
 				         
-						  for (NamingEnumeration e = attr.getAll(); e.hasMore(); System.out
-			              .println("value: " + e.next()))
-			            ;
+						  for (NamingEnumeration e = attr.getAll(); e.hasMore(); e.next());
 					
 						//System.out.println(" attrs : "+attrs.get(keyAttribute) + ": "+ attrs.get(valueAttribute));
 						//if(attrs.get(keyAttribute)!=null && attrs.get(keyAttribute)!=null)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Airports">
+<configuration name="Offices">
     <section name="artefact">
         <section name="name">
-            <value><![CDATA[Airport]]></value>
+            <value><![CDATA[Offices]]></value>
         </section>
         <section name="artifactname">
             <section name="script">
@@ -32,24 +32,6 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[description]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Description]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="column"/>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -86,7 +68,27 @@
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
                 <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
             </section>
         </section>
         <section name="cache">
@@ -120,7 +122,7 @@
         <section name="experiencedef">
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Airport]]></value>
+                    <value><![CDATA[Offices]]></value>
                 </section>
                 <section name="type">
                     <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
@@ -154,7 +156,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airports.ecoexpml]]></value>
+                            <value><![CDATA[Offices.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -162,7 +164,7 @@
                             <value><![CDATA[artefactname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airport]]></value>
+                            <value><![CDATA[Offices]]></value>
                         </section>
                     </section>
                 </section>
@@ -231,13 +233,12 @@
         <section name="scriptor">
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
-import com.wfp.utils.RBRegionsUtils;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.enterprisehorizons.magma.datamashup.CacheDataDriver $Cache9driver;
 private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdriver;
-String description = "Airports are cache using WarehouseCache job from LDAP";
+String description = "Offices are cache using WarehouseCache job from LDAP";
 String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
 
@@ -249,10 +250,9 @@ String getLastRefreshTime(){
 	return lastRefreshTime;
 }
 
-
 String getDescription(){
 	return description;
-}
+}  
 
 
 
@@ -302,13 +302,8 @@ String getType() {
 	return $artefact.getAttributeValueAsString("type");
 }
 
-String getIconUrl(){
-		return "serverresources/icons/misc/Airplane.png";
-}
-
-
 boolean authorizePlaces(){
-	if(getType().indexOf("airport") >= 0){
+	if(getType().indexOf("office") >= 0){
 		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("Name"), userbean.getUserUniqueId());
 	}
@@ -334,7 +329,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources\icons\epic\Airports.png]]></value>
+                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -361,7 +356,7 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources\icons\epic\Airports.png]]></value>
+                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>
@@ -741,7 +736,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last Refresh Time]]></value>
+                            <value><![CDATA[Last referesh time]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
@@ -757,7 +752,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_summarysheet.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>
@@ -806,7 +801,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last Refresh Time]]></value>
+                            <value><![CDATA[Last referesh time]]></value>
                         </section>
                         <section name="value">
                             <section name="script">

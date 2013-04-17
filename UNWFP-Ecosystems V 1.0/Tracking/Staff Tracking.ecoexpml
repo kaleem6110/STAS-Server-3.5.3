@@ -51,9 +51,7 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -108,22 +106,6 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[ptime]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Timestamp-GMT]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -195,16 +177,19 @@
             </section>
         </section>
         <section name="cache">
-            <value><![CDATA[false]]></value>
+            <value><![CDATA[true]]></value>
         </section>
         <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="isindexed">
             <value><![CDATA[false]]></value>
         </section>
         <section name="isfiltersearchresults">
             <value><![CDATA[true]]></value>
         </section>
         <section name="enableexpressions">
-            <value><![CDATA[true]]></value>
+            <value><![CDATA[false]]></value>
         </section>
         <section name="searchablefields">
             <section name="row">
@@ -236,7 +221,7 @@
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[asc]]></value>
+                    <value><![CDATA[desc]]></value>
                 </section>
             </section>
         </section>
@@ -255,10 +240,10 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[never]]></value>
+                    <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[30]]></value>
+                    <value><![CDATA[600]]></value>
                 </section>
                 <section name="autozoom">
                     <value><![CDATA[true]]></value>
@@ -423,6 +408,7 @@ void bindData() {
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean )$trackingdatamodel;
 	 	
 	 	if (data != null)	{
+	 	 	$artefact.addAttribute("title", data.getTitle());	
 	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
@@ -435,12 +421,12 @@ void bindData() {
 			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
 			$artefact.addAttribute("Mail", com.wfp.utils.CommonUtils.getMailDtls(data.getMail()));
-			$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
+		  	$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
 			$artefact.addAttribute("owner", getFullName(data));
 			$artefact.addAttribute("Organization", data.getOrganization());
 			//$artefact.addAttribute("callSign", data.getCallSign());
-			 $artefact.addAttribute("title", data.getTitle());		
-			 $artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
+				
+			//$artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
 			 $artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
 			 
 		}
@@ -746,7 +732,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isreloadconfiguration">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -775,7 +761,7 @@ String getAuthorUrl(){
                     </section>
                 </section>
                 <section name="isprogressive">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="isapplytoartifact">
                     <value><![CDATA[true]]></value>
@@ -816,15 +802,6 @@ String getAuthorUrl(){
                         <section name="column">
                             <value><![CDATA[autocomplete]]></value>
                         </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[time]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Date]]></value>
-                        </section>
-                        <section name="column"/>
                     </section>
                     <section name="row">
                         <section name="column">
@@ -902,7 +879,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[never]]></value>
+                    <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
                     <value><![CDATA[60]]></value>
@@ -921,41 +898,92 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="helpcontent">
-                    <value><![CDATA[Staff Tracking Ecosystem - Help
-Clicking on Tracking-> Last known position -> Staff Tracking will bring you to this page. 
-The Staff tracking layer will display all digital radio that are activated for GPS tracking. 
-There are three areas for each layer 
-1.	Left hand swing panel :   Select  Layer of interest
-2.	MAP :  Google Earth map to visualize objects from the selected layer  on a map 
-3.	List display : Attributes of the selected layer that is visualized on the map 
+                    <value><![CDATA[
+	<strong>Staff Tracking Ecosystem - Help</strong>
+
+	Staff tracking layer will display all digital radio's activated for GPS tracking.
+
+	There are three areas for each layer
 
 
-List Display 
+	1. Left hand swing panel : Select Layer of interest
 
-TOP Menu bar on list display 
-Count: Displays the total number of objects visualized on the map 
-History:  Provides a list of filters applied to the list display
-From:  - To:  Provides filter capabilities for the list display.  Click on   once you have entered a date range to filter on 
+	2. MAP : Google Earth map to visualize objects from the selected layer on a map
 
-Favourites:    This feature allows you to save a particular list display for future reference.  
+	3. List display : List of the object attributes visualized on the map	
 
-Refresh Dashboard:    refreshes the dashboard with any new tracked objects 
 
-Download:   provides a feature to download the List display in three different formats PNG, JPG or CSV.
+	<strong>List Display</strong>
 
-Setting:   switches to configuration view where you can change the following
-1.	Columns displayed on the list display
-Simple drag and drop to change the view presented on list display.
-Note:   The setting is not saved and is only visible for that particular instance.   Save the setting using favourites for future reference.
-2.	Filter based on date range as specified above
-3.	Set favourites as specified above
-Select favourites if you want the list displayed according to the settings in 1 above.
-SORTING
-Click on the column heading to sort by that field.  If you want to sort within then click on the little upward facing arrow   that appears at the right hand side of the column heading
-Sorting by Timestamp and Name will be visualized as below, where 1 against the column Timestamp denotes that this is the first sort field and 2 against column Name is the second field sorted.  If you want to sort further click the arrow on the right hand side of the column name as described
- 
-Clicking on the column heading to restore default and resort by selecting the fields as required.
- 
+
+	<em><u>TOP Menu bar on list display </u></em>
+
+
+	<strong>Count :</strong>
+	 Displays the total number of objects visualized on the map
+
+
+	<strong>History : </strong>
+	Provides a list of filters applied to the list display
+
+
+	<div style=\"display:inline\"><strong>From: - To : </strong> Provides filter capabilities for the list display. Click on <img src=\"/stas/serverresources/icons/epic/help/image001.png\" width=\"32\" height=\"25\"/> once you have entered a date range to filter on </div>
+
+
+	<div style=\"display:inline\"><strong>Favourites:</strong><img src=\"/stas/serverresources/icons/epic/help/image002.png\" width=\"102\" height=\"35\"/>
+	This feature allows you to save a particular list display for future reference.
+	</div>
+
+
+	<div style=\"display:inline\"><strong>Refresh Dashboard :</strong> <img src=\"/stas/serverresources/icons/epic/help/image003.png\" width=\"42\" height=\"28\"/>
+	refreshes the dashboard with any new tracked objects
+	</div>
+
+
+	<div style=\"display:inline\"><strong>Download :</strong><img src=\"/stas/serverresources/icons/epic/help/image004.png\" width=\"46\" height=\"29\"/>
+	provides a feature to download the List display in three different formats PNG, JPG or CSV.
+	</div>
+
+
+	<div style=\"display:inline\"><strong>Setting : </strong><img src=\"/stas/serverresources/icons/epic/help/image005.png\" width=\"33\" height=\"32\"/>
+	switches to configuration view where you can change the following
+    </div>
+
+	1. Columns displayed on the list display
+
+
+	Simple drag and drop to change the view presented on list display.
+
+
+	Note: The setting is not saved and is only visible for that particular instance. Save the setting using favourites for future reference.
+
+
+	2. Filter based on date range as specified above
+
+
+	3. Set favourites as specified above
+
+
+	Select favourites if you want the list displayed according to the settings in 1 above.
+
+
+	<em><u>SORTING</u></em>
+
+<div style=\"display:inline\">
+	Click on the column heading of the field for primary sorting. For secondary sorting click on the little upward facing arrow <img src=\"/stas/serverresources/icons/epic/help/image006.png\" width=\"117\" height=\"23\"/> that appears at the right hand side of the field column heading
+</div>
+
+	Sorting by Timestamp and Name will be visualized as below, where 1 against the column Timestamp denotes that this is the primary sort field and 2 against column Name denotes secodnary sort field. For further sorting within, click the arrow on the right hand side of the column name as described above.
+	
+	<img src=\"/stas/serverresources/icons/epic/help/image007.png\" width=\"595\" height=\"25\"/>
+
+
+	To restore defaults and re-sort , click on the column heading of the primary sort field.
+
+<em><u></u></em>
+
+
+
 ]]></value>
                 </section>
                 <section name="isshowcontrolbar">
@@ -991,7 +1019,7 @@ Clicking on the column heading to restore default and resort by selecting the fi
                         <value><![CDATA[false]]></value>
                     </section>
                     <section name="refreshtype">
-                        <value><![CDATA[never]]></value>
+                        <value><![CDATA[onInterval]]></value>
                     </section>
                     <section name="periodicrefreshrate">
                         <value><![CDATA[60]]></value>
@@ -1190,7 +1218,7 @@ Clicking on the column heading to restore default and resort by selecting the fi
                     <value><![CDATA[images/dashboards/icon_ack.png]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>
@@ -1203,7 +1231,7 @@ Clicking on the column heading to restore default and resort by selecting the fi
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
@@ -1459,347 +1487,6 @@ Clicking on the column heading to restore default and resort by selecting the fi
             </section>
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Configure a Geo-fence]]></value>
-                </section>
-                <section name="descriptiontype">
-                    <value><![CDATA[flash]]></value>
-                </section>
-                <section name="ispercentage">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="flashurl">
-                    <section name="script">
-                        <value><![CDATA[getURL()]]></value>
-                        <section name="type">
-                            <value><![CDATA[1]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="flashwidth">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="flashheight">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="type">
-                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
-                </section>
-                <section name="refreshtype">
-                    <value><![CDATA[never]]></value>
-                </section>
-                <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_customdashboard.png]]></value>
-                </section>
-                <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="dashboardtype">
-                    <value><![CDATA[customdashboard]]></value>
-                </section>
-                <section name="datamashups"/>
-                <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="isreloadconfiguration">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="isallowtimeselection">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="isattributelink">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="refreshonevent">
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[Artifact data loaded]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="dashboarddata">
-                    <section name="datasourcetype">
-                        <value><![CDATA[artifact]]></value>
-                    </section>
-                    <section name="iscamerasensitive">
-                        <value><![CDATA[false]]></value>
-                    </section>
-                    <section name="refreshtype">
-                        <value><![CDATA[never]]></value>
-                    </section>
-                    <section name="dashboarddataparameters">
-                        <section name="row">
-                            <section name="column">
-                                <value><![CDATA[datatablerenderer]]></value>
-                            </section>
-                            <section name="column">
-                                <value><![CDATA[]]></value>
-                            </section>
-                        </section>
-                        <section name="row">
-                            <section name="column">
-                                <value><![CDATA[datatablequery]]></value>
-                            </section>
-                            <section name="column">
-                                <value><![CDATA[]]></value>
-                            </section>
-                        </section>
-                    </section>
-                </section>
-                <section name="flashparameters">
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[dashboardname]]></value>
-                        </section>
-                        <section name="value">
-                            <value><![CDATA[Configure a Geo-fence]]></value>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[loadbydefault]]></value>
-                        </section>
-                        <section name="value">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[lookatfunction]]></value>
-                        </section>
-                        <section name="value">
-                            <value><![CDATA[_lookat]]></value>
-                        </section>
-                    </section>
-                </section>
-            </section>
-            <section name="folder">
-                <section name="name">
-                    <value><![CDATA[Send a Manual Alert]]></value>
-                </section>
-                <section name="descriptiontype">
-                    <value><![CDATA[flash]]></value>
-                </section>
-                <section name="ispercentage">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="flashurl">
-                    <value><![CDATA[serverresources/ManualAlert.swf]]></value>
-                </section>
-                <section name="flashwidth">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="flashheight">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="flashparameters">
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[domainId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDomainId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[languageId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getLanguageId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[userId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getUserId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[userUniqueId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getUserUniqueId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[moduleId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getModuleId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[regionPrefix]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getRegionPrefix()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[layerNameKey]]></value>
-                        </section>
-                        <section name="value">
-                            <value><![CDATA[staff]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="type">
-                    <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
-                </section>
-                <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
-                </section>
-                <section name="loadbydefault">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="descriptiontype">
-                    <value><![CDATA[flash]]></value>
-                </section>
-                <section name="ispercentage">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="flashurl">
-                    <value><![CDATA[serverresources/ManualAlert.swf]]></value>
-                </section>
-                <section name="flashwidth">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="flashheight">
-                    <value><![CDATA[100]]></value>
-                </section>
-                <section name="flashparameters">
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[domainId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDomainId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[languageId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getLanguageId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[userId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getUserId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[userUniqueId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getUserUniqueId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[moduleId]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getModuleId()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[regionPrefix]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getRegionPrefix()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[layerNameKey]]></value>
-                        </section>
-                        <section name="value">
-                            <value><![CDATA[staff]]></value>
-                        </section>
-                    </section>
-                </section>
-            </section>
-            <section name="folder">
-                <section name="name">
                     <value><![CDATA[Summary Sheet]]></value>
                 </section>
                 <section name="descriptiontype">
@@ -1920,6 +1607,120 @@ Clicking on the column heading to restore default and resort by selecting the fi
                                     <value><![CDATA[1]]></value>
                                 </section>
                             </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Configure a Geo-fence]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <section name="script">
+                        <value><![CDATA[getURL()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_customdashboard.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[customdashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Configure a Geo-fence]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
                         </section>
                     </section>
                 </section>

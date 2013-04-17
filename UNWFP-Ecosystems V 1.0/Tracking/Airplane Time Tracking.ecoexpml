@@ -40,7 +40,23 @@
                     <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Time]]></value>
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -334,7 +350,7 @@ String description = "<p>Soap Tracking job which is scheduled for every eight ho
 String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
-String getDatasource(){
+String getDatasource(){ 
 	return datasource;
 }
 
@@ -363,6 +379,8 @@ void bindData() {
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
 			$artefact.addAttribute("time",data.getTime() );
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
+			//$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );  
 			$artefact.addAttribute("name", data.getName());
 		}
 	}

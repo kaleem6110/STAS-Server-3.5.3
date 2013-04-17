@@ -156,9 +156,12 @@
             </section>
         </section>
         <section name="cache">
-            <value><![CDATA[false]]></value>
+            <value><![CDATA[true]]></value>
         </section>
         <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="isindexed">
             <value><![CDATA[false]]></value>
         </section>
         <section name="isfiltersearchresults">
@@ -300,7 +303,7 @@ String lastRefreshTime = com.wfp.utils.CommonUtils.getUTCdatetimeAsString();
 String getDatasource(){
 	return datasource;  
 }
-  
+   
 String getLastRefreshTime(){
 	return lastRefreshTime;
 }  
@@ -322,10 +325,10 @@ void bindData() {
 	$artefact.addAttribute("Title", data.getAttributeValue("Title"));
 	
 	String gmtDate = formatDate(data.getAttributeValue("Updated Date").toString()) ;
-	//$artefact.addAttribute("Updated_Date",  com.wfp.utils.CommonUtils.parseDate( gmtDate ,"dd MMM yyyy hh:mm:ss" ) );
+	
 	$artefact.addAttribute("Updated_Date", data.getAttributeValue("Updated Date") );
 	$artefact.addAttribute("Updated_Date_Text", com.wfp.utils.CommonUtils.formatDate((Date)data.getAttributeValue("Updated Date") ) );
-	 
+	  
 	String localTime = com.wfp.utils.CommonUtils.getTimeZoneByLatLong( c[0].y+"", c[0].x+"" ,gmtDate , "dd MMM yyyy hh:mm:ss" );
 	$artefact.addAttribute("localTime", localTime );
 	$artefact.addAttribute("localTimeText", localTime );
@@ -507,7 +510,7 @@ String formatDate(String date) {
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="isapplytoartifact">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="isapplytodashboard">
                     <value><![CDATA[true]]></value>
@@ -860,7 +863,7 @@ String formatDate(String date) {
                     <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_summarysheet.png]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>

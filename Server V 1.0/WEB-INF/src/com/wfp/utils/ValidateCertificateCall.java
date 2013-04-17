@@ -13,9 +13,11 @@ public class ValidateCertificateCall {
 	public static String callSecureURI() {
 		//System.setProperty("javax.net.debug", "SSL,handshake");
 		String uri = WFPConfigUtils.getWFPConfigValue("restgps");
+		System.out.println("1uri:"+uri );
 		if(StringUtils.isNull(uri)){
-			uri = "http://middleware-qa.service.emergency.lu/sensorservice/out/rest/loc";
+			uri = "http://middleware-training.service.emergency.lu/sensorservice/out/rest/loc";
 		}
+		System.out.println("uri:"+uri );
 		/*System.setProperty("sun.security.ssl.allowUnsafeRenegotiation", "true");
 		System.setProperty("javax.net.debug", "all");
 		

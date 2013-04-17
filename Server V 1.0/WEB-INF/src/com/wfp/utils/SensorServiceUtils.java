@@ -120,6 +120,7 @@ public class SensorServiceUtils implements IEPICConstants{
 							if( missionList!=null&&missionList.size()>0 ){
 							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
 							setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
+							System.out.println(" DeviceId : "+devices[i].getId() );
 							}
 							//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
 						}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
@@ -219,7 +220,9 @@ public class SensorServiceUtils implements IEPICConstants{
 				in.setDatetime(lv[j].getTime().getTime());
 				String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
 				in.setTime(datetime);
-				in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(String.valueOf(lv[j].getLat()),String.valueOf(lv[j].getLat()),datetime, NEW_PORTAL_DATE_FORMAT) );
+				//System.out.println(" datetime:"+datetime +": SENSOR_WS_DATE_FORMAT "+ SENSOR_WS_DATE_FORMAT );
+				in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(in.getLatitude(),in.getLongitude(),datetime, NEW_PORTAL_DATE_FORMAT ) );
+				//System.out.println(" in.getTime:"+in.getDeviceLocalTime() );
 				in.setLocationValue(lv[j]);
 				LDAPUtils.setLDAPUserDtls(in);
 				allEmergencyDtls.add(in);				

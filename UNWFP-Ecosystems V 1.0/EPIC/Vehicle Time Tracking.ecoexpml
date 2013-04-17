@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Airports">
+<configuration name="Vehicle Time Tracking">
     <section name="artefact">
         <section name="name">
-            <value><![CDATA[Airport]]></value>
+            <value><![CDATA[Vehicle Time Tracking]]></value>
         </section>
         <section name="artifactname">
             <section name="script">
-                <value><![CDATA[Name]]></value>
+                <value><![CDATA[time]]></value>
                 <section name="type">
                     <value><![CDATA[2]]></value>
                 </section>
@@ -18,7 +18,7 @@
         <section name="attributes">
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[Name]]></value>
+                    <value><![CDATA[name]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
@@ -29,12 +29,8 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -50,27 +46,87 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[address]]></value>
+                    <value><![CDATA[Fleet]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Street]]></value>
+                    <value><![CDATA[Fleet]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
                 <section name="column">
-                    <value><![CDATA[]]></value>
+                    <value><![CDATA[Unit]]></value>
                 </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Unit]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[callSign]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Call Sign]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -90,12 +146,9 @@
             </section>
         </section>
         <section name="cache">
-            <value><![CDATA[true]]></value>
-        </section>
-        <section name="sortchildren">
             <value><![CDATA[false]]></value>
         </section>
-        <section name="isindexed">
+        <section name="sortchildren">
             <value><![CDATA[false]]></value>
         </section>
         <section name="isfiltersearchresults">
@@ -107,10 +160,18 @@
         <section name="searchablefields">
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[Name]]></value>
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[list]]></value>
+                    <value><![CDATA[date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[date]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[name]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[list]]></value>
@@ -120,7 +181,7 @@
         <section name="experiencedef">
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Airport]]></value>
+                    <value><![CDATA[Vehicle Time Tracking]]></value>
                 </section>
                 <section name="type">
                     <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
@@ -132,13 +193,16 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[Never]]></value>
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="periodicrefreshrate">
+                    <value><![CDATA[5]]></value>
                 </section>
                 <section name="autozoom">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="timesensitive">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="params">
                     <section name="param">
@@ -154,7 +218,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airports.ecoexpml]]></value>
+                            <value><![CDATA[Vehicle Time Tracking.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -162,7 +226,7 @@
                             <value><![CDATA[artefactname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airport]]></value>
+                            <value><![CDATA[Vehicle Time Tracking]]></value>
                         </section>
                     </section>
                 </section>
@@ -178,7 +242,7 @@
             <section name="constraint">
                 <value><![CDATA[visibility]]></value>
                 <section name="script">
-                    <value><![CDATA[authorizePlaces()]]></value>
+                    <value><![CDATA[authorizeDevice()]]></value>
                     <section name="type">
                         <value><![CDATA[1]]></value>
                     </section>
@@ -190,14 +254,14 @@
             <section name="folder">
                 <section name="name">
                     <section name="script">
-                        <value><![CDATA[Name]]></value>
+                        <value><![CDATA[getDeviceCaption()]]></value>
                         <section name="type">
-                            <value><![CDATA[2]]></value>
+                            <value><![CDATA[1]]></value>
                         </section>
                     </section>
                 </section>
                 <section name="fetchdescriptionatruntime">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[html]]></value>
@@ -230,90 +294,131 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
-import com.wfp.utils.RBRegionsUtils;
+                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
+import com.enterprisehorizons.magma.server.util.ServerUtils;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
+com.wfp.security.form.DeviceBean data = null;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
-private com.enterprisehorizons.magma.datamashup.CacheDataDriver $Cache9driver;
-private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdriver;
-String description = "Airports are cache using WarehouseCache job from LDAP";
-String datasource = "LDAP";
-String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
+private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
+String description = "<p>Soap Tracking job which is scheduled for every eight hours fetches data from  <i>https://middleware.service.emergency.lu/sensorservice/out/soap</i> & caches the data. </p> ";
+String datasource = "Hitec middleware SOAP service & LDAP ";
+String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
 String getDatasource(){
 	return datasource;
-}
+}  
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
 }
 
-
 String getDescription(){
 	return description;
 }
 
-
-
 void bindData() {
-	Map dataMap = (Map) $ldapplacesdatamodel;
-	
-	if (dataMap != null)
- 	{
-		$artefact.setCoordinates(dataMap.get("coord-latitude"), dataMap.get("coord-longitude"));		
-		$artefact.addAttribute("Name", dataMap.get("cn"));
-		$artefact.addAttribute("address", dataMap.get("street"));	
-		$artefact.addAttribute("type", dataMap.get("type"));
-		//$artefact.addAttribute("compasId", dataMap.get("compasId"));
-		$artefact.addAttribute("description", dataMap.get("description"));
-		//$artefact.addAttribute("skype", dataMap.get("skype"));
-		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
-				
+
+try
+	{
+	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	 	
+	 	if (data != null)
+	 	{
+			$artefact.setCoordinates(data.getCoordStr());
+			//changed for getting type as Date instead of String for time
+			$artefact.addAttribute("time", data.getTime());
+			
+			   
+			       
+			$artefact.addAttribute("name", data.getName());
+			$artefact.addAttribute("type", data.getVehicleType());
+			$artefact.addAttribute("description", data.getDescription());
+			$artefact.addAttribute("licensePlate", data.getLicensePlate());
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
+		}
 	}
-		
-}
- 
-String getName() {
-	return $artefact.getAttributeValueAsString("Name");
+	catch (Exception e){
+		e.printStackTrace();
+	}
+	
+	
 }
 
-boolean isValidLocation(){
-	String country =  $artefact.getAttributeValueAsString("Country");
-	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	return com.wfp.utils.RBRegionsUtils.validateLocation(country, userbean.getGroupIds());
-}
 
 void addAttribute(){
-	String contactDtls = com.wfp.utils.CommonUtils.getContactDtls($artefact.getAttributeValueAsString("skype"), null, $artefact.getAttributeValueAsString("ocs"));
-	if(!(contactDtls == null || "".equalsIgnoreCase(contactDtls ))){
-		$artefact.addAttribute("Contact", contactDtls);
+	if(getName().startsWith("trackMe")){
+		com.wfp.security.form.LDAPUserBean ldapUserBean = com.wfp.utils.LDAPUtils.getLDAPUserBean(getName());
+		if(ldapUserBean == null){
+			return;
+		}
+		
+		if(!com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getCn()) && !("NULL".equalsIgnoreCase(ldapUserBean.getCn()))){
+			$artefact.addAttribute("owner", ldapUserBean.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getSn())?"":ldapUserBean.getSn()));
+		}
+		if(!StringUtils.isNull(ldapUserBean.getFleet())){
+			$artefact.addAttribute("Fleet", ldapUserBean.getFleet());
+		}
+		
+		if(!StringUtils.isNull(ldapUserBean.getUnit())){
+			$artefact.addAttribute("Unit", ldapUserBean.getFleet());
+		}
+			
+		if(!StringUtils.isNull(ldapUserBean.getCallSign())){
+			$artefact.addAttribute("callSign", ldapUserBean.getCallSign());
+			$artefact.addAttribute("type", ldapUserBean.getVehicleType());
+			$artefact.addAttribute("reg", ldapUserBean.getVehicleReg());
+		}
 	}
-    
-    
 }
 
-void fireDashboardRefreshEvent(){
-	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
+String getDeviceCaption(){	
+	if(!com.enterprisehorizons.util.StringUtils.isNull($artefact.getAttributeValueAsString("Unit"))){
+		return $artefact.getAttributeValueAsString("Unit") +" " +$artefact.getAttributeValueAsString("Fleet");
+	}
+	return  $artefact.getAttributeValueAsString("deviceId");
 }
 
+String getName() {
+	return $artefact.getAttributeValueAsString("name");
+}
 
-String getType() {
-	return $artefact.getAttributeValueAsString("type");
+double getAltitude(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	
+	return l.getAlt();
+}
+
+double getLat(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	
+	return l.getLat();
+}
+
+double getLng(){
+	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	
+	return l.getLng();
 }
 
 String getIconUrl(){
-		return "serverresources/icons/misc/Airplane.png";
+	return "serverresources/icons/epic/Vehicle_Time_Tracking.png";
 }
 
+String getIconColor(){
+	return "#FFFFFF";
+}
 
-boolean authorizePlaces(){
-	if(getType().indexOf("airport") >= 0){
-		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("Name"), userbean.getUserUniqueId());
-	}
-	
-	return false;
+String getGroupby(){
+	return "name";
+}
+
+boolean authorizeDevice(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
 }
 
 String getAuthorUrl(){	
@@ -334,7 +439,18 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources\icons\epic\Airports.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Vehicle_Time_Tracking.png]]></value>
+                </section>
+                <section name="iconcolor">
+                    <section name="script">
+                        <value><![CDATA[getIconColor()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                    <section name="transparency">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -361,13 +477,21 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources\icons\epic\Airports.png]]></value>
+                    <section name="script">
+                        <value><![CDATA[getIconUrl()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>
                 </section>
+                <section name="highlightlabelcolor">
+                    <value><![CDATA[#FFFFFF]]></value>
+                </section>
                 <section name="highlightlabelscale">
-                    <value><![CDATA[1.0]]></value>
+                    <value><![CDATA[0.5]]></value>
                 </section>
                 <section name="shadertype">
                     <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
@@ -457,7 +581,7 @@ String getAuthorUrl(){
                 <section name="searchfields">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[Name]]></value>
+                            <value><![CDATA[name]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[Text]]></value>
@@ -468,25 +592,12 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[description]]></value>
+                            <value><![CDATA[time]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[Text]]></value>
+                            <value><![CDATA[Date]]></value>
                         </section>
-                        <section name="column">
-                            <value><![CDATA[autocomplete]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[address]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[Text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[autocomplete]]></value>
-                        </section>
+                        <section name="column"/>
                     </section>
                 </section>
                 <section name="flashparameters">
@@ -547,7 +658,7 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -590,47 +701,15 @@ String getAuthorUrl(){
                         </section>
                     </section>
                 </section>
-                <section name="dashboardattributes">
+                <section name="groupattributes">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[Name]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[0]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[description]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[0]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[address]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[0]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
+                            <section name="script">
+                                <value><![CDATA[getGroupby()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
                         </section>
                     </section>
                 </section>
@@ -680,7 +759,7 @@ String getAuthorUrl(){
                             <value><![CDATA[highlighticonscale]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[1.0]]></value>
+                            <value><![CDATA[0.0]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -741,7 +820,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last Refresh Time]]></value>
+                            <value><![CDATA[Last refresh time]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
@@ -757,7 +836,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_summarysheet.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>
@@ -806,7 +885,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last Refresh Time]]></value>
+                            <value><![CDATA[Last refresh time]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
@@ -822,19 +901,46 @@ String getAuthorUrl(){
         </section>
         <section name="datamashups">
             <section name="datamashup">
-                <value><![CDATA[ldapplaces]]></value>
+                <value><![CDATA[timetracking]]></value>
                 <section name="driver">
-                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.CacheDataDriver]]></value>
+                    <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataDriver]]></value>
+                </section>
+                <section name="datarendertype">
+                    <value><![CDATA[Collection]]></value>
                 </section>
                 <section name="datasource">
-                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.CacheDataSource]]></value>
+                    <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataSource]]></value>
                     <section name="params">
                         <section name="param">
                             <section name="name">
-                                <value><![CDATA[key]]></value>
+                                <value><![CDATA[longitudeDataElement]]></value>
                             </section>
                             <section name="value">
-                                <value><![CDATA[$warehouses$]]></value>
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[latitudeDataElement]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[latitude]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[dataTableScope]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[EcosystemSession]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[layerName]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[Vehicle Time Tracking]]></value>
                             </section>
                         </section>
                     </section>
@@ -844,27 +950,12 @@ String getAuthorUrl(){
         <section name="databinding">
             <section name="bindingdefinition">
                 <section name="datamashup">
-                    <value><![CDATA[ldapplaces]]></value>
+                    <value><![CDATA[timetracking]]></value>
                 </section>
                 <section name="script">
                     <value><![CDATA[bindData()]]></value>
                     <section name="type">
                         <value><![CDATA[1]]></value>
-                    </section>
-                </section>
-            </section>
-        </section>
-        <section name="runtimeattributes">
-            <section name="attributegroup">
-                <section name="name">
-                    <value><![CDATA[AttributeGroup]]></value>
-                </section>
-                <section name="attributes">
-                    <section name="script">
-                        <value><![CDATA[addAttribute()]]></value>
-                        <section name="type">
-                            <value><![CDATA[1]]></value>
-                        </section>
                     </section>
                 </section>
             </section>

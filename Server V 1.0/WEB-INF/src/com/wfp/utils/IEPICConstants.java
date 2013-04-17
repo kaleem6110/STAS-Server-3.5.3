@@ -27,9 +27,11 @@ public interface IEPICConstants {
 	public static final String EPIC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy'T'HH:mm:ss.SSS'Z'";	
 	public static final String NEW_PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
+	public static final String SENSOR_WS_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 	//public static final String OLD_PORTAL_DATE_FORMAT = NEW_PORTAL_DATE_FORMAT;
 	public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(PORTAL_DATE_FORMAT);
 	public static final SimpleDateFormat NEW_PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
+	public static final SimpleDateFormat SENSOR_WS_SIMPLE_FORMAT = new SimpleDateFormat(SENSOR_WS_DATE_FORMAT);
 	
 	//data filtering
 	public static final String LAYER_STAFF = "Staff";
@@ -147,8 +149,8 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//REST URI kmohammed
-	public static final String SENSOR_REST_URI ="http://middleware.globalepic.lu/sensorservice/out/rest/loc";
-	public static final String STAS_Engine ="STAS_Engine";
+	public static final String SENSOR_REST_URI ="http://middleware-dev.globalepic.lu/sensorservice/out/rest/loc";
+	public static final String STAS_Engine ="STAS_Engine-dev";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
 	public static final String OFFSET_NODE = "offset";

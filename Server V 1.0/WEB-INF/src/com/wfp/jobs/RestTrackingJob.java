@@ -107,6 +107,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		String expression = null;
 		
 		String xmlString = ValidateCertificateCall.callSecureURI();
+		
 		if(StringUtils.isNull(xmlString)){
 			return ;
 		}
@@ -115,7 +116,9 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	
 		
 		List<Element> list =  XMLUtils.evaluate(rootNode, expression);
+		
 		if(list != null){
+			System.out.println(" list size:"+list.size() );
 			staffList = new ArrayList<DeviceBean>();
 			vehicleList =  new ArrayList<DeviceBean>();
 			airplaneList = new ArrayList<DeviceBean>();
@@ -124,13 +127,14 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		}
 		//Object lists = getDataInput();
 		for (int i=0;i <list.size(); i++){
-			Element element = list.get(i);
+			Element element = list.get(i); 
+		
 			if(LDAPUtils.validateVehicles(element.getContent(1).getValue(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
-				addDevice(element, vehicleList, KEY_VEHICLE);
+				addDevice(element, vehicleList, KEY_VEHICLE); 
 			}else if(LDAPUtils.validateStaff(element.getContent(1).getValue(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
-				addDevice(element, staffList,KEY_STAFF);
+				addDevice(element, staffList,KEY_STAFF); 
 			}else if(LDAPUtils.validatePlanes(element.getContent(1).getValue(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
-				addDevice(element, airplaneList, KEY_AIRPLANE);
+				addDevice(element, airplaneList, KEY_AIRPLANE); 
 			}/*else if(! (element.getContent(1).getValue().startsWith(DEVICE_VEHICLE) || element.getContent(1).getValue().startsWith(DEVICE_STAFF)
 					|| element.getContent(1).getValue().contains("nrap") || element.getContent(1).getValue().contains("nreg"))){
 				addDevice(element, airplaneList);
@@ -160,6 +164,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),is.getTime(),EPIC_DATE_FORMAT) );
 		indigoList.add(is);
 		LDAPUtils.setLDAPUserDtls(is);
+		//System.out.println(" Name :"+ is.getName() );
 	}
 	
 	public static String getLastRefreshTime() {

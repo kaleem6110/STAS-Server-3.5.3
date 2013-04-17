@@ -362,7 +362,7 @@ void bindData() {
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			$artefact.addAttribute("time",data.getTime().replace("T", " ") );
+			$artefact.addAttribute("time",data.getTime() );
 			$artefact.addAttribute("name", data.getName());
 		}
 	}

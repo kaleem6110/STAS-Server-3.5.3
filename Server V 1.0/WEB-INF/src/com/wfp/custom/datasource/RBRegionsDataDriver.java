@@ -50,9 +50,13 @@ public class RBRegionsDataDriver extends BaseGeoDataDriver implements
 			//setCustomSearchCriteria();
 			String[] allModules = dataSource.getModuleId() != null ? dataSource
 					.getModuleId().split(",") : null;
+					
+					
 			if (allModules != null) {
+			
 				rbRegions = new ArrayList<Rubberband>();
 				for (String module : allModules) {
+					System.out.println(" dataSource.getDomainId() :" +dataSource.getDomainId()+"module:"+module +" dataSource.getUserId(): "+dataSource.getUserId() + " : dataSource.getUserUniqueId():"+dataSource.getUserUniqueId());
 					Rubberband[] rubberbandregions = RBRegionsUtils.getUserModulePreferences(dataSource.getDomainId(), dataSource.getLanguageId()
 							, dataSource.getUserId(),dataSource.getUserUniqueId(), StringUtils
 							.getLong(module));
