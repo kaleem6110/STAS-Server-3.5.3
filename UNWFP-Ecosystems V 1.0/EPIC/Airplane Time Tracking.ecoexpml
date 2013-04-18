@@ -50,7 +50,7 @@
             </section>
         </section>
         <section name="cache">
-            <value><![CDATA[false]]></value>
+            <value><![CDATA[true]]></value>
         </section>
         <section name="sortchildren">
             <value><![CDATA[false]]></value>
@@ -70,6 +70,9 @@
                     <value><![CDATA[2]]></value>
                 </section>
             </section>
+        </section>
+        <section name="isindexed">
+            <value><![CDATA[false]]></value>
         </section>
         <section name="isfiltersearchresults">
             <value><![CDATA[true]]></value>
@@ -462,7 +465,7 @@ void fireDashboardRefreshEvent(){
 
 boolean authorizeDevice(){
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	return com.wfp.utils.LDAPUtils.validateVehiclesByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
+	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
 }
 
 String getAuthorUrl(){	

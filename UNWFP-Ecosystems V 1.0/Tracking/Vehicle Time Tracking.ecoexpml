@@ -354,7 +354,7 @@ try
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
 			$artefact.addAttribute("time", data.getTime());
-			
+			System.out.println("localTimeTextt" + data.getDeviceLocalTime()  );
 			  $artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
 			$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );       
 			$artefact.addAttribute("name", data.getName());

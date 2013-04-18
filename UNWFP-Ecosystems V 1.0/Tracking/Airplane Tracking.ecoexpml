@@ -126,7 +126,7 @@
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[asc]]></value>
+                    <value><![CDATA[desc]]></value>
                 </section>
             </section>
         </section>

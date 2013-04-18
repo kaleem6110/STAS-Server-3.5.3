@@ -123,7 +123,7 @@
                     <value><![CDATA[Timestamp-Local]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -144,11 +144,46 @@
                 <section name="column"/>
                 <section name="column"/>
             </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[ ]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[ ]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
         </section>
         <section name="cache">
-            <value><![CDATA[false]]></value>
+            <value><![CDATA[true]]></value>
         </section>
         <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="starttime">
+            <section name="script">
+                <value><![CDATA[time]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="endtime">
+            <section name="script">
+                <value><![CDATA[time]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="isindexed">
             <value><![CDATA[false]]></value>
         </section>
         <section name="isfiltersearchresults">
@@ -335,7 +370,10 @@ try
 			$artefact.addAttribute("type", data.getVehicleType());
 			$artefact.addAttribute("description", data.getDescription());
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
-			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
+			
+			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
+			$artefact.addAttribute("localTime", localTime );	
+			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
 		}
 	}
 	catch (Exception e){
@@ -623,6 +661,12 @@ String getAuthorUrl(){
                 <section name="name">
                     <value><![CDATA[List]]></value>
                 </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
+                </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
                 </section>
@@ -658,7 +702,7 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -666,8 +710,17 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
+                </section>
                 <section name="isallowtimeselection">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="datefield">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -836,7 +889,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.enterprisehorizons.magma.models.ScreenCanvasFeature]]></value>
                 </section>
                 <section name="dashboardiconurl">
-                    <value><![CDATA[images/dashboards/icon_flashdashboard.png]]></value>
+                    <value><![CDATA[images/dashboards/icon_summarysheet.png]]></value>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>
