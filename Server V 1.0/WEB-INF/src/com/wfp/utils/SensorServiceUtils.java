@@ -75,10 +75,15 @@ public class SensorServiceUtils implements IEPICConstants{
 		try {
 			Map<String, List<DeviceBean>> map = null;
 			stub = getServiceLocatorStub();
+			List<String> allMissions = LDAPUtils.getAllMissions();
+			if(allMissions!=null){				
+				for(String mission: allMissions) System.out.println("Mission :"+mission );
+			}
 			//System.out.println("##### stub :"+stub );
 			DeviceStatus[] devices = null;
 			try { 
 				devices = stub.getDeviceStatus();
+				//stub.getDeviceStatusByMission(token, missionName)
 				//System.out.println("##### devices :"+devices );
 			} catch (RemoteException e) {
 				Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
@@ -120,7 +125,7 @@ public class SensorServiceUtils implements IEPICConstants{
 							if( missionList!=null&&missionList.size()>0 ){
 							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
 							setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
-							System.out.println(" DeviceId : "+devices[i].getId() );
+							System.out.println(" DeviceId : "+devices[i].getId() +"missionList.get(0) : "+missionList.get(0) );
 							}
 							//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
 						}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
