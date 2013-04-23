@@ -50,6 +50,22 @@
             </section>
             <section name="row">
                 <section name="column">
+                    <value><![CDATA[licensePlate]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[LicensePlate]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
                     <value><![CDATA[Fleet]]></value>
                 </section>
                 <section name="column">
@@ -59,7 +75,7 @@
                     <value><![CDATA[Fleet]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -130,16 +146,16 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[localTimeText]]></value>
+                    <value><![CDATA[type]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
+                    <value><![CDATA[Type]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -194,6 +210,16 @@
                 </section>
                 <section name="column">
                     <value><![CDATA[list]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="sortableattributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[desc]]></value>
                 </section>
             </section>
         </section>
@@ -310,6 +336,145 @@
                     <value><![CDATA[false]]></value>
                 </section>
             </section>
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getDeviceCaption()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[LineString]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.LineStringFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="extrude">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="tessellate">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isblink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="splinetype">
+                    <value><![CDATA[3]]></value>
+                </section>
+                <section name="generateplacemark">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="generatelegend">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="legendname">
+                    <value><![CDATA[Legend]]></value>
+                </section>
+                <section name="style">
+                    <section name="name">
+                        <section name="script">
+                            <value><![CDATA[getDeviceCaption()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="makeasglobalstyle">
+                        <value><![CDATA[true]]></value>
+                    </section>
+                    <section name="iconurl">
+                        <section name="script">
+                            <value><![CDATA[getIconColor()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="iconcolor">
+                        <section name="script">
+                            <value><![CDATA[getLineColor()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                        <section name="transparency">
+                            <value><![CDATA[1.0]]></value>
+                        </section>
+                    </section>
+                    <section name="iconcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="iconscale">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                    <section name="labelcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="linecolor">
+                        <section name="script">
+                            <value><![CDATA[getLineColor()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="linecolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="linewidth">
+                        <value><![CDATA[3.0]]></value>
+                    </section>
+                    <section name="fillcolorshader">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="showhighlightstyles">
+                        <value><![CDATA[true]]></value>
+                    </section>
+                    <section name="highlighticonurl">
+                        <section name="script">
+                            <value><![CDATA[getIconUrl()]]></value>
+                            <section name="type">
+                                <value><![CDATA[1]]></value>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="highlighticoncolor">
+                        <value><![CDATA[#FF0000]]></value>
+                    </section>
+                    <section name="highlighticonscale">
+                        <value><![CDATA[1.0]]></value>
+                    </section>
+                    <section name="highlightlabelcolor">
+                        <value><![CDATA[#FF0000]]></value>
+                    </section>
+                    <section name="highlightlabelscale">
+                        <value><![CDATA[0.5]]></value>
+                    </section>
+                    <section name="highlightlinecolor">
+                        <value><![CDATA[#FF0000]]></value>
+                    </section>
+                    <section name="shadertype">
+                        <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                    </section>
+                </section>
+            </section>
         </section>
         <section name="scriptor">
             <section name="body">
@@ -325,10 +490,10 @@ String description = "<p>Soap Tracking job which is scheduled for every eight ho
 String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
-String getDatasource(){ 
-	return datasource;
-} 
-
+String getDatasource(){
+	return datasource;  
+}    
+ 
 String getLastRefreshTime(){
 	return lastRefreshTime;
 }
@@ -347,23 +512,25 @@ try
 	{
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 	 	
-	 	if (data != null  )
+	 	if (data != null)
 	 	{
 			$artefact.setCoordinates(data.getCoordStr());
-			System.out.println("getName:"+data.getName() );
 			//changed for getting type as Date instead of String for time
-			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
 			$artefact.addAttribute("time", data.getTime());
-			System.out.println("localTimeTextt" + data.getDeviceLocalTime()  );
-			  $artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
-			$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );       
+			
+			   
+			       
 			$artefact.addAttribute("name", data.getName());
-			//$artefact.addAttribute("type", data.getVehicleType());
+			$artefact.addAttribute("type", data.getVehicleType());
 			$artefact.addAttribute("description", data.getDescription());
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
-		}
-	} 
-	catch (Exception e){
+			
+			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
+			$artefact.addAttribute("localTime", localTime );	
+			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
+		} 
+	}
+	catch (Exception e){  
 		e.printStackTrace();
 	}
 	
@@ -380,18 +547,18 @@ void addAttribute(){
 		
 		if(!com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getCn()) && !("NULL".equalsIgnoreCase(ldapUserBean.getCn()))){
 			$artefact.addAttribute("owner", ldapUserBean.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getSn())?"":ldapUserBean.getSn()));
-		} 
+		}
 		if(!StringUtils.isNull(ldapUserBean.getFleet())){
 			$artefact.addAttribute("Fleet", ldapUserBean.getFleet());
 		}
 		
 		if(!StringUtils.isNull(ldapUserBean.getUnit())){
 			$artefact.addAttribute("Unit", ldapUserBean.getFleet());
-		}  
-			  
+		}
+			
 		if(!StringUtils.isNull(ldapUserBean.getCallSign())){
 			$artefact.addAttribute("callSign", ldapUserBean.getCallSign());
-			//$artefact.addAttribute("type", ldapUserBean.getVehicleType());
+			$artefact.addAttribute("type", ldapUserBean.getVehicleType());
 			$artefact.addAttribute("reg", ldapUserBean.getVehicleReg());
 		}
 	}
@@ -401,7 +568,7 @@ String getDeviceCaption(){
 	if(!com.enterprisehorizons.util.StringUtils.isNull($artefact.getAttributeValueAsString("Unit"))){
 		return $artefact.getAttributeValueAsString("Unit") +" " +$artefact.getAttributeValueAsString("Fleet");
 	}
-	return  $artefact.getAttributeValueAsString("deviceId");
+	return  $artefact.getAttributeValueAsString("name");
 }
 
 String getName() {
@@ -434,8 +601,7 @@ String getIconUrl(){
 }
 
 String getIconColor(){
-	return "#00FF00";
-	
+	return "#FFFFFF";
 }
 
 String getGroupby(){
@@ -450,30 +616,30 @@ boolean authorizeDevice(){
 String getAuthorUrl(){	
 	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
 }
-String getLineColor(){ 
 
+String getLineColor(){
 	try{
-	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	String deviceId =getName();
-	System.out.println(" # getLineColor Called "+ deviceId );
-	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
-		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
-	 	String color = (String) map.get(deviceId);
-	 	System.out.println(" # color  "+ color );
-	 	if(color == null){ 					
-			color =  "#"+com.enterprisehorizons.util.ColorUtils.getRandomColor();
-			while(color.length() != 7){
+	
+		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+		String deviceId =getName();
+		System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
+	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
+	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
+	 		String color = (String) map.get(deviceId);
+	 	
+	 		if(color == null){ 					
 				color =  "#"+com.enterprisehorizons.util.ColorUtils.getRandomColor();
-			}
-			map.put(deviceId, color);
-	 	}
-	 	return color;
-	 }
+				while(color.length() != 7){
+					color =  "#"+com.enterprisehorizons.util.ColorUtils.getRandomColor();
+				}
+				map.put(deviceId, color);
+		 	}
+		 	return color;
+		 }
 	 }catch(Exception e){
-	 	//e.printStackTrace();
-	 }
- 
- return "#FF0000";
+	 	e.printStackTrace();
+	}
+	return "#FF0000";
 }]]></value>
                 <section name="type">
                     <value><![CDATA[1]]></value>
@@ -495,6 +661,17 @@ String getLineColor(){
                         <section name="type">
                             <value><![CDATA[1]]></value>
                         </section>
+                    </section>
+                </section>
+                <section name="iconcolor">
+                    <section name="script">
+                        <value><![CDATA[getLineColor()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                    <section name="transparency">
+                        <value><![CDATA[1.0]]></value>
                     </section>
                 </section>
                 <section name="iconcolorshader">
@@ -656,6 +833,17 @@ String getLineColor(){
                         </section>
                         <section name="column"/>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[licensePlate]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -679,6 +867,12 @@ String getLineColor(){
             <section name="folder">
                 <section name="name">
                     <value><![CDATA[List]]></value>
+                </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -715,7 +909,7 @@ String getLineColor(){
                 </section>
                 <section name="datamashups"/>
                 <section name="isshowcontrolbar">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
                     <value><![CDATA[false]]></value>
@@ -723,11 +917,27 @@ String getLineColor(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
+                </section>
                 <section name="isallowtimeselection">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="datefield">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshonevent">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Artifact data loaded]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="dashboarddata">
                     <section name="datasourcetype">
@@ -789,6 +999,20 @@ String getLineColor(){
                     </section>
                     <section name="row">
                         <section name="column">
+                            <value><![CDATA[licensePlate]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
                             <value><![CDATA[time]]></value>
                         </section>
                         <section name="column">
@@ -819,7 +1043,12 @@ String getLineColor(){
                 <section name="groupattributes">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[name]]></value>
+                            <section name="script">
+                                <value><![CDATA[getGroupby()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
                         </section>
                     </section>
                 </section>
