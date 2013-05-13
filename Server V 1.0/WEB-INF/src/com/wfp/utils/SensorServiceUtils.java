@@ -70,113 +70,115 @@ public class SensorServiceUtils implements IEPICConstants{
 	@SuppressWarnings("unchecked")
 	public static Map<String, List<DeviceBean>> getEmergencySpotDtls( Date startDate, Date endDate, int lpCount, Map<String, String> paramsMap){
 		Logger.error("START - SensorServiceUtils.getEmergencySpotDtls", SensorServiceUtils.class);
-		//System.out.println("START - SensorServiceUtils.getEmergencySpotDtls");
 		SensorSrvClientPortBindingStub stub = null;
+		Map<String, List<DeviceBean>> map = null;
 		try {
-			Map<String, List<DeviceBean>> map = null;
+		
 			stub = getServiceLocatorStub();
 			List<String> allMissions = LDAPUtils.getAllMissions();
-			if(allMissions!=null){				
-				for(String mission: allMissions) System.out.println("Mission :"+mission );
-			}
-			//System.out.println("##### stub :"+stub );
 			DeviceStatus[] devices = null;
-			try { 
-				devices = stub.getDeviceStatus();
-				//stub.getDeviceStatusByMission(token, missionName)
-				//System.out.println("##### devices :"+devices );
-			} catch (RemoteException e) {
-				Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
-				e.printStackTrace();
-				throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
-			}
-			 
-			if(devices != null ){
+			String token="xyz";
+			List allStaffDevices = new ArrayList<DeviceBean>();
+			List allVehicleDevices = new ArrayList<DeviceBean>();
+			List allAirplaneDevices = new ArrayList<DeviceBean>();
+			
+			if(allMissions!=null)
+			{		
 				map  = new HashMap<String, List<DeviceBean>>();
-				List allStaffDevices = new ArrayList<DeviceBean>();
-				List allVehicleDevices = new ArrayList<DeviceBean>();
-				List allAirplaneDevices = new ArrayList<DeviceBean>();
-				
-				SubRangeType subRangetype =null;
-				if(paramsMap.get("subrangetype")!= null ){
-					subRangetype = SubRangeType.fromString(paramsMap.get("subrangetype"));
-				}
-				
-				RangeLimit rl = getRangeLimit(startDate, endDate, subRangetype==null?SubRangeType.CONTINUOUS_LATEST:subRangetype, lpCount);
-				//RangeLimit rl1 = getRangeLimit(startDate, endDate, SubRangeType.CONTINUOUS_OLDEST);
-				//System.out.println("##### devices.length :"+devices.length );
-				for(int i=0; i<devices.length;i++){
-					if(devices[i].getId().contains("nrap") || devices[i].getId().contains("nreg")){
-						continue;
-					}
-					LocationRange lr = null;
-					try{
-						
-						if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null))
-						{						
-								List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
-								if( missionList!=null&&missionList.size()>0 ){
-								lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );	
-								setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
-								}
-						}
-						else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
-							List<String> missionList = LDAPUtils.getVehiclesMissionsList(devices[i].getId());	
-							if( missionList!=null&&missionList.size()>0 ){
-							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
-							setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
-							System.out.println(" DeviceId : "+devices[i].getId() +"missionList.get(0) : "+missionList.get(0) );
+				for(String mission: allMissions) 
+					{
+							System.out.println("Mission :"+mission );
+							try { 
+								//devices = stub.getDeviceStatus();
+								devices = stub.getDeviceStatusByMission(token, mission);
+								addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
+										allStaffDevices,allVehicleDevices, allAirplaneDevices);
+								
+							} catch (RemoteException e) {
+								Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
+								e.printStackTrace();
+								throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
 							}
-							//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
-						}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
-							List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
-							//System.out.println("####Line:130: SensorServiceUtils: Planes : missionList : "+missionList +" device : "+devices[i].getId() );
-							if( missionList!=null&&missionList.size()>0 ){
-							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
-							setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
-							}					
-							
-						}
-			
-						
-					}catch(Exception e){
-						Logger.error("Error in retrieving device details ["+devices[i].getId()+"]", SensorServiceUtils.class.getName(), e);
-						System.out.println(" ###### Error in retrieving device details ["+devices[i].getId()+"]");
-						continue;
 					}
-					/*if( lr!=null){
-					if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1, allStaffDevices);
-					}else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
-					}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
-						setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
-						//setAllEmergencyHotspots(devices[i].getId(), lr1,  allAirplaneDevices);
-					}
-					}*/
-					
-					
-				}
 				
-				map.put(LAYER_STAFF, allStaffDevices);
-				map.put(LAYER_VEHICLE, allVehicleDevices);
-				map.put(LAYER_AIRPLANE, allAirplaneDevices);
 			}
-			return map;
-			
+			map.put(LAYER_STAFF, allStaffDevices);
+			map.put(LAYER_VEHICLE, allVehicleDevices);
+			map.put(LAYER_AIRPLANE, allAirplaneDevices);
+	
 		} catch (Exception e) {
 			Logger.error("Error occured while retrieving devices data points ["+e.getMessage()+"]", SensorServiceUtils.class);
 			e.printStackTrace();
 			throw new EHRuntimeException("Error occured while retrieving device data points ["+e.getMessage()+"]");
 		}finally {
-			stub = null;
-			
+			stub = null;			
 		}
-		//return null;
+		
+		return map;
 	}
 	
+	public static void addDevicesToMap(Date startDate, Date endDate, int lpCount, Map<String, String> paramsMap,Map map,
+			DeviceStatus[] devices ,SensorSrvClientPortBindingStub stub ,
+			List allStaffDevices,List allVehicleDevices,List allAirplaneDevices
+			)
+	{
+		if(devices != null ){
+			
+			
+			
+			SubRangeType subRangetype =null;
+			if(paramsMap.get("subrangetype")!= null ){
+				subRangetype = SubRangeType.fromString(paramsMap.get("subrangetype"));
+			}
+			
+			RangeLimit rl = getRangeLimit(startDate, endDate, subRangetype==null?SubRangeType.CONTINUOUS_LATEST:subRangetype, lpCount);
+			//RangeLimit rl1 = getRangeLimit(startDate, endDate, SubRangeType.CONTINUOUS_OLDEST);
+			//System.out.println("##### devices.length :"+devices.length );
+			for(int i=0; i<devices.length;i++){
+				if(devices[i].getId().contains("nrap") || devices[i].getId().contains("nreg")){
+					continue;
+				}
+				LocationRange lr = null;
+				try{
+					
+					if(LDAPUtils.validateStaff(devices[i].getId(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null))
+					{						
+							List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
+							if( missionList!=null&&missionList.size()>0 ){
+							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );	
+							setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
+							}
+					}
+					else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
+						List<String> missionList = LDAPUtils.getVehiclesMissionsList(devices[i].getId());	
+						if( missionList!=null&&missionList.size()>0 ){
+						lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
+						setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
+						
+						}
+						//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
+					}else if(LDAPUtils.validatePlanes(devices[i].getId(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
+						List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
+						//System.out.println("####Line:130: SensorServiceUtils: Planes : missionList : "+missionList +" device : "+devices[i].getId() );
+						if( missionList!=null&&missionList.size()>0 ){
+						lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
+						setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
+						}					
+						
+					}
+		
+					
+				}catch(Exception e){
+					Logger.error("Error in retrieving device details ["+devices[i].getId()+"]", SensorServiceUtils.class.getName(), e);
+					System.out.println(" ###### Error in retrieving device details ["+devices[i].getId()+"]");
+					continue;
+				}
+						
+			}
+			
+			
+		}
+	}
 		
 /*	public static boolean isValidDevice(String layerName,
 			String deviceId) {

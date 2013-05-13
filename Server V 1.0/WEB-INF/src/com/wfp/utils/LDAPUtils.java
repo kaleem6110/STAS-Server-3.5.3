@@ -38,6 +38,21 @@ public class LDAPUtils implements IEPICConstants {
 	
 	public static String LDAP_PROPERTIES_FILE = IPropertyFileConstants.PROPERTY_DIRECTORY + "ldap.properties";;
 	private static String tokenId;
+	private static Map<String, String> orgMap;
+	/**
+	 * @return the orgMap
+	 */
+	public static Map<String, String> getOrgMap() {
+		return orgMap;
+	}
+
+	/**
+	 * @param orgMap the orgMap to set
+	 */
+	public static void setOrgMap(Map<String, String> orgMap) {
+		LDAPUtils.orgMap = orgMap;
+	}
+
 	/**
 	 * @return the tokenId
 	 */
@@ -360,7 +375,7 @@ public class LDAPUtils implements IEPICConstants {
 			node = FILTER_LDAP_USERS;
 		}
 		Logger.info("Retrieving User ["+userDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
-		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber,personalTitle");
+		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber,personalTitle,o,ou,primaryMail");
 	}
 	
 	/**
@@ -441,6 +456,8 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setLicensePlate(userbean.getLicensePlate());
 				deviceBean.setTitle(userbean.getTitle()); //()
 				deviceBean.setPersonalTitle(userbean.getPersonalTitle());
+				deviceBean.setDepartment(userbean.getDepartment());
+				deviceBean.setPrimaryEmail(userbean.getPrimaryEmail());
 			}
 		}		
 	}
@@ -465,7 +482,8 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setLicensePlate(userAttributes.get(PROPERTY_LICENSE_PLATE)== null?"":userAttributes.get(PROPERTY_LICENSE_PLATE).toString());
 			deviceBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
 			deviceBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
-		}
+			deviceBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString());		}
+			deviceBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());		
 	}
 	
 	/**
@@ -495,6 +513,8 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setMobilesList(userAttributes.get(PROPERTY_MOBILE) == null?null:(List<String>)userAttributes.get(PROPERTY_MOBILE) );
 			if(userAttributes.get(PROPERTY_ORGANIZATION)!= null && userAttributes.get(PROPERTY_ORGANIZATION) instanceof List){
 				userBean.setOrganization(userAttributes.get(PROPERTY_ORGANIZATION)== null?"":((List<String>)userAttributes.get(PROPERTY_ORGANIZATION)).get(0));
+				//Kaleem -
+				if(getOrgMap()!=null) userBean.setOrganization(getOrgMap().get(userBean.getOrganization() ) );
 			}else {
 				userBean.setOrganization("");
 			}
@@ -505,11 +525,15 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setLicensePlate(userAttributes.get(PROPERTY_LICENSE_PLATE)== null?"":userAttributes.get(PROPERTY_LICENSE_PLATE).toString());
 			userBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
 			userBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
+			userBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());
+			userBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString());
+			//System.out.println(" Pager: "+userBean.getSkypePager()   );
 			
 			return userBean;
 		}
 		return null;
 	}
+	
 	
 	/**
 	 * Prints all users in LDAP
@@ -707,16 +731,20 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn,externalID, description, street, type, coord-latitude,coord-longitude, ocs, skype ]", LDAPUtils.class);
 		return  parseDataAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase), "externalID", "cn", attrArray);	
 	}
-	public static Map<String, String> getAllOrganizations(){
+	public static void getAllOrganizations(){
 		System.out.println(" # START getAllOrganizations : ");
-		String allGroupNamesFilter = "(!(objectClass=person))";
-		String allGroupsSearchBase = getLDAPConfigValue(ORGANIZATION_SEARCHBASE); ;
-		String[] attrArray = new String[] {PROPERTY_CN, PROPERTY_DESCRIPTION};
-		Logger.info("Retrieve all organizations from ldap with Search Filter = ["+allGroupNamesFilter+"] " +
-				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn, description ]", LDAPUtils.class);
-		System.out.println(" # END getAllOrganizations : "+ allGroupNamesFilter + " : "+ allGroupsSearchBase );
-		
-		return parseAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase),PROPERTY_CN, PROPERTY_DESCRIPTION);	
+		Map<String, String> map = new HashMap<String, String>();	
+		//String allOrganizationSearchBase = getLDAPConfigValue("ou=organizationTypes,ou=resourcesTypes,dc=emergency,dc=lu");
+		List list = parseDataAsList(getSearchResults( new String[] {PROPERTY_CN,PROPERTY_DESCRIPTION }, FILTER_ORGANIZATIONS, "ou=organizationTypes,ou=resourcesTypes,dc=emergency,dc=lu" ));
+		//System.out.println("list::::"+list );
+		if(list!=null&& list.size()>1){
+		for(int i=0;i <list.size();i=i+2)
+		{
+			map.put((String) list.get(i+1),(String)list.get(i) );
+			//System.out.println( list.get(i)+":"+list.get(i+1) );
+		}
+		setOrgMap(map);	
+		}
 	}
 	
 	public static boolean validatePlanes(String planeId, String[] types){
@@ -1263,7 +1291,7 @@ public class LDAPUtils implements IEPICConstants {
 					
 						//System.out.println(" attrs : "+attrs.get(keyAttribute) + ": "+ attrs.get(valueAttribute));
 						//if(attrs.get(keyAttribute)!=null && attrs.get(keyAttribute)!=null)
-						//resultMap.put(attrs.get(keyAttribute).toString(),attrs.get(valueAttribute).toString() );
+						resultMap.put(attrs.get(keyAttribute).toString(),attrs.get(valueAttribute).toString() );
 				}
 			}catch(NamingException ne){ne.printStackTrace(); }
 			

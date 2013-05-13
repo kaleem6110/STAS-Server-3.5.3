@@ -85,8 +85,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	
 	public boolean executeCustomTask(Parameters parameters) {
 		
-		Map<String,String> orgMap = LDAPUtils.getAllOrganizations();
-		System.out.println(" orgMap "+ orgMap );
+		if( LDAPUtils.getOrgMap()==null ) LDAPUtils.getAllOrganizations();		
 		
 		Parameter[] params = parameters.getParameter();
 
@@ -158,10 +157,11 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		DeviceBean is = new DeviceBean();
 		is.setLatitude(element.getAttribute(ATTR_LAT).getValue());
 		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
-		is.setTime( element.getContent(0).getValue());
+		is.setTime(element.getContent(0).getValue());
 		is.setName(element.getContent(1).getValue());
 		if(is.getLatitude()!=null &&is.getLongitude()!=null)
-		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),is.getTime(),EPIC_DATE_FORMAT) );
+		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),
+				is.getTime(),EPIC_DATE_FORMAT) );
 		indigoList.add(is);
 		LDAPUtils.setLDAPUserDtls(is);
 		//System.out.println(" Name :"+ is.getName() );

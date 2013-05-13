@@ -8,6 +8,7 @@
 package lu.hitec.pss.soap.event.provider._10_x;
 
 public interface EventSrvProvider_PortType extends java.rmi.Remote {
-    public java.lang.String publishEvent(java.lang.String token, lu.hitec.pss.soap.event.provider._10_x.Evt newEvent) throws java.rmi.RemoteException;
     public lu.hitec.pss.soap.event.provider._10_x.EventStatusSummary getEventStatusSummary(java.lang.String token, java.lang.String eventRef) throws java.rmi.RemoteException;
+    public java.lang.String publishEvent(java.lang.String token, lu.hitec.pss.soap.event.provider._10_x.Evt newEvent) throws java.rmi.RemoteException;
+    public void deleteEventByRef(java.lang.String token, java.lang.String eventRef) throws java.rmi.RemoteException;
 }

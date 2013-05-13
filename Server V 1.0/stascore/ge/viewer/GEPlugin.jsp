@@ -95,6 +95,7 @@ String earthServerRootUrl = strArray[0]+"//"+strArray[1]+"/";
 <%
 }
 %>
+<script type="text/javascript" src="<%=serverUrl %>js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=serverUrl %>js/ge/extensions.js"></script>
 <script type="text/javascript" src="<%=serverUrl%>ge/viewer/magma_ajax.js"></script>
 <script type="text/javascript" src="<%=ServerUtils.getContextName(request)%>/js/swfobject.js"></script>
@@ -107,6 +108,9 @@ String earthServerRootUrl = strArray[0]+"//"+strArray[1]+"/";
 <script type="text/javascript" src="<%=serverUrl %>js/ge/route.js"></script>
 <script type="text/javascript" src="<%=serverUrl %>js/ge/rubberband.js"></script>
 <script type="text/javascript" src="<%=serverUrl %>js/ge/AlertTourFunctions.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<%=serverUrl %>css/kml.css" media="screen, projection" />
+
 <%
  if(!StringUtils.isNull(pluginJSUrl)) {
 %>

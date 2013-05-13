@@ -101,7 +101,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -151,7 +153,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
         </section>
@@ -303,7 +307,7 @@ String lastRefreshTime = com.wfp.utils.CommonUtils.getUTCdatetimeAsString();
 String getDatasource(){
 	return datasource;  
 }
-   
+    
 String getLastRefreshTime(){
 	return lastRefreshTime;
 }  
@@ -330,7 +334,7 @@ void bindData() {
 	$artefact.addAttribute("Updated_Date_Text", com.wfp.utils.CommonUtils.formatDate((Date)data.getAttributeValue("Updated Date") ) );
 	  
 	String localTime = com.wfp.utils.CommonUtils.getTimeZoneByLatLong( c[0].y+"", c[0].x+"" ,gmtDate , "dd MMM yyyy hh:mm:ss" );
-	$artefact.addAttribute("localTime", localTime );
+	$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(localTime) );
 	$artefact.addAttribute("localTimeText", localTime );
 	$artefact.addAttribute("Link", data.getAttributeValue("Link"));
 	
@@ -998,7 +1002,7 @@ String formatDate(String date) {
                                 <value><![CDATA[feedUrl]]></value>
                             </section>
                             <section name="value">
-                                <value><![CDATA[http://trackme.globalepic.org/trackme/kml/images.rss]]></value>
+                                <value><![CDATA[http://trackme.globalepic.lu/trackme/kml/images.rss]]></value>
                             </section>
                         </section>
                     </section>

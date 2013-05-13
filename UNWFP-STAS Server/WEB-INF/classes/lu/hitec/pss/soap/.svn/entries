@@ -1,34 +1,0 @@
-8
-
-dir
-190
-https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-STAS%20Server/WEB-INF/src/lu/hitec/pss/soap
-https://svn.code.sf.net/u/veladitya/code
-
-
-
-2012-06-12T13:39:10.072896Z
-96
-veladitya
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-03ecc1b0-7920-44d3-af5b-e2233cfab883
-
-event
-dir
-
-sensor
-dir
-

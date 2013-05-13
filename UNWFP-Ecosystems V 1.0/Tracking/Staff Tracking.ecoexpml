@@ -30,7 +30,7 @@
                     <value><![CDATA[Name]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">
@@ -100,12 +100,30 @@
                     <value><![CDATA[Timestamp-GMT]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[pTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-GMTStr]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -120,7 +138,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -131,7 +151,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
+                    <value><![CDATA[Timestamp-LocalStr]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -150,7 +170,7 @@
                     <value><![CDATA[Phone(s)]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">
@@ -168,12 +188,28 @@
                     <value><![CDATA[Mail(s)]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[json]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Json]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
         </section>
         <section name="cache">
@@ -371,9 +407,12 @@ import com.wfp.utils.RBRegionsUtils;
 import com.spacetimeinsight.db.model.util.*;
 import com.spacetimeinsight.db.config.model.*;
 import com.spacetimeinsight.rubberbandregions.Rubberbandregions;
+import com.wfp.utils.CommonUtils;
+import com.wfp.utils.IEPICConstants;
 import java.text.*;
 import java.util.*;
-
+import com.wfp.beans.*;
+ 
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
@@ -411,23 +450,31 @@ void bindData() {
 	 	 	$artefact.addAttribute("title", data.getTitle());	
 	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
-			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.stringDateToISODate( data.getTime().replace("T"," ").replace(".00Z","" ))  );							
+			//$artefact.addAttribute("time",CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
+			//$artefact.addAttribute("time",CommonUtils.stringDateToISODate( data.getTime().replace("T"," ").replace(".00Z","" ))  );							
+			// System.out.println(" data.getDeviceLocalTime() :" +data.getDeviceLocalTime()+":data.getTime():"+data.getTime().replace("T"," ").replace(".000Z","" ) );
 			
-			$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime() )  );					
-			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			  		
+			System.out.println( " data.getTime()"+data.getTime() );
+			System.out.println( " data.getDeviceLocalTime()"+data.getDeviceLocalTime() );
+			
+			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			$artefact.addAttribute("pTime",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+								
+			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
+			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+			
+			        		
 			$artefact.addAttribute("deviceId", data.getName());			
-			//$artefact.addAttribute("Contact", com.wfp.utils.CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
-			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
-			$artefact.addAttribute("Mail", com.wfp.utils.CommonUtils.getMailDtls(data.getMail()));
-		  	$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
+			//$artefact.addAttribute("Contact", CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
+			$artefact.addAttribute("IM", CommonUtils.getPagerDtls(data.getSkypePager()));
+			$artefact.addAttribute("Mail", CommonUtils.getMailDtls(data.getMail()));
+		  	$artefact.addAttribute("Phone", CommonUtils.getPhoneDtls(data.getMobilesList()));
 			$artefact.addAttribute("owner", getFullName(data));
 			$artefact.addAttribute("Organization", data.getOrganization());
+			$artefact.addAttribute("json", buildPopupText(data) );
 			//$artefact.addAttribute("callSign", data.getCallSign());
-				
+				  
 			//$artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
-			 $artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
 			 
 		}
 	} 
@@ -435,7 +482,117 @@ void bindData() {
 		e.printStackTrace();
 	}
 } 
+public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> profileLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
+List<Legend> contactLegendList = new ArrayList<Legend>();
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
 
+//Creating a Tab
+Tab profileTab = new Tab();
+profileTab.setName("Profile");
+
+//Creating a Legend
+Legend userLegend = new Legend();
+userLegend.setName("User Details");
+attribMap.put( data.getPersonalTitle()!=null?data.getPersonalTitle():"Mr/Ms",getFullName(data) );
+attribMap.put("Title", data.getTitle() );
+attribMap.put("Organization", data.getOrganization() );
+attribMap.put("Department", data.getDepartment()!=""?data.getDepartment():"-" );
+userLegend.setAttribMap( attribMap );
+
+profileLegendList.add( userLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend emailLegend = new Legend();
+emailLegend.setName("Email");
+attribMap.put("Office",data.getPrimaryEmail() );
+attribMap.put("Private", data.getMail()!=null?data.getMail().get(0):"-" );
+emailLegend.setAttribMap( attribMap );
+profileLegendList.add( emailLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+profileTab.setLegendList( profileLegendList );
+tabList.add( profileTab );
+
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getName() );
+attribMap.put("Device type", "Radio" );
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Last Known Position");
+attribMap.put("Timestamp(GMT)", $artefact.getAttributeValueAsString("pTime") );
+attribMap.put("Timestamp(Local)", $artefact.getAttributeValueAsString("pLocalTime") );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+trackingTab.setLegendList( trackingLegendList );
+tabList.add( trackingTab );
+
+Telephone telephone = CommonUtils.getTelephones(data.getMobilesList());
+
+Tab contactTab = new Tab();
+contactTab.setName("Contact");
+
+Legend telLegend = new Legend();
+telLegend.setName("Telephone Numbers");
+//.......
+attribMap = new LinkedHashMap<String,String>();
+List<String> mobileList =  telephone.getMobileList();
+attribMap.put("Mobile(Personal)", mobileList!=null?mobileList.get(0):"-" );
+attribMap.put("WFP Foodsat", telephone.getFoodsat()!=null?telephone.getFoodsat():"-" );
+attribMap.put("Office", telephone.getOffice()!=null?telephone.getOffice():"-" );
+attribMap.put("Wave", telephone.getWave()!=null?telephone.getWave():"-" );
+telLegend.setAttribMap( attribMap );
+
+//........add more legends
+
+contactLegendList.add( telLegend );
+
+Legend radioLegend = new Legend();
+radioLegend.setName("Radio");
+attribMap = new LinkedHashMap<String,String>();
+attribMap.put("VHF Callsign	", "-" );
+attribMap.put("VHF WFP Foodsat", "-" );
+radioLegend.setAttribMap( attribMap );
+contactLegendList.add( radioLegend );
+
+contactTab.setLegendList( contactLegendList );
+tabList.add( contactTab );
+
+
+
+String jsonObjectt = CommonUtils.parseJsonString( tabList );
+
+/* String jsonObjectt = "DELIM&#123;&quot;Profile&quot; : &#091;&#123;&quot;User Details&quot;: &#123;&quot;Mr&quot;:&quot;"+getFullName(data)+"&quot;";
+ jsonObjectt+=",&quot;Title&quot;:&quot;"+data.getTitle()+"&quot;,&quot;Organization&quot;:&quot;"+data.getOrganization()+"&quot;,&quot;Department&quot;:&quot;OSTF&quot;&#125;,";
+ jsonObjectt+="&quot;E-mail&quot;  : &#123;&quot;Office&quot;:&quot;"+data.getMail()+"&quot;,&quot;Private&quot;:&quot;-&quot;&#125;";
+ jsonObjectt+="&#125;&#093;,&quot;Contact&quot;  :&#091; &#123;&quot;Telephone Numbers&quot; : &#123; &quot;Mobile(Personal)&quot;:";
+ jsonObjectt+="&quot;+971 55 360 9384&quot;, &quot;Mobile (Mission):&quot; :&quot;+91 9951 205526&quot;,&quot;WFP Foodsat&quot;:&quot;+1349 2812&quot;,";
+ jsonObjectt+="&quot;Office&quot; :&quot;+971 4549560 x2811&quot;&#125;,&quot;Instant Messaging&quot; : &#123; &quot;Skype&quot; :&quot;kmohammed7861&quot;,";
+ jsonObjectt+="&quot;MS Lync&quot;:&quot;"+data.getMail()+"&quot;,&quot;gTalk&quot;:&quot;-&quot;,&quot;bbPIN&quot;:&quot;";
+ jsonObjectt+="66AB66CD&quot; &#125;,&quot;Radio&quot; : &#123; &quot;VHF Callsign&quot; : &quot;Delta Foxtrot 8.8&quot;, &quot;VHF WFP Foodsat&quot;";
+ jsonObjectt+=":&quot;+1349 9085&quot; &#125;  &#125;&#093; &#125;DELIM";*/
+
+  return jsonObjectt;
+ }
 String getFullName(com.wfp.security.form.DeviceBean data){
 	String fullName = "";
 	
@@ -667,6 +824,9 @@ String getAuthorUrl(){
                 <section name="fillcolorshader">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="balloontext">
+                    <value><![CDATA[Hello]]></value>
+                </section>
                 <section name="showhighlightstyles">
                     <value><![CDATA[true]]></value>
                 </section>
@@ -836,6 +996,24 @@ String getAuthorUrl(){
                             <value><![CDATA[autocomplete]]></value>
                         </section>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Date]]></value>
+                        </section>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Date]]></value>
+                        </section>
+                        <section name="column"/>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -995,11 +1173,17 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="datefield">
                     <value><![CDATA[time]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -1108,7 +1292,12 @@ String getAuthorUrl(){
                             <value><![CDATA[time]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[text]]></value>
+                            <section name="script">
+                                <value><![CDATA[time]]></value>
+                                <section name="type">
+                                    <value><![CDATA[2]]></value>
+                                </section>
+                            </section>
                         </section>
                         <section name="column">
                             <value><![CDATA[]]></value>

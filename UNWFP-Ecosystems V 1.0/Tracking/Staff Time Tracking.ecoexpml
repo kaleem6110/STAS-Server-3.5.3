@@ -486,7 +486,7 @@ String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.
 
 String getDatasource(){ 
 	return datasource;
-}
+} 
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
@@ -507,7 +507,7 @@ try
 	{
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 	 	
-	 	if (data != null)
+	 	if (data != null  )
 	 	{
 	 		$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
@@ -516,11 +516,11 @@ try
 			
 			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
 			$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );   
-			
+			 
 			$artefact.addAttribute("name", data.getName());  
 			$artefact.addAttribute("Organization", data.getOrganization());
 			$artefact.addAttribute("title", data.getTitle());
-			$artefact.addAttribute("owner", getFullName(data));
+			if( getFullName(data)!="" ) $artefact.addAttribute("owner", getFullName(data));
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
 			$artefact.addAttribute("Mail", com.wfp.utils.CommonUtils.getMailDtls(data.getMail()));
 			$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
@@ -554,7 +554,7 @@ String getDeviceCaption(){
 	}
 	return  $artefact.getAttributeValueAsString("name");
 }
-
+ 
 String getName() {
 	if(!com.enterprisehorizons.util.StringUtils.isNull($artefact.getAttributeValueAsString("owner"))){
 		return $artefact.getAttributeValueAsString("owner");
@@ -823,6 +823,17 @@ String getAuthorUrl(){
                             <value><![CDATA[Date]]></value>
                         </section>
                         <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
                     </section>
                 </section>
                 <section name="flashparameters">

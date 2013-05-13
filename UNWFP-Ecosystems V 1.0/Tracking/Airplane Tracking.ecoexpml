@@ -303,10 +303,13 @@ void bindData() {
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
 			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.parseDate(data.getTime()) );
-				$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime()) );			
-			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );				
+			
+			$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime()) );			
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
+			$artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+							
 			$artefact.addAttribute("deviceId", data.getName());		
-			 $artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );	
+				
 		}
 	}
 	catch (Exception e){

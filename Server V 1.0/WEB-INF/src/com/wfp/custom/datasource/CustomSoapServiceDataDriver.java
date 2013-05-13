@@ -119,6 +119,7 @@ public class CustomSoapServiceDataDriver extends BaseGeoDataDriver implements
 					startTime.setMinutes(0);
 					startTime.setSeconds(0);
 				}
+				System.out.println(" Kaleem : tempMap.getKey() : "+tempMap.getKey() );
 
 				if (startTime != null
 						&& endTime != null

@@ -51,7 +51,7 @@ public class RBRegionsDataDriver extends BaseGeoDataDriver implements
 			String[] allModules = dataSource.getModuleId() != null ? dataSource
 					.getModuleId().split(",") : null;
 					
-					
+					System.out.println("allModules : "+allModules );
 			if (allModules != null) {
 			
 				rbRegions = new ArrayList<Rubberband>();
@@ -60,10 +60,11 @@ public class RBRegionsDataDriver extends BaseGeoDataDriver implements
 					Rubberband[] rubberbandregions = RBRegionsUtils.getUserModulePreferences(dataSource.getDomainId(), dataSource.getLanguageId()
 							, dataSource.getUserId(),dataSource.getUserUniqueId(), StringUtils
 							.getLong(module));
+					System.out.println(" rubberbandregions :"+rubberbandregions );
 					rbRegions.addAll(Arrays.asList(rubberbandregions));
 				}
 			}
-
+			System.out.println("rbRegions:"+rbRegions );
 			return rbRegions;
 
 		} catch (Exception exception) {
