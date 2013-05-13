@@ -373,6 +373,12 @@
                     <value><![CDATA[false]]></value>
                 </section>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
+                </section>
+>>>>>>> 70592f92b62da206603070c66a53d83eb562b805
 =======
                 <section name="placemarklocation">
                     <value><![CDATA[start]]></value>
@@ -387,6 +393,7 @@
                 <section name="generateplacemark">
                     <value><![CDATA[true]]></value>
                 </section>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <section name="generatelegend">
                     <value><![CDATA[false]]></value>
@@ -480,6 +487,10 @@
                     <section name="shadertype">
                         <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
                     </section>
+=======
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
+>>>>>>> 70592f92b62da206603070c66a53d83eb562b805
 =======
                 <section name="placemarklocation">
                     <value><![CDATA[start]]></value>
