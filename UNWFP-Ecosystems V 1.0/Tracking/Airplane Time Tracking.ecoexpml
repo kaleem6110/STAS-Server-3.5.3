@@ -393,7 +393,7 @@ void bindData() {
 	catch (Exception e){
 		e.printStackTrace();
 	}
-}
+} 
 
 void addAttribute(){
 	if(getName().startsWith("trackMe")){
@@ -492,8 +492,8 @@ boolean authorizeDevice(){
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	//return com.wfp.utils.LDAPUtils.validateVehiclesByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
 	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-}
-
+} 
+  
 String getAuthorUrl(){	
 	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
 }]]></value>
