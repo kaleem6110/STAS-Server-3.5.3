@@ -205,7 +205,7 @@ public class EventServiceUtils {
 		EventSrvProvider_Service service =  new EventSrvProvider_ServiceLocator();		
 		
 		try {
-			System.out.println(", EventServiceUtils.class :Getting notification summary Service locator  ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]");
+			//System.out.println(", EventServiceUtils.class :Getting notification summary Service locator  ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]");
 			return new EventSrvProviderPortBindingStub( 
 					new java.net.URL(WFPConfigUtils.getWFPConfigValue("alertservice") == null?"http://middleware.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl":WFPConfigUtils.getWFPConfigValue("alertservice")),
 					service) ;
@@ -263,7 +263,7 @@ public class EventServiceUtils {
 		desc.setLongDesc(body);
 		//TimeZone.setDefault(TimeZone.getTimeZone("Rome"));
 		Evt evt = new Evt();
-		evt.setType("ALERT WARNING!!");
+		evt.setType(IEPICConstants.STAS_EVENT_TYPE);
 		evt.setDesc(desc);		
 		evt.setSrc(IEPICConstants.STAS_Engine);//STAS_Engine-dev,STAS_Engine-trn, STAS_Engine-qa
 		evt.setEventRecipient(er);

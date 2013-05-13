@@ -62,6 +62,9 @@ public class LDAPServiceJob implements CustomJobTask, IEPICConstants {
 	public boolean executeCustomTask(Parameters parameters) {
 		//ldapServiceMap.put("ldapGroups", allGroups);
 		//LDAPUtils.getUserDomain(deviceId);
+		
+		if( LDAPUtils.getOrgMap()==null ) LDAPUtils.getAllOrganizations();		
+		
 		Parameter[] params = parameters.getParameter();
 		if(params!= null ){
 			for (int i=0; i<  params.length ; i++){

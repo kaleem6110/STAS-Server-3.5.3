@@ -26,7 +26,9 @@ public interface IEPICConstants {
 	//date formatter
 	public static final String EPIC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public static final String PORTAL_DATE_FORMAT = "MM/dd/yyyy'T'HH:mm:ss.SSS'Z'";	
-	public static final String NEW_PORTAL_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
+	public static final String PORTAL_DATE_FORMAT_MM = "MM/dd/yyyy HH:mm:ss";
+	public static final String NEW_PORTAL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
 	public static final String SENSOR_WS_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 	//public static final String OLD_PORTAL_DATE_FORMAT = NEW_PORTAL_DATE_FORMAT;
 	public static final SimpleDateFormat PORTAL_SIMPLE_FORMAT = new SimpleDateFormat(PORTAL_DATE_FORMAT);
@@ -76,16 +78,19 @@ public interface IEPICConstants {
 	public static final String DEVICES_SEARCHBASE =  "ou=devices,dc=emergency,dc=lu";
 	public static final String FILTER_LDAP_USERS =  "(objectClass=person)";
 	public static final String FILTER_LDAP_VEHICLES =  "(objectClass=vehicle)";
+	public static final String FILTER_ORGANIZATIONS =  "(objectClass=resourcestype)";
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
 	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
 	public static final String GROUP_SEARCHBASE =  "groups.search.base";
-	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o", "communicationURI", "title", "telephoneNumber","personalTitle"};
+	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
 	public static final String PROPERTY_MAIL =  "mail";
+	public static final String PROPERTY_PRIMARY_MAIL =  "primaryMail";
 	public static final String PROPERTY_MOBILE =  "telephoneNumber";
 	public static final String PROPERTY_PAGER =  "communicationUri";
 	public static final String PROPERTY_ORGANIZATION =  "o";
+	public static final String PROPERTY_DEPT =  "ou";
 	public static final String PROPERTY_DESCRIPTION =  "description";
 	public static final String PROPERTY_LICENSE_PLATE =  "licencePlate";
 	public static final String PROPERTY_UID =  "uid";
@@ -96,6 +101,8 @@ public interface IEPICConstants {
 	public static final String EXTERNAL_ID=  "externalID";
 	public static final String COMPASS_ID=  "compasID:";
 	public static final String PROPERTY_PERSONAL_TITLE =  "personalTitle";
+	public static final String ORG_SEARCH_IDENTIFIER =  "organization.identifier";
+	public static final String ORG_SEARCH_BASE =  "organization.search.base";
 	
 	
 	//WFP Config Utils
@@ -148,12 +155,22 @@ public interface IEPICConstants {
 	
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
-	//REST URI kmohammed
-	public static final String SENSOR_REST_URI ="http://middleware-dev.globalepic.lu/sensorservice/out/rest/loc";
-	public static final String STAS_Engine ="STAS_Engine-qa";
+	//kmohammed
+	public static final String STAS_Engine ="STAS_Engine-dev";
+	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
 	public static final String OFFSET_NODE = "offset";
 	public static final String TIME_ZONE_NODE ="timezone";
+	
+	public static final String MAIL_HOST ="mail.service.emergency.lu";
+	public static final String MAIL_FROM ="portal-dev";
+	public static final String EMAIL_FROM_ ="portal-dev@globalepic.lu";
+	public static final String MAIL_PWD ="QMrFlRa0O8bLXehkY2xS";
+	public static final String MAIL_CONTENT_TYPE ="multipart/alternative";
+	
+	
+	
+
 	
 }

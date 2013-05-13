@@ -17,7 +17,7 @@ import com.wfp.db.util.PostgresSearchCriteriaDateFormatter;
 import com.wfp.mail.Renderable;
 import com.wfp.security.form.DeviceBean;
 import com.wfp.security.form.LDAPUserBean;
-
+import java.util.ArrayList;
 public class AlertServiceUtils implements IEPICConstants {
  
 	public static void publishAlert(String deviceId, String dangerZoneName,  Double lat, Double lng){
@@ -29,6 +29,8 @@ public class AlertServiceUtils implements IEPICConstants {
 		}
 		
 		LDAPUserBean userBean = LDAPUtils.getLDAPUserBean(deviceId);
+		
+		
 		//.LDAPUserBean userBean = LDAPUtils.cacheLDAPUserDtls(deviceId, null);
 		String uid = null;
 		if(userBean != null){
@@ -42,6 +44,7 @@ public class AlertServiceUtils implements IEPICConstants {
 						long refId = insertUpdateAlert(templateId, uid,  mt.getBody(), mt.getSubject(), date);
 						if(refId > 0){
 							String eventRefId = EventServiceUtils.publishEventService(userBean.getUid(), mt.getSubject(), mt.getBody());
+							boolean emailSent = sendEmailToRadio( deviceId.trim(),mt.getSubject(),mt.getBody() );
 							Logger.error("Event Successfully published to server ["+userBean.getUid()+"]["+eventRefId+"]",AlertServiceUtils.class.getName());
 							insertEventRefId(refId, eventRefId);
 							if(eventRefId != null){							
@@ -60,7 +63,25 @@ public class AlertServiceUtils implements IEPICConstants {
 		}
 		System.out.println("## END AlertServiceUtils.publishAlert");
 	}
-	
+	public static Boolean sendEmailToRadio(String deviceId, String subject, String messageBody )
+	{
+		boolean emailSent = false;
+		subject="";
+		if(deviceId!=null&& deviceId.startsWith("trackMe-")&& deviceId.length()==16 )
+		{
+			System.out.println("Sending email to radio........");
+			String toEmail = "dmr-"+deviceId.substring(8, 12)+"@globalepic.lu";
+			String messageBodyPrefix= ":"+deviceId.substring(12,16)+" ";
+			messageBody =  messageBodyPrefix+messageBody;
+			List<String> toEmailAddress = new ArrayList<String>();
+			toEmailAddress.add( toEmail );
+			MailSender.sendEmailToRadio(toEmailAddress, subject, messageBody);
+			System.out.println(" Email sent to Radio VHF Callsign: "+deviceId.substring(8,16) +": @ address :"+toEmail );
+			System.out.println(": subject: "+subject+": body : "+messageBody );
+		}
+		
+		return emailSent;
+	}
 	public static void publishAlert(DeviceBean device, String dangerZoneName,  Double lat, Double lng){
 		com.wfp.db.platform.model.MessageTemplate mt = com.wfp.utils.RBRegionsUtils.getMessageTemplate(dangerZoneName);
 		if(mt == null){

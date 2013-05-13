@@ -3,6 +3,7 @@ package com.wfp.utils;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +29,7 @@ import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.util.Logger;
 import com.enterprisehorizons.util.StringUtils;
 import com.wfp.jobs.RestTrackingJob;
+import com.wfp.beans.*;
 /**
  * Common Utility class 
  * @author sti-user
@@ -67,6 +70,22 @@ public class CommonUtils implements IEPICConstants{
         try {
 			date = formatter.parse(datetime);
 			return PORTAL_SIMPLE_FORMAT.format(date);
+		} catch (ParseException e) {
+			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
+		}  
+          
+       return null;
+	}
+	public static String formatDate(String datetime, String inputTimeformat, String outputTimeFormat){
+		if(StringUtils.isNull(datetime)){
+			return null;
+		}
+		
+		SimpleDateFormat  formatter = new SimpleDateFormat(inputTimeformat);  
+		Date date;
+        try {
+			date = formatter.parse(datetime);
+			return new SimpleDateFormat(outputTimeFormat).format(date);
 		} catch (ParseException e) {
 			Logger.error("Error ocurred while formatting date ["+datetime+"]", CommonUtils.class, e);
 		}  
@@ -275,6 +294,27 @@ public class CommonUtils implements IEPICConstants{
 		
 		return contact.toString();
 	}
+	public static  Messaging getMessaging(List<String> pagersList) {
+		Messaging mbean = new Messaging();
+		String serverRootUrl = ServerUtils.getServerBaseUrl();
+		if(pagersList != null && pagersList.size() > 0){
+			//contact.append("<fieldset><legend>Pager</legend>");
+			for(String pager:pagersList){
+				if(pager.indexOf("skype") == 0)
+					mbean.setSkype(pager +"<a href=\""+pager+"\">  <img src='"+serverRootUrl+SKYPE_CALL_IMG+"' width='16px' height='16px' title='"+pager+"'>  </a>");
+				else if(pager.indexOf("msn") == 0){
+					mbean.setMsn(pager+ "<a href=\""+pager+"\">  <img src='"+serverRootUrl+MSN_IM+"' width='16px' height='16px' title='"+pager+"'>  </a>");
+				}else if(pager.indexOf("gtalk") == 0){
+					mbean.setGtalk(pager+ "<a href=\""+pager+"\">  <img src='"+serverRootUrl+GTALK_IM+"' width='16px' height='16px' title='"+pager+"'>  </a>");
+				}else {
+					mbean.setOther( pager+"<a href=\""+pager+"\">  <img src='"+serverRootUrl+CONTACT+"' width='16px' height='16px' title='"+pager+"'>  </a>");
+				}
+				
+			}
+		}
+		
+		return mbean;
+	}
 	
 	public static  String getMailDtls(List<String> emailsList) {
 		StringBuffer contact = new StringBuffer();
@@ -297,6 +337,29 @@ public class CommonUtils implements IEPICConstants{
 		}
 		
 		return contact.toString();
+	}
+	public static  Telephone getTelephones(List<String> mobilesList) {
+		Telephone telephone = new Telephone();
+		List<String> mobileList =new ArrayList<String>();
+		if(mobilesList != null && mobilesList.size() >0){			
+			for(String mobile:mobilesList){
+				if(mobile.indexOf("Mobile:")>0)
+				{
+					mobileList.add(mobile.substring(mobile.indexOf("Mobile:")+7,mobile.length()-1));
+				}else if(mobile.indexOf("Foodsat:")>0)
+				{
+					telephone.setFoodsat(mobile.substring(mobile.indexOf("Foodsat:")+8,mobile.length()-1));
+				}else if(mobile.indexOf("Office:")>0)
+				{
+					telephone.setOffice( mobile.substring(mobile.indexOf("Office:")+7,mobile.length()-1));
+				}else if(mobile.indexOf("WAVE:")>0)
+				{
+					telephone.setWave( mobile.substring(mobile.indexOf("WAVE:"),mobile.length()-1));
+				}
+			}			
+		}
+		
+		return telephone;
 	}
 	
 	public static  String getContactDtls(String skypeId, String skypeImg, String ocsId, String ocsImg,  String sipId, String sipImg) {
@@ -400,6 +463,22 @@ public class CommonUtils implements IEPICConstants{
 	 
 	    return dateToReturn; 
 	} 
+	public static Date stringDateToDate(String StrDate, String dateTimeFormat) 
+	{ 
+	    Date dateToReturn = null; 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat(dateTimeFormat); 
+	 
+	    try 
+	    { 
+	        dateToReturn = (Date)dateFormat.parse(StrDate); 
+	    } 
+	    catch (ParseException e) 
+	    { 
+	        e.printStackTrace(); 
+	    } 
+	 
+	    return dateToReturn; 
+	} 
 	public static Date stringDateToISODate(String StrDate) 
 	{ 
 	    Date dateToReturn = null; 
@@ -490,5 +569,47 @@ public class CommonUtils implements IEPICConstants{
 		    }
 		    return "";
 		  }	
+	 public static String parseJsonString( List<Tab> tabList )
+	 {
+		 //System.out.println(" #### START CommonUtils.parseJsonString #### ");
+		 String jsonString="";
+		 if( tabList!=null && tabList.size()>0)
+		 {
+			 jsonString ="DELIM&#123;";
+			 int tabSize = tabList.size();
+			 for(Tab tab: tabList)
+			 {				
+				 jsonString+="&quot;"+tab.getName()+"&quot; : &#091;&#123;";
+				 List<Legend> legendList = tab.getLegendList();
+				 if( legendList!=null && legendList.size()>0)
+				 {
+					 int legendSize = legendList.size();
+					 for(Legend legend :legendList)
+					 {
+						 jsonString+="&quot;"+legend.getName()+"&quot; : &#123;";
+						 Map<String, String> attribMap = legend.getAttribMap();
+						 int mapSize = attribMap.size();
+						 for (Map.Entry<String, String> entry : attribMap.entrySet()) {
+							   	    jsonString+="&quot;"+entry.getKey()+"&quot;:&quot;"+entry.getValue()+"&quot;";	
+							   	    if( mapSize>1) jsonString+=",";
+							   	    mapSize--;							   	 
+							   	 
+							}
+						 jsonString+="&#125;";
+						 if(legendSize>1) jsonString+=",";
+						 legendSize--;
+					 }
+				 }
+				 jsonString+="&#125;&#093;";
+				 if(tabSize>1) jsonString+=",";
+				 tabSize--;
+				 
+			 }
+			 jsonString+="&#125;DELIM";
+		 }
+		// System.out.println(": jsonString : "+jsonString );
+		 //System.out.println(" #### END CommonUtils.parseJsonString #### ");
+		 return jsonString;
+	 }
 	
 }

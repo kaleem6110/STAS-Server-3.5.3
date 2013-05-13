@@ -697,8 +697,8 @@ public class RBRegionsUtils implements IEPICConstants {
 		crud.setSubject(mt.getSubject());
 		crud.setRecurPerDay(mt.getRecurPerDay());
 		crud.setTriggerTime(mt.getTriggerTime());
-		crud.setStartDate(CommonUtils.stringDateToDate(mt.getStartDateTime()));
-		crud.setEndDate(CommonUtils.stringDateToDate(mt.getEndDateTime()));
+		crud.setStartDate(CommonUtils.stringDateToDate(mt.getStartDateTime(),PORTAL_DATE_FORMAT_MM ));
+		crud.setEndDate(CommonUtils.stringDateToDate(mt.getEndDateTime(), PORTAL_DATE_FORMAT_MM ));
 		long syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_ADD;
 		if(mt.getId() > 0){
 			crud.setId(mt.getId());

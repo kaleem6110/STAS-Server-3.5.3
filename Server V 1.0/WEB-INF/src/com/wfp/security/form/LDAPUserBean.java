@@ -24,7 +24,33 @@ public class LDAPUserBean {
 	private String title ="";
 	private List<String> authorizedGroupsList = null;
 	private String personalTitle =null;
+	private String primaryEmail;
+    private String department;
 	
+	/**
+	 * @return the primaryEmail
+	 */
+	public String getPrimaryEmail() {
+		return primaryEmail;
+	}
+	/**
+	 * @param primaryEmail the primaryEmail to set
+	 */
+	public void setPrimaryEmail(String primaryEmail) {
+		this.primaryEmail = primaryEmail;
+	}
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	public String getOrganization() {
 		return organization;
 	}

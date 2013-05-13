@@ -41,6 +41,8 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private boolean startPoint = false;
 	private boolean endPoint = false;
 	private String personalTitle = null;
+	private String primaryEmail;
+	private String department;
 	
 	public String getLatitude() {
 		return latitude;
@@ -242,6 +244,30 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	 */
 	public void setPersonalTitle(String personalTitle) {
 		this.personalTitle = personalTitle;
+	}
+	/**
+	 * @return the primaryEmail
+	 */
+	public String getPrimaryEmail() {
+		return primaryEmail;
+	}
+	/**
+	 * @param primaryEmail the primaryEmail to set
+	 */
+	public void setPrimaryEmail(String primaryEmail) {
+		this.primaryEmail = primaryEmail;
+	}
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	

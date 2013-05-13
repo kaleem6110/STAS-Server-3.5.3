@@ -499,8 +499,9 @@ Legend userLegend = new Legend();
 userLegend.setName("User Details");
 attribMap.put( data.getPersonalTitle()!=null?data.getPersonalTitle():"Mr/Ms",getFullName(data) );
 attribMap.put("Title", data.getTitle() );
+attribMap.put("Department", data.getDepartment()!=""?data.getDepartment().toString():"-" );
 attribMap.put("Organization", data.getOrganization() );
-attribMap.put("Department", data.getDepartment()!=""?data.getDepartment():"-" );
+
 userLegend.setAttribMap( attribMap );
 
 profileLegendList.add( userLegend );
