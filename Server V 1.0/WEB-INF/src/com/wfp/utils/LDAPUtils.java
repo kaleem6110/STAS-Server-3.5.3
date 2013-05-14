@@ -524,9 +524,9 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setDescription(userAttributes.get(PROPERTY_DESCRIPTION)== null?"":userAttributes.get(PROPERTY_DESCRIPTION).toString());
 			userBean.setLicensePlate(userAttributes.get(PROPERTY_LICENSE_PLATE)== null?"":userAttributes.get(PROPERTY_LICENSE_PLATE).toString());
 			userBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
-			userBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
-			userBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());
-			userBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString());
+			userBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString().replace("[","").replace("]","") );
+			userBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString().replace("[","").replace("]",""));
+			userBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString().replace("[","").replace("]","") );
 			//System.out.println(" Pager: "+userBean.getSkypePager()   );
 			
 			return userBean;

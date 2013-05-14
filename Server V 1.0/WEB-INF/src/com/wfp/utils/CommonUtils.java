@@ -300,16 +300,10 @@ public class CommonUtils implements IEPICConstants{
 		if(pagersList != null && pagersList.size() > 0){
 			//contact.append("<fieldset><legend>Pager</legend>");
 			for(String pager:pagersList){
-				if(pager.indexOf("skype") == 0)
-					mbean.setSkype(pager +"<a href=\""+pager+"\">  <img src='"+serverRootUrl+SKYPE_CALL_IMG+"' width='16px' height='16px' title='"+pager+"'>  </a>");
-				else if(pager.indexOf("msn") == 0){
-					mbean.setMsn(pager+ "<a href=\""+pager+"\">  <img src='"+serverRootUrl+MSN_IM+"' width='16px' height='16px' title='"+pager+"'>  </a>");
-				}else if(pager.indexOf("gtalk") == 0){
-					mbean.setGtalk(pager+ "<a href=\""+pager+"\">  <img src='"+serverRootUrl+GTALK_IM+"' width='16px' height='16px' title='"+pager+"'>  </a>");
-				}else {
-					mbean.setOther( pager+"<a href=\""+pager+"\">  <img src='"+serverRootUrl+CONTACT+"' width='16px' height='16px' title='"+pager+"'>  </a>");
-				}
-				
+				if(pager.indexOf("skype") == 0) mbean.setSkype( pager.replace("skype:","") );					
+				else if(pager.indexOf("msn") == 0)mbean.setMsn(pager.replace("msnim:chat?contact=","") );					
+				else if(pager.indexOf("gtalk") == 0) mbean.setGtalk(pager.replace("gtalk:chat?jid=","") );
+				else mbean.setOther( pager );
 			}
 		}
 		
@@ -340,23 +334,17 @@ public class CommonUtils implements IEPICConstants{
 	}
 	public static  Telephone getTelephones(List<String> mobilesList) {
 		Telephone telephone = new Telephone();
+		//System.out.println("####### START getTelephones ############# mobilesList : "+mobilesList );
 		List<String> mobileList =new ArrayList<String>();
 		if(mobilesList != null && mobilesList.size() >0){			
 			for(String mobile:mobilesList){
-				if(mobile.indexOf("Mobile:")>0)
-				{
-					mobileList.add(mobile.substring(mobile.indexOf("Mobile:")+7,mobile.length()-1));
-				}else if(mobile.indexOf("Foodsat:")>0)
-				{
-					telephone.setFoodsat(mobile.substring(mobile.indexOf("Foodsat:")+8,mobile.length()-1));
-				}else if(mobile.indexOf("Office:")>0)
-				{
-					telephone.setOffice( mobile.substring(mobile.indexOf("Office:")+7,mobile.length()-1));
-				}else if(mobile.indexOf("WAVE:")>0)
-				{
-					telephone.setWave( mobile.substring(mobile.indexOf("WAVE:"),mobile.length()-1));
-				}
-			}			
+				mobile = mobile.toLowerCase();			
+				if( mobile.startsWith("mobile"))mobileList.add(mobile.replace("mobile:",""));
+				else if(mobile.startsWith("foodsat") )telephone.setFoodsat(mobile.replace("foodsat:","") );
+				else if(mobile.startsWith("office") ) telephone.setOffice( mobile.replace("office:",""));
+				else if(mobile.startsWith("wave") ) telephone.setWave( mobile.replace("wave:","") );				
+			}	
+			telephone.setMobileList(mobileList);
 		}
 		
 		return telephone;
@@ -421,11 +409,11 @@ public class CommonUtils implements IEPICConstants{
 	 
 	public static String getUTCdatetimeAsString() 
 	{ 
-	    final SimpleDateFormat sdf = new SimpleDateFormat(PORTAL_DATE_FORMAT); 
+	    final SimpleDateFormat sdf = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT); 
 	    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
 	    final String utcTime = sdf.format(new Date()); 
 	 
-	    return utcTime.replace("T", " ").substring(0, utcTime.length()-5);
+	    return utcTime;
 	} 
 	
 	public static String getUTCdatetime(Date datetime) 
