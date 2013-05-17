@@ -45,7 +45,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -61,7 +63,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
         </section>
@@ -341,8 +345,7 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
-import com.enterprisehorizons.magma.server.util.ServerUtils;
+                <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -381,7 +384,7 @@ void bindData() {
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			$artefact.addAttribute("time",data.getTime() );
+			$artefact.addAttribute("time",  (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
 			
 			$artefact.addAttribute("name", data.getName());
 			
@@ -389,7 +392,7 @@ void bindData() {
 			$artefact.addAttribute("localTime",localTime );	
 			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );	
 		} 
-	}
+	} 
 	catch (Exception e){
 		e.printStackTrace();
 	}
@@ -756,8 +759,22 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="isallowtimeselection">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="datefield">
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>

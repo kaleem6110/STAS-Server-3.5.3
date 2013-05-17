@@ -26,6 +26,7 @@ public class LDAPUserBean {
 	private String personalTitle =null;
 	private String primaryEmail;
     private String department;
+    private String photoString;
 	
 	/**
 	 * @return the primaryEmail
@@ -173,6 +174,18 @@ public class LDAPUserBean {
 	 */
 	public void setPersonalTitle(String personalTitle) {
 		this.personalTitle = personalTitle;
+	}
+	/**
+	 * @return the photoString
+	 */
+	public String getPhotoString() {
+		return photoString;
+	}
+	/**
+	 * @param photoString the photoString to set
+	 */
+	public void setPhotoString(String photoString) {
+		this.photoString = photoString;
 	}
 	
 	

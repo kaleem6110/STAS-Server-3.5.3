@@ -412,6 +412,8 @@ import com.wfp.utils.IEPICConstants;
 import java.text.*;
 import java.util.*;
 import com.wfp.beans.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -428,12 +430,11 @@ String getAuthor(){
 	return "Kaleem Mohammed";
 }
 String getDateModified(){   
-	return "2013-05-14 09:30:00";
+	return "2013-05-15 09:30:00";
 }
 String getChangeLog(){   
 	return "Organization, FullName, popup tabs";
 }
-
 
 String getDatasource(){   
 	return datasource;
@@ -481,7 +482,9 @@ void bindData() {
 			$artefact.addAttribute("owner", getFullName(data));
 			$artefact.addAttribute("Organization", data.getOrganization());
 			$artefact.addAttribute("json", buildPopupText(data) );
+			$artefact.addAttribute("jpegPhoto", " :jpegPhoto:"+data.getPhotoString()+":jpegPhoto:" );
 			//$artefact.addAttribute("callSign", data.getCallSign());
+		 
 				  
 			//$artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
 			 
@@ -543,9 +546,9 @@ Legend telLegend = new Legend();
 telLegend.setName("Telephone Numbers");
 //.......
 attribMap = new LinkedHashMap<String,String>();
-if( telephone.getMobileList()!=null ) attribMap.put("Mobile(Personal)", telephone.getMobileList().get(0) );
-if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", telephone.getFoodsat() );
-if( telephone.getOffice()!=null )attribMap.put("Office", telephone.getOffice()  );
+if( telephone.getMobileList()!=null ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
+if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
+if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
 
 if(attribMap.size()>0) {
 telLegend.setAttribMap( attribMap );
@@ -562,8 +565,8 @@ attribMap = new LinkedHashMap<String,String>();
 
 if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","")+"?chat >"+messaging.getSkype()+"</a>" ); 
 attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
-if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:chat?jid=","")+" >"+messaging.getGtalk()+"</a>" ); 
-if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn()+" >"+messaging.getMsn()+"</a>" ); 
+if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
+if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" ); 
 //attribMap.put("bbPIN", "-" );
 
 imLegend.setAttribMap( attribMap );
@@ -730,7 +733,16 @@ String getGroupby(){
 void fireDashboardRefreshEvent(){
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
-
+String parseNumber(String inputString)
+{
+String str="+";
+Pattern p = Pattern.compile("-?\\d+");
+Matcher m = p.matcher(inputString);
+while (m.find()) {
+  str =str+ m.group();
+}
+return str;
+}
 
 boolean authorizeDevice(){
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
@@ -1074,7 +1086,7 @@ String getAuthorUrl(){
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[60]]></value>
+                    <value><![CDATA[15]]></value>
                 </section>
                 <section name="dashboardiconurl">
                     <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
@@ -1220,10 +1232,10 @@ String getAuthorUrl(){
                         <value><![CDATA[onInterval]]></value>
                     </section>
                     <section name="periodicrefreshrate">
-                        <value><![CDATA[60]]></value>
+                        <value><![CDATA[15]]></value>
                     </section>
                     <section name="periodicrefreshrateunits">
-                        <value><![CDATA[s]]></value>
+                        <value><![CDATA[mi]]></value>
                     </section>
                     <section name="dashboarddataparameters">
                         <section name="row">

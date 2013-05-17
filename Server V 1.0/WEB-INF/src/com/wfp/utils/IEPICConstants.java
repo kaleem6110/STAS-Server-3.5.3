@@ -91,6 +91,7 @@ public interface IEPICConstants {
 	public static final String PROPERTY_PAGER =  "communicationUri";
 	public static final String PROPERTY_ORGANIZATION =  "o";
 	public static final String PROPERTY_DEPT =  "ou";
+	public static final String PROPERTY_IMAGE =  "jpegPhoto";
 	public static final String PROPERTY_DESCRIPTION =  "description";
 	public static final String PROPERTY_LICENSE_PLATE =  "licencePlate";
 	public static final String PROPERTY_UID =  "uid";
@@ -103,6 +104,7 @@ public interface IEPICConstants {
 	public static final String PROPERTY_PERSONAL_TITLE =  "personalTitle";
 	public static final String ORG_SEARCH_IDENTIFIER =  "organization.identifier";
 	public static final String ORG_SEARCH_BASE =  "organization.search.base";
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
 	
 	
 	//WFP Config Utils

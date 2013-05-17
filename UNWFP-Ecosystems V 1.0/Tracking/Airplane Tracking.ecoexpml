@@ -45,7 +45,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -61,7 +63,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -72,7 +76,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
+                    <value><![CDATA[Timestamp_Local]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -304,7 +308,7 @@ void bindData() {
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(com.wfp.utils.CommonUtils.formatDate(data.getTime())));
 			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.parseDate(data.getTime()) );
 				$artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime()) );			
-			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );				
+			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
 			$artefact.addAttribute("deviceId", data.getName());		
 			 $artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );	
 		}
@@ -777,6 +781,9 @@ String getAuthorUrl(){
                 </section>
                 <section name="datefield">
                     <value><![CDATA[time]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>

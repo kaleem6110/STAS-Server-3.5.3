@@ -35,7 +35,7 @@ import com.wfp.security.form.LDAPUserBean;
  */
 @SuppressWarnings("unchecked")
 public class LDAPUtils implements IEPICConstants {
-	
+
 	public static String LDAP_PROPERTIES_FILE = IPropertyFileConstants.PROPERTY_DIRECTORY + "ldap.properties";;
 	private static String tokenId;
 	private static Map<String, String> orgMap;
@@ -70,11 +70,11 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Initializing the ldap properties from ["+LDAP_PROPERTIES_FILE+"]", LDAPUtils.class);
 		return PropertyFilesFactory.getInstance().getProperties(LDAP_PROPERTIES_FILE);
 	}
-	
+
 	public static String getLDAPConfigValue(String configName){
 		return getLDAProperties().getProperty(configName);
 	}
-	
+
 	/**
 	 * Static initialization of cache
 	 */
@@ -92,7 +92,7 @@ public class LDAPUtils implements IEPICConstants {
 	public static Map<String, LDAPUserBean> getLDAPUserDtlsMap(){
 		return (Map<String, LDAPUserBean>) Cache.retrieve(CACHE_LDAPUSER_DTLS);
 	}
-	
+
 	/**
 	 * Retrieves the user bean for a particular device id.
 	 * This method, if found retrieves from the cache else it requests the LDAP. Finally, it returns null.
@@ -104,10 +104,10 @@ public class LDAPUtils implements IEPICConstants {
 		if(getLDAPUserDtlsMap() == null ){
 			return null;
 		}
-		
+
 		return  getLDAPUserDtlsMap().get(deviceId);
 	}
-	
+
 	/**
 	 * return ldap context 
 	 * Host: <code>WFPConfigUtils</code>
@@ -137,7 +137,7 @@ public class LDAPUtils implements IEPICConstants {
 		//System.out.println("START - LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
 		return getTokenId();
 	}
-	
+
 	/**
 	 * overloaded method to return the LDAP Context usinf user id & password
 	 * @param adminName
@@ -148,7 +148,7 @@ public class LDAPUtils implements IEPICConstants {
 	public static LdapContext getLDAPContext(String adminName, String adminPassword ) throws NamingException{
 		return getLDAPContext(LDAPConfigUtils.getProviderUrl(), adminName, adminPassword);
 	}
-	
+
 	/**
 	 * Overloaded method for getting the LDAP COntext based on the host,username, password
 	 * @param host
@@ -173,8 +173,8 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Completed creating LDAP Context for host ["+host+"]", LDAPUtils.class);
 		return (new InitialLdapContext(props, null));
 	}
-	
-	
+
+
 	/**
 	 * Search the LDAP based on default inputs. This method searches for <b>memberOf </b>
 	 * @return
@@ -182,7 +182,7 @@ public class LDAPUtils implements IEPICConstants {
 	 */
 	@SuppressWarnings("unchecked")
 	public static NamingEnumeration getSearchResults(){
-		
+
 		// Specify the attributes to return
 		String returnedAtts[] = {PROPERTY_MEMBER_OF};
 		// Specify the search scope
@@ -207,7 +207,7 @@ public class LDAPUtils implements IEPICConstants {
 	 */
 	@SuppressWarnings("unchecked")
 	public static NamingEnumeration getSearchResults(String searchFilter, String searchBase){
-		
+
 		// Specify the attributes to return
 		String returnedAtts[] = {PROPERTY_CN};
 		// Specify the search scope
@@ -222,7 +222,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Overloaded method used to search the ldap based on the search controls, search gfilter & search base 
 	 * @param searchCtls
@@ -244,7 +244,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;		
 	}
-	
+
 	/**
 	 * Used to search the LDAP based on the follwoing argumets
 	 * @param ldapCtx
@@ -274,7 +274,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Overloaded method used to search the ldap based on the search constraints, search filter & search base 
 	 * @param attrs
@@ -313,7 +313,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * returns the list of member(s) for which the device is mapped.
 	 * @param deviceId
@@ -323,7 +323,7 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieving members from groups for a device id ["+deviceId+"]", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(CONSTRAINT_MEMBER,FILTER_GRP_NAMES.replace(REPLACE_DEVICE_TOKEN, deviceId), DOMAIN_GRP_NAMES));
 	}
-	
+
 	/**
 	 * Returns the user domain for a device id
 	 * @param deviceId
@@ -346,7 +346,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * returns all the devices
 	 * @return
@@ -355,7 +355,7 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieving all devices from LDAP", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(FILTER_MW_DEVICES, DEVICES_SEARCHBASE));
 	}
-	
+
 	/**
 	 * returns all the users
 	 * @return
@@ -364,7 +364,7 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieving all users from LDAP", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(FILTER_LDAP_USERS, USERS_SEARCHBASE));
 	}
-	
+
 	/**
 	 * returns map of all user attributes
 	 * @param userDomain
@@ -377,7 +377,7 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieving User ["+userDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
 		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber,personalTitle,o,ou,primaryMail");
 	}
-	
+
 	/**
 	 * setting the user bean details after requesting the LDAP
 	 * @param deviceId
@@ -396,7 +396,7 @@ public class LDAPUtils implements IEPICConstants {
 			String allGroupNamesFilter = getLDAPConfigValue("device.search.base").replace("<replacestr>", deviceId);//"cn="+deviceId+",ou=devices,dc=emergency,dc=lu";
 			String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");//"ou=groups,dc=emergency,dc=lu";
 			List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},"(member="+allGroupNamesFilter+")", allGroupsSearchBase));
-						
+
 			if(membersList != null){				
 				for(String member:membersList){					
 					if(!allGroupNamesFilter.equalsIgnoreCase(member)){
@@ -429,7 +429,7 @@ public class LDAPUtils implements IEPICConstants {
 			String allGroupNamesFilter = getLDAPConfigValue("device.search.base").replace("<replacestr>", deviceBean.getName());//"cn="+deviceBean.getName()+",ou=devices,dc=emergency,dc=lu";
 			String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");
 			List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},"(member="+allGroupNamesFilter+")", allGroupsSearchBase));
-			
+
 			if(membersList != null){				
 				for(String member:membersList){					
 					if(!allGroupNamesFilter.equalsIgnoreCase(member)){
@@ -439,7 +439,7 @@ public class LDAPUtils implements IEPICConstants {
 			}
 		}
 	}
-	
+
 	public static void setLDAPUserDtls(DeviceBean deviceBean){
 		if(deviceBean != null){
 			LDAPUserBean userbean = getLDAPUserBean(deviceBean.getName());			
@@ -458,10 +458,11 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setPersonalTitle(userbean.getPersonalTitle());
 				deviceBean.setDepartment(userbean.getDepartment());
 				deviceBean.setPrimaryEmail(userbean.getPrimaryEmail());
+				deviceBean.setPhotoString( userbean.getPhotoString() );
 			}
 		}		
 	}
-	
+
 	/**
 	 * Caching the user bean details based on the device id
 	 * @param deviceId
@@ -483,9 +484,10 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setTitle(userAttributes.get(PROPERTY_TITLE)== null?"":userAttributes.get(PROPERTY_TITLE).toString());
 			deviceBean.setPersonalTitle(userAttributes.get(PROPERTY_PERSONAL_TITLE)== null?"":userAttributes.get(PROPERTY_PERSONAL_TITLE).toString());
 			deviceBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString());		}
-			deviceBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());		
+			deviceBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());	
+			deviceBean.setPhotoString( getUserImageAsString( deviceBean.getUid()) );
 	}
-	
+
 	/**
 	 * Caching the user bean details based on the device id
 	 * @param deviceId
@@ -496,7 +498,7 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("LDAP User Details: ["+deviceId+"]  ["+userAttributes+"]", LDAPUtils.class);
 		getLDAPUserDtlsMap().put(deviceId, getLDAPUserBean(userAttributes));
 	}
-	
+
 	/**
 	 * populates the user bean
 	 * @param map
@@ -505,7 +507,7 @@ public class LDAPUtils implements IEPICConstants {
 	private static LDAPUserBean getLDAPUserBean(Map<String, Object> userAttributes){
 		LDAPUserBean userBean = null; 
 		if(userAttributes != null){
-			
+
 			userBean = new LDAPUserBean();
 			userBean.setCn(userAttributes.get(PROPERTY_CN) == null?"":userAttributes.get(PROPERTY_CN).toString());
 			userBean.setHomePhone(userAttributes.get(PROPERTY_HOME_PHONE) == null?"":userAttributes.get(PROPERTY_HOME_PHONE).toString());
@@ -528,13 +530,13 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString().replace("[","").replace("]",""));
 			userBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString().replace("[","").replace("]","") );
 			//System.out.println(" Pager: "+userBean.getSkypePager()   );
-			
+			userBean.setPhotoString( getUserImageAsString( userBean.getUid()) );
 			return userBean;
 		}
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * Prints all users in LDAP
 	 */
@@ -544,7 +546,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allPersonsSearchBase = getLDAPConfigValue("users.search.base");//"ou=users,ou=people,dc=emergency,dc=lu";
 		parseData(getSearchResults(allUserFilter, allPersonsSearchBase));
 	}
-	
+
 	/**
 	 * prints all devices in LDAP
 	 */
@@ -554,7 +556,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allDevicesSearhBase = getLDAPConfigValue("devices.search.base");//"ou=devices,dc=emergency,dc=lu";
 		parseData(getSearchResults(allMWDevicesFilter, allDevicesSearhBase));
 	}
-	
+
 	/**
 	 * Prints user assigned to a device
 	 */
@@ -563,7 +565,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupsSearchBase = "ou=groups,dc=emergency,dc=lu";
 		parseData(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * prints all groups in LDAP
 	 */
@@ -573,7 +575,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allPersonsSearchBase = getLDAPConfigValue("profiles.search.base");//"ou=acl_profiles,ou=people,dc=emergency,dc=lu";
 		parseData(getSearchResults(allUserFilter, allPersonsSearchBase));
 	}
-	
+
 	/**
 	 * Prints all groups for a user
 	 */
@@ -582,7 +584,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupsSearchBase = "ou=acl_profiles,ou=people,dc=emergency,dc=lu";
 		parseData(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * prints all missions in LDAP
 	 */
@@ -593,7 +595,7 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [uniqueId]", LDAPUtils.class);
 		return  parseDataAsList(getSearchResults(new String[] {"uniqueId"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Retrieves all the missions as List <String> from LDAP
 	 * @return
@@ -605,7 +607,7 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [tfMember]", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(new String[] {"tfMember"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Prints all the task forces for a User in  LDAP
 	 */
@@ -614,7 +616,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupsSearchBase = getLDAPConfigValue("missions.search.base");//"ou=missions,dc=emergency,dc=lu";
 		parseData(getSearchResults(new String[] {"uniqueId"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Retrieves all the task forces as List <String> for an User in LDAP
 	 * @return
@@ -626,7 +628,7 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [tfMember]", LDAPUtils.class);
 		return  parseDataAsList(getSearchResults(new String[] {"tfMember"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Prints all the domains for a User in  LDAP
 	 */
@@ -635,7 +637,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupsSearchBase = "ou=taskForces,dc=emergency,dc=lu";
 		parseData(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Retrieves all the task forces as List <String> for an Task Force in LDAP
 	 * @return
@@ -648,7 +650,7 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [member]", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * prints  all the devices for a domain  in LDAP
 	 * @return
@@ -658,7 +660,7 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupsSearchBase =  getLDAPConfigValue("devices.search.base");//"ou=devices,dc=emergency,dc=lu";
 		parseData(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	/**
 	 * Retrieves all the devices in a domain  as List <String> for an domain id in LDAP
 	 * @return
@@ -670,8 +672,8 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn]", LDAPUtils.class);
 		return parseDataAsList(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
-	
+
+
 	/**
 	 * Map<taskforceId, List<domainIds>>
 	 * @return
@@ -694,7 +696,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Map<domainId, List<deviceId>>
 	 * @return
@@ -718,7 +720,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return allDevicesOnDomainMap;
 	}
-	
+
 	/**
 	 * Map<placeid, Map<attrName, attrValue>>
 	 * @return
@@ -746,7 +748,7 @@ public class LDAPUtils implements IEPICConstants {
 		setOrgMap(map);	
 		}
 	}
-	
+
 	public static boolean validatePlanes(String planeId, String[] types){
 		String allGroupNamesFilter = getLDAPConfigValue("planes.search.base").replace("<replacestr>", planeId);//"cn="+planeId+",ou=devices,dc=emergency,dc=lu";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");//"ou=groups,dc=emergency,dc=lu";
@@ -754,7 +756,7 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [member ]", LDAPUtils.class);
 		List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},"(member="+allGroupNamesFilter+")", allGroupsSearchBase));
 		Logger.info("Valid memebers List ["+membersList+"]", LDAPUtils.class);
-		
+
 		if(membersList != null){
 			if(types != null ){
 				for(String member:membersList){
@@ -772,7 +774,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return false;
 	}
-	
+
 	public static boolean validateVehicles(String vehicleId, String[] types){
 		String allGroupNamesFilter = getLDAPConfigValue("device.search.base").replace("<replacestr>", vehicleId);;//"cn="+vehicleId+",ou=devices,dc=emergency,dc=lu";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");//"ou=groups,dc=emergency,dc=lu";
@@ -788,7 +790,7 @@ public class LDAPUtils implements IEPICConstants {
 							String allVehiclesNamesFilter = getLDAPConfigValue("vehicle.type.identifier").replace("<replacestr>", type);//"(type=cn="+type+",ou=vehicleTypes,ou=resourcesType,dc=emergency,dc=lu)";
 							Logger.info("Validating on each member with Search Filter = ["+allVehiclesNamesFilter+"] " +
 									"and Search Base = ["+member+"] on Constraint = [type ]", LDAPUtils.class);						
-							
+
 							List placeDtls = parseDataAsList(getSearchResults(new String[] {"type"},allVehiclesNamesFilter, member));
 							if(placeDtls != null && placeDtls.size() > 0){
 								return true;
@@ -798,10 +800,10 @@ public class LDAPUtils implements IEPICConstants {
 				}				
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	public static boolean validateStaff(String deviceId, String[] types){
 		@SuppressWarnings("unused")
 		List<String> groupMembers = getGroupMembers(deviceId);
@@ -817,7 +819,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return false;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static Map<String, Map<String,String>>  parseDataAsMap(NamingEnumeration searchResults, String key, String optionalKey, String[] attrArray){
 		Logger.info("Formatting the data as MAP", LDAPUtils.class);
@@ -838,7 +840,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 				return null;
 			}
-			
+
 			Attributes attrs = sr.getAttributes();
 			if (attrs != null) {
 				if(resultMap == null){
@@ -858,7 +860,7 @@ public class LDAPUtils implements IEPICConstants {
 						for (NamingEnumeration e = attr.getAll(); e
 								.hasMore(); totalResultLogger++) {
 							String attrValue = (String) e.next();
-							
+
 							if( attr.getID().equals( EXTERNAL_ID )  )
 								{
 										if( attrValue.contains( COMPASS_ID )){ resultAttrMap.put(attr.getID(), attrValue.replace(COMPASS_ID, "")); break;}
@@ -867,14 +869,14 @@ public class LDAPUtils implements IEPICConstants {
 							resultAttrMap.put(attr.getID(), attrValue);
 						}
 					}
-					
+
 					if(!StringUtils.isNull(resultAttrMap.get(key))){
 						resultMap.put(resultAttrMap.get(key), resultAttrMap);
 					}else {
 						resultAttrMap.put("compasId", "");
 						resultMap.put(resultAttrMap.get(optionalKey), resultAttrMap);
 					}
-					
+
 				} catch (NamingException e) {
 					Logger.error("Error ocuring while reading the attributes ", LDAPUtils.class, e);
 				}
@@ -883,10 +885,10 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.info("No attributes found on LDAP", LDAPUtils.class);
 			}
 		}
-		
+
 		return resultMap;
 	}
-	
+
 	public static SearchControls getSimpleSearchControls(String[] attrIDS) {
 	    SearchControls searchControls = new SearchControls();
 	    searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
@@ -894,10 +896,10 @@ public class LDAPUtils implements IEPICConstants {
 	    if(attrIDS != null){
 	 	    searchControls.setReturningAttributes(attrIDS);
 	    }
-	    
+
 	    return searchControls;
 	}
-	
+
 	public static SearchControls getSimpleSearchControls() {
 	    SearchControls searchControls = new SearchControls();
 	    searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
@@ -907,7 +909,7 @@ public class LDAPUtils implements IEPICConstants {
 
 	@SuppressWarnings("unchecked")
 	public static void parseData(NamingEnumeration searchResults){
-		
+
 		int totalResultLogger = 0;
 		if(searchResults == null){
 			return;
@@ -924,7 +926,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 				return;
 			}
-			
+
 			Attributes attrs = sr.getAttributes();
 			if (attrs != null) {
 
@@ -945,8 +947,8 @@ public class LDAPUtils implements IEPICConstants {
 			}
 		}
 	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	public static List parseDataAsList(NamingEnumeration searchResults){
 		Logger.info("Formatting the data as List", LDAPUtils.class
@@ -958,7 +960,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		// Loop through the search results
 		while (searchResults.hasMoreElements()) {
-			
+
 			SearchResult sr = null;
 			try {
 				sr = (SearchResult) searchResults.next();
@@ -969,7 +971,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 				return null;
 			}
-			
+
 			Attributes attrs = sr.getAttributes();
 			if (attrs != null) {
 				if(resultAttr == null){
@@ -982,7 +984,7 @@ public class LDAPUtils implements IEPICConstants {
 						for (NamingEnumeration e = attr.getAll(); e
 								.hasMore(); totalResultLogger++) {
 							String attrValue = (String) e.next();
-							
+
 							resultAttr.add(attrValue);
 						}
 					}
@@ -994,10 +996,10 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.info("No attributes found on LDAP", LDAPUtils.class);
 			}
 		}
-		
+
 		return resultAttr;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static Map<String, String>  parseDataAsMap(NamingEnumeration searchResults){
 		Map<String, String> resultAttrMap = null;
@@ -1007,7 +1009,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		// Loop through the search results
 		while (searchResults.hasMoreElements()) {
-			
+
 			SearchResult sr = null;
 			try {
 				sr = (SearchResult) searchResults.next();
@@ -1018,7 +1020,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 				return null;
 			}
-			
+
 			Attributes attrs = sr.getAttributes();
 			if (attrs != null) {
 				if(resultAttrMap == null){
@@ -1031,7 +1033,7 @@ public class LDAPUtils implements IEPICConstants {
 						for (NamingEnumeration e = attr.getAll(); e
 								.hasMore(); totalResultLogger++) {
 							String attrValue = (String) e.next();
-							
+
 							resultAttrMap.put(attr.getID(), attrValue);
 						}
 					}
@@ -1043,7 +1045,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.info("No attributes found on LDAP", LDAPUtils.class);
 			}
 		}
-		
+
 		return resultAttrMap;
 	}
 	public static Map<String, Object>  parseDataAsMap(NamingEnumeration searchResults, String listValues){
@@ -1055,7 +1057,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		// Loop through the search results
 		while (searchResults.hasMoreElements()) {
-			
+
 			SearchResult sr = null;
 			try {
 				sr = (SearchResult) searchResults.next();
@@ -1066,7 +1068,7 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 				return null;
 			}
-			
+
 			Attributes attrs = sr.getAttributes();
 			if (attrs != null) {
 				if(resultAttrMap == null){
@@ -1099,10 +1101,10 @@ public class LDAPUtils implements IEPICConstants {
 				Logger.info("No attributes found on LDAP", LDAPUtils.class);
 			}
 		}
-		
+
 		return resultAttrMap;
 	}
-	
+
 	public static boolean validatePlaceByUser(String placeId, String userId){
 		Logger.info("Validating Places ["+placeId+"] by user Id ["+userId+"]", LDAPUtils.class);
 		@SuppressWarnings("unused")
@@ -1120,13 +1122,13 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return false;
 	}
-	
+
 	public static boolean validateVehiclesByUser(String vehicleId, String userId){
 		String allGroupNamesFilter = getLDAPConfigValue("device.member.identifier").replace("<replacestr>", vehicleId);//"(member=cn="+vehicleId+",ou=devices,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");//"ou=groups,dc=emergency,dc=lu";
 		List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
 		List<String> missionsList = getAllMisisons4rUser(userId);
-		
+
 		if(missionsList != null){
 			if(membersList != null){
 				for(String member:membersList){
@@ -1142,24 +1144,24 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return false;
 	}
-	
+
 	public static List  getAllMisisons4rUser(String userId){
 		String allGroupNamesFilter = getLDAPConfigValue("user.member.identifier").replace("<replacestr>", userId);//"(member=uid="+userId+",ou=users,ou=people,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("missions.search.base");//"ou=missions,dc=emergency,dc=lu";
 		return parseDataAsList(getSearchResults(new String[] {"uniqueId"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	
+
 	public static boolean validateDeviceByUser(String deviceId, String userId){
 		if(StringUtils.isNull(deviceId)){
 			return false;
 		}
-		
+
 		String allGroupNamesFilter =  getLDAPConfigValue("device.member.identifier").replace("<replacestr>", deviceId);// "(member=cn="+deviceId+",ou=devices,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");// "ou=groups,dc=emergency,dc=lu";
 		List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
-		
+
 		List<String> missionsList = getAllMisisons4rUser(userId);
-		
+
 		if(missionsList != null){
 			if(membersList != null){
 				for(String member:membersList){
@@ -1175,7 +1177,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return false;
 	}
-	
+
 	public static List<String> getTrackMeMissionsList(String deviceId){
 		if(StringUtils.isNull(deviceId)){
 			return null;
@@ -1186,14 +1188,14 @@ public class LDAPUtils implements IEPICConstants {
 		List<String> membersList = parseDataAsList(getSearchResults(new String[] {"member"},allGroupNamesFilter, allGroupsSearchBase));
 		List<String> missionsList = getAllMissions();
 		List<String> allMissionsList = null;
-		
+
 		if(missionsList != null){
 			if(membersList != null){
 				allMissionsList = new ArrayList<String>();
 				for(String member:membersList){
 					for(String mission:missionsList){
 						String allStaffSearchBase = getLDAPConfigValue("mission.unique.identifier").replace("<replacestr>", mission);//"uniqueId="+mission+",ou=missions,dc=emergency,dc=lu";
-						
+
 						List staffDtls = parseDataAsList(getSearchResults(new String[] {"member"},"member="+member, allStaffSearchBase));
 						if(staffDtls != null && staffDtls.size() > 0){
 							allMissionsList.add(mission);
@@ -1204,7 +1206,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return allMissionsList;
 	}
-	
+
 	public static List<String> getVehiclesMissionsList(String vehicleId){
 		String allGroupNamesFilter = getLDAPConfigValue("device.member.identifier").replace("<replacestr>", vehicleId);//"(member=cn="+vehicleId+",ou=devices,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");//"ou=groups,dc=emergency,dc=lu";
@@ -1219,7 +1221,7 @@ public class LDAPUtils implements IEPICConstants {
 				for(String member:membersList){
 					for(String mission:missionsList){
 						String allVehiclesSearchBase = getLDAPConfigValue("mission.unique.identifier").replace("<replacestr>", mission);//"uniqueId="+mission+",ou=missions,dc=emergency,dc=lu";
-						
+
 						List vehicleDtls = parseDataAsList(getSearchResults(new String[] {"vehicleMember"},"vehicleMember="+member, allVehiclesSearchBase));
 						if(vehicleDtls != null && vehicleDtls.size() > 0){
 							allMissionsList.add(mission);
@@ -1230,7 +1232,7 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return allMissionsList;
 	}
-	 
+
 	@SuppressWarnings("static-access")
 	public static boolean authorizeDevices(String deviceId, String userId){
 		if(getLDAPUserDtlsMap() != null ){
@@ -1271,7 +1273,7 @@ public class LDAPUtils implements IEPICConstants {
 			List<String> strList = new ArrayList<String>();
 			try {
 				sr = (SearchResult) searchResults.next();
-			
+
 			} catch (NamingException e1) {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 			}
@@ -1285,16 +1287,16 @@ public class LDAPUtils implements IEPICConstants {
 				try{
 					for (NamingEnumeration ae = attrs.getAll(); ae.hasMore();) {
 						 Attribute attr = (Attribute) ae.next();        
-				        
-				         
+
+
 						  for (NamingEnumeration e = attr.getAll(); e.hasMore(); e.next());
-					
+
 						//System.out.println(" attrs : "+attrs.get(keyAttribute) + ": "+ attrs.get(valueAttribute));
 						//if(attrs.get(keyAttribute)!=null && attrs.get(keyAttribute)!=null)
 						resultMap.put(attrs.get(keyAttribute).toString(),attrs.get(valueAttribute).toString() );
 				}
 			}catch(NamingException ne){ne.printStackTrace(); }
-			
+
 			}
 			else 
 			{
@@ -1304,5 +1306,35 @@ public class LDAPUtils implements IEPICConstants {
 		System.out.println("# END parseAsMap : Formatting the data as MAP");
 		return resultMap;
 	}
+	public static String getUserImageAsString(String uid )
+	{
+		String base64String=null;
+		if(uid!=null&&uid!=""){
+		// Specify the attributes to return
+		String searchFilter = "(&"+FILTER_LDAP_USERS+"((uid="+uid+")))";
+		String searchBase = LDAP_FILTER_URL +"uid="+ uid + ","+LDAP_BASE;
+		
+		String returnedAtts[] = {""+PROPERTY_IMAGE };
+		// Specify the search scope
+		SearchControls searchCtls = new SearchControls();
+		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+		searchCtls.setReturningAttributes(returnedAtts);
+		// Search for objects using the filter
+		try {
+			NamingEnumeration results=  getSearchResults(getLDAPContext(), searchCtls, searchFilter, searchBase);
+			while (results.hasMore()) {
+				SearchResult searchResult = (SearchResult) results.next();
+				Attributes attributes = searchResult.getAttributes();
+				Attribute attr = attributes.get(PROPERTY_IMAGE);
+				if( attr!=null ) base64String = new String( org.apache.commons.codec.binary.Base64.encodeBase64( (byte[])attr.get() ) );
+				
+			}
+		} catch (NamingException e) {
+			Logger.error(" Error occured while fetching user image 1334: getUserImageBytes(String uid):["+e.getLocalizedMessage()+"]", LDAPUtils.class);
+		}
+		}
+		return base64String;
+	}
+	
 
 }

@@ -97,7 +97,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -115,7 +117,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -862,6 +866,9 @@ String getAuthorUrl(){
                 </section>
                 <section name="datefield">
                     <value><![CDATA[time]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>

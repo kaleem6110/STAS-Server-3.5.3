@@ -174,7 +174,6 @@ public class CommonUtils implements IEPICConstants{
 			if(!StringUtils.isNull(ldapUserBean.getOrganization())){
 				artefact.addAttribute(ATTR_ORGANIZATION, ldapUserBean.getOrganization());
 			}
-			
 			if(!StringUtils.isNull(ldapUserBean.getCallSign())){
 				artefact.addAttribute(ATTR_CALL_SIGN, ldapUserBean.getCallSign());
 			}

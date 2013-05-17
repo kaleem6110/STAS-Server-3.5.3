@@ -43,6 +43,7 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String personalTitle = null;
 	private String primaryEmail;
 	private String department;
+	private String photoString;
 	
 	public String getLatitude() {
 		return latitude;
@@ -268,6 +269,18 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	 */
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+	/**
+	 * @return the photoString
+	 */
+	public String getPhotoString() {
+		return photoString;
+	}
+	/**
+	 * @param photoString the photoString to set
+	 */
+	public void setPhotoString(String photoString) {
+		this.photoString = photoString;
 	}
 	
 	
