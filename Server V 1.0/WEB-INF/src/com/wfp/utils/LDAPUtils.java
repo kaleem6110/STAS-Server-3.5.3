@@ -459,6 +459,7 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setDepartment(userbean.getDepartment());
 				deviceBean.setPrimaryEmail(userbean.getPrimaryEmail());
 				deviceBean.setPhotoString( userbean.getPhotoString() );
+				deviceBean.setGender( userbean.getGender() );
 			}
 		}		
 	}
@@ -486,6 +487,7 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString());		}
 			deviceBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());	
 			deviceBean.setPhotoString( getUserImageAsString( deviceBean.getUid()) );
+			deviceBean.setGender(userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
 	}
 
 	/**
@@ -530,6 +532,7 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString().replace("[","").replace("]",""));
 			userBean.setDepartment(userAttributes.get(PROPERTY_DEPT)== null?"":userAttributes.get(PROPERTY_DEPT).toString().replace("[","").replace("]","") );
 			//System.out.println(" Pager: "+userBean.getSkypePager()   );
+			userBean.setGender( userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
 			userBean.setPhotoString( getUserImageAsString( userBean.getUid()) );
 			return userBean;
 		}

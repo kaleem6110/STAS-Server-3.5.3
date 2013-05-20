@@ -60,7 +60,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -92,7 +94,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
         </section>
@@ -669,11 +673,17 @@ void fireDashboardRefreshEvent(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="datefield">
                     <value><![CDATA[CreatedDate]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>

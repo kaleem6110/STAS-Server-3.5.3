@@ -414,7 +414,7 @@ import java.util.*;
 import com.wfp.beans.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+ 
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
@@ -509,7 +509,7 @@ profileTab.setName("Profile");
 //Creating a Legend
 Legend userLegend = new Legend();
 userLegend.setName("User Details");
-attribMap.put( data.getPersonalTitle()!=""?data.getPersonalTitle():"Mr/Ms",getFullName(data) );
+attribMap.put( CommonUtils.getPersonalTitle(data.getGender(),getFullName(data) );
 attribMap.put("Title", data.getTitle() );
 if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
 attribMap.put("Organization", data.getOrganization() );
@@ -1722,19 +1722,6 @@ String getAuthorUrl(){
                 <section name="flashparameters">
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Datasource]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDatasource()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
                             <value><![CDATA[Description]]></value>
                         </section>
                         <section name="value">
@@ -1748,11 +1735,11 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last refresh time]]></value>
+                            <value><![CDATA[Datasource]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
-                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <value><![CDATA[getDatasource()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1766,6 +1753,19 @@ String getAuthorUrl(){
                         <section name="value">
                             <section name="script">
                                 <value><![CDATA[currentVersion()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1826,19 +1826,6 @@ String getAuthorUrl(){
                 <section name="flashparameters">
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Datasource]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDatasource()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
                             <value><![CDATA[Description]]></value>
                         </section>
                         <section name="value">
@@ -1852,11 +1839,11 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Last refresh time]]></value>
+                            <value><![CDATA[Datasource]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
-                                <value><![CDATA[getLastRefreshTime()]]></value>
+                                <value><![CDATA[getDatasource()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1870,6 +1857,19 @@ String getAuthorUrl(){
                         <section name="value">
                             <section name="script">
                                 <value><![CDATA[currentVersion()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[Last refresh time]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getLastRefreshTime()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>

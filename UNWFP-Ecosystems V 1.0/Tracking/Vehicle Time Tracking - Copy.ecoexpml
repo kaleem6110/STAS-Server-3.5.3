@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Airplane Time Tracking">
+<configuration name="Vehicle Time Tracking - Copy">
     <section name="artefact">
         <section name="name">
-            <value><![CDATA[Airplane Time Tracking]]></value>
+            <value><![CDATA[Vehicle Time Tracking]]></value>
         </section>
         <section name="artifactname">
             <section name="script">
@@ -34,6 +34,86 @@
             </section>
             <section name="row">
                 <section name="column">
+                    <value><![CDATA[description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[licensePlate]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[LicensePlate]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[Fleet]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Fleet]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[Unit]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Unit]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[callSign]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Call Sign]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
                     <value><![CDATA[time]]></value>
                 </section>
                 <section name="column">
@@ -45,9 +125,7 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
+                <section name="column"/>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -63,9 +141,23 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
                 <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                    <value><![CDATA[type]]></value>
                 </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Type]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
                 <section name="column"/>
             </section>
         </section>
@@ -121,10 +213,20 @@
                 </section>
             </section>
         </section>
+        <section name="sortableattributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[desc]]></value>
+                </section>
+            </section>
+        </section>
         <section name="experiencedef">
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Airplane Time Tracking]]></value>
+                    <value><![CDATA[Vehicle Time Tracking]]></value>
                 </section>
                 <section name="type">
                     <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
@@ -161,7 +263,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airplane Time Tracking.ecoexpml]]></value>
+                            <value><![CDATA[Vehicle Time Tracking - Copy.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -169,7 +271,7 @@
                             <value><![CDATA[artefactname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Airplane Time Tracking]]></value>
+                            <value><![CDATA[Vehicle Time Tracking]]></value>
                         </section>
                     </section>
                 </section>
@@ -194,6 +296,46 @@
         </section>
         <section name="listeners"/>
         <section name="layout">
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getDeviceCaption()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[Placemark]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.PlacemarkFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="extrude">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="globalstyleid">
+                    <value><![CDATA[placemarkstyle]]></value>
+                </section>
+                <section name="isblink">
+                    <value><![CDATA[false]]></value>
+                </section>
+            </section>
             <section name="folder">
                 <section name="name">
                     <section name="script">
@@ -230,9 +372,6 @@
                 <section name="tessellate">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="globalstyleid">
-                    <value><![CDATA[ ]]></value>
-                </section>
                 <section name="placemarklocation">
                     <value><![CDATA[start]]></value>
                 </section>
@@ -257,9 +396,9 @@
                 <section name="style">
                     <section name="name">
                         <section name="script">
-                            <value><![CDATA[name]]></value>
+                            <value><![CDATA[getDeviceCaption()]]></value>
                             <section name="type">
-                                <value><![CDATA[2]]></value>
+                                <value><![CDATA[1]]></value>
                             </section>
                         </section>
                     </section>
@@ -294,9 +433,6 @@
                     <section name="labelcolorshader">
                         <value><![CDATA[false]]></value>
                     </section>
-                    <section name="labelscale">
-                        <value><![CDATA[0.0]]></value>
-                    </section>
                     <section name="linecolor">
                         <section name="script">
                             <value><![CDATA[getLineColor()]]></value>
@@ -325,17 +461,20 @@
                             </section>
                         </section>
                     </section>
+                    <section name="highlighticoncolor">
+                        <value><![CDATA[#FF0000]]></value>
+                    </section>
                     <section name="highlighticonscale">
                         <value><![CDATA[1.0]]></value>
                     </section>
                     <section name="highlightlabelcolor">
-                        <value><![CDATA[#FFFFFF]]></value>
+                        <value><![CDATA[#FF0000]]></value>
                     </section>
                     <section name="highlightlabelscale">
                         <value><![CDATA[0.5]]></value>
                     </section>
                     <section name="highlightlinecolor">
-                        <value><![CDATA[#FFFFFF]]></value>
+                        <value><![CDATA[#FF0000]]></value>
                     </section>
                     <section name="shadertype">
                         <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
@@ -345,21 +484,22 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
+                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
+import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 
-private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
-private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 com.wfp.security.form.DeviceBean data = null;
+private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
+private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
 String description = "<p>Soap Tracking job which is scheduled for every eight hours fetches data from  <i>https://middleware.service.emergency.lu/sensorservice/out/soap</i> & caches the data. </p> ";
 String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
-String getDatasource(){ 
-	return datasource;
-}
-
+String getDatasource(){
+	return datasource;  
+}    
+ 
 String getLastRefreshTime(){
 	return lastRefreshTime;
 }
@@ -367,62 +507,78 @@ String getLastRefreshTime(){
 String getDescription(){
 	return description;
 }
-
 static {
 	if(!Cache.contains("$colorCache$")){
 		com.enterprisehorizons.magma.server.util.Cache.store("$colorCache$", new HashMap());
 	}
 }
-
 void bindData() {
-	try
+
+try
 	{
-		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 	 	
 	 	if (data != null)
 	 	{
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
-			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			$artefact.addAttribute("time",  (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			$artefact.addAttribute("time", data.getTime());
 			
+			   
+			       
 			$artefact.addAttribute("name", data.getName());
+			$artefact.addAttribute("type", data.getVehicleType());
+			$artefact.addAttribute("description", data.getDescription());
+			$artefact.addAttribute("licensePlate", data.getLicensePlate());
 			
 			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
-			$artefact.addAttribute("localTime",localTime );	
-			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );	
+			$artefact.addAttribute("localTime", localTime );	
+			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
 		} 
-	} 
-	catch (Exception e){
+	}
+	catch (Exception e){  
 		e.printStackTrace();
 	}
-} 
+	
+	
+}
+
 
 void addAttribute(){
 	if(getName().startsWith("trackMe")){
 		com.wfp.security.form.LDAPUserBean ldapUserBean = com.wfp.utils.LDAPUtils.getLDAPUserBean(getName());
-	if(ldapUserBean == null){
-		return;
+		if(ldapUserBean == null){
+			return;
+		}
+		
+		if(!com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getCn()) && !("NULL".equalsIgnoreCase(ldapUserBean.getCn()))){
+			$artefact.addAttribute("owner", ldapUserBean.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getSn())?"":ldapUserBean.getSn()));
+		}
+		if(!StringUtils.isNull(ldapUserBean.getFleet())){
+			$artefact.addAttribute("Fleet", ldapUserBean.getFleet());
+		}
+		
+		if(!StringUtils.isNull(ldapUserBean.getUnit())){
+			$artefact.addAttribute("Unit", ldapUserBean.getFleet());
+		}
+			
+		if(!StringUtils.isNull(ldapUserBean.getCallSign())){
+			$artefact.addAttribute("callSign", ldapUserBean.getCallSign());
+			$artefact.addAttribute("type", ldapUserBean.getVehicleType());
+			$artefact.addAttribute("reg", ldapUserBean.getVehicleReg());
+		}
 	}
-	
-	if(!com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getCn()) && !("NULL".equalsIgnoreCase(ldapUserBean.getCn()))){
-		$artefact.addAttribute("owner", ldapUserBean.getCn() +" "+(com.enterprisehorizons.util.StringUtils.isNull(ldapUserBean.getSn())?"":ldapUserBean.getSn()));
-	}
-	
-	return;
-	}  
 }
 
-String getDeviceCaption(){
+String getDeviceCaption(){	
+	if(!com.enterprisehorizons.util.StringUtils.isNull($artefact.getAttributeValueAsString("Unit"))){
+		return $artefact.getAttributeValueAsString("Unit") +" " +$artefact.getAttributeValueAsString("Fleet");
+	}
 	return  $artefact.getAttributeValueAsString("name");
 }
 
 String getName() {
-
-	if($artefact != null){
-		return $artefact.getAttributeValueAsString("name");
-	}
-	return "No Name" ;
+	return $artefact.getAttributeValueAsString("name");
 }
 
 double getAltitude(){
@@ -442,24 +598,29 @@ double getLat(){
 double getLng(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	
 	return l.getLng();
 }
 
 String getIconUrl(){
-	return "serverresources/icons/epic/Airplane_Tracking.png";
+	return "serverresources/icons/epic/Vehicle_Time_Tracking.png";
 }
 
 String getIconColor(){
-	//return "#FFFFFF";
-	return "#00FF00";
-}
-
-String[] returnTimeAttributes(){
-	return new String[]  {"time","java.util.Date","Time","false",""};
+	return "#FFFFFF";
 }
 
 String getGroupby(){
 	return "name";
+}
+
+boolean authorizeDevice(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
+}
+
+String getAuthorUrl(){	
+	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
 }
 
 String getLineColor(){
@@ -467,7 +628,7 @@ String getLineColor(){
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
-		//System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
+		System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
 	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
@@ -485,20 +646,6 @@ String getLineColor(){
 	 	e.printStackTrace();
 	}
 	return "#FF0000";
-}
-
-void fireDashboardRefreshEvent(){
-	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
-}
-
-boolean authorizeDevice(){
-	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	//return com.wfp.utils.LDAPUtils.validateVehiclesByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-} 
-  
-String getAuthorUrl(){	
-	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
 }]]></value>
                 <section name="type">
                     <value><![CDATA[1]]></value>
@@ -692,6 +839,17 @@ String getAuthorUrl(){
                         </section>
                         <section name="column"/>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[licensePlate]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -715,6 +873,12 @@ String getAuthorUrl(){
             <section name="folder">
                 <section name="name">
                     <value><![CDATA[List]]></value>
+                </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -759,22 +923,17 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="dateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="datefield">
-                    <section name="script">
-                        <value><![CDATA[time]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="datefielddateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -812,6 +971,78 @@ String getAuthorUrl(){
                             <section name="column">
                                 <value><![CDATA[]]></value>
                             </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[licensePlate]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>
@@ -1027,10 +1258,18 @@ String getAuthorUrl(){
                     <section name="params">
                         <section name="param">
                             <section name="name">
-                                <value><![CDATA[coordinatesDataElement]]></value>
+                                <value><![CDATA[longitudeDataElement]]></value>
                             </section>
                             <section name="value">
-                                <value><![CDATA[coordStr]]></value>
+                                <value><![CDATA[longitude]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[latitudeDataElement]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[latitude]]></value>
                             </section>
                         </section>
                         <section name="param">
@@ -1046,12 +1285,7 @@ String getAuthorUrl(){
                                 <value><![CDATA[layerName]]></value>
                             </section>
                             <section name="value">
-                                <section name="script">
-                                    <value><![CDATA[getLayerName()]]></value>
-                                    <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                    </section>
-                                </section>
+                                <value><![CDATA[Vehicle Time Tracking]]></value>
                             </section>
                         </section>
                     </section>
@@ -1067,21 +1301,6 @@ String getAuthorUrl(){
                     <value><![CDATA[bindData()]]></value>
                     <section name="type">
                         <value><![CDATA[1]]></value>
-                    </section>
-                </section>
-            </section>
-        </section>
-        <section name="runtimeattributes">
-            <section name="attributegroup">
-                <section name="name">
-                    <value><![CDATA[addAttribute]]></value>
-                </section>
-                <section name="attributes">
-                    <section name="script">
-                        <value><![CDATA[addAttribute()]]></value>
-                        <section name="type">
-                            <value><![CDATA[1]]></value>
-                        </section>
                     </section>
                 </section>
             </section>

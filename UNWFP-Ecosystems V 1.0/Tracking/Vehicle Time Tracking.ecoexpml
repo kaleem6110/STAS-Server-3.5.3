@@ -125,7 +125,9 @@
                 <section name="column">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -141,7 +143,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
             <section name="row">
@@ -372,30 +376,6 @@
                 <section name="tessellate">
                     <value><![CDATA[false]]></value>
                 </section>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
-                </section>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
-                </section>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
-                </section>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
-                </section>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
                 <section name="isblink">
                     <value><![CDATA[false]]></value>
                 </section>
@@ -405,10 +385,6 @@
                 <section name="generateplacemark">
                     <value><![CDATA[true]]></value>
                 </section>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <section name="generatelegend">
                     <value><![CDATA[false]]></value>
                 </section>
@@ -501,22 +477,6 @@
                     <section name="shadertype">
                         <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
                     </section>
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
-=======
-                <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
->>>>>>> 70592f92b62da206603070c66a53d83eb562b805
                 </section>
             </section>
         </section>
@@ -560,8 +520,7 @@ try
 	 	{
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
-			$artefact.addAttribute("time", data.getTime());
-			
+			$artefact.addAttribute("time", (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );			
 			   
 			       
 			$artefact.addAttribute("name", data.getName());
@@ -666,7 +625,7 @@ String getLineColor(){
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
-		System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
+		
 	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
@@ -972,6 +931,9 @@ String getLineColor(){
                 </section>
                 <section name="datefield">
                     <value><![CDATA[time]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>

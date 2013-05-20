@@ -82,7 +82,7 @@ public interface IEPICConstants {
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
 	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
 	public static final String GROUP_SEARCHBASE =  "groups.search.base";
-	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle"};
+	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle","gender"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
 	public static final String PROPERTY_MAIL =  "mail";
@@ -92,6 +92,7 @@ public interface IEPICConstants {
 	public static final String PROPERTY_ORGANIZATION =  "o";
 	public static final String PROPERTY_DEPT =  "ou";
 	public static final String PROPERTY_IMAGE =  "jpegPhoto";
+	public static final String PROPERTY_GENDER =  "gender";
 	public static final String PROPERTY_DESCRIPTION =  "description";
 	public static final String PROPERTY_LICENSE_PLATE =  "licencePlate";
 	public static final String PROPERTY_UID =  "uid";

@@ -44,7 +44,21 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String primaryEmail;
 	private String department;
 	private String photoString;
+	private String gender;
 	
+	
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getLatitude() {
 		return latitude;
 	}

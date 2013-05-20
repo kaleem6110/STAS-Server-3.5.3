@@ -32,7 +32,7 @@ import com.wfp.jobs.RestTrackingJob;
 import com.wfp.beans.*;
 /**
  * Common Utility class 
- * @author sti-user
+ * @author kaleem.mohammed
  *
  */
 public class CommonUtils implements IEPICConstants{
@@ -60,11 +60,15 @@ public class CommonUtils implements IEPICConstants{
        return null;
 	}
 	
+	/**
+	 * @param datetime
+	 * @param timeformat
+	 * @return
+	 */
 	public static String formatDate(String datetime, String timeformat){
 		if(StringUtils.isNull(datetime)){
 			return null;
-		}
-		
+		}		
 		SimpleDateFormat  formatter = new SimpleDateFormat(timeformat);  
 		Date date;
         try {
@@ -76,11 +80,16 @@ public class CommonUtils implements IEPICConstants{
           
        return null;
 	}
+	/**
+	 * @param datetime
+	 * @param inputTimeformat
+	 * @param outputTimeFormat
+	 * @return
+	 */
 	public static String formatDate(String datetime, String inputTimeformat, String outputTimeFormat){
 		if(StringUtils.isNull(datetime)){
 			return null;
-		}
-		
+		}		
 		SimpleDateFormat  formatter = new SimpleDateFormat(inputTimeformat);  
 		Date date;
         try {
@@ -93,11 +102,15 @@ public class CommonUtils implements IEPICConstants{
        return null;
 	}
 	
+	/**
+	 * @param datetime
+	 * @param timeformat
+	 * @return
+	 */
 	public static Date parseDate(String datetime, String timeformat){
 		if(StringUtils.isNull(datetime)){
 			return null;
-		}
-		
+		}		
 		SimpleDateFormat  formatter = new SimpleDateFormat(timeformat);  
 		try {
 			return formatter.parse(datetime);
@@ -110,20 +123,29 @@ public class CommonUtils implements IEPICConstants{
 	}
 	
 	
-	public static String getUTCDateString(String datetime, String timeformat){
-		if(datetime.contains("PST") || datetime.contains("PDT")){
+	/**
+	 * @param datetime
+	 * @param timeformat
+	 * @return
+	 */
+	public static String getUTCDateString(String datetime, String timeformat)
+	{
+		if(datetime.contains("PST") || datetime.contains("PDT"))
+		{
 			datetime = datetime.replaceAll("PDT", "UTC");
 			datetime = datetime.replaceAll("PST", "UTC");
-		}else {
-			return datetime;
 		}
-		return getUTCdatetime(parseDate(datetime, timeformat));
- 
+		else 	return datetime;		
+		
+		return getUTCdatetime(parseDate(datetime, timeformat)); 
 	}
 	
 	
-	//EEE MMM dd HH:mm:ss z yyyy
-	
+	//EEE MMM dd HH:mm:ss z yyyy	
+	/**
+	 * @param String datetime ( EPIC_DATE_FORMAT )
+	 * @return Date
+	 */
 	public static Date parseDate(String datetime){
 		if(StringUtils.isNull(datetime)){
 			return null;
@@ -139,6 +161,10 @@ public class CommonUtils implements IEPICConstants{
        return null;
 	}
 	
+	/**
+	 * @param datetime
+	 * @return
+	 */
 	public static Date parseDatePortalFormat(String datetime){
 		if(StringUtils.isNull(datetime)){
 			return null;
@@ -153,6 +179,10 @@ public class CommonUtils implements IEPICConstants{
        return null;
 	}
 	
+	/**
+	 * @param datetime
+	 * @return
+	 */
 	public static String formatDate(Date datetime){
 		if(datetime == null){
 			return null;
@@ -168,40 +198,48 @@ public class CommonUtils implements IEPICConstants{
        return null;
 	}
 	
+	/**
+	 * @param ldapUserBean
+	 * @param artefact
+	 * @param layerName
+	 */
 	public static  void addDeviceDtls(com.wfp.security.form.LDAPUserBean ldapUserBean, IGeoArtifact artefact, String layerName){
-		if(layerName.startsWith(LAYER_STAFF)){
-			//System.out.println(ldapUserBean.getDeviceId());
-			if(!StringUtils.isNull(ldapUserBean.getOrganization())){
-				artefact.addAttribute(ATTR_ORGANIZATION, ldapUserBean.getOrganization());
-			}
-			if(!StringUtils.isNull(ldapUserBean.getCallSign())){
-				artefact.addAttribute(ATTR_CALL_SIGN, ldapUserBean.getCallSign());
-			}
+		if(layerName.startsWith(LAYER_STAFF))
+		{	
+			if(!StringUtils.isNull(ldapUserBean.getOrganization())) artefact.addAttribute(ATTR_ORGANIZATION, ldapUserBean.getOrganization());		
+			if(!StringUtils.isNull(ldapUserBean.getCallSign())) artefact.addAttribute(ATTR_CALL_SIGN, ldapUserBean.getCallSign());		
 			
-		}else if(layerName.startsWith(LAYER_VEHICLE)){
-			//System.out.println(ldapUserBean.getDeviceId());
-			if(!StringUtils.isNull(ldapUserBean.getFleet())){
-				artefact.addAttribute(ATTR_UNIT, ldapUserBean.getFleet());
-			}
-			
-			if(!StringUtils.isNull(ldapUserBean.getUnit())){
-				artefact.addAttribute(ATTR_FLEET, ldapUserBean.getFleet());
-			}
-			
-			if(!StringUtils.isNull(ldapUserBean.getCallSign())){
-				artefact.addAttribute(ATTR_CALL_SIGN, ldapUserBean.getCallSign());
-			}
-		}else if(layerName.startsWith(LAYER_AIRPLANE)){
-			return;
 		}
+		else if(layerName.startsWith(LAYER_VEHICLE))
+		{			
+			if(!StringUtils.isNull(ldapUserBean.getFleet()))    artefact.addAttribute(ATTR_UNIT, ldapUserBean.getFleet());			
+			if(!StringUtils.isNull(ldapUserBean.getUnit()))	    artefact.addAttribute(ATTR_FLEET, ldapUserBean.getFleet());				
+			if(!StringUtils.isNull(ldapUserBean.getCallSign()))	artefact.addAttribute(ATTR_CALL_SIGN, ldapUserBean.getCallSign());
+			
+		}
+		//else if(layerName.startsWith(LAYER_AIRPLANE)) return;
+		
 		
 	}
 	
+	/**
+	 * @param artefact
+	 * @param skypeId
+	 * @param ocsId
+	 * @param sipId
+	 * @return
+	 */
 	public static  String getContactDtls(IGeoArtifact artefact, String skypeId, String ocsId, String sipId){		
 		return getContactDtls(skypeId, ocsId, sipId);
 		
 	}
 
+	/**
+	 * @param skypeId
+	 * @param ocsId
+	 * @param sipId
+	 * @return
+	 */
 	public static  String getContactDtls(String skypeId, String ocsId, String sipId) {
 		StringBuffer contact = new StringBuffer();
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -226,6 +264,13 @@ public class CommonUtils implements IEPICConstants{
 		return contact.toString();
 	}
 	
+	/**
+	 * @param pagersList
+	 * @param emailsList
+	 * @param mobilesList
+	 * @param fullName
+	 * @return
+	 */
 	public static  String getContactDtls(List<String> pagersList, List<String> emailsList, List<String> mobilesList,String fullName) {
 		StringBuffer contact = new StringBuffer();
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -272,6 +317,10 @@ public class CommonUtils implements IEPICConstants{
 		return contact.toString();
 	}
 	
+	/**
+	 * @param pagersList
+	 * @return
+	 */
 	public static  String getPagerDtls(List<String> pagersList) {
 		StringBuffer contact = new StringBuffer();
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -293,6 +342,10 @@ public class CommonUtils implements IEPICConstants{
 		
 		return contact.toString();
 	}
+	/**
+	 * @param pagersList
+	 * @return
+	 */
 	public static  Messaging getMessaging(List<String> pagersList) {
 		Messaging mbean = new Messaging();
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -309,6 +362,10 @@ public class CommonUtils implements IEPICConstants{
 		return mbean;
 	}
 	
+	/**
+	 * @param emailsList
+	 * @return
+	 */
 	public static  String getMailDtls(List<String> emailsList) {
 		StringBuffer contact = new StringBuffer();
 		if(emailsList != null && emailsList.size() > 0){			
@@ -331,9 +388,12 @@ public class CommonUtils implements IEPICConstants{
 		
 		return contact.toString();
 	}
+	/**
+	 * @param mobilesList
+	 * @return
+	 */
 	public static  Telephone getTelephones(List<String> mobilesList) {
 		Telephone telephone = new Telephone();
-		//System.out.println("####### START getTelephones ############# mobilesList : "+mobilesList );
 		List<String> mobileList =new ArrayList<String>();
 		if(mobilesList != null && mobilesList.size() >0){			
 			for(String mobile:mobilesList){
@@ -349,6 +409,15 @@ public class CommonUtils implements IEPICConstants{
 		return telephone;
 	}
 	
+	/**
+	 * @param skypeId
+	 * @param skypeImg
+	 * @param ocsId
+	 * @param ocsImg
+	 * @param sipId
+	 * @param sipImg
+	 * @return
+	 */
 	public static  String getContactDtls(String skypeId, String skypeImg, String ocsId, String ocsImg,  String sipId, String sipImg) {
 		StringBuffer contact = new StringBuffer();
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -406,6 +475,9 @@ public class CommonUtils implements IEPICConstants{
 	    return stringDateToDate(getUTCdatetimeAsString()); 
 	} 
 	 
+	/**
+	 * @return
+	 */
 	public static String getUTCdatetimeAsString() 
 	{ 
 	    final SimpleDateFormat sdf = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT); 
@@ -415,30 +487,40 @@ public class CommonUtils implements IEPICConstants{
 	    return utcTime;
 	} 
 	
+	/**
+	 * @param datetime
+	 * @return
+	 */
+	
 	public static String getUTCdatetime(Date datetime) 
 	{ 
 	    //Kaleem final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss z");
 		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss z");
 	    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
-	    final String utcTime = sdf.format(datetime); 
-	 
+	    final String utcTime = sdf.format(datetime); 	 
 	    return utcTime; 
 	}
-	
+	/**
+	 * @param datetime
+	 * @return
+	 */
 	public static String getUTCdatetime(String datetime) 
 	{ 
 	    final SimpleDateFormat sdf = new SimpleDateFormat(PORTAL_DATE_FORMAT); 
 	    sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
 	    final String utcTime = sdf.format(datetime); 
-	 
+	    
 	    return utcTime; 
 	}
 	 
+	/**
+	 * @param StrDate
+	 * @return
+	 */
 	public static Date stringDateToDate(String StrDate) 
 	{ 
 	    Date dateToReturn = null; 
-	    SimpleDateFormat dateFormat = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT); 
-	 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);	 
 	    try 
 	    { 
 	        dateToReturn = (Date)dateFormat.parse(StrDate); 
@@ -450,6 +532,11 @@ public class CommonUtils implements IEPICConstants{
 	 
 	    return dateToReturn; 
 	} 
+	/**
+	 * @param StrDate
+	 * @param dateTimeFormat
+	 * @return
+	 */
 	public static Date stringDateToDate(String StrDate, String dateTimeFormat) 
 	{ 
 	    Date dateToReturn = null; 
@@ -466,6 +553,10 @@ public class CommonUtils implements IEPICConstants{
 	 
 	    return dateToReturn; 
 	} 
+	/**
+	 * @param StrDate
+	 * @return
+	 */
 	public static Date stringDateToISODate(String StrDate) 
 	{ 
 	    Date dateToReturn = null; 
@@ -481,84 +572,127 @@ public class CommonUtils implements IEPICConstants{
 	 
 	    return dateToReturn; 
 	} 
-	public static String getTimeZoneByLatLong(String lat, String longitude, String zuluTime, String inputDateFormat)
+	/**
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
+	public static String getOffsetByLatLong(String latitude, String longitude)
 	{
 		String offset= null;
 		StringBuffer sb = new StringBuffer();
-		String uri =EARTH_TOOLS_URL+lat+"/"+longitude;
-		try {
-			
+		String uri =EARTH_TOOLS_URL+latitude+"/"+longitude;
+		try 
+		{	
 			URL earthURI = new URL(uri);
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					earthURI.openStream()));
 			String inputLine;
-
-			while ((inputLine = in.readLine()) != null){
-				sb.append(inputLine);
-				//System.out.println(inputLine);
-			}
+			
+			while ((inputLine = in.readLine()) != null) sb.append(inputLine);
 			in.close();
-			 DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			 InputSource is = new InputSource();
-			 is.setCharacterStream(new StringReader(sb.toString()));
+			
+			DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			InputSource is = new InputSource();
+			is.setCharacterStream(new StringReader(sb.toString()));
 
-			 Document doc = db.parse(is);
-		
+			Document doc = db.parse(is);	
 			org.w3c.dom.NodeList nList = doc.getElementsByTagName(TIME_ZONE_NODE);
 			
-			if(nList != null){
-				for (int temp = 0; temp < nList.getLength(); temp++) {
+			if(nList != null)
+			{
+				for (int temp = 0; temp < nList.getLength(); temp++)
+				{
 					Node nNode = nList.item(temp);					
-					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-						 
+					if (nNode.getNodeType() == Node.ELEMENT_NODE)
+					{	 
 						org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
 						org.w3c.dom.NodeList offsetList = eElement.getElementsByTagName(OFFSET_NODE);						
 						org.w3c.dom.Element offsetElement = (org.w3c.dom.Element) offsetList.item(0);
-						offset= getCharacterDataFromElement(offsetElement);
-						
-						DateFormat formatter = new SimpleDateFormat(inputDateFormat);
-						Date zuluDate =  formatter.parse(zuluTime);
-						if( !inputDateFormat.equals(NEW_PORTAL_DATE_FORMAT))formatter = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
-					
-						boolean decimal= false;
-						if(offset!=null&&offset.trim().indexOf(".")>-1)
-						{
-							offset = offset.substring(0, offset.indexOf("."));
-							decimal=true;
-						}
-						if(Integer.parseInt(offset)>0)
-						{ zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
-						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
-						}
-						else  {zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
-						if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
-						}
-						
-						offset = formatter.format( zuluDate );
-						//offset=offset.replace("T", " ").substring(0,offset.length()-5 );
-						
+						offset= getCharacterDataFromElement(offsetElement);	
+					}
 				}
-				}
-				
-				
 			}			
-			}
+		}
 		catch (Exception exp) {
-			Logger.error("CommonUtils.getTimeZoneByLatLong : Error ocurred @ :"+uri, RestTrackingJob.class, exp );
+			Logger.error("CommonUtils.getTimeZoneByLatLong : Error ocurred @ :", CommonUtils.class, exp );
 		}
 		return offset;
+		
 	}
-	 public static String getCharacterDataFromElement(org.w3c.dom.Element e) {
-		    Node child = e.getFirstChild();
+	/**
+	 * @param latitude
+	 * @param longitude
+	 * @param zuluTime
+	 * @param inputDateFormat
+	 * @return
+	 */
+	public static String getTimeZoneByLatLong(String latitude, String longitude, String zuluTime, String inputDateFormat)
+	{						
+		String	offset = getOffsetByLatLong( latitude, longitude );		
+		if( offset!=null&& offset!="" ) offset = getLocalTime( offset,zuluTime, inputDateFormat );
+		
+		return offset;
+	}
+	/**
+	 * @param offset
+	 * @param zuluTime
+	 * @param inputDateFormat
+	 * @return
+	 */
+	public static String getLocalTime(String offset, String zuluTime, String inputDateFormat)
+	{
+		String localTime="";
+		try 
+		{
+			boolean decimal= false;	
+			DateFormat formatter = new SimpleDateFormat(inputDateFormat);			
+			Date zuluDate =  formatter.parse(zuluTime);
+			
+			if( !inputDateFormat.equals(NEW_PORTAL_DATE_FORMAT))formatter = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
+			
+			if(offset!=null&&offset.trim().indexOf(".")>-1)
+			{
+				offset = offset.substring(0, offset.indexOf("."));
+				decimal=true;
+			}
+			if(Integer.parseInt(offset)>0)
+			{ 
+				zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+				if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
+			}
+			else  
+			{
+				zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
+				if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
+			}		
+			localTime = formatter.format( zuluDate );
+		}
+		catch (Exception exp) {
+			Logger.error("CommonUtils.getLocalTime : Error ocurred @ :", RestTrackingJob.class, exp );
+		}
+		return localTime;
+		
+	}
+	 /**
+	 * @param element
+	 * @return
+	 */
+	public static String getCharacterDataFromElement(org.w3c.dom.Element element)
+	 {
+		    Node child = element.getFirstChild();
 		    if (child instanceof CharacterData) {
 		      CharacterData cd = (CharacterData) child;
 		      return cd.getData();
 		    }
 		    return "";
-		  }	
-	 public static String parseJsonString( List<Tab> tabList )
+	 }	
+	 /**
+	 * @param tabList
+	 * @return
+	 */
+	public static String parseJsonString( List<Tab> tabList )
 	 {
-		 //System.out.println(" #### START CommonUtils.parseJsonString #### ");
 		 String jsonString="";
 		 if( tabList!=null && tabList.size()>0)
 		 {
@@ -594,9 +728,21 @@ public class CommonUtils implements IEPICConstants{
 			 }
 			 jsonString+="&#125;DELIM";
 		 }
-		// System.out.println(": jsonString : "+jsonString );
-		 //System.out.println(" #### END CommonUtils.parseJsonString #### ");
-		 return jsonString;
+		return jsonString;
+	 }
+	 /**
+	 * @param gender
+	 * @return
+	 */
+	public static String getPersonalTitle(String gender)
+	 {
+		 String title ="Mr/Ms";
+		 if( gender!=null && gender!="" )
+		 {
+			 if( gender.equalsIgnoreCase("male")) title ="Mr"; 
+			 else if(gender.equalsIgnoreCase("female")) title ="Miss"; 
+		 } 
+		 return title;
 	 }
 	
 }
