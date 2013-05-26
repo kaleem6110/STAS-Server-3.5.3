@@ -691,7 +691,7 @@ public class RBRegionsUtils implements IEPICConstants {
 	}
 	
 	public static SynchronizationTrailLog saveRegionMessage(MessageTemplate mt, String moduleId){
-		MessageTemplate crud = new MessageTemplate();
+		MessageTemplate crud = new MessageTemplate(); 
 		crud.setName(mt.getName());
 		crud.setBody(mt.getBody());
 		crud.setSubject(mt.getSubject());

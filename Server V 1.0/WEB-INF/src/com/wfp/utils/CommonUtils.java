@@ -579,7 +579,7 @@ public class CommonUtils implements IEPICConstants{
 	 */
 	public static String getOffsetByLatLong(String latitude, String longitude)
 	{
-		String offset= null;
+		String offset= "0";
 		StringBuffer sb = new StringBuffer();
 		String uri =EARTH_TOOLS_URL+latitude+"/"+longitude;
 		try 
@@ -651,21 +651,24 @@ public class CommonUtils implements IEPICConstants{
 			
 			if( !inputDateFormat.equals(NEW_PORTAL_DATE_FORMAT))formatter = new SimpleDateFormat(NEW_PORTAL_DATE_FORMAT);
 			
-			if(offset!=null&&offset.trim().indexOf(".")>-1)
-			{
-				offset = offset.substring(0, offset.indexOf("."));
-				decimal=true;
-			}
-			if(Integer.parseInt(offset)>0)
+			if(offset!=null )
 			{ 
-				zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
-				if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
+				if(offset.trim().indexOf(".")>-1)			
+				{
+					offset = offset.substring(0, offset.indexOf("."));
+					decimal=true;
+				}
+				if(Integer.parseInt(offset)>0)
+				{ 
+					zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+					if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
+				}
+				else 
+				{
+					zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
+					if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
+				}	
 			}
-			else  
-			{
-				zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
-				if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
-			}		
 			localTime = formatter.format( zuluDate );
 		}
 		catch (Exception exp) {

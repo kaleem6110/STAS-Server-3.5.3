@@ -119,7 +119,7 @@ file
 
 
 
-
+delete
 2013-01-08T10:23:49.768129Z
 ab7fce621aab1efa56f0b29cc64fd6a5
 2012-09-14T06:03:00.981244Z
@@ -144,7 +144,7 @@ file
 
 
 
-
+delete
 2013-01-08T10:23:49.783754Z
 05cc6cdaf4853b8195b50c987a551bfa
 2012-09-14T06:03:00.981244Z
@@ -175,6 +175,29 @@ file
 2012-09-14T06:03:00.981244Z
 141
 veladitya
+
+Vehicle Time Tracking_latest.ecosystem
+file
+
+
+
+add
+
+ab7fce621aab1efa56f0b29cc64fd6a5
+
+
+
+has-props
+
+
+
+
+
+
+
+copied
+https://svn.code.sf.net/u/veladitya/code/trunk/UNWFP-Ecosystems%20V%201.0/Tracking/Vehicle%20Time%20Tracking.ecosystem
+190
 
 Airplane Time Tracking.ecosystem
 file
@@ -219,7 +242,7 @@ file
 
 
 
-
+delete
 2013-01-08T10:23:49.846256Z
 d4c1a6fddae61a4d52ec4a6bcafc33be
 2012-09-14T06:03:00.981244Z

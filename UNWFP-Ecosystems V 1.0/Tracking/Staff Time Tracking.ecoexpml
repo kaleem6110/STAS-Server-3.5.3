@@ -116,7 +116,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
+                    <value><![CDATA[Timestamp-Local.]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -490,7 +490,7 @@ String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.
 
 String getDatasource(){ 
 	return datasource;
-}
+} 
 
 String getLastRefreshTime(){
 	return lastRefreshTime;

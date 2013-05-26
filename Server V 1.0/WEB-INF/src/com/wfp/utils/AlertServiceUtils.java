@@ -1,5 +1,6 @@
 package com.wfp.utils;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -42,9 +43,25 @@ public class AlertServiceUtils implements IEPICConstants {
 					boolean isDuplicate = validateAlert(templateId, uid, mt,   new Date());
 					if(!isDuplicate){
 						long refId = insertUpdateAlert(templateId, uid,  mt.getBody(), mt.getSubject(), date);
-						if(refId > 0){
-							String eventRefId = EventServiceUtils.publishEventService(userBean.getUid(), mt.getSubject(), mt.getBody());
-							boolean emailSent = sendEmailToRadio( deviceId.trim(),mt.getSubject(),mt.getBody() );
+						if(refId > 0)
+						{ 
+							//Event sent to middleware for sending emails to user
+							String eventRefId = EventServiceUtils.publishEventService(userBean.getUid(), mt.getSubject(), mt.getBody());							
+							String msgBody = formatEmailBody( deviceId.trim(), eventRefId, userBean.getPrimaryEmail(),mt.getSubject(), mt.getBody() );
+							
+							//STAS sending email directly to user	& Security Officer
+							List<String> toEmailAddress = new ArrayList<String>();
+							toEmailAddress.add( userBean.getPrimaryEmail() );	
+							
+							//sending email to security officer.
+							String securityOfficerEmail = LDAPUtils.getSecurityOfficerEmail( userBean.getShortOrganization(),SECURITY_FILTER.replace("Organization", userBean.getOrganization() ) );
+							if(securityOfficerEmail!=null&&securityOfficerEmail!="") toEmailAddress.add( securityOfficerEmail );						
+							
+							MailSender.sendHTMLEmail( toEmailAddress , mt.getSubject(), msgBody );
+														
+							//sending email to Radio
+							sendEmailToRadio( deviceId.trim(),mt.getSubject(),mt.getBody() );
+							
 							Logger.error("Event Successfully published to server ["+userBean.getUid()+"]["+eventRefId+"]",AlertServiceUtils.class.getName());
 							insertEventRefId(refId, eventRefId);
 							if(eventRefId != null){							
@@ -63,6 +80,23 @@ public class AlertServiceUtils implements IEPICConstants {
 		}
 		System.out.println("## END AlertServiceUtils.publishAlert");
 	}
+	public static String formatEmailBody(String deviceId,String eventRef, String toEmail ,String subject, String body)
+	{
+		String messageBody="";			
+		//messageBody+="To : "+toEmail+"<br/>";
+		//messageBody+="From : "+EMAIL_FROM_+"<br/>";
+		messageBody+="Subject : "+subject+"<br/>";
+		messageBody+="Body : "+body+"<br/>";
+		messageBody+="----------------------------------------<br/>";
+		messageBody+="Device : "+deviceId+"<br/>";
+		messageBody+="Source : "+STAS_Engine+"<br/>";
+		messageBody+="Severity : "+lu.hitec.pss.soap.event.provider._10_x.Severity._CRITICAL+"<br/>";
+		messageBody+="Timestamp : "+ CommonUtils.formatDate(Calendar.getInstance().getTime() )+"<br/>";
+		messageBody+="Event ref : "+eventRef+"<br/>";		
+		messageBody+="----------------------------------------<br/>";	
+		//System.out.println( messageBody );
+		return messageBody;
+	}
 	public static Boolean sendEmailToRadio(String deviceId, String subject, String messageBody )
 	{
 		boolean emailSent = false;
@@ -71,11 +105,11 @@ public class AlertServiceUtils implements IEPICConstants {
 		{
 			System.out.println("Sending email to radio........");
 			String toEmail = "dmr-"+deviceId.substring(8, 12)+"@globalepic.lu";
-			String messageBodyPrefix= ":"+deviceId.substring(12,16)+" ";
-			messageBody =  messageBodyPrefix+messageBody;
+			String messageBodyPrefix= ":"+deviceId.substring(12,16)+" "; //subject prefixed to message.
+			messageBody =  messageBodyPrefix+ subject + messageBody;
 			List<String> toEmailAddress = new ArrayList<String>();
 			toEmailAddress.add( toEmail );
-			MailSender.sendEmailToRadio(toEmailAddress, subject, messageBody);
+			MailSender.sendEmail(toEmailAddress, subject, messageBody );
 			System.out.println(" Email sent to Radio VHF Callsign: "+deviceId.substring(8,16) +": @ address :"+toEmail );
 			System.out.println(": subject: "+subject+": body : "+messageBody );
 		}

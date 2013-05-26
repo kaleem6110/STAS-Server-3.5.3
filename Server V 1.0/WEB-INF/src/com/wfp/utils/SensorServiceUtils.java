@@ -202,13 +202,13 @@ public class SensorServiceUtils implements IEPICConstants{
 		// TODO Auto-generated method stub
 		
 		LocationValue[] lv = lr != null ?lr.getVal():null;
-		
+		String offset = "0";
 		if(lv != null){
 			
 			for (int j=0; j < lv.length; j++){
 				DeviceBean in = new DeviceBean();
 				if(j == 0){
-					in.setStartPoint(true);
+					in.setStartPoint(true); offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
 				}else if(j == (lv.length -1 )){
 					in.setEndPoint(true);
 				}
@@ -227,9 +227,11 @@ public class SensorServiceUtils implements IEPICConstants{
 				in.setDatetime(lv[j].getTime().getTime());
 				String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
 				in.setTime(datetime);
+				in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
 				//System.out.println(" datetime:"+datetime +": SENSOR_WS_DATE_FORMAT "+ SENSOR_WS_DATE_FORMAT );
-				in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(in.getLatitude(),in.getLongitude(),datetime, NEW_PORTAL_DATE_FORMAT ) );
-				//System.out.println(" in.getTime:"+in.getDeviceLocalTime() );
+				//in.setDeviceLocalTime( datetime );
+				//in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(in.getLatitude(),in.getLongitude(),datetime, NEW_PORTAL_DATE_FORMAT ) );
+								
 				in.setLocationValue(lv[j]);
 				LDAPUtils.setLDAPUserDtls(in);
 				allEmergencyDtls.add(in);				

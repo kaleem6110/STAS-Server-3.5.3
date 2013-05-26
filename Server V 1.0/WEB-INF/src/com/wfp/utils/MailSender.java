@@ -24,14 +24,14 @@ public class MailSender implements IEPICConstants {
 		List<String> toAddressList = new ArrayList<String>();
 		toAddressList.add("dmr-1349@globalepic.lu");
 		// toAddressList.add("kaleem6110@gmail.com"); //
-		sendEmailToRadio(toAddressList, "",
-				":9080 testing from Java Mailprogram-sent multipart mimetype sent");
+		sendEmail(toAddressList, "",
+				":9080 testing from Java Mailprogram-sent multipart mimetype sent" );
 	}
 
-	public static void sendEmailToRadio(List<String> toAddressList,
+	public static void sendEmail(List<String> toAddressList,
 			String subject, String messageBody) {
 		System.out
-				.println("@@@@@@@@@  START MailSender.sendEmailToRadio @@@@@@@@@@@@@@@@@@@@ ");
+				.println("@@@@@@@@@  START MailSender.sendEmail @@@@@@@@@@@@@@@@@@@@ ");
 
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", MAIL_HOST);
@@ -39,9 +39,10 @@ public class MailSender implements IEPICConstants {
 		props.put("mail.smtp.password", MAIL_PWD);
 		props.put("mail.smtp.port", "25");
 		props.put("mail.smtp.auth", "true");
-
-		try {
-			String[] toEmailAddress = new String[toAddressList.size()];
+		String[] toEmailAddress = null;
+		try 
+		{
+			toEmailAddress = new String[toAddressList.size()];
 			toEmailAddress = toAddressList.toArray(toEmailAddress);
 			Session session = Session.getDefaultInstance(props, null);
 			MimeMultipart content = new MimeMultipart("alternative");
@@ -51,7 +52,7 @@ public class MailSender implements IEPICConstants {
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart.setText(messageBody);
 			content.addBodyPart(messageBodyPart);
-
+			
 			InternetAddress[] toAddress = new InternetAddress[toEmailAddress.length];
 
 			// To get the array of addresses
@@ -65,20 +66,50 @@ public class MailSender implements IEPICConstants {
 				// while loop
 				message.addRecipient(Message.RecipientType.TO, toAddress[i]);
 			}
-			message.setSubject(subject);
-			message.setContent(content);
+			message.setContent(content );
+			
 			Transport transport = session.getTransport("smtp");
 			transport.connect(MAIL_HOST, MAIL_FROM, MAIL_PWD);
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
 		} catch (Exception e) {
-			System.out.println(" Failed to send email to radio : "
+			System.out.println(" Failed to send email to  : "
 					+ messageBody);
 			e.printStackTrace();
 		}
 
 		System.out
-				.println("@@@@@@@@@  END MailSender.sendEmailToRadio @@@@@@@@@@@@@@@@@@@@ ");
+				.println("@@@@@@@@@  END MailSender.sendEmail @@@@@@@@@@@@@@@@@@@@ "+toEmailAddress );
+	}
+	public static void sendHTMLEmail(List<String> toAddressList, String subject, String messageBody ) 
+	{
+		System.out
+				.println("@@@@@@@@@  START MailSender.sendHTMLEmail @@@@@@@@@@@@@@@@@@@@ ");
+
+		
+		Properties props = System.getProperties();
+		props.put("mail.smtp.host", MAIL_HOST);
+		props.put("mail.smtp.user", MAIL_FROM);
+		props.put("mail.smtp.password", MAIL_PWD);
+		props.put("mail.smtp.port", "25");
+		props.put("mail.smtp.auth", "true");
+	    try
+	    {
+		    Session session = Session.getDefaultInstance(props, null);
+		    MimeMessage message = new MimeMessage(session);
+		    message.setFrom(new InternetAddress(EMAIL_FROM_));
+		    for( String addr : toAddressList ) message.addRecipient(Message.RecipientType.TO, new InternetAddress( addr ) );
+		    message.setSubject( subject );
+		    message.setContent( messageBody, "text/html" );
+		    Transport transport = session.getTransport("smtp");
+		    transport.connect(MAIL_HOST, MAIL_FROM, MAIL_PWD);
+		    transport.sendMessage(message, message.getAllRecipients());
+		    transport.close();
+	    }
+	    catch(Exception e){ e.printStackTrace(); };
+
+		System.out
+				.println("@@@@@@@@@  END MailSender.sendHTMLEmail @@@@@@@@@@@@@@@@@@@@ ");
 	}
 
 }

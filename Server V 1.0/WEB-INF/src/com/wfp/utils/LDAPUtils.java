@@ -460,6 +460,7 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setPrimaryEmail(userbean.getPrimaryEmail());
 				deviceBean.setPhotoString( userbean.getPhotoString() );
 				deviceBean.setGender( userbean.getGender() );
+				deviceBean.setShortOrganization(userbean.getShortOrganization());
 			}
 		}		
 	}
@@ -488,6 +489,7 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setPrimaryEmail(userAttributes.get(PROPERTY_PRIMARY_MAIL)== null?"":userAttributes.get(PROPERTY_PRIMARY_MAIL).toString());	
 			deviceBean.setPhotoString( getUserImageAsString( deviceBean.getUid()) );
 			deviceBean.setGender(userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
+			deviceBean.setShortOrganization(deviceBean.getOrganization() );
 	}
 
 	/**
@@ -518,6 +520,7 @@ public class LDAPUtils implements IEPICConstants {
 			if(userAttributes.get(PROPERTY_ORGANIZATION)!= null && userAttributes.get(PROPERTY_ORGANIZATION) instanceof List){
 				userBean.setOrganization(userAttributes.get(PROPERTY_ORGANIZATION)== null?"":((List<String>)userAttributes.get(PROPERTY_ORGANIZATION)).get(0));
 				//Kaleem -
+				userBean.setShortOrganization(userBean.getOrganization());
 				if(getOrgMap()!=null) userBean.setOrganization(getOrgMap().get(userBean.getOrganization() ) );
 			}else {
 				userBean.setOrganization("");
@@ -891,7 +894,16 @@ public class LDAPUtils implements IEPICConstants {
 
 		return resultMap;
 	}
-
+	public static String getSecurityOfficerEmail(String organizationName, String searchFilter )
+	{
+		System.out.println(" ## START getSecurityOfficerEmail organizationName: "+organizationName +": searchFilter :"+searchFilter );
+		String email =null;		
+		String attrIDS []= {PROPERTY_MAIL};		
+		List<String> list = parseDataAsList( getSearchResults( attrIDS,searchFilter, LDAP_BASE ) );
+		if(list!=null &&list.size()>0 ) email= list.get(0);		
+		System.out.println(" END getSecurityOfficerEmail : Email sent to Security  @ : "+email );
+		return email;
+	}
 	public static SearchControls getSimpleSearchControls(String[] attrIDS) {
 	    SearchControls searchControls = new SearchControls();
 	    searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);

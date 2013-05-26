@@ -45,6 +45,19 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String department;
 	private String photoString;
 	private String gender;
+	private String shortOrganization;
+		/**
+		 * @return the shortOrganization
+		 */
+	public String getShortOrganization() {
+			return shortOrganization;
+		}
+		/**
+		 * @param shortOrganization the shortOrganization to set
+		 */
+		public void setShortOrganization(String shortOrganization) {
+			this.shortOrganization = shortOrganization;
+		}
 	
 	
 	/**

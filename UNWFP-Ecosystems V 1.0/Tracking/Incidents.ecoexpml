@@ -114,7 +114,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-GMT]]></value>
+                    <value><![CDATA[Timestamp-GMT.]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -146,7 +146,7 @@
                     <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
+                    <value><![CDATA[Timestamp-Local.]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[true]]></value>
@@ -646,11 +646,17 @@ String formatDate(String date) {
                         </section>
                     </section>
                 </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="datefield">
                     <value><![CDATA[Updated_Date]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -987,6 +993,14 @@ String formatDate(String date) {
                     <section name="params">
                         <section name="param">
                             <section name="name">
+                                <value><![CDATA[sourceProjectionUnits]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[ ]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
                                 <value><![CDATA[dataTableScope]]></value>
                             </section>
                             <section name="value">
@@ -998,7 +1012,7 @@ String formatDate(String date) {
                                 <value><![CDATA[feedUrl]]></value>
                             </section>
                             <section name="value">
-                                <value><![CDATA[http://trackme.globalepic.org/trackme/kml/images.rss]]></value>
+                                <value><![CDATA[http://trackme.globalepic.org/kml.rss]]></value>
                             </section>
                         </section>
                     </section>

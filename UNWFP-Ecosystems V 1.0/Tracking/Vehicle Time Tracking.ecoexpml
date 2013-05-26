@@ -303,49 +303,9 @@
             <section name="folder">
                 <section name="name">
                     <section name="script">
-                        <value><![CDATA[getDeviceCaption()]]></value>
+                        <value><![CDATA[name]]></value>
                         <section name="type">
-                            <value><![CDATA[1]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="fetchdescriptionatruntime">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="descriptiontype">
-                    <value><![CDATA[html]]></value>
-                </section>
-                <section name="ispercentage">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="label">
-                    <value><![CDATA[Placemark]]></value>
-                </section>
-                <section name="type">
-                    <value><![CDATA[com.enterprisehorizons.magma.models.PlacemarkFeature]]></value>
-                </section>
-                <section name="isruntimeaccessible">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="isdefault">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="extrude">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="globalstyleid">
-                    <value><![CDATA[placemarkstyle]]></value>
-                </section>
-                <section name="isblink">
-                    <value><![CDATA[false]]></value>
-                </section>
-            </section>
-            <section name="folder">
-                <section name="name">
-                    <section name="script">
-                        <value><![CDATA[getDeviceCaption()]]></value>
-                        <section name="type">
-                            <value><![CDATA[1]]></value>
+                            <value><![CDATA[2]]></value>
                         </section>
                     </section>
                 </section>
@@ -376,6 +336,9 @@
                 <section name="tessellate">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
+                </section>
                 <section name="isblink">
                     <value><![CDATA[false]]></value>
                 </section>
@@ -384,6 +347,9 @@
                 </section>
                 <section name="generateplacemark">
                     <value><![CDATA[true]]></value>
+                </section>
+                <section name="placemarklocation">
+                    <value><![CDATA[start]]></value>
                 </section>
                 <section name="generatelegend">
                     <value><![CDATA[false]]></value>
@@ -394,9 +360,9 @@
                 <section name="style">
                     <section name="name">
                         <section name="script">
-                            <value><![CDATA[getDeviceCaption()]]></value>
+                            <value><![CDATA[name]]></value>
                             <section name="type">
-                                <value><![CDATA[1]]></value>
+                                <value><![CDATA[2]]></value>
                             </section>
                         </section>
                     </section>
@@ -405,7 +371,7 @@
                     </section>
                     <section name="iconurl">
                         <section name="script">
-                            <value><![CDATA[getIconColor()]]></value>
+                            <value><![CDATA[getIconUrl()]]></value>
                             <section name="type">
                                 <value><![CDATA[1]]></value>
                             </section>
@@ -430,6 +396,9 @@
                     </section>
                     <section name="labelcolorshader">
                         <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="labelscale">
+                        <value><![CDATA[0.0]]></value>
                     </section>
                     <section name="linecolor">
                         <section name="script">
@@ -459,20 +428,17 @@
                             </section>
                         </section>
                     </section>
-                    <section name="highlighticoncolor">
-                        <value><![CDATA[#FF0000]]></value>
-                    </section>
                     <section name="highlighticonscale">
                         <value><![CDATA[1.0]]></value>
                     </section>
                     <section name="highlightlabelcolor">
-                        <value><![CDATA[#FF0000]]></value>
+                        <value><![CDATA[#FFFFFF]]></value>
                     </section>
                     <section name="highlightlabelscale">
                         <value><![CDATA[0.5]]></value>
                     </section>
                     <section name="highlightlinecolor">
-                        <value><![CDATA[#FF0000]]></value>
+                        <value><![CDATA[#FFFFFF]]></value>
                     </section>
                     <section name="shadertype">
                         <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
@@ -520,7 +486,8 @@ try
 	 	{
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
-			$artefact.addAttribute("time", (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );			
+			$artefact.addAttribute("time", (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			
 			   
 			       
 			$artefact.addAttribute("name", data.getName());
@@ -625,7 +592,7 @@ String getLineColor(){
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
-		
+		//System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
 	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
@@ -925,6 +892,9 @@ String getLineColor(){
                 </section>
                 <section name="endtime">
                     <value><![CDATA[time]]></value>
+                </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>

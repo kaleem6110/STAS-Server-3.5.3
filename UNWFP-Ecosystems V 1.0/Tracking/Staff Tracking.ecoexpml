@@ -414,7 +414,7 @@ import java.util.*;
 import com.wfp.beans.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
- 
+
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
@@ -509,7 +509,7 @@ profileTab.setName("Profile");
 //Creating a Legend
 Legend userLegend = new Legend();
 userLegend.setName("User Details");
-attribMap.put( CommonUtils.getPersonalTitle(data.getGender(),getFullName(data) );
+attribMap.put( CommonUtils.getPersonalTitle(data.getGender()),getFullName(data) );
 attribMap.put("Title", data.getTitle() );
 if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
 attribMap.put("Organization", data.getOrganization() );

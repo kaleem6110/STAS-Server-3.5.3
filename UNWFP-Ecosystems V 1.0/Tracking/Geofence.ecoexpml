@@ -52,7 +52,7 @@
                     <value><![CDATA[CreatedDate]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
+                    <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[Created Date]]></value>
@@ -86,7 +86,7 @@
                     <value><![CDATA[ModifiedDate]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
+                    <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[Modified Date]]></value>
@@ -308,14 +308,15 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[private com.wfp.custom.datasource.RBRegionsDataDriver $RBRegionsdriver;
+                <value><![CDATA[import com.wfp.utils.*;
+private com.wfp.custom.datasource.RBRegionsDataDriver $RBRegionsdriver;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 String description = "Geo-fences are pulled from STAS database.<br> Database: Postgres <br> Table Name: sti_c_user_preferences";
 String datasource = "STAS Database";
 String lastRefreshTime = com.wfp.utils.CommonUtils.getUTCdatetimeAsString();
 ;
 
-String getDatasource(){
+String getDatasource(){ 
 	return datasource;
 }
 
@@ -336,9 +337,9 @@ void bindData() {
 			$artefact.setCoordinates(data.getRubberbandregion().getCoordinates());
 			$artefact.addAttribute("Name", data.getName());
 			$artefact.addAttribute("CreatedBy", data.getCreatedBy());
-			$artefact.addAttribute("CreatedDate", data.getCreatedDate());
+			$artefact.addAttribute("CreatedDate",CommonUtils.parseDate( CommonUtils.formatDate(data.getCreatedDate()), IEPICConstants.NEW_PORTAL_DATE_FORMAT ) );
 			$artefact.addAttribute("ModifiedBy", data.getModifiedBy());
-			$artefact.addAttribute("ModifiedDate", data.getModifiedDate());
+			$artefact.addAttribute("ModifiedDate", CommonUtils.parseDate( CommonUtils.formatDate(data.getModifiedDate()), IEPICConstants.NEW_PORTAL_DATE_FORMAT ) );
 		}
 	} 
 	catch (Exception e){

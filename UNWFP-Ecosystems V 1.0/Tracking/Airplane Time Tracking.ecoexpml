@@ -716,6 +716,12 @@ String getAuthorUrl(){
                 <section name="name">
                     <value><![CDATA[List]]></value>
                 </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
+                </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
                 </section>
@@ -758,6 +764,12 @@ String getAuthorUrl(){
                 </section>
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
+                </section>
+                <section name="starttime">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="endtime">
+                    <value><![CDATA[time]]></value>
                 </section>
                 <section name="dateformat">
                     <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>

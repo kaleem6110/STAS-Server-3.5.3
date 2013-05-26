@@ -105,7 +105,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 						for(DeviceBean tempBean: entry.getValue()){
 							if(tempBean.getDatetime().after(startDate.getTime()) 
 									&& tempBean.getDatetime().before(getTempEndDate(startDate))){
-								System.out.println( " SOAP JOB :108: startDate.getTime() :"+startDate.getTime());
+								//System.out.println( " SOAP JOB :108: startDate.getTime() :"+startDate.getTime());
 								String key = DateUtils.format(startDate.getTime());
 								
 								Map<String, List<DeviceBean>> deviceDayMap = deviceDayDtlsMap.get(key);

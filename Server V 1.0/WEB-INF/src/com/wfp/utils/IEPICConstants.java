@@ -67,6 +67,7 @@ public interface IEPICConstants {
 	public static String LDAP_ADMIN_PASSWORD = "TargeTc0mf0rt";
 	public static String LDAP_BASE = "ou=users,ou=people,dc=emergency,dc=lu";
 	public static String SEARCH_FILTER = "(&(objectClass=user)(CN=ldapadmin))";
+	public static String SECURITY_FILTER = "(&(objectClass=user)(title=*Security*)(o=*Organization*))";
 	public static String STR_LDAP_PROTOCOL = "ldap://";
 	public static final String CACHE_LDAPUSER_DTLS = "$LDAPUSER_DTLS$";
 	public static final String FILTER_GRP_NAMES = "(member=cn=<deviceId>,ou=devices,dc=emergency,dc=lu)";
@@ -171,6 +172,9 @@ public interface IEPICConstants {
 	public static final String EMAIL_FROM_ ="portal-dev@globalepic.lu";
 	public static final String MAIL_PWD ="QMrFlRa0O8bLXehkY2xS";
 	public static final String MAIL_CONTENT_TYPE ="multipart/alternative";
+	
+	public static final String SECURITY_OFFICER ="Security Officer";
+	public static final String SECURITY_HEAD ="Security Head";
 	
 	
 	
