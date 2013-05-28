@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import lu.hitec.pss.soap.sensor.client._8_x.DeviceStatus;
 import lu.hitec.pss.soap.sensor.client._8_x.LocationRange;
@@ -81,25 +82,32 @@ public class SensorServiceUtils implements IEPICConstants{
 			List allStaffDevices = new ArrayList<DeviceBean>();
 			List allVehicleDevices = new ArrayList<DeviceBean>();
 			List allAirplaneDevices = new ArrayList<DeviceBean>();
-			
+			Vector devicesVector = new Vector();
 			if(allMissions!=null)
 			{		
 				map  = new HashMap<String, List<DeviceBean>>();
 				for(String mission: allMissions) 
 					{
-							System.out.println("Mission :"+mission );
-							try { 
-								//devices = stub.getDeviceStatus();
-								devices = stub.getDeviceStatusByMission(token, mission);
-								addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
-										allStaffDevices,allVehicleDevices, allAirplaneDevices);
-								
-							} catch (RemoteException e) {
-								Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
-								e.printStackTrace();
-								throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
-							}
+						try { 
+							//devices = stub.getDeviceStatus();								
+							devicesVector.add( stub.getDeviceStatusByMission(token, mission) );
+							/*addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
+									allStaffDevices,allVehicleDevices, allAirplaneDevices);*/
+							
+						} catch (RemoteException e) {
+							Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
+							e.printStackTrace();
+							throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
+						}
 					}
+				
+				Vector newVect = new Vector(new java.util.LinkedHashSet(devicesVector));
+				java.util.Iterator itr = newVect.iterator();
+				while(itr.hasNext()){				   
+				addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, (DeviceStatus [])itr.next(), stub,
+						allStaffDevices,allVehicleDevices, allAirplaneDevices);
+				} 
+				
 				
 			}
 			map.put(LAYER_STAFF, allStaffDevices);
@@ -197,44 +205,47 @@ public class SensorServiceUtils implements IEPICConstants{
 
 	*/
 	
-	
-	private static void setAllEmergencyHotspots(String deviceId, LocationRange lr, List<DeviceBean> allEmergencyDtls) {
-		// TODO Auto-generated method stub
-		
+
+	private static void setAllEmergencyHotspots(String deviceId, LocationRange lr, List<DeviceBean> allEmergencyDtls) 
+	{
+		// TODO Auto-generated method stub		
 		LocationValue[] lv = lr != null ?lr.getVal():null;
 		String offset = "0";
-		if(lv != null){
+		if(lv != null)
+		{	
+			for (int j=0; j < lv.length; j++)
+			{	
+					DeviceBean in = new DeviceBean();
+					long diff = 3600001;
+					if(j == 0){						
+						in.setStartPoint(true); 
+						//offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
+					}
+					else if(j == (lv.length -1 ))in.setEndPoint(true);					
+					else  diff= lv[j+1].getTime().getTime().getTime()- lv[j].getTime().getTime().getTime();			
+					
+					in.setLatitude(String.valueOf(lv[j].getLat()));
+					in.setLongitude(String.valueOf(lv[j].getLng()));
+					if(j < lv.length-1 ){
+						in.setCoordStr(in.getLongitude()+CommonConstants.COMMA_STRING+in.getLatitude()+
+							CommonConstants.COMMA_STRING+"0 "+String.valueOf(lv[j+1].getLng())+","+String.valueOf(lv[j+1].getLat()+",0"));
+					}else{
+						in.setCoordStr(in.getLongitude()+CommonConstants.COMMA_STRING+in.getLatitude()+
+								CommonConstants.COMMA_STRING+"0");
+					}
+					
+					in.setName(deviceId);
+					in.setDatetime(lv[j].getTime().getTime());
+					String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
+					in.setTime(datetime);
+					//in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
+					in.setDeviceLocalTime(datetime);			
+					in.setLocationValue(lv[j]);
+					if( diff > 3600000){
+					LDAPUtils.setLDAPUserDtls(in);
+					allEmergencyDtls.add(in);	
+					}
 			
-			for (int j=0; j < lv.length; j++){
-				DeviceBean in = new DeviceBean();
-				if(j == 0){
-					in.setStartPoint(true); offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
-				}else if(j == (lv.length -1 )){
-					in.setEndPoint(true);
-				}
-				in.setLatitude(String.valueOf(lv[j].getLat()));
-				in.setLongitude(String.valueOf(lv[j].getLng()));
-				if(j < lv.length-1 ){
-					in.setCoordStr(in.getLongitude()+CommonConstants.COMMA_STRING+in.getLatitude()+
-						CommonConstants.COMMA_STRING+"0 "+String.valueOf(lv[j+1].getLng())+","+String.valueOf(lv[j+1].getLat()+",0"));
-				}else{
-					in.setCoordStr(in.getLongitude()+CommonConstants.COMMA_STRING+in.getLatitude()+
-							CommonConstants.COMMA_STRING+"0");
-				}
-				
-				in.setName(deviceId);
-				//System.out.println("Time "+lv[j].getTime().getTime());
-				in.setDatetime(lv[j].getTime().getTime());
-				String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
-				in.setTime(datetime);
-				in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
-				//System.out.println(" datetime:"+datetime +": SENSOR_WS_DATE_FORMAT "+ SENSOR_WS_DATE_FORMAT );
-				//in.setDeviceLocalTime( datetime );
-				//in.setDeviceLocalTime(  CommonUtils.getTimeZoneByLatLong(in.getLatitude(),in.getLongitude(),datetime, NEW_PORTAL_DATE_FORMAT ) );
-								
-				in.setLocationValue(lv[j]);
-				LDAPUtils.setLDAPUserDtls(in);
-				allEmergencyDtls.add(in);				
 			}
 		}
 	}

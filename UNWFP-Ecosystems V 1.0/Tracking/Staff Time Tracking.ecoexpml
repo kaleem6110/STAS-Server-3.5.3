@@ -92,40 +92,6 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[localTime]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.util.Date]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
-                <section name="column"/>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[localTimeText]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Timestamp-Local.]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column"/>
-            </section>
-            <section name="row">
-                <section name="column">
                     <value><![CDATA[owner]]></value>
                 </section>
                 <section name="column">
@@ -479,7 +445,10 @@
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 import java.util.Date;
-
+import com.wfp.beans.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import com.wfp.utils.CommonUtils;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
 String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -518,8 +487,8 @@ try
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));		
 			$artefact.addAttribute("time",	(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
 			
-			$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
-			$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );   
+			//$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );		
+			//$artefact.addAttribute("localTimeText", data.getDeviceLocalTime() );   
 			
 			$artefact.addAttribute("name", data.getName());  
 			$artefact.addAttribute("Organization", data.getOrganization());
@@ -528,7 +497,7 @@ try
 			$artefact.addAttribute("IM", com.wfp.utils.CommonUtils.getPagerDtls(data.getSkypePager()));
 			$artefact.addAttribute("Mail", com.wfp.utils.CommonUtils.getMailDtls(data.getMail()));
 			$artefact.addAttribute("Phone", com.wfp.utils.CommonUtils.getPhoneDtls(data.getMobilesList()));
-			
+			$artefact.addAttribute("json", buildPopupText(data) );
 		 
 			
 			
@@ -538,7 +507,134 @@ try
 		e.printStackTrace();
 	}
 }
+public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> profileLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
+List<Legend> contactLegendList = new ArrayList<Legend>();
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
 
+//Creating a Tab
+Tab profileTab = new Tab();
+profileTab.setName("Profile");
+
+//Creating a Legend
+Legend userLegend = new Legend();
+userLegend.setName("User Details");
+attribMap.put( CommonUtils.getPersonalTitle(data.getGender()),getFullName(data) );
+attribMap.put("Title", data.getTitle()!=""?data.getTitle():"-" );
+if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
+if(  data.getOrganization()!=null )attribMap.put("Organization", data.getOrganization() );
+
+userLegend.setAttribMap( attribMap );
+
+profileLegendList.add( userLegend );
+ 
+attribMap = new LinkedHashMap<String,String>();
+
+Legend emailLegend = new Legend();
+emailLegend.setName("Email");
+attribMap.put("Office","<a href=mailto:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
+
+List<String> privateEmailList = data.getMail();
+String pmail ="";
+if( data.getMail() !=null){
+for(String p : privateEmailList ){
+pmail +="<a href=mailto:"+p+" >"+p+"</a><br>";
+}
+attribMap.put("Private",pmail );
+}
+
+
+emailLegend.setAttribMap( attribMap );
+profileLegendList.add( emailLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Telephone telephone = CommonUtils.getTelephones(data.getMobilesList());
+
+
+Legend telLegend = new Legend();
+telLegend.setName("Telephone Numbers");
+//.......
+attribMap = new LinkedHashMap<String,String>();
+if( telephone.getMobileList()!=null ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
+if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
+if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
+
+if(attribMap.size()>0) {
+telLegend.setAttribMap( attribMap );
+profileLegendList.add( telLegend );
+}
+
+Legend imLegend = new Legend();
+imLegend.setName("Instant Messaging");
+
+Messaging messaging =  CommonUtils.getMessaging( data.getSkypePager() );
+
+
+attribMap = new LinkedHashMap<String,String>();
+
+if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","")+"?chat >"+messaging.getSkype()+"</a>" ); 
+attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
+if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
+if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" ); 
+//attribMap.put("bbPIN", "-" );
+
+imLegend.setAttribMap( attribMap );
+profileLegendList.add( imLegend );
+
+profileTab.setLegendList( profileLegendList );
+tabList.add( profileTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getName() );
+
+attribMap.put("Device type", data.getName().length()==16?"Radio":"Mobile" );
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Historical Time Tracking");
+attribMap.put("Timestamp(GMT)", CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+attribMap.put("Timestamp(Local)", "localTime" );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( trackingLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+
+
+  return CommonUtils.parseJsonString( tabList );
+ }
+ String parseNumber(String inputString)
+{
+String str="+";
+Pattern p = Pattern.compile("-?\\d+");
+Matcher m = p.matcher(inputString);
+while (m.find()) {
+  str =str+ m.group();
+}
+return str;
+}
+ 
 String getFullName(com.wfp.security.form.DeviceBean data){
 	String fullName = "";
 	if(!com.enterprisehorizons.util.StringUtils.isNull(data.getCn())){
@@ -978,20 +1074,6 @@ String getAuthorUrl(){
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[time]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[0]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[localTime]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>

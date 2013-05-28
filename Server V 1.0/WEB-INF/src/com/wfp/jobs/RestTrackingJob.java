@@ -159,9 +159,11 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
 		is.setTime(element.getContent(0).getValue());
 		is.setName(element.getContent(1).getValue());
-		if(is.getLatitude()!=null &&is.getLongitude()!=null)
+		//Commented Localtime calculation
+		/*if(is.getLatitude()!=null &&is.getLongitude()!=null)
 		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),
-				is.getTime(),EPIC_DATE_FORMAT) );
+				is.getTime(),EPIC_DATE_FORMAT) );*/
+		is.setDeviceLocalTime( is.getTime() );
 		indigoList.add(is);
 		LDAPUtils.setLDAPUserDtls(is);
 		//System.out.println(" Name :"+ is.getName() );

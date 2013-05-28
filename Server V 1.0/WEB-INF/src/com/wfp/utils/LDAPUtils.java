@@ -894,7 +894,7 @@ public class LDAPUtils implements IEPICConstants {
 
 		return resultMap;
 	}
-	public static String getSecurityOfficerEmail(String organizationName, String searchFilter )
+	/*public static String getSecurityOfficerEmail(String organizationName, String searchFilter )
 	{
 		System.out.println(" ## START getSecurityOfficerEmail organizationName: "+organizationName +": searchFilter :"+searchFilter );
 		String email =null;		
@@ -903,7 +903,7 @@ public class LDAPUtils implements IEPICConstants {
 		if(list!=null &&list.size()>0 ) email= list.get(0);		
 		System.out.println(" END getSecurityOfficerEmail : Email sent to Security  @ : "+email );
 		return email;
-	}
+	}*/
 	public static SearchControls getSimpleSearchControls(String[] attrIDS) {
 	    SearchControls searchControls = new SearchControls();
 	    searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);

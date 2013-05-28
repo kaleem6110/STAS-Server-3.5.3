@@ -54,8 +54,8 @@ public class AlertServiceUtils implements IEPICConstants {
 							toEmailAddress.add( userBean.getPrimaryEmail() );	
 							
 							//sending email to security officer.
-							String securityOfficerEmail = LDAPUtils.getSecurityOfficerEmail( userBean.getShortOrganization(),SECURITY_FILTER.replace("Organization", userBean.getOrganization() ) );
-							if(securityOfficerEmail!=null&&securityOfficerEmail!="") toEmailAddress.add( securityOfficerEmail );						
+							/*String securityOfficerEmail = LDAPUtils.getSecurityOfficerEmail( userBean.getShortOrganization(),SECURITY_FILTER.replace("Organization", userBean.getOrganization() ) );
+							if(securityOfficerEmail!=null&&securityOfficerEmail!="") toEmailAddress.add( securityOfficerEmail );*/						
 							
 							MailSender.sendHTMLEmail( toEmailAddress , mt.getSubject(), msgBody );
 														

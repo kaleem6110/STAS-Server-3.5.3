@@ -67,8 +67,8 @@ public interface IEPICConstants {
 	public static String LDAP_ADMIN_PASSWORD = "TargeTc0mf0rt";
 	public static String LDAP_BASE = "ou=users,ou=people,dc=emergency,dc=lu";
 	public static String SEARCH_FILTER = "(&(objectClass=user)(CN=ldapadmin))";
-	public static String SECURITY_FILTER = "(&(objectClass=user)(title=*Security*)(o=*Organization*))";
-	public static String STR_LDAP_PROTOCOL = "ldap://";
+	
+	public static String STR_LDAP_PROTOCOL = "ldaps://";
 	public static final String CACHE_LDAPUSER_DTLS = "$LDAPUSER_DTLS$";
 	public static final String FILTER_GRP_NAMES = "(member=cn=<deviceId>,ou=devices,dc=emergency,dc=lu)";
 	public static final String REPLACE_DEVICE_TOKEN = "<deviceId>";
@@ -106,7 +106,7 @@ public interface IEPICConstants {
 	public static final String PROPERTY_PERSONAL_TITLE =  "personalTitle";
 	public static final String ORG_SEARCH_IDENTIFIER =  "organization.identifier";
 	public static final String ORG_SEARCH_BASE =  "organization.search.base";
-	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
+	
 	
 	
 	//WFP Config Utils
@@ -160,6 +160,7 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//kmohammed
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
 	public static final String STAS_Engine ="STAS_Engine-dev";
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
@@ -173,8 +174,7 @@ public interface IEPICConstants {
 	public static final String MAIL_PWD ="QMrFlRa0O8bLXehkY2xS";
 	public static final String MAIL_CONTENT_TYPE ="multipart/alternative";
 	
-	public static final String SECURITY_OFFICER ="Security Officer";
-	public static final String SECURITY_HEAD ="Security Head";
+	
 	
 	
 	

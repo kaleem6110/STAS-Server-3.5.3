@@ -50,24 +50,6 @@
                 </section>
                 <section name="column"/>
             </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[localTime]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.util.Date]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
-                <section name="column"/>
-            </section>
         </section>
         <section name="cache">
             <value><![CDATA[true]]></value>
@@ -384,15 +366,16 @@ void bindData() {
 			$artefact.setCoordinates(data.getCoordStr());
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			$artefact.addAttribute("time",  (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			System.out.println(data.getTime());
+			$artefact.addAttribute("time", com.wfp.utils.CommonUtils.stringDateToDate(  data.getTime().replace("T", " ").replace(".000Z", " ")  ) );
 			
 			$artefact.addAttribute("name", data.getName());
 			
-			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
-			$artefact.addAttribute("localTime",localTime );	
-			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );	
+			//java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
+			//$artefact.addAttribute("localTime",localTime );	
+			//$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );	
 		} 
-	} 
+	}
 	catch (Exception e){
 		e.printStackTrace();
 	}
@@ -467,7 +450,7 @@ String getLineColor(){
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
-		//System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
+		System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
 	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
@@ -717,10 +700,20 @@ String getAuthorUrl(){
                     <value><![CDATA[List]]></value>
                 </section>
                 <section name="starttime">
-                    <value><![CDATA[time]]></value>
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="endtime">
-                    <value><![CDATA[time]]></value>
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -766,13 +759,20 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="starttime">
-                    <value><![CDATA[time]]></value>
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="endtime">
-                    <value><![CDATA[time]]></value>
-                </section>
-                <section name="dateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                    <section name="script">
+                        <value><![CDATA[time]]></value>
+                        <section name="type">
+                            <value><![CDATA[2]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>

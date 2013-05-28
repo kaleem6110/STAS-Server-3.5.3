@@ -132,24 +132,6 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[localTime]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.util.Date]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Timestamp-Local]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[true]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
-                <section name="column"/>
-            </section>
-            <section name="row">
-                <section name="column">
                     <value><![CDATA[type]]></value>
                 </section>
                 <section name="column">
@@ -496,8 +478,8 @@ try
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
 			
 			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
-			$artefact.addAttribute("localTime", localTime );	
-			$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
+			//$artefact.addAttribute("localTime", localTime );	
+			//$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
 		} 
 	}
 	catch (Exception e){  
@@ -838,12 +820,6 @@ String getLineColor(){
                 <section name="name">
                     <value><![CDATA[List]]></value>
                 </section>
-                <section name="starttime">
-                    <value><![CDATA[time]]></value>
-                </section>
-                <section name="endtime">
-                    <value><![CDATA[time]]></value>
-                </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
                 </section>
@@ -886,15 +862,6 @@ String getLineColor(){
                 </section>
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
-                </section>
-                <section name="starttime">
-                    <value><![CDATA[time]]></value>
-                </section>
-                <section name="endtime">
-                    <value><![CDATA[time]]></value>
-                </section>
-                <section name="dateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
@@ -990,20 +957,6 @@ String getLineColor(){
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[time]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[0]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[localTime]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
