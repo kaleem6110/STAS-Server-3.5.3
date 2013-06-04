@@ -18,7 +18,7 @@
         <section name="attributes">
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[deviceId]]></value>
+                    <value><![CDATA[name]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
@@ -59,6 +59,22 @@
                 </section>
                 <section name="column">
                     <value><![CDATA[Owner]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[deviceId]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Device Id]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -248,6 +264,8 @@ import com.wfp.utils.RBRegionsUtils;
 import com.spacetimeinsight.db.model.util.*;
 import com.spacetimeinsight.db.config.model.*;
 import com.spacetimeinsight.rubberbandregions.Rubberbandregions;
+import com.wfp.beans.*;
+import com.wfp.utils.CommonUtils;
 
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -258,7 +276,7 @@ String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.
 
 String getDatasource(){
 	return datasource;
-}
+} 
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
@@ -292,7 +310,9 @@ void bindData() {
 			//$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
 			 //$artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );	
 			 $artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime()) );
-			$artefact.addAttribute("deviceId", data.getName());		
+			$artefact.addAttribute("name", data.getName());	
+			$artefact.addAttribute("deviceId", data.getCn());		
+			$artefact.addAttribute("json", buildPopupText(data) );
 			
 		} 
 	}
@@ -300,6 +320,67 @@ void bindData() {
 		e.printStackTrace();
 	}
 }
+public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> profileLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
+
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
+
+//Creating a Tab
+Tab profileTab = new Tab();
+profileTab.setName("Airplane");
+
+//Creating a Legend
+Legend airplaneLegend = new Legend();
+airplaneLegend.setName("Airplane Details");
+attribMap.put( "Name",data.getName() );
+attribMap.put( "Type","Airplane" );
+attribMap.put( "Device Id",data.getCn() );
+
+airplaneLegend.setAttribMap( attribMap );
+profileLegendList.add( airplaneLegend );
+ 
+profileTab.setLegendList( profileLegendList );
+tabList.add( profileTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getCn() );
+
+attribMap.put("Device type", "Airplane" );
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Last Known Position");
+attribMap.put("Timestamp(GMT)", ((String)$artefact.getAttributeValue("time") ));
+attribMap.put("Timestamp(Local)", "localTime" );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( trackingLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+  return CommonUtils.parseJsonString( tabList );
+ }
+ 
+
 
 void addAttribute(){
 	com.wfp.security.form.LDAPUserBean ldapUserBean = com.wfp.utils.LDAPUtils.getLDAPUserBean(getName());
@@ -814,6 +895,20 @@ String getAuthorUrl(){
                     </section>
                 </section>
                 <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[deviceId]]></value>

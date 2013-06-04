@@ -329,6 +329,8 @@
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
+import com.wfp.beans.*;
+import com.wfp.utils.CommonUtils;
 
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
@@ -370,6 +372,7 @@ void bindData() {
 			$artefact.addAttribute("time", com.wfp.utils.CommonUtils.stringDateToDate(  data.getTime().replace("T", " ").replace(".000Z", " ")  ) );
 			
 			$artefact.addAttribute("name", data.getName());
+			$artefact.addAttribute("json", buildPopupText(data) );
 			
 			//java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
 			//$artefact.addAttribute("localTime",localTime );	
@@ -380,7 +383,65 @@ void bindData() {
 		e.printStackTrace();
 	}
 } 
+public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> profileLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
 
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
+
+//Creating a Tab
+Tab profileTab = new Tab();
+profileTab.setName("Airplane");
+
+//Creating a Legend
+Legend airplaneLegend = new Legend();
+airplaneLegend.setName("Airplane Details");
+attribMap.put( "Name",data.getName() );
+attribMap.put( "Type","Airplane" );
+attribMap.put( "Device Id",data.getCn() );
+
+airplaneLegend.setAttribMap( attribMap );
+profileLegendList.add( airplaneLegend );
+ 
+profileTab.setLegendList( profileLegendList );
+tabList.add( profileTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getCn() );
+
+attribMap.put("Device type", "Airplane" );
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Historical Time Tracking");
+attribMap.put("Timestamp(GMT)", CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+attribMap.put("Timestamp(Local)", "localTime" );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( trackingLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+  return CommonUtils.parseJsonString( tabList );
+ }
 void addAttribute(){
 	if(getName().startsWith("trackMe")){
 		com.wfp.security.form.LDAPUserBean ldapUserBean = com.wfp.utils.LDAPUtils.getLDAPUserBean(getName());
@@ -450,8 +511,7 @@ String getLineColor(){
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
-		System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
-	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
+		if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
 	 	
@@ -673,7 +733,9 @@ String getAuthorUrl(){
                         <section name="column">
                             <value><![CDATA[Date]]></value>
                         </section>
-                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                        </section>
                     </section>
                 </section>
                 <section name="flashparameters">
@@ -698,22 +760,6 @@ String getAuthorUrl(){
             <section name="folder">
                 <section name="name">
                     <value><![CDATA[List]]></value>
-                </section>
-                <section name="starttime">
-                    <section name="script">
-                        <value><![CDATA[time]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="endtime">
-                    <section name="script">
-                        <value><![CDATA[time]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
                 </section>
                 <section name="descriptiontype">
                     <value><![CDATA[flash]]></value>
@@ -758,21 +804,8 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="starttime">
-                    <section name="script">
-                        <value><![CDATA[time]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
-                </section>
-                <section name="endtime">
-                    <section name="script">
-                        <value><![CDATA[time]]></value>
-                        <section name="type">
-                            <value><![CDATA[2]]></value>
-                        </section>
-                    </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>

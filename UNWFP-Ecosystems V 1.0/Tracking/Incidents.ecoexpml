@@ -101,7 +101,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -151,7 +153,9 @@
                 <section name="column">
                     <value><![CDATA[true]]></value>
                 </section>
-                <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
                 <section name="column"/>
             </section>
         </section>

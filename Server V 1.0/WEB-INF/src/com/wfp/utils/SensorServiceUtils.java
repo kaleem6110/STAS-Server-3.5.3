@@ -72,17 +72,18 @@ public class SensorServiceUtils implements IEPICConstants{
 	public static Map<String, List<DeviceBean>> getEmergencySpotDtls( Date startDate, Date endDate, int lpCount, Map<String, String> paramsMap){
 		Logger.error("START - SensorServiceUtils.getEmergencySpotDtls", SensorServiceUtils.class);
 		SensorSrvClientPortBindingStub stub = null;
-		Map<String, List<DeviceBean>> map = null;
+		Map<String, List<DeviceBean>> map =  new HashMap<String, List<DeviceBean>>();
 		try {
 		
 			stub = getServiceLocatorStub();
-			List<String> allMissions = LDAPUtils.getAllMissions();
+			
 			DeviceStatus[] devices = null;
 			String token="xyz";
 			List allStaffDevices = new ArrayList<DeviceBean>();
 			List allVehicleDevices = new ArrayList<DeviceBean>();
 			List allAirplaneDevices = new ArrayList<DeviceBean>();
-			Vector devicesVector = new Vector();
+			//Vector devicesVector = new Vector();
+			/*List<String> allMissions = LDAPUtils.getAllMissions();
 			if(allMissions!=null)
 			{		
 				map  = new HashMap<String, List<DeviceBean>>();
@@ -91,8 +92,8 @@ public class SensorServiceUtils implements IEPICConstants{
 						try { 
 							//devices = stub.getDeviceStatus();								
 							devicesVector.add( stub.getDeviceStatusByMission(token, mission) );
-							/*addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
-									allStaffDevices,allVehicleDevices, allAirplaneDevices);*/
+							//addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
+								//	allStaffDevices,allVehicleDevices, allAirplaneDevices);
 							
 						} catch (RemoteException e) {
 							Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
@@ -109,6 +110,17 @@ public class SensorServiceUtils implements IEPICConstants{
 				} 
 				
 				
+			}*/
+			try { 
+				devices = stub.getDeviceStatus();								
+				
+				addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
+						allStaffDevices,allVehicleDevices, allAirplaneDevices);
+				
+			} catch (RemoteException e) {
+				Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
+				e.printStackTrace();
+				throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
 			}
 			map.put(LAYER_STAFF, allStaffDevices);
 			map.put(LAYER_VEHICLE, allVehicleDevices);

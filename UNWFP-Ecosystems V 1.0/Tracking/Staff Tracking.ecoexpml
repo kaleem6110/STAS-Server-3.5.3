@@ -117,7 +117,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-GMTStr]]></value>
+                    <value><![CDATA[Last Reported]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -421,7 +421,7 @@ static{
 		Cache.store("$ALERT_SERVICE$", new HashMap<String, Object>());
 	}
 }
-	
+	 
 void bindData() {
 
 	try	{
@@ -512,7 +512,7 @@ Legend telLegend = new Legend();
 telLegend.setName("Telephone Numbers");
 //.......
 attribMap = new LinkedHashMap<String,String>();
-if( telephone.getMobileList()!=null ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
+if( telephone.getMobileList()!=null &&  telephone.getMobileList().size()>0 ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
 if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
 if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
 
@@ -573,9 +573,11 @@ trackingTab.setLegendList( trackingLegendList );
 //adding tab to tabList
 tabList.add( trackingTab );
 
+String s = ""; try{
+ s = CommonUtils.parseJsonString( tabList );
+}catch(Exception e){e.printStackTrace(); }
 
-
-  return CommonUtils.parseJsonString( tabList );
+  return s;
  }
 String getFullName(com.wfp.security.form.DeviceBean data){
 	String fullName = "";
@@ -1297,18 +1299,6 @@ String getAuthorUrl(){
                         </section>
                         <section name="column">
                             <value><![CDATA[]]></value>
-                        </section>
-                    </section>
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[localTime]]></value>
-                        </section>
-                        <section name="column">
-                            <value><![CDATA[text]]></value>
-                        </section>
-                        <section name="column"/>
-                        <section name="column">
-                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>

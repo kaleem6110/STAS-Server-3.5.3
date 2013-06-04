@@ -334,7 +334,8 @@ import com.wfp.utils.RBRegionsUtils;
 import com.spacetimeinsight.db.model.util.*;
 import com.spacetimeinsight.db.config.model.*;
 import com.spacetimeinsight.rubberbandregions.Rubberbandregions;
-
+import com.wfp.beans.*;
+import com.wfp.utils.CommonUtils;
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
@@ -388,7 +389,7 @@ void bindData() {
 			$artefact.addAttribute("licensePlate", data.getLicensePlate());
 			//$artefact.addAttribute("reg", data.getVehicleReg());
 			$artefact.addAttribute("vehicleID", data.getCn());
-			   
+			 	$artefact.addAttribute("json", buildPopupText(data) );  
 			 
 			 //$artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
 		}
@@ -397,7 +398,74 @@ void bindData() {
 		e.printStackTrace();
 	}
 }
+ public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> vehicleLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
+
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
+
+//Creating a Tab
+Tab vehicleTab = new Tab();
+vehicleTab.setName("Vehicle");
+
+//Creating a Legend
+Legend vehicleLegend = new Legend();
+vehicleLegend.setName("Vehicle Details");
+attribMap.put("Vehicle Id",data.getCn() );
+attribMap.put("Vehicle type", "Car" );
+attribMap.put("Description",data.getDescription() );
+attribMap.put("Licence plate", data.getLicensePlate()!=""?data.getLicensePlate():"-" );
+
+
+
+vehicleLegend.setAttribMap( attribMap );
+
+vehicleLegendList.add( vehicleLegend );
  
+attribMap = new LinkedHashMap<String,String>();
+
+
+vehicleTab.setLegendList( vehicleLegendList );
+tabList.add( vehicleTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getName() );
+
+
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Last Known Position");
+attribMap.put("Timestamp(GMT)", CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+attribMap.put("Timestamp(Local)", "localTime" );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( trackingLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+
+
+  return CommonUtils.parseJsonString( tabList );
+ }
 String getName() {
 	return $artefact.getAttributeValueAsString("deviceId");
 }

@@ -433,7 +433,8 @@
                 <value><![CDATA[import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
 import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
-
+import com.wfp.beans.*;
+import com.wfp.utils.CommonUtils;
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 com.wfp.security.form.DeviceBean data = null;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -479,7 +480,8 @@ try
 			
 			java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
 			//$artefact.addAttribute("localTime", localTime );	
-			//$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );		
+			//$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );
+			$artefact.addAttribute("json", buildPopupText(data) );		
 		} 
 	}
 	catch (Exception e){  
@@ -488,7 +490,74 @@ try
 	
 	
 }
+ public String buildPopupText(com.wfp.security.form.DeviceBean data)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> vehicleLegendList = new ArrayList<Legend>();
+List<Legend> trackingLegendList = new ArrayList<Legend>();
 
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
+
+//Creating a Tab
+Tab vehicleTab = new Tab();
+vehicleTab.setName("Vehicle");
+
+//Creating a Legend
+Legend vehicleLegend = new Legend();
+vehicleLegend.setName("Vehicle Details");
+attribMap.put("Vehicle Id",data.getCn() );
+attribMap.put("Vehicle type", "Car" );
+attribMap.put("Description",data.getDescription() );
+attribMap.put("Licence plate", data.getLicensePlate()!=""?data.getLicensePlate():"-" );
+
+
+
+vehicleLegend.setAttribMap( attribMap );
+
+vehicleLegendList.add( vehicleLegend );
+ 
+attribMap = new LinkedHashMap<String,String>();
+
+
+vehicleTab.setLegendList( vehicleLegendList );
+tabList.add( vehicleTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Tracking");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("This Device");
+attribMap.put("Device Id", data.getName() );
+
+
+deviceLegend.setAttribMap( attribMap );
+trackingLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Last Known Position");
+attribMap.put("Timestamp(GMT)", CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+attribMap.put("Timestamp(Local)", "localTime" );
+attribMap.put("Latitude", data.getLatitude() );
+attribMap.put("Longitude", data.getLongitude() );
+
+trackingLegend.setAttribMap( attribMap );
+trackingLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( trackingLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+
+
+  return CommonUtils.parseJsonString( tabList );
+ }
 
 void addAttribute(){
 	if(getName().startsWith("trackMe")){
@@ -575,7 +644,7 @@ String getLineColor(){
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
 		String deviceId =getName();
 		//System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
-	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")){
+	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$") && deviceId!=null){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
 	 	

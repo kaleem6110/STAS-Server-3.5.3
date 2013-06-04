@@ -232,6 +232,8 @@
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.wfp.utils.RBRegionsUtils;
+import com.wfp.beans.*;
+import com.wfp.utils.CommonUtils;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -257,7 +259,7 @@ String getDescription(){
 
 
 void bindData() {
-	Map dataMap = (Map) $ldapplacesdatamodel;
+	Map<String,String> dataMap = (Map<String,String>) $ldapplacesdatamodel;
 	
 	if (dataMap != null)
  	{
@@ -269,11 +271,71 @@ void bindData() {
 		$artefact.addAttribute("description", dataMap.get("description"));
 		//$artefact.addAttribute("skype", dataMap.get("skype"));
 		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
+		
+		$artefact.addAttribute("json", buildPopupText(dataMap) );
 				
 	}
 		
 }
+ public String buildPopupText(Map<String,String> dataMap)
+{
+List<Tab> tabList = new ArrayList<Tab>();
+List<Legend> airportLegendList = new ArrayList<Legend>();
+List<Legend> contactLegendList = new ArrayList<Legend>();
+
+Map<String, String> attribMap = new LinkedHashMap<String,String>();
+
+//Creating a Tab
+Tab profileTab = new Tab();
+profileTab.setName("Airport");
+
+//Creating a Legend
+Legend airportLegend = new Legend();
+airportLegend.setName("Airport");
+attribMap.put( "Name",dataMap.get("cn") );
+attribMap.put( "Type","Airport" );
+attribMap.put( "Description",(String)dataMap.get("description") );
+
+airportLegend.setAttribMap( attribMap );
+airportLegendList.add( airportLegend );
  
+profileTab.setLegendList( airportLegendList );
+tabList.add( profileTab );
+
+attribMap = new LinkedHashMap<String,String>();
+
+//Creating Tracking Tab
+Tab trackingTab = new Tab();
+trackingTab.setName("Contact");
+
+Legend deviceLegend = new Legend();
+deviceLegend.setName("Contact Address");
+attribMap.put("Address", dataMap.get("street")!=""?dataMap.get("street"):"-" );
+attribMap.put("Email", "-" );
+attribMap.put("Phone", "-" );
+
+deviceLegend.setAttribMap( attribMap );
+contactLegendList.add( deviceLegend );
+
+attribMap = new LinkedHashMap<String,String>();
+
+Legend trackingLegend = new Legend();
+trackingLegend.setName("Geographic Location");
+
+attribMap.put("Latitude", dataMap.get("coord-latitude")!=""?dataMap.get("coord-latitude"):"-" ); 
+attribMap.put("Longitude", dataMap.get("coord-longitude")!=""?dataMap.get("coord-longitude"):"-" );
+
+trackingLegend.setAttribMap( attribMap );
+contactLegendList.add( trackingLegend );
+
+//adding legends to tab.
+trackingTab.setLegendList( contactLegendList );
+
+//adding tab to tabList
+tabList.add( trackingTab );
+
+  return CommonUtils.parseJsonString( tabList );
+ }
 String getName() {
 	return $artefact.getAttributeValueAsString("Name");
 }

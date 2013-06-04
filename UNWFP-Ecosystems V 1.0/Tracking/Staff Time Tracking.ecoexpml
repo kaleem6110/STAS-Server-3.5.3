@@ -449,6 +449,7 @@ import com.wfp.beans.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.wfp.utils.CommonUtils;
+
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomSoapServiceDataDriver $timetrackingdriver;
 String serverRootUrl = ServerUtils.getServerBaseUrl();
@@ -559,7 +560,7 @@ Legend telLegend = new Legend();
 telLegend.setName("Telephone Numbers");
 //.......
 attribMap = new LinkedHashMap<String,String>();
-if( telephone.getMobileList()!=null ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
+if( telephone.getMobileList()!=null &&  telephone.getMobileList().size()>0) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
 if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
 if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
 

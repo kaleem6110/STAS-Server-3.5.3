@@ -57,6 +57,7 @@ public interface IEPICConstants {
 	public static final String PARAM_WAYBILL = "waybillFile";
 	public static final String PARAM_DATECORRECTION = "datecorrection";
 	public static final String PARAM_LATITUDE = "latitude";
+	public static final String PARAM_LONGITUDE = "longitude";
 	public static final String PARAM_COORDINATES = "coordinates";
 	
 	//LDAP Utilities
@@ -169,9 +170,9 @@ public interface IEPICConstants {
 	public static final String TIME_ZONE_NODE ="timezone";
 	
 	public static final String MAIL_HOST ="mail.service.emergency.lu";
-	public static final String MAIL_FROM ="portal-dev";
-	public static final String EMAIL_FROM_ ="portal-dev@globalepic.lu";
-	public static final String MAIL_PWD ="QMrFlRa0O8bLXehkY2xS";
+	public static final String MAIL_FROM ="portal";
+	public static final String EMAIL_FROM_ ="portal@globalepic.lu";
+	public static final String MAIL_PWD ="JrTIrv52YYV4iK9Ddcqh";
 	public static final String MAIL_CONTENT_TYPE ="multipart/alternative";
 	
 	
