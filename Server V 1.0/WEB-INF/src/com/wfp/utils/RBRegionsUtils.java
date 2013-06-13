@@ -513,7 +513,7 @@ public class RBRegionsUtils implements IEPICConstants {
 					int timeDiff = new Date().compareTo(cal.getTime());
 					if(timeDiff > 0){
 						//yup...now, i can trigger/publish the alert /email  
-						com.wfp.utils.AlertServiceUtils.publishAlert(deviceId, zoneName, artifact.getFirstPoint().x, artifact.getFirstPoint().y);
+						com.wfp.utils.AlertServiceUtils.publishAlert(deviceId, zoneName, artifact.getFirstPoint().x, artifact.getFirstPoint().y,mt.getEmail());
 						
 						//set updates to the statistics
 						regionBean.setEventFired(true);
@@ -682,6 +682,8 @@ public class RBRegionsUtils implements IEPICConstants {
 			rbMessage = (MessageTemplate) result.get(0);
 			rbMessage.setStartDateTime(CommonUtils.formatDate(rbMessage.getStartDate()));
 			rbMessage.setEndDateTime(CommonUtils.formatDate(rbMessage.getEndDate()));
+			rbMessage.setEmail(rbMessage.getEmail());
+			//System.out.println("rbMessage.getEmail()"+rbMessage.getEmail());
 		}else {
 			rbMessage = new MessageTemplate();
 			rbMessage.setName(rbRegionName);
@@ -697,14 +699,20 @@ public class RBRegionsUtils implements IEPICConstants {
 		crud.setSubject(mt.getSubject());
 		crud.setRecurPerDay(mt.getRecurPerDay());
 		crud.setTriggerTime(mt.getTriggerTime());
+		System.out.println("mt.getStartDateTime()"+mt.getStartDateTime()+"mt.getEndDateTime():"+mt.getEndDateTime()+":mt.getEmail()"+mt.getEmail() );
+		
 		crud.setStartDate(CommonUtils.stringDateToDate(mt.getStartDateTime(),PORTAL_DATE_FORMAT_MM ));
 		crud.setEndDate(CommonUtils.stringDateToDate(mt.getEndDateTime(), PORTAL_DATE_FORMAT_MM ));
+		//crud.setModifiedDate(new Date());
+		
+		crud.setEmail(mt.getEmail());
 		long syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_ADD;
 		if(mt.getId() > 0){
 			crud.setId(mt.getId());
 			syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_UPDATE;
-		}
+		}System.out.println("b4 insertorupdate:"+mt.getId());
 		boolean isInserted =  crud.insertOrUpdateData();
+		System.out.println(" isInserted : "+isInserted );
 		if(isInserted){
 			HttpFlexSession httpFlexSession = (HttpFlexSession) FlexContext.getFlexSession();
 			if(httpFlexSession != null){
@@ -717,7 +725,7 @@ public class RBRegionsUtils implements IEPICConstants {
 						userBean.getUserUniqueId(), StringUtils.getLong(moduleId));*/
 			}	
 			
-		}else {
+		}else {System.out.println("*** Exception");
 			throw new EHRuntimeException("Failed to save the region.");
 		}
 		
@@ -931,7 +939,7 @@ public class RBRegionsUtils implements IEPICConstants {
 								isDeviceSelected = true;
 							}
 							com.wfp.utils.AlertServiceUtils.publishAlert(device.get("name")+"", regionName, StringUtils.getDouble(device.get("latitude")+""),
-									StringUtils.getDouble(device.get("longitude")+""));
+									StringUtils.getDouble(device.get("longitude")+""),mt.getEmail() );
 						}					
 					}
 				}

@@ -23,7 +23,23 @@ public class MessageTemplate extends BaseModel implements ICacheableModel {
 	private String updatedBy;
 	private Date startDate;
 	private Date endDate;
+	private String email;
 	
+	
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getName() {
 		return name;
 	}

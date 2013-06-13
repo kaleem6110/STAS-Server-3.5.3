@@ -243,9 +243,9 @@ String description = "Airports are cache using WarehouseCache job from LDAP";
 String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
 
-String getDatasource(){
+String getDatasource(){ 
 	return datasource;
-}
+}   
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
@@ -292,9 +292,9 @@ profileTab.setName("Airport");
 //Creating a Legend
 Legend airportLegend = new Legend();
 airportLegend.setName("Airport");
-attribMap.put( "Name",dataMap.get("cn") );
+attribMap.put( "Name",dataMap.get("cn") ); 
 attribMap.put( "Type","Airport" );
-attribMap.put( "Description",(String)dataMap.get("description") );
+attribMap.put( "Description",dataMap.get("description") );
 
 airportLegend.setAttribMap( attribMap );
 airportLegendList.add( airportLegend );

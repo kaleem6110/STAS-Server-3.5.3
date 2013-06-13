@@ -331,7 +331,7 @@
                     <value><![CDATA[ ]]></value>
                 </section>
                 <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
+                    <value><![CDATA[startend]]></value>
                 </section>
                 <section name="isblink">
                     <value><![CDATA[false]]></value>
@@ -343,7 +343,7 @@
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="placemarklocation">
-                    <value><![CDATA[start]]></value>
+                    <value><![CDATA[startend]]></value>
                 </section>
                 <section name="generatelegend">
                     <value><![CDATA[false]]></value>

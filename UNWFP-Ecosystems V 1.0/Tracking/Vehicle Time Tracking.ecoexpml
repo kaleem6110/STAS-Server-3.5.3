@@ -435,6 +435,7 @@ import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 import com.wfp.beans.*;
 import com.wfp.utils.CommonUtils;
+
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 com.wfp.security.form.DeviceBean data = null;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -444,7 +445,7 @@ String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 
 String getDatasource(){
-	return datasource;  
+	return datasource;   
 }    
  
 String getLastRefreshTime(){
@@ -642,9 +643,10 @@ String getLineColor(){
 	try{
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
+		System.out.println("data:"+data );
 		String deviceId =getName();
-		//System.out.println(" # Airplane Time Tracking : getLineColor Called : deviceId : "+ deviceId );
-	 	if(com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$") && deviceId!=null){
+		System.out.println(" # deviceId : "+ deviceId );
+	 	if(deviceId!=null && com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")  ){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);
 	 	

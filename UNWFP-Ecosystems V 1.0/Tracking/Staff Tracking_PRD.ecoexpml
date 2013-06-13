@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Staff Tracking">
+<configuration name="Staff Tracking_PRD">
     <section name="artefact">
         <section name="name">
             <value><![CDATA[Staff Tracking]]></value>
@@ -97,14 +97,12 @@
                     <value><![CDATA[java.util.Date]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Timestamp-GMT]]></value>
+                    <value><![CDATA[Last Reported]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
+                <section name="column"/>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -117,7 +115,39 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Last Reported]]></value>
+                    <value><![CDATA[Timestamp-GMT]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[pLocalTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local:]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -160,22 +190,6 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[json]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Json]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="column"/>
-                <section name="column"/>
             </section>
         </section>
         <section name="cache">
@@ -267,7 +281,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Staff Tracking.ecoexpml]]></value>
+                            <value><![CDATA[Staff Tracking_PRD.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -377,10 +391,8 @@ import com.wfp.utils.CommonUtils;
 import com.wfp.utils.IEPICConstants;
 import java.text.*;
 import java.util.*;
-import com.wfp.beans.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+//import com.wfp.beans.*;
 boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
@@ -388,19 +400,6 @@ String description = "Rest Tracking job which is scheduled for every two minutes
 String datasource = "Hitec middleware REST service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 public String serverRootUrl = ServerUtils.getServerBaseUrl();
-
-public String currentVersion(){   
-	return "1.8.1";
-}
-String getAuthor(){   
-	return "Kaleem Mohammed";
-}
-String getDateModified(){   
-	return "2013-06-13 09:30:00";
-}
-String getChangeLog(){   
-	return "Organization, FullName, popup tabs";
-}
 
 String getDatasource(){   
 	return datasource;
@@ -421,7 +420,7 @@ static{
 		Cache.store("$ALERT_SERVICE$", new HashMap<String, Object>());
 	}
 }
-	 
+	
 void bindData() {
 
 	try	{
@@ -433,12 +432,17 @@ void bindData() {
 			//changed for getting type as Date instead of String for time
 			//$artefact.addAttribute("time",CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
 			//$artefact.addAttribute("time",CommonUtils.stringDateToISODate( data.getTime().replace("T"," ").replace(".00Z","" ))  );							
-				
-			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
-			$artefact.addAttribute("pTime",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
-								
-			//$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			//$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+			// System.out.println(" data.getDeviceLocalTime() :" +data.getDeviceLocalTime()+":data.getTime():"+data.getTime().replace("T"," ").replace(".000Z","" ) );
+			
+			
+			//System.out.println( " data.getDeviceLocalTime()"+data.getDeviceLocalTime() );
+			 
+			$artefact.addAttribute("time",  CommonUtils.formatDate(  data.getTime(),IEPICConstants.EPIC_DATE_FORMAT ).replace("T"," ").replace(".000Z","" ) );
+			$artefact.addAttribute("pTime",  $artefact.getAttributeValue("time") );
+								 
+			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
+			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+			
 			        		
 			$artefact.addAttribute("deviceId", data.getName());			
 			//$artefact.addAttribute("Contact", CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
@@ -447,10 +451,8 @@ void bindData() {
 		  	$artefact.addAttribute("Phone", CommonUtils.getPhoneDtls(data.getMobilesList()));
 			$artefact.addAttribute("owner", getFullName(data));
 			$artefact.addAttribute("Organization", data.getOrganization());
-			$artefact.addAttribute("json", buildPopupText(data) );
-			$artefact.addAttribute("jpegPhoto", " :jpegPhoto:"+data.getPhotoString()+":jpegPhoto:" );
+			//$artefact.addAttribute("json", buildPopupText(data) );
 			//$artefact.addAttribute("callSign", data.getCallSign());
-		 
 				  
 			//$artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
 			 
@@ -460,126 +462,7 @@ void bindData() {
 		e.printStackTrace();
 	}
 } 
-public String buildPopupText(com.wfp.security.form.DeviceBean data)
-{
-List<Tab> tabList = new ArrayList<Tab>();
-List<Legend> profileLegendList = new ArrayList<Legend>();
-List<Legend> trackingLegendList = new ArrayList<Legend>();
-List<Legend> contactLegendList = new ArrayList<Legend>();
-Map<String, String> attribMap = new LinkedHashMap<String,String>();
 
-//Creating a Tab
-Tab profileTab = new Tab();
-profileTab.setName("Profile");
-
-//Creating a Legend
-Legend userLegend = new Legend();
-userLegend.setName("User Details");
-attribMap.put( CommonUtils.getPersonalTitle(data.getGender()),getFullName(data) );
-attribMap.put("Title", data.getTitle()!=""?data.getTitle():"-" );
-if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
-if(  data.getOrganization()!=null )attribMap.put("Organization", data.getOrganization() );
-
-userLegend.setAttribMap( attribMap );
-
-profileLegendList.add( userLegend );
- 
-attribMap = new LinkedHashMap<String,String>();
-
-Legend emailLegend = new Legend();
-emailLegend.setName("Email");
-attribMap.put("Office","<a href=mailto:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
-
-List<String> privateEmailList = data.getMail();
-String pmail ="";
-if( data.getMail() !=null){
-for(String p : privateEmailList ){
-pmail +="<a href=mailto:"+p+" >"+p.trim()+"</a><br/>";
-}
-attribMap.put("Private",pmail );
-}
-
-
-emailLegend.setAttribMap( attribMap );
-profileLegendList.add( emailLegend );
-
-attribMap = new LinkedHashMap<String,String>();
-
-Telephone telephone = CommonUtils.getTelephones(data.getMobilesList());
-
-
-Legend telLegend = new Legend();
-telLegend.setName("Telephone Numbers");
-//.......
-attribMap = new LinkedHashMap<String,String>();
-if( telephone.getMobileList()!=null &&  telephone.getMobileList().size()>0 ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
-if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
-if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
-if( telephone.getFax()!=null )attribMap.put("FAX", "<a href=tel:"+parseNumber( telephone.getFax())+" target=_blank >"+telephone.getFax()+"</a>" );
-
-if(attribMap.size()>0) {
-telLegend.setAttribMap( attribMap );
-profileLegendList.add( telLegend );
-}
-
-Legend imLegend = new Legend();
-imLegend.setName("Instant Messaging");
-
-Messaging messaging =  CommonUtils.getMessaging( data.getSkypePager() );
-
-
-attribMap = new LinkedHashMap<String,String>();
-
-if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","")+"?chat >"+messaging.getSkype()+"</a>" ); 
-attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
-if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
-if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" ); 
-//attribMap.put("bbPIN", "-" );
-
-imLegend.setAttribMap( attribMap );
-profileLegendList.add( imLegend );
-
-profileTab.setLegendList( profileLegendList );
-tabList.add( profileTab );
-
-attribMap = new LinkedHashMap<String,String>();
-
-//Creating Tracking Tab
-Tab trackingTab = new Tab();
-trackingTab.setName("Tracking");
-
-Legend deviceLegend = new Legend();
-deviceLegend.setName("This Device");
-attribMap.put("Device Id", data.getName() );
-
-attribMap.put("Device type", data.getName().length()==16?"Radio":"Mobile" );
-deviceLegend.setAttribMap( attribMap );
-trackingLegendList.add( deviceLegend );
-
-attribMap = new LinkedHashMap<String,String>();
-
-Legend trackingLegend = new Legend();
-trackingLegend.setName("Last Known Position");
-attribMap.put("Timestamp(GMT)", $artefact.getAttributeValueAsString("pTime") );
-attribMap.put("Timestamp(Local)", "localTime" );
-attribMap.put("Latitude", data.getLatitude() );
-attribMap.put("Longitude", data.getLongitude() );
-
-trackingLegend.setAttribMap( attribMap );
-trackingLegendList.add( trackingLegend );
-
-//adding legends to tab.
-trackingTab.setLegendList( trackingLegendList );
-
-//adding tab to tabList
-tabList.add( trackingTab );
-
-String s = ""; try{
- s = CommonUtils.parseJsonString( tabList );
-}catch(Exception e){e.printStackTrace(); }
-
-  return s;
- }
 String getFullName(com.wfp.security.form.DeviceBean data){
 	String fullName = "";
 	
@@ -703,16 +586,7 @@ String getGroupby(){
 void fireDashboardRefreshEvent(){
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
-String parseNumber(String inputString)
-{
-String str="+";
-Pattern p = Pattern.compile("-?\\d+");
-Matcher m = p.matcher(inputString);
-while (m.find()) {
-  str =str+ m.group();
-}
-return str;
-}
+
 
 boolean authorizeDevice(){
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
@@ -1056,7 +930,7 @@ String getAuthorUrl(){
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[15]]></value>
+                    <value><![CDATA[60]]></value>
                 </section>
                 <section name="dashboardiconurl">
                     <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
@@ -1169,17 +1043,11 @@ String getAuthorUrl(){
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
                 </section>
-                <section name="dateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
-                </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="datefield">
                     <value><![CDATA[time]]></value>
-                </section>
-                <section name="datefielddateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
@@ -1202,10 +1070,10 @@ String getAuthorUrl(){
                         <value><![CDATA[onInterval]]></value>
                     </section>
                     <section name="periodicrefreshrate">
-                        <value><![CDATA[15]]></value>
+                        <value><![CDATA[60]]></value>
                     </section>
                     <section name="periodicrefreshrateunits">
-                        <value><![CDATA[mi]]></value>
+                        <value><![CDATA[s]]></value>
                     </section>
                     <section name="dashboarddataparameters">
                         <section name="row">
@@ -1300,6 +1168,18 @@ String getAuthorUrl(){
                         </section>
                         <section name="column">
                             <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>
@@ -1680,19 +1560,6 @@ String getAuthorUrl(){
                 <section name="flashparameters">
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Description]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDescription()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
                             <value><![CDATA[Datasource]]></value>
                         </section>
                         <section name="value">
@@ -1706,11 +1573,11 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Version]]></value>
+                            <value><![CDATA[Description]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
-                                <value><![CDATA[currentVersion()]]></value>
+                                <value><![CDATA[getDescription()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1724,32 +1591,6 @@ String getAuthorUrl(){
                         <section name="value">
                             <section name="script">
                                 <value><![CDATA[getLastRefreshTime()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[Author]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getAuthor()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[Change log]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getChangeLog()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1784,19 +1625,6 @@ String getAuthorUrl(){
                 <section name="flashparameters">
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Description]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getDescription()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
                             <value><![CDATA[Datasource]]></value>
                         </section>
                         <section name="value">
@@ -1810,11 +1638,11 @@ String getAuthorUrl(){
                     </section>
                     <section name="param">
                         <section name="name">
-                            <value><![CDATA[Version]]></value>
+                            <value><![CDATA[Description]]></value>
                         </section>
                         <section name="value">
                             <section name="script">
-                                <value><![CDATA[currentVersion()]]></value>
+                                <value><![CDATA[getDescription()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>
@@ -1828,32 +1656,6 @@ String getAuthorUrl(){
                         <section name="value">
                             <section name="script">
                                 <value><![CDATA[getLastRefreshTime()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[Author]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getAuthor()]]></value>
-                                <section name="type">
-                                    <value><![CDATA[1]]></value>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-                    <section name="param">
-                        <section name="name">
-                            <value><![CDATA[Change log]]></value>
-                        </section>
-                        <section name="value">
-                            <section name="script">
-                                <value><![CDATA[getChangeLog()]]></value>
                                 <section name="type">
                                     <value><![CDATA[1]]></value>
                                 </section>

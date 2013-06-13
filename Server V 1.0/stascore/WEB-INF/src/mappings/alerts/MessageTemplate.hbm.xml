@@ -18,6 +18,7 @@
 		<property name="updatedBy" type="string" column="UPDATED_BY"/>
 		<property name="createdDate" type="timestamp" column="CREATED_DATE"/>
         <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>    
+        <property name="email" type="string" column="EMAIL" />
         
 	</class>
 </hibernate-mapping>

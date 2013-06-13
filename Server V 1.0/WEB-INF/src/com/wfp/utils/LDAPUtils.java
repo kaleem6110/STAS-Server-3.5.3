@@ -375,7 +375,7 @@ public class LDAPUtils implements IEPICConstants {
 			node = FILTER_LDAP_USERS;
 		}
 		Logger.info("Retrieving User ["+userDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
-		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,telephoneNumber,personalTitle,o,ou,primaryMail");
+		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_USERS, node, userDomain), "mail,communicationUri,otherPhones,personalTitle,o,ou,primaryMail");
 	}
 
 	/**
@@ -522,8 +522,8 @@ public class LDAPUtils implements IEPICConstants {
 				//Kaleem -
 				userBean.setShortOrganization(userBean.getOrganization());
 				if(getOrgMap()!=null) userBean.setOrganization(getOrgMap().get(userBean.getOrganization() ) );
-			}else {
-				userBean.setOrganization("");
+			}else if(userAttributes.get(PROPERTY_ORGANIZATION)!= null) {
+				userBean.setOrganization(userAttributes.get(PROPERTY_ORGANIZATION).toString());
 			}
 			userBean.setSkypePager(userAttributes.get(PROPERTY_PAGER)== null?null:(List<String>)userAttributes.get(PROPERTY_PAGER));
 			userBean.setUid(userAttributes.get(PROPERTY_UID)== null?"":userAttributes.get(PROPERTY_UID).toString());
@@ -1349,6 +1349,37 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		}
 		return base64String;
+	}
+	public static void main(String args[])
+	{
+		//build a hashtable containing all the necessary configuration parameters
+		Hashtable<String, String> environment = new Hashtable<String, String>();
+
+		
+		environment.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		environment.put(Context.PROVIDER_URL, "ldaps://ldap.globalepic.lu");
+		environment.put(Context.SECURITY_AUTHENTICATION, "simple");
+		environment.put(Context.SECURITY_PRINCIPAL, "cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu");
+		environment.put(Context.SECURITY_CREDENTIALS, "Sti4Stas2Read?");
+		environment.put(Context.STATE_FACTORIES, "PersonStateFactory");
+		environment.put(Context.OBJECT_FACTORIES, "PersonObjectFactory");
+
+		// connect to LDAP
+		try {
+			javax.naming.directory.DirContext ctx = new javax.naming.directory.InitialDirContext(environment);
+			String returnedAtts[] = {PROPERTY_MEMBER_OF};
+			// Specify the search scope
+			SearchControls searchCtls = new SearchControls();
+			searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+			searchCtls.setReturningAttributes(returnedAtts);
+			// Search for objects using the filter
+			  getSearchResults( getLDAPContext(), searchCtls, SEARCH_FILTER, LDAP_BASE);
+			
+			System.out.println(ctx);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

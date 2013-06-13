@@ -84,12 +84,12 @@ public interface IEPICConstants {
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
 	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
 	public static final String GROUP_SEARCHBASE =  "groups.search.base";
-	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", "homePhone", "mobile", "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle","gender"};
+	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", /*"homePhone", "mobile",*/ "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle","gender","otherPhones"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
 	public static final String PROPERTY_MAIL =  "mail";
 	public static final String PROPERTY_PRIMARY_MAIL =  "primaryMail";
-	public static final String PROPERTY_MOBILE =  "telephoneNumber";
+	public static final String PROPERTY_MOBILE =  "otherPhones";
 	public static final String PROPERTY_PAGER =  "communicationUri";
 	public static final String PROPERTY_ORGANIZATION =  "o";
 	public static final String PROPERTY_DEPT =  "ou";

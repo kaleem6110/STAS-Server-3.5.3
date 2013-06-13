@@ -115,6 +115,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	
 		
 		List<Element> list =  XMLUtils.evaluate(rootNode, expression);
+//		System.out.println("list"+list );
 		
 		if(list != null){
 			System.out.println(" list size:"+list.size() );

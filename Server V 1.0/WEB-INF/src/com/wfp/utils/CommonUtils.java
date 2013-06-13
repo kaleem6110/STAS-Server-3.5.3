@@ -399,10 +399,11 @@ public class CommonUtils implements IEPICConstants{
 		if(mobilesList != null && mobilesList.size() >0){			
 			for(String mobile:mobilesList){
 				mobile = mobile.toLowerCase();			
-				if( mobile.startsWith("mobile"))mobileList.add(mobile.replace("mobile:",""));
-				else if(mobile.startsWith("foodsat") )telephone.setFoodsat(mobile.replace("foodsat:","") );
-				else if(mobile.startsWith("office") ) telephone.setOffice( mobile.replace("office:",""));
-				else if(mobile.startsWith("wave") ) telephone.setWave( mobile.replace("wave:","") );				
+				if( mobile.endsWith("|mobile"))mobileList.add(mobile.replace("|mobile",""));
+				else if(mobile.endsWith("|foodsat") )telephone.setFoodsat(mobile.replace("|foodsat","") );
+				else if(mobile.endsWith("|office") ) telephone.setOffice( mobile.replace("|office",""));
+				else if(mobile.endsWith("|wave") ) telephone.setWave( mobile.replace("|wave","") );
+				else if(mobile.endsWith("|fax") ) telephone.setFax( mobile.replace("|fax","") );		
 			}	
 			telephone.setMobileList(mobileList);
 		}
@@ -659,16 +660,13 @@ public class CommonUtils implements IEPICConstants{
 					offset = offset.substring(0, offset.indexOf("."));
 					decimal=true;
 				}
-				if(Integer.parseInt(offset)>0)
-				{ 
-					zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+				zuluDate.setHours(zuluDate.getHours()+Integer.parseInt(offset)) ;
+				if(Integer.valueOf(offset).intValue()>0)
+				{ 					
 					if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()+30);
 				}
-				else 
-				{
-					zuluDate.setHours(zuluDate.getHours()-Integer.parseInt(offset)) ;
-					if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
-				}	
+				else if(decimal)zuluDate.setMinutes(zuluDate.getMinutes()-30);
+				
 			}
 			localTime = formatter.format( zuluDate );
 		}

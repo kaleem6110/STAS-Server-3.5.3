@@ -13,6 +13,7 @@ private String radio;
 private String wave;
 private String office;
 private String foodsat;
+private String fax;
 /**
  * @return the foodsat
  */
@@ -72,6 +73,18 @@ public String getOffice() {
  */
 public void setOffice(String office) {
 	this.office = office;
+}
+/**
+ * @return the fax
+ */
+public String getFax() {
+	return fax;
+}
+/**
+ * @param fax the fax to set
+ */
+public void setFax(String fax) {
+	this.fax = fax;
 }
 
 }
