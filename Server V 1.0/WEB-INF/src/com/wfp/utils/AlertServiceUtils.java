@@ -21,7 +21,7 @@ import com.wfp.security.form.LDAPUserBean;
 import java.util.ArrayList;
 public class AlertServiceUtils implements IEPICConstants {
  
-	public static void publishAlert(String deviceId, String dangerZoneName,  Double lat, Double lng, String email){
+	public static void publishAlert(String deviceId, String dangerZoneName,  Double lat, Double lng, List<String> emailList){
 		System.out.println("## START AlertServiceUtils.publishAlert :deviceId : "+deviceId +" :dangerZoneName :"+dangerZoneName +" :lat :"+lat+": long :"+lng );
 	
 		com.wfp.db.platform.model.MessageTemplate mt = com.wfp.utils.RBRegionsUtils.getMessageTemplate(dangerZoneName);
@@ -52,9 +52,9 @@ public class AlertServiceUtils implements IEPICConstants {
 							//STAS sending email directly to user	& Security Officer
 							List<String> toEmailAddress = new ArrayList<String>();
 							toEmailAddress.add( userBean.getPrimaryEmail() );	
-							if(email!=null&&email!="")
+							if(emailList!=null&&emailList.size()>0)
 							{
-								if(email.indexOf(';')<0&&email.indexOf('@')>0)toEmailAddress.add(email);
+								for(String e : emailList) toEmailAddress.add(e);
 							}
 							//sending email to security officer.
 							/*String securityOfficerEmail = LDAPUtils.getSecurityOfficerEmail( userBean.getShortOrganization(),SECURITY_FILTER.replace("Organization", userBean.getOrganization() ) );

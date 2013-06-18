@@ -500,7 +500,8 @@ public class LDAPUtils implements IEPICConstants {
 	public static void cacheLDAPUserDtls(String deviceId,
 			Map<String, Object> userAttributes) {
 		Logger.info("LDAP User Details: ["+deviceId+"]  ["+userAttributes+"]", LDAPUtils.class);
-		getLDAPUserDtlsMap().put(deviceId, getLDAPUserBean(userAttributes));
+		getLDAPUserDtlsMap().put(deviceId, getLDAPUserBean(userAttributes) ); 
+		
 	}
 
 	/**
@@ -519,12 +520,17 @@ public class LDAPUtils implements IEPICConstants {
 			userBean.setMobilesList(userAttributes.get(PROPERTY_MOBILE) == null?null:(List<String>)userAttributes.get(PROPERTY_MOBILE) );
 			if(userAttributes.get(PROPERTY_ORGANIZATION)!= null && userAttributes.get(PROPERTY_ORGANIZATION) instanceof List){
 				userBean.setOrganization(userAttributes.get(PROPERTY_ORGANIZATION)== null?"":((List<String>)userAttributes.get(PROPERTY_ORGANIZATION)).get(0));
-				//Kaleem -
+				//Kaleem - 
+				//System.out.println("b4 userbean.getOrg"+userBean.getOrganization() + "getOrgMap() "+getOrgMap() );
 				userBean.setShortOrganization(userBean.getOrganization());
-				if(getOrgMap()!=null) userBean.setOrganization(getOrgMap().get(userBean.getOrganization() ) );
+				if( getOrgMap()==null)  LDAPUtils.getAllOrganizations(); 
+				else  userBean.setOrganization(getOrgMap().get(userBean.getOrganization() ) );
+				
 			}else if(userAttributes.get(PROPERTY_ORGANIZATION)!= null) {
 				userBean.setOrganization(userAttributes.get(PROPERTY_ORGANIZATION).toString());
 			}
+			//System.out.println("after userbean.getOrg"+userBean.getOrganization() );
+			
 			userBean.setSkypePager(userAttributes.get(PROPERTY_PAGER)== null?null:(List<String>)userAttributes.get(PROPERTY_PAGER));
 			userBean.setUid(userAttributes.get(PROPERTY_UID)== null?"":userAttributes.get(PROPERTY_UID).toString());
 			userBean.setSn(userAttributes.get(PROPERTY_SN)== null?"":userAttributes.get(PROPERTY_SN).toString());
@@ -1349,37 +1355,6 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		}
 		return base64String;
-	}
-	public static void main(String args[])
-	{
-		//build a hashtable containing all the necessary configuration parameters
-		Hashtable<String, String> environment = new Hashtable<String, String>();
-
-		
-		environment.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-		environment.put(Context.PROVIDER_URL, "ldaps://ldap.globalepic.lu");
-		environment.put(Context.SECURITY_AUTHENTICATION, "simple");
-		environment.put(Context.SECURITY_PRINCIPAL, "cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu");
-		environment.put(Context.SECURITY_CREDENTIALS, "Sti4Stas2Read?");
-		environment.put(Context.STATE_FACTORIES, "PersonStateFactory");
-		environment.put(Context.OBJECT_FACTORIES, "PersonObjectFactory");
-
-		// connect to LDAP
-		try {
-			javax.naming.directory.DirContext ctx = new javax.naming.directory.InitialDirContext(environment);
-			String returnedAtts[] = {PROPERTY_MEMBER_OF};
-			// Specify the search scope
-			SearchControls searchCtls = new SearchControls();
-			searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-			searchCtls.setReturningAttributes(returnedAtts);
-			// Search for objects using the filter
-			  getSearchResults( getLDAPContext(), searchCtls, SEARCH_FILTER, LDAP_BASE);
-			
-			System.out.println(ctx);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 

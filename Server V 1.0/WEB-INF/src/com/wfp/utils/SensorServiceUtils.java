@@ -228,7 +228,7 @@ public class SensorServiceUtils implements IEPICConstants{
 			for (int j=0; j < lv.length; j++)
 			{	
 					DeviceBean in = new DeviceBean();
-					long diff = 900001;
+					long diff = 1800001;
 					if(j == 0){						
 						in.setStartPoint(true); 
 						//offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
@@ -253,10 +253,10 @@ public class SensorServiceUtils implements IEPICConstants{
 					//in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
 					in.setDeviceLocalTime(datetime);			
 					in.setLocationValue(lv[j]);
-					if( diff > 3600000 ){
+					//if( diff > 1800000 ){
 					LDAPUtils.setLDAPUserDtls(in);
 					allEmergencyDtls.add(in);	
-					}
+					//}
 			
 			}
 		}

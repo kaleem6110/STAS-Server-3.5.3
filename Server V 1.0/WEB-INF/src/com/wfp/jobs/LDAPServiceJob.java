@@ -86,7 +86,7 @@ public class LDAPServiceJob implements CustomJobTask, IEPICConstants {
 			for(String deviceId:allDevices){
 				/*if("EMS-DST2931A3".equalsIgnoreCase(deviceId)){
 					System.out.println("jj");
-				}*/
+				}*/ 
 				if(LDAPUtils.validateVehicles(deviceId, paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
 					//addDevice(element, vehicleList, KEY_VEHICLE);
 					LDAPUtils.setLDAPUserDtls(deviceId, KEY_VEHICLE);

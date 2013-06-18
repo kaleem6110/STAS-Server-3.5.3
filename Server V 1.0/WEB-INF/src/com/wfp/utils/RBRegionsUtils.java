@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ecs.xhtml.em;
+
 import com.enterprisehorizons.constants.CommonConstants;
 import com.enterprisehorizons.exception.EHRuntimeException;
 import com.enterprisehorizons.magma.designtime.artifact.GeoArtifact;
@@ -513,7 +515,7 @@ public class RBRegionsUtils implements IEPICConstants {
 					int timeDiff = new Date().compareTo(cal.getTime());
 					if(timeDiff > 0){
 						//yup...now, i can trigger/publish the alert /email  
-						com.wfp.utils.AlertServiceUtils.publishAlert(deviceId, zoneName, artifact.getFirstPoint().x, artifact.getFirstPoint().y,mt.getEmail());
+						com.wfp.utils.AlertServiceUtils.publishAlert(deviceId, zoneName, artifact.getFirstPoint().x, artifact.getFirstPoint().y,parseEmails(mt.getEmail() ));
 						
 						//set updates to the statistics
 						regionBean.setEventFired(true);
@@ -939,7 +941,7 @@ public class RBRegionsUtils implements IEPICConstants {
 								isDeviceSelected = true;
 							}
 							com.wfp.utils.AlertServiceUtils.publishAlert(device.get("name")+"", regionName, StringUtils.getDouble(device.get("latitude")+""),
-									StringUtils.getDouble(device.get("longitude")+""),mt.getEmail() );
+									StringUtils.getDouble(device.get("longitude")+""),parseEmails( mt.getEmail()) );
 						}					
 					}
 				}
@@ -949,6 +951,20 @@ public class RBRegionsUtils implements IEPICConstants {
 			}
 			return null;
 		}
+	public static List<String> parseEmails(String email)
+	{
+		List<String> emailList = null;
+		if(email!=null&&email!="")
+		{ emailList = new ArrayList<String>();
+			if(email.indexOf(';')>0)
+			{
+				String e[] = email.split(";");
+				for(String emailStr : e ) emailList.add(emailStr);					
+			}
+			else emailList.add(email);
+		}
+		return emailList;
+	}
 	public static ArrayCollection sendAlertsByUID(ArrayCollection allDevicesList, String regionName, String subject, String message){
 		
 		if(allDevicesList != null){

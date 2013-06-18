@@ -84,7 +84,7 @@ public interface IEPICConstants {
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
 	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
 	public static final String GROUP_SEARCHBASE =  "groups.search.base";
-	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", /*"homePhone", "mobile",*/ "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", "telephoneNumber","personalTitle","gender","otherPhones"};
+	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", /*"homePhone", "mobile",*/ "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", /*"telephoneNumber",*/"personalTitle","gender","otherPhones"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
 	public static final String PROPERTY_MAIL =  "mail";
@@ -161,8 +161,8 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//kmohammed
-	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
-	public static final String STAS_Engine ="STAS_Engine-dev";
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap.globalepic.lu:636/";
+	public static final String STAS_Engine ="STAS_Engine";
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
