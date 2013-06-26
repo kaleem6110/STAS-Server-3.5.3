@@ -94,10 +94,13 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 		if(Cache.retrieve(CACHE_WAREHOUSES_KEY) != null){
 			Map map = (Map) Cache.retrieve(CACHE_WAREHOUSES_KEY);
 			Logger.perf("Total places objects from LDAP ["+((Map) Cache.retrieve(CACHE_WAREHOUSES_KEY)).size()+"]", WarehouseStockExcelJob.class);
-		}
+			//System.out.println("Total places objects from LDAP ["+((Map) Cache.retrieve(CACHE_WAREHOUSES_KEY)).size()+"]");
+		}else System.out.println(" WarehouseExcelJob :98 :Cache.retrieve(CACHE_WAREHOUSES_KEY)"+Cache.retrieve(CACHE_WAREHOUSES_KEY));
 		//reading the stock items & cacheing all the items in map
 		PlanningUtils.getWarehouseStocks(filepath, keyLocation);
+		System.out.println("stocks over");
 		PlanningUtils.getWaybillDtls(waybillFile);
+		System.out.println("waybills over");
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
 		return true;
 	}

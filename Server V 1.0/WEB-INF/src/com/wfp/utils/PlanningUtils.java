@@ -150,8 +150,10 @@ public class PlanningUtils implements IEPICConstants{
 		if (!StringUtils.isNull(filepath)) {
 			//read the CSV file
 			try {
+				System.out.println("START Planning Utils : readStockItems"+filepath +":"+ keyLocation);
 				CSVReader stockReader =  new CSVReader( new InputStreamReader(new FileInputStream(filepath), "unicode"), CommonConstants.TAB);
-				Logger.info(" parsed the CSV Stock reader object ["+stockReader+"] from filepath ["+filepath+"]", PlanningUtils.class);
+				Logger.error(" parsed the CSV Stock reader object ["+stockReader+"] from filepath ["+filepath+"]", PlanningUtils.class);
+				System.out.println(" parsed the CSV Stock reader object ["+stockReader+"] from filepath ["+filepath+"]");
 				String[] line;
 				if(stockReader != null){
 					//if there are any warehouses then create the cache of them
@@ -190,7 +192,7 @@ public class PlanningUtils implements IEPICConstants{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}else {
+				}else { System.out.println("NULLLLL");
 					return null;
 				}
 				
@@ -244,7 +246,7 @@ public class PlanningUtils implements IEPICConstants{
 		if(whMap != null && whMap.size() > 0){
 			Object[] tempHeader = null;
 			Map<String, List> map = new HashMap();
-			//System.out.println(stocksMap);
+			//System.out.println("stocksMap"+stocksMap);
 			//Map.Entry<String, Object[]> entry = (Entry<String, Object[]>) whMap.entrySet();
 			for (Map.Entry<String, Map<String, String>> entry : whMap.entrySet())	{
 				if(tempHeader == null){
@@ -254,6 +256,7 @@ public class PlanningUtils implements IEPICConstants{
 					map.put("headers", Arrays.asList(tempHeader));
 				}
 				Logger.info(" Retrieve the stock data for ["+entry.getKey()+"] ", PlanningUtils.class);
+				//System.out.println(" Retrieve the stock data for ["+entry.getKey()+"] ");
 				List<Object[]> stockList = stocksMap.get(entry.getKey());
 				List<Object[]> dataList = null;
 				if(stockList != null){
@@ -280,6 +283,7 @@ public class PlanningUtils implements IEPICConstants{
 			   
 			}
 			Logger.info(" Parsed results succesfully  for warehouses ["+map.size()+"] ", PlanningUtils.class);
+			System.out.println(" Parsed results succesfully  for warehouses ["+map.size()+"] ");
 			return map;
 		}
 		return null;
@@ -302,6 +306,7 @@ public class PlanningUtils implements IEPICConstants{
 	public static void getWarehouseStocks(String stockFilepath, String keyLocation){
 		Map stockMap = PlanningUtils.readStockItems(stockFilepath, keyLocation);
 		Logger.info("Read all stocks from ["+stockFilepath+"] Data Object: ["+stockMap+"] ", PlanningUtils.class);
+		//System.out.println("planningutils:305:Read all stocks from ["+stockFilepath+"] Data Object: ["+stockMap+"] ");
 		//setWHStockCacheMap(concatWHStocks(PlanningUtils.getWarehouseDtls(whFilepath), stockMap));	
 		setWHStockCacheMap(concatLDAPWHStocks(LDAPUtils.getAllPlaces(), stockMap));
 		
@@ -310,6 +315,7 @@ public class PlanningUtils implements IEPICConstants{
 	public static void getWaybillDtls(String waybillFile){
 		//setWaybillCacheMap(concatWHStocks(PlanningUtils.getWarehouseDtls(whFilepath), readWaybillDtls(waybillFile)));
 		//setWaybillCacheMap(readWaybillDtls(waybillFile));
+		System.out.println(" START getWaybillDtls waybillFile "+waybillFile);
 		setWaybillCacheMap(concatLDAPWHStocks(LDAPUtils.getAllPlaces(), readWaybillDtls(waybillFile)));
 	}
 	

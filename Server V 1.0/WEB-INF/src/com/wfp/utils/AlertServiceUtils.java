@@ -45,6 +45,12 @@ public class AlertServiceUtils implements IEPICConstants {
 						long refId = insertUpdateAlert(templateId, uid,  mt.getBody(), mt.getSubject(), date);
 						if(refId > 0)
 						{ 
+							boolean isExcluded = false;
+							if( mt.getExclusionEmail()!=null && mt.getExclusionEmail()!="")
+							{
+								if( mt.getExclusionEmail().indexOf(userBean.getPrimaryEmail())> -1 ) isExcluded = true;								
+							}
+							if(!isExcluded){
 							//Event sent to middleware for sending emails to user
 							String eventRefId = EventServiceUtils.publishEventService(userBean.getUid(), mt.getSubject(), mt.getBody());							
 							String msgBody = formatEmailBody( deviceId.trim(), eventRefId, userBean.getPrimaryEmail(),mt.getSubject(), mt.getBody() );
@@ -70,6 +76,7 @@ public class AlertServiceUtils implements IEPICConstants {
 							if(eventRefId != null){							
 								processAlertMessage(mt.getBody(), "iPadAlert", mt.getSubject(), "0", lat, lng);
 							}
+							}else Logger.error(" Excluded from Alerting :"+userBean.getPrimaryEmail(), AlertServiceUtils.class.getName());
 						}
 						
 						//EMailUtils.getInstance().sendMail("sti@emergency.lu", mailId, null, mt.getBody()+" Event Reference:: ["+SecurityDBUtils.getEncryptedPassword(refId+"")+"]", mt.getSubject());

@@ -701,18 +701,20 @@ public class RBRegionsUtils implements IEPICConstants {
 		crud.setSubject(mt.getSubject());
 		crud.setRecurPerDay(mt.getRecurPerDay());
 		crud.setTriggerTime(mt.getTriggerTime());
-		System.out.println("mt.getStartDateTime()"+mt.getStartDateTime()+"mt.getEndDateTime():"+mt.getEndDateTime()+":mt.getEmail()"+mt.getEmail() );
+		System.out.println("mt.getStartDateTime()"+mt.getStartDateTime()+"mt.getEndDateTime():"+mt.getEndDateTime()+":mt.getExclusionEmail()"+mt.getExclusionEmail() );
 		
 		crud.setStartDate(CommonUtils.stringDateToDate(mt.getStartDateTime(),PORTAL_DATE_FORMAT_MM ));
 		crud.setEndDate(CommonUtils.stringDateToDate(mt.getEndDateTime(), PORTAL_DATE_FORMAT_MM ));
-		//crud.setModifiedDate(new Date());
+		crud.setModifiedDate(CommonUtils.getUTCdatetimeAsDate() );
 		
 		crud.setEmail(mt.getEmail());
+		crud.setExclusionEmail(mt.getExclusionEmail());
 		long syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_ADD;
 		if(mt.getId() > 0){
 			crud.setId(mt.getId());
 			syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_UPDATE;
-		}System.out.println("b4 insertorupdate:"+mt.getId());
+		}else crud.setCreatedDate(CommonUtils.getUTCdatetimeAsDate() );
+		System.out.println("b4 insertorupdate:"+mt.getId());
 		boolean isInserted =  crud.insertOrUpdateData();
 		System.out.println(" isInserted : "+isInserted );
 		if(isInserted){
@@ -952,7 +954,7 @@ public class RBRegionsUtils implements IEPICConstants {
 			return null;
 		}
 	public static List<String> parseEmails(String email)
-	{
+	{ System.out.println("##parseEmails : "+email );
 		List<String> emailList = null;
 		if(email!=null&&email!="")
 		{ emailList = new ArrayList<String>();
@@ -963,6 +965,7 @@ public class RBRegionsUtils implements IEPICConstants {
 			}
 			else emailList.add(email);
 		}
+		System.out.println("emailList"+emailList.size() );
 		return emailList;
 	}
 	public static ArrayCollection sendAlertsByUID(ArrayCollection allDevicesList, String regionName, String subject, String message){

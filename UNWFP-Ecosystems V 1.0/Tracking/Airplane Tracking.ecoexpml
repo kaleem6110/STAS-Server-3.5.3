@@ -309,7 +309,7 @@ void bindData() {
 			//$artefact.addAttribute("time",com.wfp.utils.CommonUtils.parseDate(data.getTime()) );							
 			//$artefact.addAttribute("localTime", com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
 			 //$artefact.addAttribute("pLocalTime", com.wfp.utils.CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );	
-			 $artefact.addAttribute("time",com.wfp.utils.CommonUtils.formatDate( data.getTime()) );
+			$artefact.addAttribute("time",(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
 			$artefact.addAttribute("name", data.getName());	
 			$artefact.addAttribute("deviceId", data.getCn());		
 			$artefact.addAttribute("json", buildPopupText(data) );
@@ -363,7 +363,7 @@ attribMap = new LinkedHashMap<String,String>();
 
 Legend trackingLegend = new Legend();
 trackingLegend.setName("Last Known Position");
-attribMap.put("Timestamp(GMT)", ((String)$artefact.getAttributeValue("time") ));
+attribMap.put("Timestamp(GMT)",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
 attribMap.put("Timestamp(Local)", "localTime" );
 attribMap.put("Latitude", data.getLatitude() );
 attribMap.put("Longitude", data.getLongitude() );

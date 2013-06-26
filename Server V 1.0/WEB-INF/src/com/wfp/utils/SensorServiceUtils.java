@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import lu.hitec.pss.soap.sensor.client._8_x.DeviceStatus;
-import lu.hitec.pss.soap.sensor.client._8_x.LocationRange;
-import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
-import lu.hitec.pss.soap.sensor.client._8_x.RangeLimit;
-import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClientPortBindingStub;
-import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClient_Service;
-import lu.hitec.pss.soap.sensor.client._8_x.SensorSrvClient_ServiceLocator;
-import lu.hitec.pss.soap.sensor.client._8_x.SubRangeType;
-import lu.hitec.pss.soap.sensor.client._8_x.TimeRange;
+import lu.hitec.pss.soap.sensor.client._9_x.DeviceStatus;
+import lu.hitec.pss.soap.sensor.client._9_x.LocationRange;
+import lu.hitec.pss.soap.sensor.client._9_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._9_x.RangeLimit;
+import lu.hitec.pss.soap.sensor.client._9_x.SensorSrvClientPortBindingStub;
+import lu.hitec.pss.soap.sensor.client._9_x.SensorSrvClient_Service;
+import lu.hitec.pss.soap.sensor.client._9_x.SensorSrvClient_ServiceLocator;
+import lu.hitec.pss.soap.sensor.client._9_x.SubRangeType;
+import lu.hitec.pss.soap.sensor.client._9_x.TimeRange;
 
 import org.apache.axis.AxisFault;
 
@@ -82,16 +82,21 @@ public class SensorServiceUtils implements IEPICConstants{
 			List allStaffDevices = new ArrayList<DeviceBean>();
 			List allVehicleDevices = new ArrayList<DeviceBean>();
 			List allAirplaneDevices = new ArrayList<DeviceBean>();
-			//Vector devicesVector = new Vector();
-			/*List<String> allMissions = LDAPUtils.getAllMissions();
+			Vector devicesVector = new Vector();
+			List<String> allMissions = LDAPUtils.getAllMissions();
+			LDAPUtils.getAllDeviceInDomain();
+			java.util.Map<String, DeviceStatus> deviceMap = new HashMap<String, DeviceStatus>();
 			if(allMissions!=null)
 			{		
 				map  = new HashMap<String, List<DeviceBean>>();
 				for(String mission: allMissions) 
 					{
 						try { 
+							System.out.println("mission:"+mission);
 							//devices = stub.getDeviceStatus();								
-							devicesVector.add( stub.getDeviceStatusByMission(token, mission) );
+							//devicesVector.add( stub.getDeviceStatusByMission(token, mission) );
+							checkDevice(deviceMap, stub.getDeviceStatusByMission(token, mission));
+							
 							//addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
 								//	allStaffDevices,allVehicleDevices, allAirplaneDevices);
 							
@@ -102,26 +107,24 @@ public class SensorServiceUtils implements IEPICConstants{
 						}
 					}
 				
-				Vector newVect = new Vector(new java.util.LinkedHashSet(devicesVector));
-				java.util.Iterator itr = newVect.iterator();
-				while(itr.hasNext()){				   
-				addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, (DeviceStatus [])itr.next(), stub,
-						allStaffDevices,allVehicleDevices, allAirplaneDevices);
-				} 
+				Object obj[] = deviceMap.values().toArray();
+				if( obj!=null&&obj.length>0)
+				{
+					List<DeviceStatus> dlist = new ArrayList<DeviceStatus>();
+					devices = new DeviceStatus[obj.length];
+					for(int i =0;i<obj.length;i++) devices[i] = (DeviceStatus)obj[i];
+					
+				}
 				
 				
-			}*/
-			try { 
-				devices = stub.getDeviceStatus();								
+					addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices , stub,
+							allStaffDevices,allVehicleDevices, allAirplaneDevices);				
 				
-				addDevicesToMap( startDate, endDate, lpCount, paramsMap, map, devices, stub,
-						allStaffDevices,allVehicleDevices, allAirplaneDevices);
 				
-			} catch (RemoteException e) {
-				Logger.error("SensorServiceUtils.getEmergencySpotDtls : Error occured while retrieving devices ["+e.getMessage()+"]", SensorServiceUtils.class);
-				e.printStackTrace();
-				throw new  EHRuntimeException("Error occured while retrieving devices ["+e.getMessage()+"]");
+				
+				
 			}
+			
 			map.put(LAYER_STAFF, allStaffDevices);
 			map.put(LAYER_VEHICLE, allVehicleDevices);
 			map.put(LAYER_AIRPLANE, allAirplaneDevices);
@@ -136,7 +139,23 @@ public class SensorServiceUtils implements IEPICConstants{
 		
 		return map;
 	}
-	
+	public static boolean checkDevice(Map<String, DeviceStatus> deviceMap, DeviceStatus [] dList)
+	{
+		boolean isDuplicate = false;
+		if( deviceMap!=null && dList!=null && dList.length >0 )
+		{
+			for(DeviceStatus d : dList)
+			{
+				isDuplicate = false;
+				for( Map.Entry<String,DeviceStatus> entry: deviceMap.entrySet() )
+				{
+					if( entry.getKey().equalsIgnoreCase(d.getId()) ) isDuplicate= true;					
+				}
+				if( !isDuplicate) deviceMap.put(d.getId(), d );
+			}
+		}		
+		return isDuplicate;
+	}
 	public static void addDevicesToMap(Date startDate, Date endDate, int lpCount, Map<String, String> paramsMap,Map map,
 			DeviceStatus[] devices ,SensorSrvClientPortBindingStub stub ,
 			List allStaffDevices,List allVehicleDevices,List allAirplaneDevices
@@ -229,12 +248,14 @@ public class SensorServiceUtils implements IEPICConstants{
 			{	
 					DeviceBean in = new DeviceBean();
 					long diff = 1800001;
+					LocationValue loc1 = lv[j];
+					
 					if(j == 0){						
 						in.setStartPoint(true); 
 						//offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
 					}
 					else if(j == (lv.length -1 ))in.setEndPoint(true);					
-					else  diff= lv[j+1].getTime().getTime().getTime()- lv[j].getTime().getTime().getTime();			
+					else  diff= lv[j+1].getTime().getTime().getTime()- loc1.getTime().getTime().getTime();			
 					
 					in.setLatitude(String.valueOf(lv[j].getLat()));
 					in.setLongitude(String.valueOf(lv[j].getLng()));
@@ -247,16 +268,16 @@ public class SensorServiceUtils implements IEPICConstants{
 					}
 					
 					in.setName(deviceId);
-					in.setDatetime(lv[j].getTime().getTime());
-					String datetime = CommonUtils.formatDate(lv[j].getTime().getTime());
+					in.setDatetime(loc1.getTime().getTime());
+					String datetime = CommonUtils.formatDate(loc1.getTime().getTime());
 					in.setTime(datetime);
 					//in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
-					in.setDeviceLocalTime(datetime);			
-					in.setLocationValue(lv[j]);
-					//if( diff > 1800000 ){
+					in.setDeviceLocalTime(datetime);					
+					in.setLocationValue(loc1);
+					if( diff > 1800000 ){
 					LDAPUtils.setLDAPUserDtls(in);
 					allEmergencyDtls.add(in);	
-					//}
+					}
 			
 			}
 		}

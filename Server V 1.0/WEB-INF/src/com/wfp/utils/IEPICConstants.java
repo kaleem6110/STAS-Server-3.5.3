@@ -161,8 +161,8 @@ public interface IEPICConstants {
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
 	//kmohammed
-	public static final String LDAP_FILTER_URL =  "ldaps://ldap.globalepic.lu:636/";
-	public static final String STAS_Engine ="STAS_Engine";
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
+	public static final String STAS_Engine ="STAS_Engine-dev";
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";

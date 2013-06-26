@@ -24,6 +24,7 @@ public class MessageTemplate extends BaseModel implements ICacheableModel {
 	private Date startDate;
 	private Date endDate;
 	private String email;
+	private String exclusionEmail;
 	
 	
 	/**
@@ -144,6 +145,20 @@ public class MessageTemplate extends BaseModel implements ICacheableModel {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the exclusionEmail
+	 */
+	public String getExclusionEmail() {
+		return exclusionEmail;
+	}
+
+	/**
+	 * @param exclusionEmail the exclusionEmail to set
+	 */
+	public void setExclusionEmail(String exclusionEmail) {
+		this.exclusionEmail = exclusionEmail;
 	}
 
 	

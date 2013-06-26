@@ -1128,6 +1128,7 @@ public class LDAPUtils implements IEPICConstants {
 
 	public static boolean validatePlaceByUser(String placeId, String userId){
 		Logger.info("Validating Places ["+placeId+"] by user Id ["+userId+"]", LDAPUtils.class);
+		boolean isValid = false;
 		@SuppressWarnings("unused")
 		List<String> missionsList = getAllMisisons4rUser(userId);
 		String allGroupNamesFilter = getLDAPConfigValue("place.member.identifier").replace("<replacestr>", placeId);//"(placeMember=cn="+placeId+",ou=places,ou=resources,dc=emergency,dc=lu)";
@@ -1137,11 +1138,12 @@ public class LDAPUtils implements IEPICConstants {
 				//parseData(getSearchResults(new String[] {"mail"},allUserFilter1, allGroupsSearchBase));	
 				List placeDtls = parseDataAsList(getSearchResults(new String[] {"placeMember"},allGroupNamesFilter, allGroupsSearchBase));
 				if(placeDtls != null && placeDtls.size() > 0){
-					return true;
+					isValid= true;
 				}
 			}
 		}
-		return false;
+		//System.out.println("validatePlaceByUser : placeId : "+placeId +userId +isValid );
+		return isValid;
 	}
 
 	public static boolean validateVehiclesByUser(String vehicleId, String userId){

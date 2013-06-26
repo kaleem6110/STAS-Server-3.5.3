@@ -50,13 +50,14 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 		}else {
 			 datasource = PlanningUtils.getWHStockCacheMap();
 		}
+		//System.out.println(" WarehouseStockExceljob: 53 :datasource: "+datasource+ "params.get(key) "+params.get("key") );
 		String longitude = (String) params.get("longitude");
 		String latitude = (String) params.get("latitude");
 		String warehouseNameIndex = (String) params.get("warehousenameindex");
 		String filterBy = (String) params.get(PARAM_DASHBOARD_ID);
 		String byPassId = (String) params.get(PARAM_BYPASS_ID);
 		String userId = (String) params.get("userId");
-		
+		System.out.println("byPassId"+byPassId);
 		if(filterBy.startsWith(SUB_KEY_FILTER_BY)){
 			filterBy = filterBy.substring(9);
 		}
@@ -77,9 +78,9 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 		if (datasource != null && datasource.size() > 0) {
 			// reading the stock items files
 		
-			Object[] headerNamesObjects =  (Object[]) datasource.get("headers").toArray();
+			Object[] headerNamesObjects =  (Object[]) datasource.get("headers").toArray(); 
 					//.get(0);
-			String[] headerNames = new String[headerNamesObjects.length];
+			String[] headerNames = new String[headerNamesObjects.length]; 
 			
 			int count = headerNamesObjects == null ? 0 : headerNamesObjects.length;
 			// placing all the header properties to XML Attributes
@@ -98,14 +99,14 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 				
 				if(!StringUtils.isNull(filterBy) && !filterBy.equals(byPassId) && !filterBy.equalsIgnoreCase(entry.getKey()) ){
 					continue;
-				}
-				
+				}				
 				List<Object[]> stockItems = entry.getValue();
 				if (stockItems != null) {
-					Object[] stockdata = null;
+					Object[] stockdata = null;System.out.println("stockItems.size:"+stockItems.size());
 					for (int i = 0; i < stockItems.size(); i++) {
 					//for (int i = (stockItems.size()-1); i >=0; i--) {
 						stockdata = stockItems.get(i);
+						
 						/*
 						 * if(StringUtils.getInt(data[11]) <= 0){ continue; }
 						 */
@@ -115,10 +116,12 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 								continue;
 							}
 						}
-						
-						if(!(!StringUtils.isNull(entry.getKey()) && com.wfp.utils.LDAPUtils.validatePlaceByUser((String) stockdata[StringUtils.getInt(warehouseNameIndex)], userId)) ){					
+						//System.out.println("119"+com.wfp.utils.LDAPUtils.validatePlaceByUser((String) stockdata[StringUtils.getInt(warehouseNameIndex)], userId));
+						//if(!StringUtils.isNull(entry.getKey() )) continue;								
+						//Kaleem Commented below line.						
+						/*if(!(!StringUtils.isNull(entry.getKey()) && com.wfp.utils.LDAPUtils.validatePlaceByUser((String) stockdata[StringUtils.getInt(warehouseNameIndex)], userId)) ){					
 							continue;
-						}
+						}*/
 						
 						buff.append(XML_START_TAG);
 						buff.append(ELEMENT_ATTRIBUTE);
@@ -130,17 +133,18 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 							}*/
 							
 							if (stockdata[j] != null
-									&& stockdata[j] instanceof Date) {
+									&& stockdata[j] instanceof Date) { 
 								stockdata[j] = sdf.format(stockdata[j]);
 							}
 							
 							if(j == (StringUtils.getInt(longitude)) || j==(StringUtils.getInt(latitude))){
 								if(!(j == (StringUtils.getInt(longitude)))){
-									try{
+									try{ 
 										addAttribute(buff, (String)StringUtils.toXMLAttribute(PARAM_COORDINATES), StringEscapeUtils.escapeXml(stockdata[StringUtils.getInt(latitude)] == null ? 
 												CommonConstants.EMPTY_STRING : stockdata[StringUtils.getInt(longitude)]+CommonConstants.COMMA_STRING+stockdata[StringUtils.getInt(latitude)]+",0"));
-									}catch(Exception e){
 										
+									}catch(Exception e){
+										e.printStackTrace();
 									}
 								
 								}
@@ -163,7 +167,7 @@ public class WarehouseStockExcelRenderer extends BaseDashboardRenderer
 		}
 		buff.append(XML_END_TAG_START + ELEMENT_ATTRIBUTES + XML_END_TAG);
 
-		// System.out.println(buff);
+		// System.out.println("buff "+buff);
 		return buff;
 	}
 	

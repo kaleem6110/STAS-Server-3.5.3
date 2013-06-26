@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._9_x.LocationValue;
 
 import com.enterprisehorizons.magma.designtime.artifact.GeoArtifact;
 import com.enterprisehorizons.magma.designtime.artifact.IArtifact;

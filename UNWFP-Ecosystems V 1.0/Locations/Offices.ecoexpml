@@ -308,7 +308,7 @@ trackingTab.setName("Contact");
 
 Legend deviceLegend = new Legend();
 deviceLegend.setName("Address");
-attribMap.put("Street", dataMap.get("street") );
+attribMap.put("Address", dataMap.get("street")!=""?dataMap.get("street"):"-" );
 
 deviceLegend.setAttribMap( attribMap );
 contactLegendList.add( deviceLegend );
@@ -318,8 +318,8 @@ attribMap = new LinkedHashMap<String,String>();
 Legend trackingLegend = new Legend();
 trackingLegend.setName("Geographic Location");
 
-attribMap.put("Latitude", "-" );
-attribMap.put("Longitude", "-" );
+attribMap.put("Latitude", dataMap.get("coord-latitude")!=""?dataMap.get("coord-latitude"):"-" ); 
+attribMap.put("Longitude", dataMap.get("coord-longitude")!=""?dataMap.get("coord-longitude"):"-" );
 
 trackingLegend.setAttribMap( attribMap );
 contactLegendList.add( trackingLegend );
