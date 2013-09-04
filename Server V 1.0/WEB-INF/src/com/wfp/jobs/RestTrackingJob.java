@@ -115,7 +115,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	
 		
 		List<Element> list =  XMLUtils.evaluate(rootNode, expression);
-//		System.out.println("list"+list );
+	
 		
 		if(list != null){
 			System.out.println(" list size:"+list.size() );
@@ -127,13 +127,15 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		}
 		//Object lists = getDataInput();
 		for (int i=0;i <list.size(); i++){
-			Element element = list.get(i); 
+			Element element = list.get(i); int size = element.getContentSize();
+			
+				//System.out.println(" 1: "+ element.getContent(size-1).getValue() );
 		
-			if(LDAPUtils.validateVehicles(element.getContent(1).getValue(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
+			if(LDAPUtils.validateVehicles(element.getContent(size-1).getValue(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
 				addDevice(element, vehicleList, KEY_VEHICLE); 
-			}else if(LDAPUtils.validateStaff(element.getContent(1).getValue(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
+			}else if(LDAPUtils.validateStaff(element.getContent(size-1).getValue(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
 				addDevice(element, staffList,KEY_STAFF); 
-			}else if(LDAPUtils.validatePlanes(element.getContent(1).getValue(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
+			}else if(LDAPUtils.validatePlanes(element.getContent(size-1).getValue(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
 				addDevice(element, airplaneList, KEY_AIRPLANE); 
 			}/*else if(! (element.getContent(1).getValue().startsWith(DEVICE_VEHICLE) || element.getContent(1).getValue().startsWith(DEVICE_STAFF)
 					|| element.getContent(1).getValue().contains("nrap") || element.getContent(1).getValue().contains("nreg"))){
@@ -141,7 +143,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 			}*/
 			
 		}
-		
+		System.out.println(" staffList : "+staffList+" vehicleList "+ vehicleList + " airplaneList :"+airplaneList );
 		getRestServiceMapCache().put(KEY_STAFF, staffList);
 		getRestServiceMapCache().put(KEY_VEHICLE, vehicleList);
 		getRestServiceMapCache().put(KEY_AIRPLANE, airplaneList);
@@ -159,7 +161,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setLatitude(element.getAttribute(ATTR_LAT).getValue());
 		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
 		is.setTime(element.getContent(0).getValue());
-		is.setName(element.getContent(1).getValue());
+		is.setName(element.getContent(element.getContentSize()-1).getValue());
 		//Commented Localtime calculation
 		/*if(is.getLatitude()!=null &&is.getLongitude()!=null)
 		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),

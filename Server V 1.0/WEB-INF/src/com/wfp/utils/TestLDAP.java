@@ -29,82 +29,23 @@ public class TestLDAP implements IEPICConstants{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("########## START");
-		
-		String uid ="yyyy";
-		String pwd="xxx";
-		Hashtable env = new Hashtable();
-		env.put(Context.INITIAL_CONTEXT_FACTORY,
-				"com.sun.jndi.ldap.LdapCtxFactory");
-		env.put(Context.PROVIDER_URL,
-				"ldaps://ldap-dev.globalepic.lu:636/dc=emergency,dc=lu");
+		Hashtable<String, Object> env = new Hashtable<String, Object>();
 
+		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		env.put(Context.PROVIDER_URL, "ldaps://ldap-dev.globalepic.lu:636/uid=rgnaga,ou=users,ou=people,dc=emergency,dc=lu");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		env.put(Context.SECURITY_PROTOCOL, "ssl");
-		env.put(Context.SECURITY_PRINCIPAL,
-				"uid="+uid+",ou=users,ou=people,dc=emergency,dc=lu");
-		env.put(Context.SECURITY_CREDENTIALS, pwd );
-		env.put(Context.STATE_FACTORIES, "PersonStateFactory");
-		env.put(Context.OBJECT_FACTORIES, "PersonObjectFactory");
-		env.put("java.naming.ldap.attributes.binary", "jpegPhoto");
-		
-		String FILTER = "(&"+FILTER_LDAP_USERS+"((uid="+uid+")))";
-		// limit returned attributes to those we care about
-		String returnedAtts[] = {""+PROPERTY_IMAGE };
+		env.put(Context.SECURITY_PRINCIPAL, "uid=rgnaga,ou=users,ou=people,dc=emergency,dc=lu");
+		env.put(Context.SECURITY_CREDENTIALS, "123456");
 
-		DirContext ctx = null;
 		try {
-			ctx = new InitialDirContext(env);
+			DirContext ctx = new InitialDirContext(env);
+			System.out.println(ctx );
+
+			ctx.close();
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		 byte bt[] = null;
-		
-		NamingEnumeration results = null;
-		try {
-			SearchControls controls = new SearchControls();
-			controls.setReturningAttributes(returnedAtts);
-			controls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-		
-			String name = LDAP_FILTER_URL +"uid="+ uid + ","+LDAP_BASE;
-			results = ctx.search(name,FILTER, controls);
-
-			while (results.hasMore()) {
-				SearchResult searchResult = (SearchResult) results.next();
-				Attributes attributes = searchResult.getAttributes();
-				Attribute attr = attributes.get("jpegPhoto");
-				if( attr!=null ){
-				byte[] photo = (byte[])attr.get() ;
-				System.out.println(new String(photo));
-				}
-				else System.out.println(" No pic : "+attr );
-			
-				
-			}
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} finally {
-			if (results != null) {
-				try {
-					results.close();
-				} catch (Exception e) {
-					// Never mind this.
-				}
-			}
-			if (ctx != null) {
-				try {
-					ctx.close();
-				} catch (Exception e) {
-					// Never mind this.
-				}
-			}
-		}
-
 	}
-	
 	
 
 }

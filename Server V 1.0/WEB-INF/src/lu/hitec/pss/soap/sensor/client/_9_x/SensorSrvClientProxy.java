@@ -92,10 +92,22 @@ public class SensorSrvClientProxy implements lu.hitec.pss.soap.sensor.client._9_
     return sensorSrvClient_PortType.getServiceLimits();
   }
   
-  public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUnitsStatus(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException{
+  public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUnitsReports(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException{
     if (sensorSrvClient_PortType == null)
       _initSensorSrvClientProxy();
-    return sensorSrvClient_PortType.getAllUnitsStatus(token, missionName);
+    return sensorSrvClient_PortType.getAllUnitsReports(token, missionName);
+  }
+  
+  public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUsersReports(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException{
+    if (sensorSrvClient_PortType == null)
+      _initSensorSrvClientProxy();
+    return sensorSrvClient_PortType.getAllUsersReports(token, missionName);
+  }
+  
+  public lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[] getLocationRanges(java.lang.String token, lu.hitec.pss.soap.sensor.client._9_x.DeviceMission[] deviceList, lu.hitec.pss.soap.sensor.client._9_x.RangeLimit rangeLimit) throws java.rmi.RemoteException{
+    if (sensorSrvClient_PortType == null)
+      _initSensorSrvClientProxy();
+    return sensorSrvClient_PortType.getLocationRanges(token, deviceList, rangeLimit);
   }
   
   

@@ -185,14 +185,14 @@ public class SensorServiceUtils implements IEPICConstants{
 							List<String> missionList = LDAPUtils.getTrackMeMissionsList(devices[i].getId());	
 							if( missionList!=null&&missionList.size()>0 ){
 							lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );	
-							setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices);
+							setAllEmergencyHotspots(devices[i].getId(), lr, allStaffDevices, 1800001 , 1800000);
 							}
 					}
 					else if(LDAPUtils.validateVehicles(devices[i].getId(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
 						List<String> missionList = LDAPUtils.getVehiclesMissionsList(devices[i].getId());	
 						if( missionList!=null&&missionList.size()>0 ){
 						lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
-						setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices);
+						setAllEmergencyHotspots(devices[i].getId(), lr, allVehicleDevices , 3600001 , 3600000);
 						
 						}
 						//setAllEmergencyHotspots(devices[i].getId(), lr1, allVehicleDevices);
@@ -201,7 +201,7 @@ public class SensorServiceUtils implements IEPICConstants{
 						//System.out.println("####Line:130: SensorServiceUtils: Planes : missionList : "+missionList +" device : "+devices[i].getId() );
 						if( missionList!=null&&missionList.size()>0 ){
 						lr = stub.getLocationRange( LDAPUtils.getSSOToken(),devices[i].getId(), missionList.get(0),rl );
-						setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices);
+						setAllEmergencyHotspots(devices[i].getId(), lr, allAirplaneDevices, 3600001 , 3600000);
 						}					
 						
 					}
@@ -237,28 +237,30 @@ public class SensorServiceUtils implements IEPICConstants{
 	*/
 	
 
-	private static void setAllEmergencyHotspots(String deviceId, LocationRange lr, List<DeviceBean> allEmergencyDtls) 
+	private static void setAllEmergencyHotspots(String deviceId, LocationRange lr, List<DeviceBean> allEmergencyDtls, long diff, long allowed ) 
 	{
 		// TODO Auto-generated method stub		
 		LocationValue[] lv = lr != null ?lr.getVal():null;
-		String offset = "0";
+		//String offset = "0";
 		if(lv != null)
 		{	
 			for (int j=0; j < lv.length; j++)
 			{	
-					DeviceBean in = new DeviceBean();
-					long diff = 1800001;
+					DeviceBean in = new DeviceBean();					
 					LocationValue loc1 = lv[j];
 					
 					if(j == 0){						
 						in.setStartPoint(true); 
 						//offset=  CommonUtils.getOffsetByLatLong(String.valueOf(lv[j].getLat()), String.valueOf(lv[j].getLng()));
 					}
-					else if(j == (lv.length -1 ))in.setEndPoint(true);					
-					else  diff= lv[j+1].getTime().getTime().getTime()- loc1.getTime().getTime().getTime();			
+					else if(j == (lv.length -1 )){ in.setEndPoint(true); diff =allowed+1; }					
+					else  diff= lv[j+1].getTime().getTime().getTime()- loc1.getTime().getTime().getTime();	
+					
+					//if( diff < allowed ) continue;
 					
 					in.setLatitude(String.valueOf(lv[j].getLat()));
 					in.setLongitude(String.valueOf(lv[j].getLng()));
+					
 					if(j < lv.length-1 ){
 						in.setCoordStr(in.getLongitude()+CommonConstants.COMMA_STRING+in.getLatitude()+
 							CommonConstants.COMMA_STRING+"0 "+String.valueOf(lv[j+1].getLng())+","+String.valueOf(lv[j+1].getLat()+",0"));
@@ -274,10 +276,10 @@ public class SensorServiceUtils implements IEPICConstants{
 					//in.setDeviceLocalTime( CommonUtils.getLocalTime(offset, datetime, NEW_PORTAL_DATE_FORMAT ) );
 					in.setDeviceLocalTime(datetime);					
 					in.setLocationValue(loc1);
-					if( diff > 1800000 ){
+					
 					LDAPUtils.setLDAPUserDtls(in);
 					allEmergencyDtls.add(in);	
-					}
+					
 			
 			}
 		}

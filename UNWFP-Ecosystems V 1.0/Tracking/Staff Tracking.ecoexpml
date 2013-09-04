@@ -245,10 +245,10 @@
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[600]]></value>
+                    <value><![CDATA[120]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[true]]></value>
@@ -533,7 +533,8 @@ attribMap = new LinkedHashMap<String,String>();
 if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","")+"?chat >"+messaging.getSkype()+"</a>" ); 
 attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
 if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
-if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" ); 
+if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" );
+if( data.getName().length()==16 ) attribMap.put("Radio","<a href=mailto:dmr-comm@globalepic.lu?body=:"+data.getName().substring(12,16)+"  >"+data.getName()+"</a>" );
 //attribMap.put("bbPIN", "-" );
 
 imLegend.setAttribMap( attribMap );

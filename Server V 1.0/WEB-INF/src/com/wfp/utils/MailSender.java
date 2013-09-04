@@ -22,10 +22,11 @@ import javax.mail.internet.MimeBodyPart;
 public class MailSender implements IEPICConstants {
 	public static void main(String args[]) {
 		List<String> toAddressList = new ArrayList<String>();
-		toAddressList.add("dmr-1349@globalepic.lu");
+		toAddressList.add("kaleem6110@gmail.com");
 		// toAddressList.add("kaleem6110@gmail.com"); //
 		sendEmail(toAddressList, "",
 				":9080 testing from Java Mailprogram-sent multipart mimetype sent" );
+		sendHTMLEmail(toAddressList, "hi", "This is message body");
 	}
 
 	public static void sendEmail(List<String> toAddressList,

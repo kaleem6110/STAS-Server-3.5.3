@@ -578,9 +578,11 @@ public class RBRegionsUtils implements IEPICConstants {
 			userId = -1;
 		for (int i = 0; i < count; i++) {
 			rubberband = (Rubberband) userRubberbandList.get(i);
+			//System.out.println("userUniqueIdStr"+userUniqueIdStr+":rubberband.getUserUniqueId() "+rubberband.getUserUniqueId()+":"+rubberband.getListType());
 			if (domainId == rubberband.getDomainId() && languageId == rubberband.getLanguageId()
-					&& (userUniqueIdStr.equals(rubberband.getUserUniqueId()))
-					&& moduleId == rubberband.getModuleId()) {
+					//kmohammed commented: && (userUniqueIdStr.equals(rubberband.getUserUniqueId()))
+					&& moduleId == rubberband.getModuleId() && 
+					( rubberband.getListType().equalsIgnoreCase(MODULE_LIST_TYPE) || userUniqueIdStr.equals(rubberband.getUserUniqueId() ) ) ) {
 				rubberbandList.add(rubberband);
 			}
 			

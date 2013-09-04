@@ -16,8 +16,9 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[9];
+        _operations = new org.apache.axis.description.OperationDesc[11];
         _initOperationDesc1();
+        _initOperationDesc2();
     }
 
     private static void _initOperationDesc1(){
@@ -150,7 +151,7 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
         _operations[7] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getAllUnitsStatus");
+        oper.setName("getAllUnitsReports");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "token"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         param.setOmittable(true);
         oper.addParameter(param);
@@ -169,6 +170,50 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
                       true
                      ));
         _operations[8] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getAllUsersReports");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "token"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "missionName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "unitsReports"));
+        oper.setReturnClass(lu.hitec.pss.soap.sensor.client._9_x.UnitsReports.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "res"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "AuthenticationException"),
+                      "lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException",
+                      new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "AuthenticationException"), 
+                      true
+                     ));
+        _operations[9] = oper;
+
+    }
+
+    private static void _initOperationDesc2(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getLocationRanges");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "token"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "deviceList"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "deviceMission"), lu.hitec.pss.soap.sensor.client._9_x.DeviceMission[].class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rangeLimit"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "rangeLimit"), lu.hitec.pss.soap.sensor.client._9_x.RangeLimit.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "deviceLocationsForMission"));
+        oper.setReturnClass(lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "res"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[10] = oper;
 
     }
 
@@ -218,6 +263,20 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
             qName = new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "deviceComparisonEntry");
             cachedSerQNames.add(qName);
             cls = lu.hitec.pss.soap.sensor.client._9_x.DeviceComparisonEntry.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "deviceLocationsForMission");
+            cachedSerQNames.add(qName);
+            cls = lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "deviceMission");
+            cachedSerQNames.add(qName);
+            cls = lu.hitec.pss.soap.sensor.client._9_x.DeviceMission.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -700,7 +759,7 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUnitsStatus(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException {
+    public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUnitsReports(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -712,7 +771,7 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "getAllUnitsStatus"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "getAllUnitsReports"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -738,6 +797,82 @@ public class SensorSrvClientPortBindingStub extends org.apache.axis.client.Stub 
               throw (lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException) axisFaultException.detail;
          }
    }
+  throw axisFaultException;
+}
+    }
+
+    public lu.hitec.pss.soap.sensor.client._9_x.UnitsReports getAllUsersReports(java.lang.String token, java.lang.String missionName) throws java.rmi.RemoteException, lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[9]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "getAllUsersReports"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {token, missionName});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (lu.hitec.pss.soap.sensor.client._9_x.UnitsReports) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (lu.hitec.pss.soap.sensor.client._9_x.UnitsReports) org.apache.axis.utils.JavaUtils.convert(_resp, lu.hitec.pss.soap.sensor.client._9_x.UnitsReports.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException) {
+              throw (lu.hitec.pss.soap.sensor.client._9_x.AuthenticationException) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[] getLocationRanges(java.lang.String token, lu.hitec.pss.soap.sensor.client._9_x.DeviceMission[] deviceList, lu.hitec.pss.soap.sensor.client._9_x.RangeLimit rangeLimit) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[10]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/9.x", "getLocationRanges"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {token, deviceList, rangeLimit});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[]) org.apache.axis.utils.JavaUtils.convert(_resp, lu.hitec.pss.soap.sensor.client._9_x.DeviceLocationsForMission[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
   throw axisFaultException;
 }
     }

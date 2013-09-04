@@ -285,13 +285,13 @@ Map<String, String> attribMap = new LinkedHashMap<String,String>();
 
 //Creating a Tab
 Tab profileTab = new Tab();
-profileTab.setName("Airplane");
+profileTab.setName("Office");
 
 //Creating a Legend
 Legend officeLegend = new Legend();
-officeLegend.setName("office");
+officeLegend.setName("Office Details");
 attribMap.put( "Name",dataMap.get("cn") );
-attribMap.put( "Type","office" );
+attribMap.put( "Type","Office" );
 attribMap.put( "Description",(String)dataMap.get("description") );
 
 officeLegend.setAttribMap( attribMap );
@@ -329,8 +329,9 @@ trackingTab.setLegendList( contactLegendList );
 
 //adding tab to tabList
 tabList.add( trackingTab );
-
-  return CommonUtils.parseJsonString( tabList );
+String s = CommonUtils.parseJsonString( tabList );
+System.out.println(s );
+  return s;
  }
 String getName() {
 	return $artefact.getAttributeValueAsString("Name");

@@ -114,7 +114,11 @@ public class AlertServiceUtils implements IEPICConstants {
 		if(deviceId!=null&& deviceId.startsWith("trackMe-")&& deviceId.length()==16 )
 		{
 			System.out.println("Sending email to radio........");
-			String toEmail = "dmr-"+deviceId.substring(8, 12)+"@globalepic.lu";
+			//For dev,qa,prd
+			//String toEmail = "dmr-"+deviceId.substring(8, 12)+"@globalepic.lu";
+			
+			//for TRN
+			String toEmail = "dmr-comm@globalepic.lu";
 			String messageBodyPrefix= ":"+deviceId.substring(12,16)+" "; //subject prefixed to message.
 			messageBody =  messageBodyPrefix+ subject + messageBody;
 			List<String> toEmailAddress = new ArrayList<String>();

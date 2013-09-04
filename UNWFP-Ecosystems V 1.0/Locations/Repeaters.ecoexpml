@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration name="Guest Houses">
+<configuration name="Repeaters">
     <section name="artefact">
         <section name="name">
-            <value><![CDATA[Guest Houses]]></value>
+            <value><![CDATA[Repeaters]]></value>
         </section>
         <section name="artifactname">
             <section name="script">
@@ -18,7 +18,7 @@
         <section name="attributes">
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[name]]></value>
+                    <value><![CDATA[Name]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
@@ -32,24 +32,6 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
-            </section>
-            <section name="row">
-                <section name="column">
-                    <value><![CDATA[description]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[java.lang.String]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[Description]]></value>
-                </section>
-                <section name="column">
-                    <value><![CDATA[false]]></value>
-                </section>
-                <section name="column"/>
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
@@ -86,7 +68,27 @@
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Description]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
                 <section name="column"/>
+                <section name="column">
+                    <value><![CDATA[]]></value>
+                </section>
             </section>
         </section>
         <section name="cache">
@@ -120,7 +122,7 @@
         <section name="experiencedef">
             <section name="folder">
                 <section name="name">
-                    <value><![CDATA[Guest Houses]]></value>
+                    <value><![CDATA[Repeaters]]></value>
                 </section>
                 <section name="type">
                     <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
@@ -132,10 +134,7 @@
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="refreshtype">
-                    <value><![CDATA[never]]></value>
-                </section>
-                <section name="periodicrefreshrate">
-                    <value><![CDATA[20]]></value>
+                    <value><![CDATA[Never]]></value>
                 </section>
                 <section name="autozoom">
                     <value><![CDATA[true]]></value>
@@ -157,7 +156,7 @@
                             <value><![CDATA[ecoexpmodel]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Guest Houses.ecoexpml]]></value>
+                            <value><![CDATA[Repeaters.ecoexpml]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -165,7 +164,7 @@
                             <value><![CDATA[artefactname]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[Guest Houses]]></value>
+                            <value><![CDATA[Repeaters]]></value>
                         </section>
                     </section>
                 </section>
@@ -241,13 +240,13 @@ String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.enterprisehorizons.magma.datamashup.CacheDataDriver $Cache9driver;
 private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdriver;
-String description = "Guest houses are cache using WarehouseCache job from LDAP";
+String description = "Repeaters are cache using WarehouseCache job from LDAP";
 String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
 
 String getDatasource(){
 	return datasource;
-} 
+}
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
@@ -265,40 +264,40 @@ void bindData() {
 	if (dataMap != null)
  	{
 		$artefact.setCoordinates(dataMap.get("coord-latitude"), dataMap.get("coord-longitude"));		
-		$artefact.addAttribute("name", dataMap.get("cn"));
+		$artefact.addAttribute("Name", dataMap.get("cn"));
 		$artefact.addAttribute("address", dataMap.get("street"));	
 		$artefact.addAttribute("type", dataMap.get("type"));
 		//$artefact.addAttribute("compasId", dataMap.get("compasId"));
 		$artefact.addAttribute("description", dataMap.get("description"));
 		//$artefact.addAttribute("skype", dataMap.get("skype"));
 		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
-		$artefact.addAttribute("json", buildPopupText(dataMap) );		
+			$artefact.addAttribute("json", buildPopupText(dataMap) );	
 	}
-		 
+		
 }
  public String buildPopupText(Map<String,String> dataMap)
 {
 List<Tab> tabList = new ArrayList<Tab>();
-List<Legend> guestHouseLegendList = new ArrayList<Legend>();
+List<Legend> officeLegendList = new ArrayList<Legend>();
 List<Legend> contactLegendList = new ArrayList<Legend>();
 
 Map<String, String> attribMap = new LinkedHashMap<String,String>();
 
 //Creating a Tab
 Tab profileTab = new Tab();
-profileTab.setName("Guest House");
+profileTab.setName("Repeater");
 
 //Creating a Legend
-Legend guestHouseLegend = new Legend();
-guestHouseLegend.setName("Guest House");
-attribMap.put( "Name",dataMap.get("cn") ); 
-attribMap.put( "Type","Guest House" );
-attribMap.put( "Description",dataMap.get("description") );
+Legend officeLegend = new Legend();
+officeLegend.setName("Office Details");
+attribMap.put( "Name",dataMap.get("cn") );
+attribMap.put( "Type","Repeater" );
+attribMap.put( "Description",(String)dataMap.get("description") );
 
-guestHouseLegend.setAttribMap( attribMap );
-guestHouseLegendList.add( guestHouseLegend );
+officeLegend.setAttribMap( attribMap );
+officeLegendList.add( officeLegend );
  
-profileTab.setLegendList( guestHouseLegendList );
+profileTab.setLegendList( officeLegendList );
 tabList.add( profileTab );
 
 attribMap = new LinkedHashMap<String,String>();
@@ -308,10 +307,8 @@ Tab trackingTab = new Tab();
 trackingTab.setName("Contact");
 
 Legend deviceLegend = new Legend();
-deviceLegend.setName("Contact Address");
+deviceLegend.setName("Address");
 attribMap.put("Address", dataMap.get("street")!=""?dataMap.get("street"):"-" );
-attribMap.put("Email", "-" );
-attribMap.put("Phone", "-" );
 
 deviceLegend.setAttribMap( attribMap );
 contactLegendList.add( deviceLegend );
@@ -332,11 +329,12 @@ trackingTab.setLegendList( contactLegendList );
 
 //adding tab to tabList
 tabList.add( trackingTab );
-
-  return CommonUtils.parseJsonString( tabList );
+String s = CommonUtils.parseJsonString( tabList );
+System.out.println(s );
+  return s;
  }
 String getName() {
-	return $artefact.getAttributeValueAsString("name");
+	return $artefact.getAttributeValueAsString("Name");
 }
 
 boolean isValidLocation(){
@@ -364,11 +362,11 @@ String getType() {
 }
 
 boolean authorizePlaces(){
-	if(getType().indexOf("guesthouse") >= 0){
+	if(getType().indexOf("repeater") >= 0){
 		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
+		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("Name"), userbean.getUserUniqueId());
 	}
-	
+	 
 	return false;
 }
 
@@ -390,7 +388,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources\icons\epic\Guest_Houses.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Incidents.png]]></value>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -417,7 +415,7 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources\icons\epic\Guest_Houses.png]]></value>
+                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>
@@ -513,7 +511,7 @@ String getAuthorUrl(){
                 <section name="searchfields">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[name]]></value>
+                            <value><![CDATA[Name]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[Text]]></value>
@@ -649,7 +647,7 @@ String getAuthorUrl(){
                 <section name="dashboardattributes">
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[name]]></value>
+                            <value><![CDATA[Name]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
@@ -873,6 +871,17 @@ String getAuthorUrl(){
                             </section>
                         </section>
                     </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Smart Art10]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.SmartArtFeature]]></value>
+                </section>
+                <section name="legposunits">
+                    <value><![CDATA[fraction]]></value>
                 </section>
             </section>
         </section>
