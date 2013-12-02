@@ -245,7 +245,7 @@
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[120]]></value>
+                    <value><![CDATA[20]]></value>
                 </section>
                 <section name="autozoom">
                     <value><![CDATA[false]]></value>
@@ -646,11 +646,12 @@ String getStyle(){
 }
 
 
+
 String getURL(){
 	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
 	String serverRootUrl = ServerUtils.getServerBaseUrl();
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	String url = "swf/RBRegionsMsgMapping.swf?domainId="+userbean.getDomainId()+"&languageId="+userbean.getLanguageId()+"&userId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId())+"&userUniqueId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId())+"&moduleId="+moduleId+"&regionPrefix="+getLayerName()+"_DZ"+"&serverUrl="+com.enterprisehorizons.util.URLUtils.encode(serverRootUrl);
+	String url = "swf/GeofenceDashboard.swf?domainId="+userbean.getDomainId()+"&languageId="+userbean.getLanguageId()+"&userId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId())+"&userUniqueId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId())+"&moduleId="+moduleId+"&regionPrefix="+getLayerName()+"_DZ"+"&serverUrl="+com.enterprisehorizons.util.URLUtils.encode(serverRootUrl);
 
 	return url;
 }
@@ -715,6 +716,9 @@ while (m.find()) {
 return str;
 }
 
+boolean hasGeofenceAccess(){
+return  false ;/*!(new com.wfp.utils.RBRegionsUtils().hasGeofenceProfile(getUserUniqueId() ) );*/
+}
 boolean authorizeDevice(){
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("deviceId"), userbean.getUserUniqueId());
@@ -1897,7 +1901,12 @@ String getAuthorUrl(){
                     <value><![CDATA[images/dashboards/icon_customdashboard.png]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
+                    <section name="script">
+                        <value><![CDATA[hasGeofenceAccess()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="loadbydefault">
                     <value><![CDATA[false]]></value>
@@ -1910,7 +1919,12 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="ishidedashoardbutton">
-                    <value><![CDATA[false]]></value>
+                    <section name="script">
+                        <value><![CDATA[hasGeofenceAccess()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>

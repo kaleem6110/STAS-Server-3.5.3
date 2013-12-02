@@ -3,7 +3,7 @@ package com.wfp.jobs;
 import java.util.Date;
 import java.util.List;
 
-import lu.hitec.pss.soap.event.provider._10_x.NotificationStatusSummary;
+import lu.hitec.pss.soap.event.provider._14_x.NotificationStatusSummary;
 
 import com.enterprisehorizons.util.Logger;
 import com.enterprisehorizons.util.StringUtils;

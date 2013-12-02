@@ -84,8 +84,9 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		System.out.println("####### REST START - TimeStamp: "+ CommonUtils.getUTCdatetimeAsString());
 		
-		if( LDAPUtils.getOrgMap()==null ) LDAPUtils.getAllOrganizations();		
+		//if( LDAPUtils.getOrgMap()==null ) LDAPUtils.getAllOrganizations();		
 	
 		Parameter[] params = parameters.getParameter();
 
@@ -95,69 +96,145 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		
 		getRestTrackingDtls();
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
+		
+		System.out.println("####### REST END - TimeStamp: "+ lastRefreshTime);
 		return true;
 	}
 
-	private void getRestTrackingDtls(){
+	private void getRestTrackingDtls()
+	{
 		List<DeviceBean> staffList =null;
 		List<DeviceBean> vehicleList =null;
 		List<DeviceBean> airplaneList =null;
 		Element rootNode = null;
 		String expression = null;
-		
+		int count=0;
 		String xmlString = ValidateCertificateCall.callSecureURI();
+		List<String> ldapDeviceList = LDAPUtils.getLdapDeviceList();
 		
 		if(StringUtils.isNull(xmlString)){
 			return ;
 		}
 		rootNode = XMLUtils.getRootNode(xmlString,true);
 		expression = PARAM_XPR;
-	
 		
-		List<Element> list =  XMLUtils.evaluate(rootNode, expression);
-	
-		
-		if(list != null){
+		List<Element> list =  XMLUtils.evaluate(rootNode, expression);		
+		if(list != null)
+		{
 			System.out.println(" list size:"+list.size() );
 			staffList = new ArrayList<DeviceBean>();
 			vehicleList =  new ArrayList<DeviceBean>();
 			airplaneList = new ArrayList<DeviceBean>();
-		}else {
-			return;
 		}
+		else  return;
 		//Object lists = getDataInput();
-		for (int i=0;i <list.size(); i++){
+		for (int i=0;i <list.size(); i++)
+		{
 			Element element = list.get(i); int size = element.getContentSize();
+			//System.out.println(" 1: "+ element.getContent(size-1).getValue() );
+			String deviceId = element.getContent(size-1).getValue();
 			
-				//System.out.println(" 1: "+ element.getContent(size-1).getValue() );
+			
+			if( deviceId!=null && ( ldapDeviceList==null || (ldapDeviceList!=null&& ldapDeviceList.contains(deviceId ) ) ) )
+			{
+				
+					count++;
+				
+					if(LDAPUtils.validateVehicles(deviceId,
+							paramsMap.get("vehicleresourcetype") != null?
+									paramsMap.get("vehicleresourcetype").split(","):null))
+					{
+						addDevice(element, vehicleList, KEY_VEHICLE); 
+					}else if(LDAPUtils.validateStaff(deviceId,	
+							paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
+						addDevice(element, staffList,KEY_STAFF); 
+					}else if(LDAPUtils.validatePlanes(deviceId, paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
+						addDevice(element, airplaneList, KEY_AIRPLANE); 
+					}
+				
+			}
+			
 		
-			if(LDAPUtils.validateVehicles(element.getContent(size-1).getValue(), paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){
+			/*if(LDAPUtils.validateVehicles(element.getContent(size-1).getValue(),
+					paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null))
+			{
 				addDevice(element, vehicleList, KEY_VEHICLE); 
-			}else if(LDAPUtils.validateStaff(element.getContent(size-1).getValue(), paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
+			}else if(LDAPUtils.validateStaff(element.getContent(size-1).getValue(),
+					paramsMap.get("staffresourcetype") != null?paramsMap.get("staffresourcetype").split(","):null)){
 				addDevice(element, staffList,KEY_STAFF); 
 			}else if(LDAPUtils.validatePlanes(element.getContent(size-1).getValue(), paramsMap.get("airplaneresourcetype") != null?paramsMap.get("airplaneresourcetype").split(","):null)){
 				addDevice(element, airplaneList, KEY_AIRPLANE); 
-			}/*else if(! (element.getContent(1).getValue().startsWith(DEVICE_VEHICLE) || element.getContent(1).getValue().startsWith(DEVICE_STAFF)
+			}*//*else if(! (element.getContent(1).getValue().startsWith(DEVICE_VEHICLE) || element.getContent(1).getValue().startsWith(DEVICE_STAFF)
 					|| element.getContent(1).getValue().contains("nrap") || element.getContent(1).getValue().contains("nreg"))){
 				addDevice(element, airplaneList);
 			}*/
 			
 		}
-		System.out.println(" staffList : "+staffList+" vehicleList "+ vehicleList + " airplaneList :"+airplaneList );
+		String getAllDevices = paramsMap.get("getAllVehicleDevices") ;
+		System.out.println("***  ********** paramsMap.get(getAllVehicleDevices) ::"+paramsMap.get("getAllVehicleDevices") );
+		System.out.println("ldapDeviceList : "+ldapDeviceList.size()+": count :"+count );
+		getRestServiceMapCache().clear();
+		
+		if(getAllDevices!=null&&getAllDevices.equals("false"))getRestServiceMapCache().put(KEY_VEHICLE,  removeSecondaryDevices( vehicleList ) );		
+		else getRestServiceMapCache().put(KEY_VEHICLE, vehicleList);
+		 
 		getRestServiceMapCache().put(KEY_STAFF, staffList);
-		getRestServiceMapCache().put(KEY_VEHICLE, vehicleList);
 		getRestServiceMapCache().put(KEY_AIRPLANE, airplaneList);
 		
 		//Cache.store(KEY_STAFF, staffList);
 		
 	}
-	
+	public List<DeviceBean> removeSecondaryDevices(List<DeviceBean> vehicleList)
+	{
+		List<DeviceBean> list = null;
+		if( vehicleList!=null&&vehicleList.size()>0)
+		{
+			 list = new ArrayList<DeviceBean>();
+			for( int i=0;i<vehicleList.size()-1;i++ )
+			{ 	int ok=0;
+				for(int j=i+1;j<vehicleList.size();j++ )
+				{
+					if(vehicleList.get(i).getCn().equals(vehicleList.get(j).getCn() ) )
+					{						
+						ok=1;
+						System.out.println(" ** Found : "+vehicleList.get(i).getCn() +" has multiple devices ****");
+						System.out.println(vehicleList.get(i).getTime() + ":****: " +vehicleList.get(j).getTime() );
+						
+						if( CommonUtils.parseDate(vehicleList.get(i).getTime(), EPIC_DATE_FORMAT).after(CommonUtils.parseDate(vehicleList.get(j).getTime() ) ) )
+							list.add(vehicleList.get(i));
+						else  list.add(vehicleList.get(j));
+						break;
+						
+					}
+					
+				}
+				if(ok==0)list.add(vehicleList.get(i));
+			}
+		} System.out.println(" removeSecondaryDevices : list : size : "+list.size());
+		return list;
+	}
 	@SuppressWarnings("unchecked")
 	private void addDevice( Element element, List indigoList, String type ) {
 		/*if(!SensorServiceUtils.isValidDevice(dataSource.getLayerName(), element.getContent(1).getValue())){
 			return;
 		}*/
-		DeviceBean is = new DeviceBean();
+		if(type.equals(KEY_VEHICLE))
+		{
+			if(indigoList!=null&&indigoList.size()>0)
+			{
+				for( Object o : indigoList )
+				{
+					DeviceBean d = (DeviceBean)o;
+					if( d.getName().equals(element.getContent(0).getValue()) )
+						{
+									System.out.println(" found :"+ d.getName() );
+						}
+					
+					
+				}
+			}
+		}
+		DeviceBean is = new DeviceBean(); 
 		is.setLatitude(element.getAttribute(ATTR_LAT).getValue());
 		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
 		is.setTime(element.getContent(0).getValue());
@@ -167,8 +244,9 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		is.setDeviceLocalTime( CommonUtils.getTimeZoneByLatLong(is.getLatitude(),is.getLongitude(),
 				is.getTime(),EPIC_DATE_FORMAT) );*/
 		is.setDeviceLocalTime( is.getTime() );
-		indigoList.add(is);
+		
 		LDAPUtils.setLDAPUserDtls(is);
+		if(is.getCn()!=null&&!is.getCn().isEmpty()) indigoList.add(is);
 		//System.out.println(" Name :"+ is.getName() );
 	}
 	

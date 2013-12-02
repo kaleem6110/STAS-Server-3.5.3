@@ -100,7 +100,7 @@ public class AlertServiceUtils implements IEPICConstants {
 		messageBody+="----------------------------------------<br/>";
 		messageBody+="Device : "+deviceId+"<br/>";
 		messageBody+="Source : "+STAS_Engine+"<br/>";
-		messageBody+="Severity : "+lu.hitec.pss.soap.event.provider._10_x.Severity._CRITICAL+"<br/>";
+		messageBody+="Severity : "+lu.hitec.pss.soap.event.provider._14_x.Severity._CRITICAL+"<br/>";
 		messageBody+="Timestamp : "+ CommonUtils.formatDate(Calendar.getInstance().getTime() )+"<br/>";
 		messageBody+="Event ref : "+eventRef+"<br/>";		
 		messageBody+="----------------------------------------<br/>";	

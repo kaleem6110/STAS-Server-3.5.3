@@ -369,6 +369,7 @@ static{
 void bindData() {
 	try {
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean )$trackingdatamodel;
+	 	System.out.println(" iconurl");
 	 	if (data != null) 	{
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			//changed for getting type as Date instead of String for time
@@ -480,6 +481,8 @@ String getDeviceCaption(){
 }
 
 String getIconUrl(){
+
+   //System.out.println( " iconurl :"+ $artefact.getAttributeValueAsString("time") );
 	return "serverresources/icons/epic/Vehicle_Tracking.png";	
 }
 

@@ -278,7 +278,7 @@ void bindData() {
  public String buildPopupText(Map<String,String> dataMap)
 {
 List<Tab> tabList = new ArrayList<Tab>();
-List<Legend> officeLegendList = new ArrayList<Legend>();
+List<Legend> repeaterLegendList = new ArrayList<Legend>();
 List<Legend> contactLegendList = new ArrayList<Legend>();
 
 Map<String, String> attribMap = new LinkedHashMap<String,String>();
@@ -288,16 +288,16 @@ Tab profileTab = new Tab();
 profileTab.setName("Repeater");
 
 //Creating a Legend
-Legend officeLegend = new Legend();
-officeLegend.setName("Office Details");
+Legend repeaterLegend = new Legend();
+repeaterLegend.setName("Repeater");
 attribMap.put( "Name",dataMap.get("cn") );
 attribMap.put( "Type","Repeater" );
 attribMap.put( "Description",(String)dataMap.get("description") );
 
-officeLegend.setAttribMap( attribMap );
-officeLegendList.add( officeLegend );
+repeaterLegend.setAttribMap( attribMap );
+repeaterLegendList.add( repeaterLegend );
  
-profileTab.setLegendList( officeLegendList );
+profileTab.setLegendList( repeaterLegendList );
 tabList.add( profileTab );
 
 attribMap = new LinkedHashMap<String,String>();
@@ -330,7 +330,7 @@ trackingTab.setLegendList( contactLegendList );
 //adding tab to tabList
 tabList.add( trackingTab );
 String s = CommonUtils.parseJsonString( tabList );
-System.out.println(s );
+//System.out.println(s );
   return s;
  }
 String getName() {
@@ -388,7 +388,7 @@ String getAuthorUrl(){
                     <value><![CDATA[false]]></value>
                 </section>
                 <section name="iconurl">
-                    <value><![CDATA[serverresources/icons/epic/Incidents.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Repeater.png]]></value>
                 </section>
                 <section name="iconcolorshader">
                     <value><![CDATA[false]]></value>
@@ -415,7 +415,7 @@ String getAuthorUrl(){
                     <value><![CDATA[true]]></value>
                 </section>
                 <section name="highlighticonurl">
-                    <value><![CDATA[serverresources\icons\epic\Offices.png]]></value>
+                    <value><![CDATA[serverresources/icons/epic/Repeater.png]]></value>
                 </section>
                 <section name="highlighticonscale">
                     <value><![CDATA[1.0]]></value>
@@ -871,17 +871,6 @@ String getAuthorUrl(){
                             </section>
                         </section>
                     </section>
-                </section>
-            </section>
-            <section name="folder">
-                <section name="name">
-                    <value><![CDATA[Smart Art10]]></value>
-                </section>
-                <section name="type">
-                    <value><![CDATA[com.enterprisehorizons.magma.models.SmartArtFeature]]></value>
-                </section>
-                <section name="legposunits">
-                    <value><![CDATA[fraction]]></value>
                 </section>
             </section>
         </section>

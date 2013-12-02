@@ -62,6 +62,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		System.out.println(" #### START SoapTrackingJob #######" +CommonUtils.getUTCdatetimeAsString());
 		Parameter[] params = parameters.getParameter();
 		
 		if(params != null){
@@ -73,6 +74,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 		
 		
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
+		System.out.println(" #### END SoapTrackingJob #######" +lastRefreshTime );
 		
 		return true;
 	}

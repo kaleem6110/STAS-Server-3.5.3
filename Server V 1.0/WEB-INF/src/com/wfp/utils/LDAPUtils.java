@@ -39,6 +39,7 @@ public class LDAPUtils implements IEPICConstants {
 	public static String LDAP_PROPERTIES_FILE = IPropertyFileConstants.PROPERTY_DIRECTORY + "ldap.properties";;
 	private static String tokenId;
 	private static Map<String, String> orgMap;
+	public static List<String> ldapDeviceList;
 	/**
 	 * @return the orgMap
 	 */
@@ -130,7 +131,8 @@ public class LDAPUtils implements IEPICConstants {
 		if( getLDAPContext()!= null )
 		{
 			if(getTokenId()==null||getTokenId()==""){
-				setTokenId( java.util.UUID.randomUUID().toString() ); 
+				setTokenId( EventServiceUtils.getLDAPToken() );
+				//setTokenId( java.util.UUID.randomUUID().toString() ); 
 				//System.out.println("SETTING: LDAPUtils.getSSOToken :getTokenId: "+getTokenId() );
 			}
 		}
@@ -353,7 +355,9 @@ public class LDAPUtils implements IEPICConstants {
 	 */
 	public static List getDevices(){
 		Logger.info("Retrieving all devices from LDAP", LDAPUtils.class);
-		return parseDataAsList(getSearchResults(FILTER_MW_DEVICES, DEVICES_SEARCHBASE));
+		List<String> ldapDeviceList = parseDataAsList(getSearchResults(FILTER_MW_DEVICES, DEVICES_SEARCHBASE));
+		setLdapDeviceList(ldapDeviceList);
+		return ldapDeviceList;
 	}
 
 	/**
@@ -1362,6 +1366,15 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		}
 		return base64String;
+	}
+
+	public static List<String> getLdapDeviceList() {
+		if(ldapDeviceList==null ) return getDevices();
+		else return ldapDeviceList;
+	}
+
+	public static void setLdapDeviceList(List<String> ldapDeviceList) {
+		LDAPUtils.ldapDeviceList = ldapDeviceList;
 	}
 	
 	/*public static LdapContext getLDAPContextt() throws NamingException

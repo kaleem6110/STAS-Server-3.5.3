@@ -309,6 +309,7 @@
         <section name="scriptor">
             <section name="body">
                 <value><![CDATA[import com.wfp.utils.*;
+
 private com.wfp.custom.datasource.RBRegionsDataDriver $RBRegionsdriver;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 String description = "Geo-fences are pulled from STAS database.<br> Database: Postgres <br> Table Name: sti_c_user_preferences";

@@ -993,7 +993,38 @@ public class RBRegionsUtils implements IEPICConstants {
 		}
 		return null;
 	}
-	
+	public boolean hasGeofenceProfile(String userId)
+	{ System.out.println("### START hasGeofenceProfile :userId: "+userId );
+		boolean hasGeofenceProfile= false;
+		if(userId!=null&&!userId.isEmpty()){
+			List<String> profileList = LDAPUtils.getAllProfiles4rUser(userId);
+			if(profileList!=null&&profileList.size()>0)
+			{	for(String profile:profileList)
+				{
+					if(profile.equalsIgnoreCase("STI_Geo-fence")) 
+					 { hasGeofenceProfile =true; break; }
+				}
+			}
+		}	
+		System.out.println(" ### END hasGeofenceProfile :hasGeofenceProfile: "+hasGeofenceProfile );
+		return hasGeofenceProfile;
+	}
+	public boolean hasACLProfile(String userId,String aclProfile)
+	{ System.out.println("### START hasAclProfile :userId: "+userId );
+		boolean hasAclProfile= false;
+		if(userId!=null&&!userId.isEmpty()){
+			List<String> profileList = LDAPUtils.getAllProfiles4rUser(userId);
+			if(profileList!=null&&profileList.size()>0)
+			{	for(String profile:profileList)
+				{
+					if(profile.equalsIgnoreCase(aclProfile)) 
+					 { hasAclProfile =true; break; }
+				}
+			}
+		}	
+		System.out.println(" ### END hasAclProfile :hasAclProfile: "+hasAclProfile );
+		return hasAclProfile;
+	}
 }
 
 

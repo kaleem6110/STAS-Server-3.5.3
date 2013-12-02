@@ -160,9 +160,15 @@ public interface IEPICConstants {
 	
 	public static final String CACHE_WAREHOUSES_KEY = "$warehouses$";
 	
+	public static final String DEV_TOKEN="adulovic-20131120-dfc721c15e404216b75f2ccadeb3f6c1";
+	public static final String QA_TOKEN="adulovic-20131107-5984aab55c9d4176a4b24ba0d4635d0f";
+	public static final String TRN_TOKEN="adulovic-20131114-2478b95c6e23404685af7edfde315724";
+	
 	//kmohammed
 	public static final String LDAP_FILTER_URL =  "ldaps://ldap-training.globalepic.lu:636/";
+	public static final String TOKEN=TRN_TOKEN;	
 	public static final String STAS_Engine ="STAS_Engine-trn";
+	
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
 	public static final String EARTH_TOOLS_PARAM_XPR = "/timezone/offset";
@@ -176,6 +182,8 @@ public interface IEPICConstants {
 	public static final String MAIL_CONTENT_TYPE ="multipart/alternative";
 	
 	public static final String MODULE_LIST_TYPE ="moduleList";
+	
+	
 	
 	
 	
