@@ -27,7 +27,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 	
 	private static WarehouseStockExcelJob instance = null;
 	private static String lastRefreshTime = null;
-	
+	private static Map<String, List<String>> placeMissionsMap=null;
 	public WarehouseStockExcelJob () {
 			
 	}
@@ -56,6 +56,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 	
 	
 	public boolean executeCustomTask(Parameters parameters) {
+		System.out.println(" ## START WarehouseStockExcelJob ## "+CommonUtils.getUTCdatetimeAsString() );
 		// TODO Auto-generated method stub
 		Parameter[] params = parameters.getParameter();
 		String filepath = null;
@@ -89,7 +90,12 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 			waybillFile = updateFilePath(waybillFile,datecorrection);
 		}
 		
-		Cache.store(CACHE_WAREHOUSES_KEY, LDAPUtils.getAllPlaces());
+		Map<String, Map<String,String>> placesMap = LDAPUtils.getAllPlaces();
+		
+		//setting missions to Places
+		com.wfp.utils.LDAPWSUtils.setMissionToPlaces( placesMap  );
+		
+		Cache.store(CACHE_WAREHOUSES_KEY, placesMap  );
 		
 		if(Cache.retrieve(CACHE_WAREHOUSES_KEY) != null){
 			Map map = (Map) Cache.retrieve(CACHE_WAREHOUSES_KEY);
@@ -102,6 +108,7 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 		PlanningUtils.getWaybillDtls(waybillFile);
 		System.out.println("waybills over");
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
+		System.out.println(" ## END WarehouseStockExcelJob ## "+lastRefreshTime );
 		return true;
 	}
 	
@@ -164,6 +171,31 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 	
 	public static String getLastRefreshTime() {
 		return lastRefreshTime;
+	}
+
+
+	/**
+	 * @return the placeMissionsMap
+	 */
+	public static Map<String, List<String>> getPlaceMissionsMap() {
+		return placeMissionsMap;
+	}
+
+
+	/**
+	 * @param placeMissionsMap the placeMissionsMap to set
+	 */
+	public static void setPlaceMissionsMap(
+			Map<String, List<String>> placeMissionsMap) {
+		WarehouseStockExcelJob.placeMissionsMap = placeMissionsMap;
+	}
+
+
+	/**
+	 * @param lastRefreshTime the lastRefreshTime to set
+	 */
+	public static void setLastRefreshTime(String lastRefreshTime) {
+		WarehouseStockExcelJob.lastRefreshTime = lastRefreshTime;
 	}
 	
 }

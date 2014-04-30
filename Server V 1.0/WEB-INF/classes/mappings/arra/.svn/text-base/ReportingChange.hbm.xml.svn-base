@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="ReportingChange" table="STI_R_ARRA_RE_CHANGES">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+       
+        <property name="activityId" type="string" column="ACTIVITY_CODE" />
+        <property name="changeInApproach" type="string" column="CHANGE_IN_APPROACH" length="2000"/>
+        <property name="previousApproach" type="string" column="PREVIOUS_APPROACH" length="2000"/>  
+        <property name="reasonForChange" type="string" column="REASON_FOR_CHANGE" length="2000"/>
+        <property name="status" type="boolean" column="APPROVED"/>       
+         <property name="approvalDate" type="timestamp" column="APPROVAL_DATE"/>
+        <many-to-one name="reportElement" column="REPORT_ELEMENT_ID" not-null="true"/>
+        <property name="createdDate" type="timestamp" column="CREATED_DATE"/>
+        <property name="modifiedDate" type="timestamp" column="MODIFIED_DATE"/>  
+    </class>
+</hibernate-mapping>

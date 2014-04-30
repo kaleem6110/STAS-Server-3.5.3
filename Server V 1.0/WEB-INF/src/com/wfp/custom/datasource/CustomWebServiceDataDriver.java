@@ -117,11 +117,12 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 
 	}
 	
-	private List<DeviceBean> getList(){
+	@SuppressWarnings("unchecked")
+	private List<DeviceBean> getList()
+	{
 		List<DeviceBean> currentDeviceList = null;
  		if (dataSource.getLayerName().toLowerCase().contains(KEY_STAFF)) {
-			currentDeviceList = RestTrackingJob.getInstance()
-					.getRestServiceList(KEY_STAFF);
+			currentDeviceList = RestTrackingJob.getInstance().getRestServiceMapCache().get(KEY_STAFF);
 		} else if (dataSource.getLayerName().toLowerCase().contains(
 				KEY_VEHICLE)) {
 			currentDeviceList = RestTrackingJob.getInstance()
@@ -130,12 +131,15 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 				KEY_AIRPLANE)) {
 			currentDeviceList = RestTrackingJob.getInstance()
 					.getRestServiceList(KEY_AIRPLANE);
-		}
+		} 		
+ 		if( currentDeviceList!=null) System.out.println(" currentDeviceList :"+currentDeviceList.size() );
  		return currentDeviceList;
 	}
 
-	private void addDevice(DeviceBean device, List<DeviceBean> indigoList) {
-		if (dataSource.getDeviceIds() != null) {
+	private void addDevice(DeviceBean device, List<DeviceBean> indigoList) 
+	{
+		if (dataSource.getDeviceIds() != null) 
+		{
 			boolean isValid = false;
 			for (String deviceId : dataSource.getDeviceIds()) {
 				Date date = CommonUtils.parseDate(device.getTime());

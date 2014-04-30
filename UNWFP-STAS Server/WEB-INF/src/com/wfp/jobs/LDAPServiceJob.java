@@ -76,9 +76,7 @@ public class LDAPServiceJob implements CustomJobTask, IEPICConstants {
 		@SuppressWarnings("unchecked")
 		List<String> allDevices = LDAPUtils.getDevices();
 		ldapServiceMap.put(PARAM_ALLGROUPS, allDevices);
-		
 		//LDAPUtils.getLDAPUserDtlsMap().clear();
-		
 		if(allDevices != null){
 			for(String deviceId:allDevices){
 				if(LDAPUtils.validateVehicles(deviceId, paramsMap.get("vehicleresourcetype") != null?paramsMap.get("vehicleresourcetype").split(","):null)){

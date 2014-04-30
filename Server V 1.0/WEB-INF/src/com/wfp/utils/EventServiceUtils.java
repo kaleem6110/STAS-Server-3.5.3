@@ -4,20 +4,40 @@ import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 
-import lu.hitec.pss.soap.event.provider._14_x.EventDescription;
-import lu.hitec.pss.soap.event.provider._14_x.EventRecipient;
-import lu.hitec.pss.soap.event.provider._14_x.EventSrvProviderPortBindingStub;
-import lu.hitec.pss.soap.event.provider._14_x.EventSrvProvider_Service;
-import lu.hitec.pss.soap.event.provider._14_x.EventSrvProvider_ServiceLocator;
-import lu.hitec.pss.soap.event.provider._14_x.EventStatus;
-import lu.hitec.pss.soap.event.provider._14_x.EventStatusSummary;
-import lu.hitec.pss.soap.event.provider._14_x.Evt;
-import lu.hitec.pss.soap.event.provider._14_x.NotificationStatusSummary;
-import lu.hitec.pss.soap.event.provider._14_x.Severity;
+import javax.naming.AuthenticationException;
+import javax.xml.rpc.ServiceException;
+
+import lu.hitec.pss.soap.ds.out._15_x.AuthorizationException;
+import lu.hitec.pss.soap.ds.out._15_x.CrudEnum;
+import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterfacePortBindingStub;
+import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_PortType;
+import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_ServiceLocator;
+import lu.hitec.pss.soap.ds.out._15_x.DtoMission;
+import lu.hitec.pss.soap.ds.out._15_x.PssuDevice;
+import lu.hitec.pss.soap.ds.out._15_x.PssuVehicle;
+import lu.hitec.pss.soap.ds.out._15_x.ResourceNotFoundException;
+import lu.hitec.pss.soap.ds.out._15_x.UnitId;
+import lu.hitec.pss.soap.ds.out._15_x.UnitType;
+import lu.hitec.pss.soap.event.provider._21_x.Desc;
+import lu.hitec.pss.soap.event.provider._21_x.DtoDomain;
+import lu.hitec.pss.soap.event.provider._21_x.EventSrvProviderPortBindingStub;
+import lu.hitec.pss.soap.event.provider._21_x.EventSrvProvider_Service;
+import lu.hitec.pss.soap.event.provider._21_x.EventSrvProvider_ServiceLocator;
+import lu.hitec.pss.soap.event.provider._21_x.Logbook;
+import lu.hitec.pss.soap.event.provider._21_x.NotificationStatusSummary;
+import lu.hitec.pss.soap.event.provider._21_x.NotificationsProcessingEventStatus;
+import lu.hitec.pss.soap.event.provider._21_x.Recipient;
+import lu.hitec.pss.soap.event.provider._21_x.Severity;
+import lu.hitec.pss.soap.event.provider._21_x.Status;
+import lu.hitec.pss.soap.event.provider._21_x.StatusSummary;
+import lu.hitec.pss.soap.event.provider._5_x.EventDescription;
+import lu.hitec.pss.soap.event.provider._5_x.EventRecipient;
+import lu.hitec.pss.soap.event.provider._5_x.EventStatus;
+import lu.hitec.pss.soap.event.provider._5_x.EventStatusSummary;
+import lu.hitec.pss.soap.event.provider._5_x.Evt;
 
 import org.apache.axis.AxisFault;
 
-import com.enterprisehorizons.magma.server.admin.LDAPConfigUtils;
 import com.enterprisehorizons.util.Logger;
 import com.spacetimeinsight.db.model.util.SecurityDBUtils;
 
@@ -149,16 +169,27 @@ public class EventServiceUtils {
 	 * tempEvt.getRelatedInfo().setRelEventRef(refId);
 	 * com.wfp.utils.EventServiceUtils.storeEvt(deviceId, tempEvt); }
 	 */
+	public static DirectoryServiceOutInterface_PortType getLDAPStub() throws ServiceException{
+		return  new DirectoryServiceOutInterface_ServiceLocator().getDirectoryServiceOutInterfacePort( );
+	}
 
 	public static String getLDAPToken() {
-		try {
-
-			token=  IEPICConstants.TOKEN ; //"adulovic-20131114-2478b95c6e23404685af7edfde315724";
-			System.out.println(" token : " + token);
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		try 
+		{
+			
+			token=  getLDAPStub().authenticate(IEPICConstants.LDAP_USER_ID, 
+					SecurityDBUtils.getDecreptedPassword( IEPICConstants.LDAP_USER_PWD_ENCRYPTED), "");
+			//stub.getMissionIdsAssignedToUnitForCrud(token, UnitId, crud)
+			
+	    	//PssuVehicle v = stub.getVehicle(token, "5Y-BNH");
+		}catch(lu.hitec.pss.soap.ds.out._15_x.AuthenticationException e){
+			System.out.println(" Authentication Error :167: "+e.getMessage1() );
+		} catch (RemoteException e) {
+			System.out.println("RemoteException :168: "+e.getMessage() );
+		}catch (javax.xml.rpc.ServiceException e) {
+			System.out.println("ServiceException :171: "+e.getMessage() );
 		}
+		
 		return token;
 	}
 
@@ -175,7 +206,7 @@ public class EventServiceUtils {
 			// ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]");
 			return new EventSrvProviderPortBindingStub(
 					new java.net.URL(
-							WFPConfigUtils.getWFPConfigValue("alertservice") == null ? "http://middleware.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl"
+							WFPConfigUtils.getWFPConfigValue("alertservice") == null ? "http://middleware-dev.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl"
 									: WFPConfigUtils
 											.getWFPConfigValue("alertservice")),
 					service);
@@ -216,7 +247,7 @@ public class EventServiceUtils {
 		System.out.println("#### START publishEventService : userUniqueId"
 				+ userUniqueId + " : subject :" + subject + ":body: " + body);
 		EventSrvProviderPortBindingStub stub = getServiceLocatorStub();
-
+		NotificationsProcessingEventStatus n = NotificationsProcessingEventStatus.fromValue( NotificationsProcessingEventStatus._NEW );
 		EventRecipient er = new EventRecipient();
 		er.setType("USER");
 		er.setUserOrGroupUID(userUniqueId);
@@ -225,17 +256,44 @@ public class EventServiceUtils {
 		desc.setShortDesc(subject);
 		desc.setLongDesc(body);
 		// TimeZone.setDefault(TimeZone.getTimeZone("Rome"));
-		Evt evt = new Evt();
+		lu.hitec.pss.soap.event.provider._21_x.Event evt = new lu.hitec.pss.soap.event.provider._21_x.Event();
 		evt.setType(IEPICConstants.STAS_EVENT_TYPE);
-		evt.setDesc(desc);
+		evt.setDesc( new Desc( subject, body) );
+		evt.setLogbook( new Logbook());
 		evt.setSrc(IEPICConstants.STAS_Engine);// STAS_Engine-dev,STAS_Engine-trn,
 												// STAS_Engine-qa
-		evt.setEventRecipient(er);
-		evt.setMissionName("");
+		evt.setRecipient(new Recipient("USER", userUniqueId ));
+		//evt.setMissionName("");
 		Calendar cal = Calendar.getInstance();
-		evt.setTime(cal);
+		evt.setDate(cal);
+		evt.setNotificationsProcessingEventStatus( n );
 		evt.setSeverity(Severity.CRITICAL);
-		evt.setEventStatus(EventStatus.OPEN);
+		DtoDomain dtoDomain = new DtoDomain();
+		dtoDomain.setMwId( IEPICConstants.MIDDLEWARE_ID  );
+		dtoDomain.setName("PK");
+		try {
+			DtoMission mission[] = LDAPWSUtils.getMissionsForUser( EventServiceUtils.getLDAPToken(), userUniqueId, UnitType.fromValue( UnitType._USER) );
+			if(mission!=null&&mission.length>0) dtoDomain.setName( mission[0].getUniqueId() );
+		} catch (AuthorizationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (lu.hitec.pss.soap.ds.out._15_x.AuthenticationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ResourceNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalArgumentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		evt.setDtoDomain(dtoDomain);
+		
+		evt.setStatus( Status.OPEN );
 
 		try {
 			return stub.publishEvent(getLDAPToken(), evt);
@@ -250,16 +308,17 @@ public class EventServiceUtils {
 	public static String getEventStatus(String eventRef) {
 		EventSrvProviderPortBindingStub stub = getServiceLocatorStub();
 		try {// FIXIT -
-			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(
+			StatusSummary eventStatusSummary = stub.getEventStatusSummary(
 					getLDAPToken(), eventRef);
 			NotificationStatusSummary[] statusSummary = eventStatusSummary
 					.getNotificationStatusSummaries();
 			if (statusSummary != null) {
 				return statusSummary[0].getNotificationStatus().getValue();
 			}
-		} catch (RemoteException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(" Exception occured :263:"+e.getMessage() );
 		}
 		return null;
 	}
@@ -272,7 +331,7 @@ public class EventServiceUtils {
 		try {
 			// System.out.println(" getNotificationStatusSummary **** :
 			// "+getLDAPToken() + ":"+ eventRef );
-			EventStatusSummary eventStatusSummary = stub.getEventStatusSummary(
+			StatusSummary eventStatusSummary = stub.getEventStatusSummary(
 					getLDAPToken(), eventRef);
 			Logger.info("Got notification summary  [" + eventStatusSummary
 					+ " ]", EventServiceUtils.class);
@@ -289,10 +348,12 @@ public class EventServiceUtils {
 			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(" Exception occured :294:"+e.getMessage() +": eventRef :"+ eventRef  );
+			
 		} catch (java.lang.NullPointerException exp) {
-			System.out.println("£ NullPointerException $$$ ");
-			exp.printStackTrace();
+			System.out.println("£ NullPointerException $$$ "+exp.getMessage() );
+			//exp.printStackTrace();
 		}
 		return null;
 	}
@@ -301,5 +362,6 @@ public class EventServiceUtils {
 		// printEventDetails();
 		// publishEvent();
 		// checkEventStatus(publishEvent());
+		System.out.println( getLDAPToken() );
 	}
 }

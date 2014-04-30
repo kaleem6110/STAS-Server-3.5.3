@@ -352,10 +352,15 @@ public class CommonUtils implements IEPICConstants{
 		String serverRootUrl = ServerUtils.getServerBaseUrl();
 		if(pagersList != null && pagersList.size() > 0){
 			//contact.append("<fieldset><legend>Pager</legend>");
-			for(String pager:pagersList){
+			for(String pager:pagersList){ //System.out.println( "pager :"+pager );
 				if(pager.indexOf("skype") == 0) mbean.setSkype( pager.replace("skype:","") );					
 				else if(pager.indexOf("msn") == 0)mbean.setMsn(pager.replace("msnim:chat?contact=","") );					
 				else if(pager.indexOf("gtalk") == 0) mbean.setGtalk(pager.replace("gtalk:chat?jid=","") );
+				else if(pager.indexOf("HF_callsign") == 0) mbean.setHf_CallSign( pager.replace("HF_callsign:","") );
+				else if(pager.indexOf("VHFcallsign") == 0) mbean.setVhf_CallSign( pager.replace("VHFcallsign:","") );
+				else if(pager.indexOf("thuraya") == 0) mbean.setThuraya( pager.replace("thuraya:","") );
+				else if(pager.indexOf("iridium") == 0) mbean.setIridium( pager.replace("iridium:","") );
+				
 				else mbean.setOther( pager );
 			}
 		}
@@ -399,11 +404,11 @@ public class CommonUtils implements IEPICConstants{
 		if(mobilesList != null && mobilesList.size() >0){			
 			for(String mobile:mobilesList){
 				mobile = mobile.toLowerCase();			
-				if( mobile.endsWith("|mobile"))mobileList.add(mobile.replace("|mobile",""));
-				else if(mobile.endsWith("|foodsat") )telephone.setFoodsat(mobile.replace("|foodsat","") );
-				else if(mobile.endsWith("|office") ) telephone.setOffice( mobile.replace("|office",""));
-				else if(mobile.endsWith("|wave") ) telephone.setWave( mobile.replace("|wave","") );
-				else if(mobile.endsWith("|fax") ) telephone.setFax( mobile.replace("|fax","") );		
+				if( mobile.contains("mobile"))mobileList.add(mobile.replace("mobile:",""));
+				else if(mobile.contains("foodsat") )telephone.setFoodsat(mobile.replace("foodsat:","") );
+				else if(mobile.contains("office") ) telephone.setOffice( mobile.replace("office:",""));
+				else if(mobile.contains("wave") ) telephone.setWave( mobile.replace("wave:","") );
+				else if(mobile.contains("fax") ) telephone.setFax( mobile.replace("fax:","") );		
 			}	
 			telephone.setMobileList(mobileList);
 		}
@@ -634,7 +639,7 @@ public class CommonUtils implements IEPICConstants{
 		String	offset = getOffsetByLatLong( latitude, longitude );		
 		if( offset!=null&& offset!="" ) offset = getLocalTime( offset,zuluTime, inputDateFormat );
 		
-		return offset;
+		return getOffsetByLatLong( latitude, longitude );	
 	}
 	/**
 	 * @param offset
@@ -742,7 +747,7 @@ public class CommonUtils implements IEPICConstants{
 		 if( gender!=null && gender!="" )
 		 {
 			 if( gender.equalsIgnoreCase("male")) title ="Mr"; 
-			 else if(gender.equalsIgnoreCase("female")) title ="Miss"; 
+			 else if(gender.equalsIgnoreCase("female")) title ="Ms"; 
 		 } 
 		 return title;
 	 }

@@ -58,7 +58,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants {
 		return getRestServiceMapCache().get(key);
 	}
 	
-	public boolean executeCustomTask(Parameters parameters) {
+	public boolean executeCustomTask(Parameters parameters) 
+	{
 		Parameter[] params = parameters.getParameter();
 
 		for (int i=0; i< params.length ; i++){

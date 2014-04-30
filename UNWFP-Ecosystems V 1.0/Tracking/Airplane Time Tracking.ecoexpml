@@ -339,6 +339,9 @@ com.wfp.security.form.DeviceBean data = null;
 String description = "<p>Soap Tracking job which is scheduled for every eight hours fetches data from  <i>https://middleware.service.emergency.lu/sensorservice/out/soap</i> & caches the data. </p> ";
 String datasource = "Hitec middleware SOAP service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.SoapTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
+List<String> userMissionsList = null;
+Map<String,Boolean> authorizeMap = new HashMap<String,Boolean>();
+int count=0;
 
 String getDatasource(){ 
 	return datasource;
@@ -361,22 +364,13 @@ static {
 void bindData() {
 	try
 	{
-		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	 	
+		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;	 	
 	 	if (data != null)
 	 	{
-			$artefact.setCoordinates(data.getCoordStr());
-			//changed for getting type as Date instead of String for time
-			//$artefact.addAttribute("time", com.wfp.utils.CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			//System.out.println(data.getTime());
-			$artefact.addAttribute("time",	(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
-			
+			$artefact.setCoordinates(data.getCoordStr());			
+			$artefact.addAttribute("time", (Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );			
 			$artefact.addAttribute("name", data.getName());
 			$artefact.addAttribute("json", buildPopupText(data) );
-			
-			//java.util.Date localTime = com.wfp.utils.CommonUtils.stringDateToDate(data.getDeviceLocalTime());
-			//$artefact.addAttribute("localTime",localTime );	
-			//$artefact.addAttribute("Timestamp-Local", data.getDeviceLocalTime() );	
 		} 
 	}
 	catch (Exception e){
@@ -471,21 +465,21 @@ String getName() {
 
 double getAltitude(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._9_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	
 	return l.getAlt();
 }
 
 double getLat(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._9_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLat();
 }
 
 double getLng(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._9_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	return l.getLng();
 }
 
@@ -534,11 +528,39 @@ void fireDashboardRefreshEvent(){
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
 
-boolean authorizeDevice(){
+boolean authorizeDevice()
+{	
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	//return com.wfp.utils.LDAPUtils.validateVehiclesByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-} 
+	String deviceId = $artefact.getAttributeValueAsString("name");	
+	
+	if( deviceId.equals("5Y-BNH") ) return true; else return false;
+	/*if( authorizeMap.get(deviceId)!=null && authorizeMap.get(deviceId) ) return authorizeMap.get(deviceId); 
+	else
+	{	
+		List<String> deviceMissionList = com.wfp.utils.LDAPUtils.getLDAPUserDtlsMap().get(deviceId).getAuthorizedGroupsList();
+		List<String> userMissionList = getUserMissionList( userbean.getUserUniqueId() );
+		if( userMissionList!=null && deviceMissionList!=null )
+	  	{
+	  		for(String deviceMission: deviceMissionList )
+	  		{
+	  		     if( userMissionList.contains( deviceMission ) )
+	  		     {
+	  		    	 authorizeMap.put( deviceId, new Boolean(true) );  return true;
+	  			}
+	  		}
+	
+		}
+	}
+  	return false;*/
+}
+List<String> getUserMissionList( String userId )
+{
+	if(userMissionsList==null )
+	{
+		userMissionsList= com.wfp.utils.LDAPUtils.getAllMisisons4rUser( userId );  System.out.println("initial");
+	}
+	return userMissionsList;
+}
   
 String getAuthorUrl(){	
 	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
@@ -795,6 +817,9 @@ String getAuthorUrl(){
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
+                <section name="helpcontent">
+                    <value><![CDATA[http://rm.globalepic.lu/projects/beta-mt-guk/wiki/Tracking_Historical_Airplanes_Positions?parent=Layers_in_the_Portal]]></value>
+                </section>
                 <section name="isshowcontrolbar">
                     <value><![CDATA[true]]></value>
                 </section>
@@ -803,9 +828,6 @@ String getAuthorUrl(){
                 </section>
                 <section name="isreloadconfiguration">
                     <value><![CDATA[false]]></value>
-                </section>
-                <section name="dateformat">
-                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
                 </section>
                 <section name="isallowtimeselection">
                     <value><![CDATA[true]]></value>
@@ -823,13 +845,6 @@ String getAuthorUrl(){
                 </section>
                 <section name="isattributelink">
                     <value><![CDATA[false]]></value>
-                </section>
-                <section name="refreshonevent">
-                    <section name="row">
-                        <section name="column">
-                            <value><![CDATA[Artifact data loaded]]></value>
-                        </section>
-                    </section>
                 </section>
                 <section name="dashboarddata">
                     <section name="datasourcetype">
@@ -857,6 +872,36 @@ String getAuthorUrl(){
                             <section name="column">
                                 <value><![CDATA[]]></value>
                             </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>
@@ -1057,6 +1102,89 @@ String getAuthorUrl(){
                     </section>
                 </section>
             </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Dynamic List]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/ArtifactSelectionDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_artifactselection.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[artifactselectiondashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="dashboarddata">
+                    <section name="dashboarddataparameters"/>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="syncservice">
+                    <value><![CDATA[com.spacetimeinsight.services.dashboard.renderer.ArtifactSelectionSyncDashboardService]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Dynamic List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
         </section>
         <section name="datamashups">
             <section name="datamashup">
@@ -1065,7 +1193,7 @@ String getAuthorUrl(){
                     <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataDriver]]></value>
                 </section>
                 <section name="datarendertype">
-                    <value><![CDATA[Collection]]></value>
+                    <value><![CDATA[1]]></value>
                 </section>
                 <section name="datasource">
                     <value><![CDATA[com.wfp.custom.datasource.CustomSoapServiceDataSource]]></value>

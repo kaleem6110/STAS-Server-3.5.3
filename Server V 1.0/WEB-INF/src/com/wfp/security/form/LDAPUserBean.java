@@ -29,6 +29,21 @@ public class LDAPUserBean {
     private String photoString;
     private String gender;
     private String shortOrganization;
+    private List<String> vehicleID = null;
+    private String internalID;
+    
+	/**
+	 * @return the internalID
+	 */
+	public String getInternalID() {
+		return internalID;
+	}
+	/**
+	 * @param internalID the internalID to set
+	 */
+	public void setInternalID(String internalID) {
+		this.internalID = internalID;
+	}
 	/**
 	 * @return the shortOrganization
 	 */
@@ -211,6 +226,18 @@ public class LDAPUserBean {
 	 */
 	public void setPhotoString(String photoString) {
 		this.photoString = photoString;
+	}
+	/**
+	 * @return the vehicleID
+	 */
+	public List<String> getVehicleID() {
+		return vehicleID;
+	}
+	/**
+	 * @param vehicleID the vehicleID to set
+	 */
+	public void setVehicleID(List<String> vehicleID) {
+		this.vehicleID = vehicleID;
 	}
 	
 	

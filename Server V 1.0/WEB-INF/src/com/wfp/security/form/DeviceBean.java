@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import lu.hitec.pss.soap.sensor.client._11_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
 
 import com.enterprisehorizons.magma.designtime.artifact.GeoArtifact;
 import com.enterprisehorizons.magma.designtime.artifact.IArtifact;
@@ -46,6 +46,8 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String photoString;
 	private String gender;
 	private String shortOrganization;
+	private List<String> vehicleID = null;
+	private String internalID;
 		/**
 		 * @return the shortOrganization
 		 */
@@ -308,6 +310,30 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	 */
 	public void setPhotoString(String photoString) {
 		this.photoString = photoString;
+	}
+	/**
+	 * @return the vehicleID
+	 */
+	public List<String> getVehicleID() {
+		return vehicleID;
+	}
+	/**
+	 * @param vehicleID the vehicleID to set
+	 */
+	public void setVehicleID(List<String> vehicleID) {
+		this.vehicleID = vehicleID;
+	}
+	/**
+	 * @return the internalID
+	 */
+	public String getInternalID() {
+		return internalID;
+	}
+	/**
+	 * @param internalID the internalID to set
+	 */
+	public void setInternalID(String internalID) {
+		this.internalID = internalID;
 	}
 	
 	

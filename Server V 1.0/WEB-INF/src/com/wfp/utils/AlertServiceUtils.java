@@ -38,11 +38,11 @@ public class AlertServiceUtils implements IEPICConstants {
 			uid = userBean.getUid(); //Mail();
 			if(uid != null){
 				try {
-					long templateId = getTemplateId(dangerZoneName);
+					long templateId = getTemplateId(dangerZoneName); System.out.println(" templateId :"+templateId );
 					Date date = new Date();
-					boolean isDuplicate = validateAlert(templateId, uid, mt,   new Date());
+					boolean isDuplicate = validateAlert(templateId, uid, mt,   new Date());System.out.println(" isDuplicate :"+isDuplicate );
 					if(!isDuplicate){
-						long refId = insertUpdateAlert(templateId, uid,  mt.getBody(), mt.getSubject(), date);
+						long refId = insertUpdateAlert(templateId, uid,  mt.getBody(), mt.getSubject(), date);System.out.println(" refId :"+refId );
 						if(refId > 0)
 						{ 
 							boolean isExcluded = false;
@@ -54,7 +54,8 @@ public class AlertServiceUtils implements IEPICConstants {
 							//Event sent to middleware for sending emails to user
 							String eventRefId = EventServiceUtils.publishEventService(userBean.getUid(), mt.getSubject(), mt.getBody());							
 							String msgBody = formatEmailBody( deviceId.trim(), eventRefId, userBean.getPrimaryEmail(),mt.getSubject(), mt.getBody() );
-							
+							System.out.println(" eventRefId :"+eventRefId ); 
+							System.out.println(" msgBody :"+msgBody ); 
 							//STAS sending email directly to user	& Security Officer
 							List<String> toEmailAddress = new ArrayList<String>();
 							toEmailAddress.add( userBean.getPrimaryEmail() );	
@@ -100,7 +101,7 @@ public class AlertServiceUtils implements IEPICConstants {
 		messageBody+="----------------------------------------<br/>";
 		messageBody+="Device : "+deviceId+"<br/>";
 		messageBody+="Source : "+STAS_Engine+"<br/>";
-		messageBody+="Severity : "+lu.hitec.pss.soap.event.provider._14_x.Severity._CRITICAL+"<br/>";
+		messageBody+="Severity : CRITICAL <br/>";
 		messageBody+="Timestamp : "+ CommonUtils.formatDate(Calendar.getInstance().getTime() )+"<br/>";
 		messageBody+="Event ref : "+eventRef+"<br/>";		
 		messageBody+="----------------------------------------<br/>";	

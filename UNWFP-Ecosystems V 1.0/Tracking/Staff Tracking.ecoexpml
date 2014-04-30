@@ -79,7 +79,7 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Device Id]]></value>
+                    <value><![CDATA[Device ID]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -88,6 +88,22 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[mission]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Mission]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -100,7 +116,7 @@
                     <value><![CDATA[Timestamp-GMT]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
@@ -117,10 +133,10 @@
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Last Reported]]></value>
+                    <value><![CDATA[Timestamp(GMT)]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[false]]></value>
+                    <value><![CDATA[true]]></value>
                 </section>
                 <section name="column"/>
                 <section name="column"/>
@@ -177,12 +193,94 @@
                 <section name="column"/>
                 <section name="column"/>
             </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[localTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.util.Date]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp-Local]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[pLocalTime]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Timestamp(Local)]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[userID]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[userID]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[jpegPhoto]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Photo]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
         </section>
         <section name="cache">
             <value><![CDATA[true]]></value>
         </section>
         <section name="sortchildren">
             <value><![CDATA[false]]></value>
+        </section>
+        <section name="starttime">
+            <section name="script">
+                <value><![CDATA[time]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="endtime">
+            <section name="script">
+                <value><![CDATA[time]]></value>
+                <section name="type">
+                    <value><![CDATA[2]]></value>
+                </section>
+            </section>
         </section>
         <section name="isindexed">
             <value><![CDATA[false]]></value>
@@ -245,7 +343,7 @@
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[20]]></value>
+                    <value><![CDATA[60]]></value>
                 </section>
                 <section name="autozoom">
                     <value><![CDATA[false]]></value>
@@ -322,6 +420,15 @@
                             <value><![CDATA[2]]></value>
                         </section>
                     </section>
+                    <section name="type">
+                        <value><![CDATA[java.lang.String]]></value>
+                    </section>
+                    <section name="label">
+                        <value><![CDATA[Name]]></value>
+                    </section>
+                    <section name="isruntimeaccessible">
+                        <value><![CDATA[true]]></value>
+                    </section>
                 </section>
                 <section name="fetchdescriptionatruntime">
                     <value><![CDATA[false]]></value>
@@ -369,40 +476,40 @@
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.Cache;
 import com.enterprisehorizons.magma.server.util.ServerUtils;
-import com.wfp.utils.RBRegionsUtils;
 import com.spacetimeinsight.db.model.util.*;
 import com.spacetimeinsight.db.config.model.*;
 import com.spacetimeinsight.rubberbandregions.Rubberbandregions;
-import com.wfp.utils.CommonUtils;
-import com.wfp.utils.IEPICConstants;
 import java.text.*;
 import java.util.*;
 import com.wfp.beans.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.wfp.utils.*;
+import com.spacetimeinsight.events.SelectUnSelectLayerEvent;
 
-boolean isStaff = true;
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
 private com.wfp.custom.datasource.CustomWebServiceDataDriver $trackingdriver;
 String description = "Rest Tracking job which is scheduled for every two minutes fetches data from <i>http://middleware.service.emergency.lu/sensorservice/out/rest</i> & caches the data.";
 String datasource = "Hitec middleware REST service & LDAP ";
 String lastRefreshTime = com.enterprisehorizons.util.StringUtils.isNull(com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime())?"Job not refreshed":com.wfp.jobs.RestTrackingJob.getInstance().getLastRefreshTime() ;
 public String serverRootUrl = ServerUtils.getServerBaseUrl();
+List<String> userMissionsList = null;
+Map<String, String> deviceOffsetMap = com.wfp.jobs.LDAPCacheJob.getDeviceOffsetMap();
+List<String> userProfilesList = null;
 
 public String currentVersion(){   
-	return "1.8.1";
+	return "1.11";
 }
 String getAuthor(){   
-	return "Kaleem Mohammed";
-}
-String getDateModified(){   
-	return "2013-06-13 09:30:00";
-}
+	return "Kaleem Mohammed"; 
+}  
 String getChangeLog(){   
 	return "Organization, FullName, popup tabs";
 }
-
-String getDatasource(){   
+String getDateModified(){   
+	return "2014-03-18 12:30:00";
+}
+String getDatasource(){    
 	return datasource;
 }
 
@@ -422,39 +529,39 @@ static{
 	}
 }
 	 
-void bindData() {
+void bindData() { 
 
 	try	{
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean )$trackingdatamodel;
 	 	
-	 	if (data != null)	{
-	 	 	$artefact.addAttribute("title", data.getTitle());	
+	 	if (data != null)	
+	 	{
+	 	 	
 	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
-			//changed for getting type as Date instead of String for time
-			//$artefact.addAttribute("time",CommonUtils.parseDatePortalFormat(data.getTime().replace("T", " ")));
-			//$artefact.addAttribute("time",CommonUtils.stringDateToISODate( data.getTime().replace("T"," ").replace(".00Z","" ))  );							
-				
-			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
-			$artefact.addAttribute("pTime",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime(), IEPICConstants.EPIC_DATE_FORMAT )  );
+		
+		    $artefact.addAttribute("pTime",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
 								
-			//$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			//$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
-			        		
-			$artefact.addAttribute("deviceId", data.getName());			
+			$artefact.addAttribute("title", data.getTitle());							
+			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
+			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );			        		
+			$artefact.addAttribute("deviceId", data.getName());	
+			$artefact.addAttribute("userID", data.getUid()); 			
 			//$artefact.addAttribute("Contact", CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
 			$artefact.addAttribute("IM", CommonUtils.getPagerDtls(data.getSkypePager()));
 			$artefact.addAttribute("Mail", CommonUtils.getMailDtls(data.getMail()));
 		  	$artefact.addAttribute("Phone", CommonUtils.getPhoneDtls(data.getMobilesList()));
 			$artefact.addAttribute("owner", getFullName(data));
-			$artefact.addAttribute("Organization", data.getOrganization());
+			$artefact.addAttribute("Organization", data.getOrganization());			
+			$artefact.addAttribute("jpegPhoto", data.getPhotoString() );			
+		 	$artefact.addAttribute("mission", getAllMissionFromList( LDAPUtils.getLDAPUserDtlsMap().get( data.getName() ).getAuthorizedGroupsList() ) );			
 			$artefact.addAttribute("json", buildPopupText(data) );
-			$artefact.addAttribute("jpegPhoto", " :jpegPhoto:"+data.getPhotoString()+":jpegPhoto:" );
 			//$artefact.addAttribute("callSign", data.getCallSign());
-		 
-				  
 			//$artefact.addAttribute("ptime",  $artefact.getAttributeValueAsString("time") );
-			 
-		}
+			
+			
+			
+		}  
 	} 
 	catch (Exception e){
 		e.printStackTrace();
@@ -462,143 +569,196 @@ void bindData() {
 } 
 public String buildPopupText(com.wfp.security.form.DeviceBean data)
 {
-List<Tab> tabList = new ArrayList<Tab>();
-List<Legend> profileLegendList = new ArrayList<Legend>();
-List<Legend> trackingLegendList = new ArrayList<Legend>();
-List<Legend> contactLegendList = new ArrayList<Legend>();
-Map<String, String> attribMap = new LinkedHashMap<String,String>();
-
-//Creating a Tab
-Tab profileTab = new Tab();
-profileTab.setName("Profile");
-
-//Creating a Legend
-Legend userLegend = new Legend();
-userLegend.setName("User Details");
-attribMap.put( CommonUtils.getPersonalTitle(data.getGender()),getFullName(data) );
-attribMap.put("Title", data.getTitle()!=""?data.getTitle():"-" );
-if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
-if(  data.getOrganization()!=null )attribMap.put("Organization", data.getOrganization() );
-
-userLegend.setAttribMap( attribMap );
-
-profileLegendList.add( userLegend );
- 
-attribMap = new LinkedHashMap<String,String>();
-
-Legend emailLegend = new Legend();
-emailLegend.setName("Email");
-attribMap.put("Office","<a href=mailto:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
-
-List<String> privateEmailList = data.getMail();
-String pmail ="";
-if( data.getMail() !=null){
-for(String p : privateEmailList ){
-pmail +="<a href=mailto:"+p+" >"+p.trim()+"</a><br/>";
-}
-attribMap.put("Private",pmail );
-}
-
-
-emailLegend.setAttribMap( attribMap );
-profileLegendList.add( emailLegend );
-
-attribMap = new LinkedHashMap<String,String>();
-
-Telephone telephone = CommonUtils.getTelephones(data.getMobilesList());
-
-
-Legend telLegend = new Legend();
-telLegend.setName("Telephone Numbers");
-//.......
-attribMap = new LinkedHashMap<String,String>();
-if( telephone.getMobileList()!=null &&  telephone.getMobileList().size()>0 ) attribMap.put("Mobile(Personal)",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
-if( telephone.getFoodsat()!=null ) attribMap.put("WFP Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
-if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
-if( telephone.getFax()!=null )attribMap.put("FAX", "<a href=tel:"+parseNumber( telephone.getFax())+" target=_blank >"+telephone.getFax()+"</a>" );
-
-if(attribMap.size()>0) {
-telLegend.setAttribMap( attribMap );
-profileLegendList.add( telLegend );
-}
-
-Legend imLegend = new Legend();
-imLegend.setName("Instant Messaging");
-
-Messaging messaging =  CommonUtils.getMessaging( data.getSkypePager() );
-
-
-attribMap = new LinkedHashMap<String,String>();
-
-if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","")+"?chat >"+messaging.getSkype()+"</a>" ); 
-attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
-if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
-if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" );
-if( data.getName().length()==16 ) attribMap.put("Radio","<a href=mailto:dmr-comm@globalepic.lu?body=:"+data.getName().substring(12,16)+"  >"+data.getName()+"</a>" );
-//attribMap.put("bbPIN", "-" );
-
-imLegend.setAttribMap( attribMap );
-profileLegendList.add( imLegend );
-
-profileTab.setLegendList( profileLegendList );
-tabList.add( profileTab );
-
-attribMap = new LinkedHashMap<String,String>();
-
-//Creating Tracking Tab
-Tab trackingTab = new Tab();
-trackingTab.setName("Tracking");
-
-Legend deviceLegend = new Legend();
-deviceLegend.setName("This Device");
-attribMap.put("Device Id", data.getName() );
-
-attribMap.put("Device type", data.getName().length()==16?"Radio":"Mobile" );
-deviceLegend.setAttribMap( attribMap );
-trackingLegendList.add( deviceLegend );
-
-attribMap = new LinkedHashMap<String,String>();
-
-Legend trackingLegend = new Legend();
-trackingLegend.setName("Last Known Position");
-attribMap.put("Timestamp(GMT)", $artefact.getAttributeValueAsString("pTime") );
-attribMap.put("Timestamp(Local)", "localTime" );
-attribMap.put("Latitude", data.getLatitude() );
-attribMap.put("Longitude", data.getLongitude() );
-
-trackingLegend.setAttribMap( attribMap );
-trackingLegendList.add( trackingLegend );
-
-//adding legends to tab.
-trackingTab.setLegendList( trackingLegendList );
-
-//adding tab to tabList
-tabList.add( trackingTab );
-
-String s = ""; try{
- s = CommonUtils.parseJsonString( tabList );
-}catch(Exception e){e.printStackTrace(); }
+	List<Tab> tabList = new ArrayList<Tab>();
+	List<Legend> profileLegendList = new ArrayList<Legend>();
+	List<Legend> trackingLegendList = new ArrayList<Legend>();
+	List<Legend> historicalLegendList = new ArrayList<Legend>();
+	
+	Map<String, String> attribMap = new LinkedHashMap<String,String>();
+	
+	//Creating a Tab
+	Tab profileTab = new Tab();
+	profileTab.setName("Staff Profile");
+		
+	//Creating a Legend
+	Legend userLegend = new Legend();
+	userLegend.setName("Profile");
+	attribMap.put( CommonUtils.getPersonalTitle( data.getGender() ), userProfilesList.contains("admin")?getFullName(data)+ " LDAPUSER"+data.getUid(): getFullName(data) );
+	attribMap.put("Title", data.getTitle()!=""?data.getTitle():"-" );
+	attribMap.put("Residence", data.getInternalID()!=""?getResidentId( data.getInternalID() ) :"N/A" );
+	
+	attribMap.put("jpegPhoto", data.getPhotoString()!=null?data.getPhotoString():"-" );
+	if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
+	if(  data.getOrganization()!=null )attribMap.put("Organization", data.getOrganization() );
+	//String m =  getAllMissionFromList( LDAPUtils.getLDAPUserDtlsMap().get( data.getName() ).getAuthorizedGroupsList() );
+	//attribMap.put("Missions", m!=""?m:"-");
+	
+	userLegend.setAttribMap( attribMap );
+	
+	profileLegendList.add( userLegend );
+	 
+	attribMap = new LinkedHashMap<String,String>();
+	
+	Legend emailLegend = new Legend();
+	emailLegend.setName("PLUSEmail");
+	attribMap.put("Office","<a href=mailto:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
+	
+	List<String> privateEmailList = data.getMail();
+	String pmail ="";
+	if( data.getMail() !=null){
+	for(String p : privateEmailList ){
+	pmail +="<a href=mailto:"+p+" >"+p.trim()+"</a><br/>";
+	}
+	attribMap.put("Other Email(s)",pmail );
+	}
+	emailLegend.setAttribMap( attribMap );
+	profileLegendList.add( emailLegend );
+	
+	attribMap = new LinkedHashMap<String,String>();
+	Telephone telephone = CommonUtils.getTelephones(data.getMobilesList());
+	
+	Legend telLegend = new Legend();
+	telLegend.setName("PLUSVoice");
+	//.......
+	attribMap = new LinkedHashMap<String,String>();
+	if( telephone.getMobileList()!=null &&  telephone.getMobileList().size()>0 &&  telephone.getMobileList().get(0)!="null" ) attribMap.put("Mobile Phone",  "<a href=tel:"+parseNumber( telephone.getMobileList().get(0))+" target=_blank >"+telephone.getMobileList().get(0)+"</a>" );
+	if( telephone.getFoodsat()!=null ) attribMap.put("Foodsat", "<a href=tel:"+parseNumber(telephone.getFoodsat())+" target=_blank >"+telephone.getFoodsat()+"</a>" );
+	if( telephone.getOffice()!=null )attribMap.put("Office", "<a href=tel:"+parseNumber( telephone.getOffice())+" target=_blank >"+telephone.getOffice()+"</a>" );
+	if( telephone.getFax()!=null )attribMap.put("FAX", "<a href=tel:"+parseNumber( telephone.getFax())+" target=_blank >"+telephone.getFax()+"</a>" );
+	if( data.getName().length()==16 ) attribMap.put("Radio","<a href=tel:"+data.getName().substring(8,16)+"  >"+data.getName().substring(8,16)+"</a>" );
+	
+	if(attribMap.size()>0) {
+	telLegend.setAttribMap( attribMap );
+	profileLegendList.add( telLegend );
+	}
+	
+	attribMap = new LinkedHashMap<String,String>();
+	Legend imLegend = new Legend();
+	imLegend.setName("PLUSInstant Messaging");
+	
+	Messaging messaging =  CommonUtils.getMessaging( data.getSkypePager() );	
+	
+	attribMap.put("MS Lync", "<a href=sip:"+data.getPrimaryEmail()+" >"+data.getPrimaryEmail()+"</a>" );
+	if(messaging.getSkype()!=null) attribMap.put("Skype", "<a href=skype:"+messaging.getSkype().replace("?chat","").replace("|","")+"?chat >"+messaging.getSkype()+"</a>" ); 
+	if(messaging.getMsn()!=null) attribMap.put("MSN", "<a href=msnim:chat?contact="+messaging.getMsn().replace("msnim:","")+" target=_blank >"+messaging.getMsn().replace("msnim:","")+"</a>" );
+	if(messaging.getGtalk()!=null) attribMap.put("gTalk", "<a href=gtalk:chat?jid="+messaging.getGtalk().replace("gtalk:","")+" target=_blank >"+messaging.getGtalk().replace("gtalk:","")+"</a>" ); 
+	//if( data.getName().length()==16 ) attribMap.put("Radio","<a href=mailto:dmr-comm@globalepic.lu?body=:"+data.getName().substring(12,16)+"  >"+data.getName()+"</a>" );
+	//attribMap.put("bbPIN", "-" );
+	
+	imLegend.setAttribMap( attribMap );
+	profileLegendList.add( imLegend );
+	
+	profileTab.setLegendList( profileLegendList );
+	tabList.add( profileTab );
+	
+	attribMap = new LinkedHashMap<String,String>();
+	
+	//Creating Tracking Tab
+	Tab trackingTab = new Tab();
+	trackingTab.setName("Device Details");
+	
+	Legend deviceLegend = new Legend();
+	deviceLegend.setName("This Device");
+	attribMap.put("Device ID", userProfilesList.contains("admin")?"LDAPDEVICE"+data.getName():data.getName()  );	
+	attribMap.put("Device Type", data.getName().length()==16?"Digital Radio":"SmartPhone" );
+	attribMap.put("Primary Device","N/A" );
+	attribMap.put("sessionID", getSessionId() );
+	deviceLegend.setAttribMap( attribMap );
+	trackingLegendList.add( deviceLegend );
+	
+	attribMap = new LinkedHashMap<String,String>(); 
+	
+	Legend trackingLegend = new Legend();
+	trackingLegend.setName("Last Known Position");
+	attribMap.put("Position", data.getLatitude()+" / "+data.getLongitude() );
+	//attribMap.put("Longitude", data.getLongitude() );
+	attribMap.put("reported at", $artefact.getAttributeValueAsString("pTime") +" (UTC)");
+	//attribMap.put("Timestamp(Local)", "localTime" );
+	String offs = deviceOffsetMap.get( data.getName() );
+	attribMap.put("local time", $artefact.getAttributeValueAsString("pLocalTime") +" (UTC+"+offs+")" );
+	
+	
+	trackingLegend.setAttribMap( attribMap );
+	trackingLegendList.add( trackingLegend );
+	
+	//adding legends to tab.
+	trackingTab.setLegendList( trackingLegendList );	
+	
+	/////////////////////////////////////
+	attribMap = new LinkedHashMap<String,String>();
+	
+	Legend historicalLegend = new Legend();
+	historicalLegend.setName("PLUSHistorical Tracking");
+	
+	String mission = $artefact.getAttributeValueAsString("mission");	
+	List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get( data.getName() ).getAuthorizedGroupsList();
+	String miss= "Pakistan_support";
+	if( deviceMissionList!=null && deviceMissionList.size()>0 ) miss = deviceMissionList.get(0);	
+	attribMap.put("first reported","oldestDELIM"+data.getUid()+"DELIMUSERDELIM"+miss );
+	//attribMap.put("To ( New )", $artefact.getAttributeValueAsString("pTime") );
+	attribMap.put("total waypoints", "totalWaypointsDELIM"+data.getUid()+"DELIMUSERDELIM"+miss );
+	attribMap.put("days covered", $artefact.getAttributeValueAsString("pTime") );	
+	 
+	historicalLegend.setAttribMap( attribMap );	
+	trackingLegendList.add( historicalLegend );  	
+	
+	attribMap = new LinkedHashMap<String,String>();
+	
+	Legend otherDevicesLegend = new Legend();
+	otherDevicesLegend.setName("PLUSOther devices assigned to "+data.getCn() );
+	attribMap.put("Radio","N/A");
+	attribMap.put("Smartphone","N/A");
+	otherDevicesLegend.setAttribMap( attribMap );	
+	//trackingLegendList.add( otherDevicesLegend );  
+	
+	//adding legends to tab.
+	trackingTab.setLegendList( trackingLegendList );	
+	
+	//adding tab to tabList
+	tabList.add( trackingTab );
+	
+	String s = ""; try{
+	 s = CommonUtils.parseJsonString( tabList );
+	}catch(Exception e){e.printStackTrace(); }
 
   return s;
  }
-String getFullName(com.wfp.security.form.DeviceBean data){
-	String fullName = "";
-	
+ String getResidentId(String s)
+ { 
+ 	if(s!=null&&s!="" &&s.indexOf("unitId=")>-1 )
+ 	{
+ 		String[] a= s.split("unitId=");
+ 		 s = a[1]; 
+ 		 s = s.substring( 0, s.indexOf("|") );
+ 		 return "<a href=# onclick=gotoResidence('"+s+"'); >"+s+"</a>"; 
+ 	}
+ 	return "-";
+ }
+ String getDMission(){
+ 	String miss= "PK";
+	String deviceID = $artefact.getAttributeValueAsString("deviceId");	
+	List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get( deviceID ).getAuthorizedGroupsList();	
+	if( deviceMissionList!=null && deviceMissionList.size()>0 ) miss = deviceMissionList.get(0);
+	return miss;
+ }
+String getFullName(com.wfp.security.form.DeviceBean data)
+{
+	String fullName = "";	
 	if(!com.enterprisehorizons.util.StringUtils.isNull(data.getCn())){
 		fullName = data.getCn()+" ";
-	}
-	
+	}	
 	if(!com.enterprisehorizons.util.StringUtils.isNull(data.getSn())){
 		fullName += data.getSn();
-	}
-	
+	}	
 	return fullName;
 }
 
-String getName() {
-	return $artefact.getAttributeValueAsString("deviceId");
-}
-String getOwner() {
+String getName(){ return $artefact.getAttributeValueAsString("deviceId"); }
+
+Date getPresentDate() { return CommonUtils.stringDateToDate("2014-02-26 10:55:00", IEPICConstants.NEW_PORTAL_DATE_FORMAT ) ; }
+
+String getOwner()   
+{
 	if($artefact != null){
 		return $artefact.getAttributeValueAsString("owner");
 	}
@@ -611,52 +771,63 @@ String getDeviceCaption(){
 	return  $artefact.getAttributeValueAsString("deviceId");
 }
 
-String getIconUrl(){
-	return "serverresources/icons/epic/Staff_Tracking.png";	
-	
+String getIconUrl(){   
+	return "serverresources/icons/epic/Staff_Tracking_K.png";	 
 }
-
-
-boolean isInDangerZone(){
-	String[] allZones = com.wfp.utils.RBRegionsUtils.getZoneNames($artefact, getUserBean(), getLayerName(), getLayerId(), getLayerName()+"_DZ", "_SZ");
+String getIconUrl_G(){   
+	return "serverresources/icons/epic/Staff_Tracking_G.png";	
+}
+String getIconUrl_C(){   
+	return "serverresources/icons/epic/Staff_Tracking_C.png";		
+}
+String getIconUrl_W(){    
+	return "serverresources/icons/epic/Staff_Tracking_Y.png";		
+}
+String legendURL(){    
+	return "serverresources/icons/epic/Staff_Legend.png";		
+}      
+String getStyle()
+{	
+	if(isInDangerZone()) return "blinkerstyle";
+	Date time = (Date) $artefact.getAttributeValue("time");	
+	if(time!=null )
+	{
+		Date current = Calendar.getInstance().getTime();
+		int hrs = (int)((current.getTime()-time.getTime())/(1000 * 60 * 60 ) );
+		if( hrs <6  ) return "latestReported";
+		else if(hrs <24 ) return "lastDayReported";	
+		else if(hrs>23&&hrs <120 ) return "lastWeekReported";		
+	}
+	return "placemarkstyle";
+} 
+boolean isInDangerZone()
+{
+	String[] allZones = RBRegionsUtils.getZoneNames($artefact, getUserBean(), getLayerName(), getLayerId(), getLayerName()+"_DZ", "_SZ");
 	String deviceId = $artefact.getAttributeValueAsString("deviceId");	
-	boolean needToAlert = com.wfp.utils.RBRegionsUtils.isDeviceTraced($artefact, allZones, getSessionId(), deviceId);
+	boolean needToAlert = RBRegionsUtils.isDeviceTraced($artefact, allZones, getSessionId(), deviceId);
 	return (!com.enterprisehorizons.util.StringUtils.isNull(allZones) );		
 }
-
-String getDangerZoneName(){
-	String deviceId = $artefact.getAttributeValueAsString("deviceId");
-	
-	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	
+String getDangerZoneName()
+{
+	String deviceId = $artefact.getAttributeValueAsString("deviceId");	
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();	
 	moduleId = RBRegionsUtils.getModuleId(getLayerId());
 	rubberbandregions = RBRegionsUtils.getUserModuleRubberbandregion(userbean.getDomainId(), userbean.getLanguageId(), 
 				userbean.getUserId(), userbean.getUserUniqueId(), moduleId, getLayerName()+"_DZ");
 	
-	return  com.wfp.utils.RBRegionsUtils.getDanzerZoneName(rubberbandregions, $artefact.getFirstPoint());	
+	return  RBRegionsUtils.getDanzerZoneName(rubberbandregions, $artefact.getFirstPoint());	
 }
-
-String getStyle(){
-	
-	if(isInDangerZone()){
-		return "blinkerstyle";
-	}
-
-	return "placemarkstyle";
-}
-
-
-
-String getURL(){
+String getURL()
+{
 	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
 	String serverRootUrl = ServerUtils.getServerBaseUrl();
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	String url = "swf/GeofenceDashboard.swf?domainId="+userbean.getDomainId()+"&languageId="+userbean.getLanguageId()+"&userId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId())+"&userUniqueId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId())+"&moduleId="+moduleId+"&regionPrefix="+getLayerName()+"_DZ"+"&serverUrl="+com.enterprisehorizons.util.URLUtils.encode(serverRootUrl);
-
 	return url;
 }
-
-String getMAURL(){
+   
+String getMAURL()
+{
 	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
 	String serverRootUrl = ServerUtils.getServerBaseUrl();
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
@@ -665,67 +836,145 @@ String getMAURL(){
 	return url;
 }
 
-String getDomainId(){
+String getDomainId()
+{
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	return userbean.getDomainId()+"";
 }
 
-String getLanguageId(){
+String getLanguageId()
+{
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	return userbean.getLanguageId()+"";
 }
 
-String getUserId(){
+String getUserId()
+{
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	return (com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId()) + "";
 }
 
-String getUserUniqueId(){
+String getUserUniqueId()
+{
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
 	return (com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId()) +"";
 }
 
-String getModuleId(){	
+String getModuleId()
+{	
 	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
 	return moduleId+"";
 }
 
-String getRegionPrefix(){	
+String getRegionPrefix()
+{	
 	return getLayerName()+"_MA";
 }
-
-String getMySQLQry(){
+String getMySQLQry()
+{
 	return com.enterprisehorizons.util.URLUtils.encode("select * from (select (case when received_message != ''  then 'Acknowledged' else 'Not Acknowledged' end) as ack_status, received_message, ack_by,received_on, name as region_name, body as actual_message, send_on from epic_alert_service r1 left outer join STI_C_EMAIL_TEMPLATE em on (em.id = r1.template_Id)) r2 where region_name like '%Staff%'");  
 }
 
-String getGroupby(){
-	return "owner";
-}
+String getGroupby(){ return "owner"; }
 
-void fireDashboardRefreshEvent(){
+void fireDashboardRefreshEvent()
+{
+	fireUserLevelEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
+	
+	
+}
+void fireSelectlayer(){  System.out.println( "fireSelectlayer called " );
+SelectUnSelectLayerEvent event = new SelectUnSelectLayerEvent();
+event.setName("select_layers");
+event.setLayers("Locations/Residences");
+fireUserLevelEvent(event);
+}
+void fireDynamicDashboardRefreshEvent()
+{ 
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
 String parseNumber(String inputString)
 {
-String str="+";
-Pattern p = Pattern.compile("-?\\d+");
-Matcher m = p.matcher(inputString);
-while (m.find()) {
-  str =str+ m.group();
-}
+	String str="+";
+	Pattern p = Pattern.compile("-?\\d+");
+	Matcher m = p.matcher(inputString);
+	while (m.find()) {
+	  str =str+ m.group();
+	}
 return str;
 }
-
-boolean hasGeofenceAccess(){
-return  false ;/*!(new com.wfp.utils.RBRegionsUtils().hasGeofenceProfile(getUserUniqueId() ) );*/
-}
-boolean authorizeDevice(){
+String getGroupBy() { return "owner"; } 
+boolean hasGeofenceAccess()
+{
+	return  false ;/*!(new RBRegionsUtils().hasGeofenceProfile(getUserUniqueId() ) );*/
+} 
+boolean authorizeDevice()
+{
+	
 	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-	return com.wfp.utils.LDAPUtils.authorizeDevices($artefact.getAttributeValueAsString("deviceId"), userbean.getUserUniqueId());
+	
+	
+	try{
+	 if(userProfilesList ==null ) userProfilesList = com.wfp.utils.LDAPUtils.getUserProfilesList( userbean.getUserUniqueId());
+
+	}catch(Exception e){ e.printStackTrace(); }
+	
+	String deviceId = $artefact.getAttributeValueAsString("deviceId"); 
+	List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get(deviceId).getAuthorizedGroupsList();
+  	List<String> userMissionList = getUserMissionList( userbean.getUserUniqueId() );  	
+  	//System.out.println(" ## device :" +deviceId +" : deviceMissionList :" + deviceMissionList  +":userMissionList: "+userMissionList );
+  	if( userMissionList!=null && deviceMissionList!=null )
+  	{
+  		for(String deviceMission: deviceMissionList )
+  		{
+  		     if( userMissionList.contains( deviceMission ) ) return true;
+  		}
+  	}
+  	return false;
+}
+List<String> getUserMissionList( String userId )
+{
+	if(userMissionsList==null )
+	{
+		userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );
+	} //System.out.println("userMissionsList"+ userMissionsList );
+	return userMissionsList;
+}
+List<String> getUserProfilesList( String userId )
+{
+	if(userMissionsList==null )
+	{
+		userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );
+	} //System.out.println("userMissionsList"+ userMissionsList );
+	return userMissionsList;
 }
 
-String getAuthorUrl(){	
+String getAuthorUrl()
+{	
 	return serverRootUrl+"/CustomView.jsp?layername="+getLayerName()+"&Datasource ="+datasource+"&Description="+description+"&Last Refresh Time="+lastRefreshTime;
+}
+String getAllMissionFromList (List<String> missionList)
+{   
+	if(missionList!=null &&missionList.size()>0 )
+	{	
+		String missions="";
+		Collections.sort( missionList );int i=0;
+		for(String m : missionList )
+		{ 	++i;
+			missions +=m ; 
+			if( i<missionList.size() ) missions+=",";
+			
+		}
+		return missions;
+	}
+	else return "";
+}
+Date getTodaysDate() { return Calendar.getInstance().getTime(); }
+Date getFromDate() 
+{ 
+	Calendar c= Calendar.getInstance();
+	c.add(Calendar.DATE, -100);
+	return c.getTime();
 }]]></value>
                 <section name="type">
                     <value><![CDATA[1]]></value>
@@ -786,6 +1035,139 @@ String getAuthorUrl(){
                 </section>
                 <section name="highlightlabelscale">
                     <value><![CDATA[0.5]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+            <section name="style">
+                <value><![CDATA[lastDayReported]]></value>
+                <section name="name">
+                    <value><![CDATA[lastDayReported]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_C()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_C()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="highlighticonscale">
+                    <value><![CDATA[1.0]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+            <section name="style">
+                <value><![CDATA[lastWeekReported]]></value>
+                <section name="name">
+                    <value><![CDATA[lastWeekReported]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_W()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+            <section name="style">
+                <value><![CDATA[latestReported]]></value>
+                <section name="name">
+                    <value><![CDATA[latestReported]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_G()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_G()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="highlighticonscale">
+                    <value><![CDATA[1.0]]></value>
                 </section>
                 <section name="shadertype">
                     <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
@@ -1008,12 +1390,14 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[localTime]]></value>
+                            <value><![CDATA[mission]]></value>
                         </section>
                         <section name="column">
-                            <value><![CDATA[Date]]></value>
+                            <value><![CDATA[Text]]></value>
                         </section>
-                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
                     </section>
                 </section>
                 <section name="flashparameters">
@@ -1061,7 +1445,7 @@ String getAuthorUrl(){
                     <value><![CDATA[onInterval]]></value>
                 </section>
                 <section name="periodicrefreshrate">
-                    <value><![CDATA[15]]></value>
+                    <value><![CDATA[60]]></value>
                 </section>
                 <section name="dashboardiconurl">
                     <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
@@ -1077,93 +1461,7 @@ String getAuthorUrl(){
                 </section>
                 <section name="datamashups"/>
                 <section name="helpcontent">
-                    <value><![CDATA[
-	<strong>Staff Tracking Ecosystem - Help</strong>
-
-	Staff tracking layer will display all digital radio's activated for GPS tracking.
-
-	There are three areas for each layer
-
-
-	1. Left hand swing panel : Select Layer of interest
-
-	2. MAP : Google Earth map to visualize objects from the selected layer on a map
-
-	3. List display : List of the object attributes visualized on the map	
-
-
-	<strong>List Display</strong>
-
-
-	<em><u>TOP Menu bar on list display </u></em>
-
-
-	<strong>Count :</strong>
-	 Displays the total number of objects visualized on the map
-
-
-	<strong>History : </strong>
-	Provides a list of filters applied to the list display
-
-
-	<div style=\"display:inline\"><strong>From: - To : </strong> Provides filter capabilities for the list display. Click on <img src=\"/stas/serverresources/icons/epic/help/image001.png\" width=\"32\" height=\"25\"/> once you have entered a date range to filter on </div>
-
-
-	<div style=\"display:inline\"><strong>Favourites:</strong><img src=\"/stas/serverresources/icons/epic/help/image002.png\" width=\"102\" height=\"35\"/>
-	This feature allows you to save a particular list display for future reference.
-	</div>
-
-
-	<div style=\"display:inline\"><strong>Refresh Dashboard :</strong> <img src=\"/stas/serverresources/icons/epic/help/image003.png\" width=\"42\" height=\"28\"/>
-	refreshes the dashboard with any new tracked objects
-	</div>
-
-
-	<div style=\"display:inline\"><strong>Download :</strong><img src=\"/stas/serverresources/icons/epic/help/image004.png\" width=\"46\" height=\"29\"/>
-	provides a feature to download the List display in three different formats PNG, JPG or CSV.
-	</div>
-
-
-	<div style=\"display:inline\"><strong>Setting : </strong><img src=\"/stas/serverresources/icons/epic/help/image005.png\" width=\"33\" height=\"32\"/>
-	switches to configuration view where you can change the following
-    </div>
-
-	1. Columns displayed on the list display
-
-
-	Simple drag and drop to change the view presented on list display.
-
-
-	Note: The setting is not saved and is only visible for that particular instance. Save the setting using favourites for future reference.
-
-
-	2. Filter based on date range as specified above
-
-
-	3. Set favourites as specified above
-
-
-	Select favourites if you want the list displayed according to the settings in 1 above.
-
-
-	<em><u>SORTING</u></em>
-
-<div style=\"display:inline\">
-	Click on the column heading of the field for primary sorting. For secondary sorting click on the little upward facing arrow <img src=\"/stas/serverresources/icons/epic/help/image006.png\" width=\"117\" height=\"23\"/> that appears at the right hand side of the field column heading
-</div>
-
-	Sorting by Timestamp and Name will be visualized as below, where 1 against the column Timestamp denotes that this is the primary sort field and 2 against column Name denotes secodnary sort field. For further sorting within, click the arrow on the right hand side of the column name as described above.
-	
-	<img src=\"/stas/serverresources/icons/epic/help/image007.png\" width=\"595\" height=\"25\"/>
-
-
-	To restore defaults and re-sort , click on the column heading of the primary sort field.
-
-<em><u></u></em>
-
-
-
-]]></value>
+                    <value><![CDATA[http://rm.globalepic.org/projects/beta-mt-guk/wiki/Tracking_the_Last_Known_Positions_of_the_Staff]]></value>
                 </section>
                 <section name="isshowcontrolbar">
                     <value><![CDATA[true]]></value>
@@ -1207,10 +1505,10 @@ String getAuthorUrl(){
                         <value><![CDATA[onInterval]]></value>
                     </section>
                     <section name="periodicrefreshrate">
-                        <value><![CDATA[15]]></value>
+                        <value><![CDATA[60]]></value>
                     </section>
                     <section name="periodicrefreshrateunits">
-                        <value><![CDATA[mi]]></value>
+                        <value><![CDATA[s]]></value>
                     </section>
                     <section name="dashboarddataparameters">
                         <section name="row">
@@ -1262,6 +1560,20 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
+                            <value><![CDATA[mission]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
                             <value><![CDATA[Organization]]></value>
                         </section>
                         <section name="column">
@@ -1305,6 +1617,23 @@ String getAuthorUrl(){
                         </section>
                         <section name="column">
                             <value><![CDATA[]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[localTime]]></value>
+                        </section>
+                        <section name="column">
+                            <section name="script">
+                                <value><![CDATA[localTime]]></value>
+                                <section name="type">
+                                    <value><![CDATA[2]]></value>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="column"/>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
                         </section>
                     </section>
                 </section>
@@ -1989,6 +2318,526 @@ String getAuthorUrl(){
                             <value><![CDATA[_lookat]]></value>
                         </section>
                     </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Dynamic List]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/ArtifactSelectionDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_artifactselection.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[artifactselectiondashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="helpcontent">
+                    <value><![CDATA[http://rm.globalepic.lu/projects/beta-mt-guk/wiki/About_Dynamic_list_display]]></value>
+                </section>
+                <section name="filtercriteria">
+                    <section name="script">
+                        <value><![CDATA[matchesSearchCriteria()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="actionevents">
+                    <section name="row">
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="dashboarddataparameters"/>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[owner]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[title]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[deviceId]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Organization]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[pTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[pLocalTime]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="syncservice">
+                    <value><![CDATA[com.spacetimeinsight.services.dashboard.renderer.ArtifactSelectionSyncDashboardService]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Dynamic List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <section name="script">
+                        <value><![CDATA[getName()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/SummaryDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_summarytable.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[summarydashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="dateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="datefield">
+                    <value><![CDATA[time]]></value>
+                </section>
+                <section name="datefielddateformat">
+                    <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="chartlinkname">
+                    <value><![CDATA[Historical]]></value>
+                </section>
+                <section name="chartlinkattributename">
+                    <value><![CDATA[Historical]]></value>
+                </section>
+                <section name="dashboardtitle">
+                    <section name="script">
+                        <value><![CDATA[getName()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardmetadata">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[owner]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[deviceId]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Device ID]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[title]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Title]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.util.Date]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Timestamp-GMT]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[yyyy-MM-dd HH:mm:ss]]></value>
+                        </section>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[latitude]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Latitude]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[longitude]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[java.lang.String]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Longitude]]></value>
+                        </section>
+                        <section name="column"/>
+                        <section name="column"/>
+                    </section>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[datarenderer]]></value>
+                    </section>
+                    <section name="datarenderer">
+                        <value><![CDATA[com.wfp.renderer.StaffHistoricalRenderer]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[mission]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getDMission()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[deviceId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[getName()]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[userId]]></value>
+                            </section>
+                            <section name="column">
+                                <section name="script">
+                                    <value><![CDATA[userID]]></value>
+                                    <section name="type">
+                                    <value><![CDATA[2]]></value>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[owner]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[time]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[latitude]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[longitude]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="groupattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[owner]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <section name="script">
+                                <value><![CDATA[getName()]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[expandall]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[autofitcolumns]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[true]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlighticonscale]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[1.0]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[highlightfeaturecount]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Legend Image14]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.ImageFeature]]></value>
+                </section>
+                <section name="url">
+                    <section name="script">
+                        <value><![CDATA[legendURL()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="xpos">
+                    <value><![CDATA[0.85]]></value>
+                </section>
+                <section name="ypos">
+                    <value><![CDATA[0.9]]></value>
+                </section>
+                <section name="legposunits">
+                    <value><![CDATA[fraction]]></value>
                 </section>
             </section>
         </section>

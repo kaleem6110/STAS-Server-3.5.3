@@ -56,6 +56,38 @@
             </section>
             <section name="row">
                 <section name="column">
+                    <value><![CDATA[mission]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Mission]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[organisation]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Organisation]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
                     <value><![CDATA[address]]></value>
                 </section>
                 <section name="column">
@@ -114,6 +146,16 @@
                 </section>
                 <section name="column">
                     <value><![CDATA[list]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="sortableattributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[Name]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[asc]]></value>
                 </section>
             </section>
         </section>
@@ -234,6 +276,8 @@
 import com.wfp.utils.RBRegionsUtils;
 import com.wfp.beans.*;
 import com.wfp.utils.CommonUtils;
+import com.wfp.utils.LDAPUtils;
+import com.wfp.utils.LDAPWSUtils;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -242,6 +286,8 @@ private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdrive
 String description = "Airports are cache using WarehouseCache job from LDAP";
 String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
+List<String> userMissionsList = null;
+List<String> userPlacesList = null;
 
 String getDatasource(){ 
 	return datasource;
@@ -271,7 +317,8 @@ void bindData() {
 		$artefact.addAttribute("description", dataMap.get("description"));
 		//$artefact.addAttribute("skype", dataMap.get("skype"));
 		//$artefact.addAttribute("ocs", dataMap.get("ocs"));
-		
+		$artefact.addAttribute("organisation", LDAPUtils.getOrgMap().get( dataMap.get("o"))  );
+		$artefact.addAttribute("mission", dataMap.get("mission"));
 		$artefact.addAttribute("json", buildPopupText(dataMap) );
 				
 	}
@@ -295,6 +342,8 @@ airportLegend.setName("Airport");
 attribMap.put( "Name",dataMap.get("cn") ); 
 attribMap.put( "Type","Airport" );
 attribMap.put( "Description",dataMap.get("description") );
+attribMap.put( "Organisation",LDAPUtils.getOrgMap().get( dataMap.get("o"))  );
+attribMap.put( "Mission",dataMap.get("mission") );
 
 airportLegend.setAttribMap( attribMap );
 airportLegendList.add( airportLegend );
@@ -369,13 +418,39 @@ String getIconUrl(){
 }
 
 
-boolean authorizePlaces(){
-	if(getType().indexOf("airport") >= 0){
-		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("Name"), userbean.getUserUniqueId());
+String getUserId(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	if(userbean != null){
+		return userbean.getUserUniqueId();
+	}
+	return null;		
+}
+
+boolean authorizePlaces()
+{
+	if(getType().indexOf("airport") >= 0)
+	{
+		List<String> placesList = getUserPlacesList( getUserId() );
+		if(placesList!=null&&placesList.size()>0 ) 
+			return placesList.contains( $artefact.getAttributeValueAsString("Name") );			
+		return false;
 	}
 	
 	return false;
+}
+List<String> getUserMissionList( String userId )
+{
+  if(userMissionsList==null ) userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );		
+	
+	return userMissionsList;
+}
+List<String> getUserPlacesList( String userId )
+{
+	if(userPlacesList==null )
+	{		
+		userPlacesList = LDAPWSUtils.getUserPlacesList( getUserMissionList( userId ) );
+	} 
+	return userPlacesList;
 }
 
 String getAuthorUrl(){	
@@ -550,6 +625,28 @@ String getAuthorUrl(){
                             <value><![CDATA[autocomplete]]></value>
                         </section>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[mission]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[organisation]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -608,6 +705,9 @@ String getAuthorUrl(){
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
+                <section name="helpcontent">
+                    <value><![CDATA[http://rm.globalepic.lu/projects/beta-mt-guk/wiki/Airports?parent=Default_layers_of_Location_Services_Geo_Portal]]></value>
+                </section>
                 <section name="isshowcontrolbar">
                     <value><![CDATA[true]]></value>
                 </section>
@@ -670,6 +770,34 @@ String getAuthorUrl(){
                     <section name="row">
                         <section name="column">
                             <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[mission]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[organisation]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
@@ -877,6 +1005,97 @@ String getAuthorUrl(){
                                     <value><![CDATA[1]]></value>
                                 </section>
                             </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Dynamic List]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/ArtifactSelectionDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_artifactselection.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[artifactselectiondashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="dashboarddata">
+                    <section name="dashboarddataparameters"/>
+                </section>
+                <section name="dashboardattributes">
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[Name]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[description]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[address]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="syncservice">
+                    <value><![CDATA[com.spacetimeinsight.services.dashboard.renderer.ArtifactSelectionSyncDashboardService]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Dynamic List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
                         </section>
                     </section>
                 </section>

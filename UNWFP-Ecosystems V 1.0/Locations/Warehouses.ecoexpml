@@ -32,19 +32,17 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
-                <section name="column">
-                    <value><![CDATA[]]></value>
-                </section>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[address]]></value>
+                    <value><![CDATA[description]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Street]]></value>
+                    <value><![CDATA[Description]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -56,13 +54,29 @@
             </section>
             <section name="row">
                 <section name="column">
-                    <value><![CDATA[description]]></value>
+                    <value><![CDATA[organisation]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Description]]></value>
+                    <value><![CDATA[Organisation]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[address]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Street]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -169,6 +183,16 @@
                 </section>
                 <section name="column">
                     <value><![CDATA[list]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="sortableattributes">
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[cn]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[asc]]></value>
                 </section>
             </section>
         </section>
@@ -289,6 +313,8 @@
         <section name="scriptor">
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
+import com.wfp.utils.LDAPUtils;
+import com.wfp.utils.LDAPWSUtils;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -296,6 +322,8 @@ private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdrive
 String description = "Warehouses: Warehouses are cache using WarehouseCache job from LDAP.<br> Stocks and Waybills: These are retrieved as csv files from compass using Warehouse URL Extractor Job & saved in C:\\stas\\data or /home/sti/stas/data.<br> Stocks Url: http://ets-qa.globalepic.org/api/stock_items/basic<br> Waybills Url: http://ets-qa.globalepic.org/api/loading_details/basic ";
 String datasource = "LDAP & Compass";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
+List<String> userMissionsList = null;
+List<String> userPlacesList = null;
 
 String getDatasource(){
 	return datasource;
@@ -303,11 +331,11 @@ String getDatasource(){
 
 String getLastRefreshTime(){
 	return lastRefreshTime;
-}
+} 
 
 String getDescription(){
 	return description;
-}
+} 
 
 void bindData() {
 	Map dataMap = (Map) $ldapplacesdatamodel;
@@ -319,9 +347,11 @@ void bindData() {
 		$artefact.addAttribute("address", dataMap.get("street"));	
 		$artefact.addAttribute("type", dataMap.get("type"));
 		$artefact.addAttribute("compasId", dataMap.get("externalID"));
-		$artefact.addAttribute("description", dataMap.get("description"));		
+		$artefact.addAttribute("organisation", LDAPUtils.getOrgMap().get( dataMap.get("o"))  );
+		$artefact.addAttribute("description", dataMap.get("description").toString().replaceAll("\\n"," ") );		
 		$artefact.addAttribute("skype", dataMap.get("skype"));
 		$artefact.addAttribute("ocs", dataMap.get("ocs"));
+		//$artefact.addAttribute("mission", dataMap.get("mission"));
 	}
 		
 }
@@ -369,13 +399,31 @@ void fireDashboardRefreshEvent(){
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
 
-boolean authorizePlaces(){
-	if(getType().indexOf("warehouse") >= 0){
-		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("cn"), userbean.getUserUniqueId());
-	}
+boolean authorizePlaces()
+{
+	if(getType().indexOf("warehouse") >= 0)
+	{
+		List<String> placesList = getUserPlacesList( getUserId() );
+		if(placesList!=null&&placesList.size()>0 ) 
+			return placesList.contains( $artefact.getAttributeValueAsString("cn") );			
+		return false;
+	} 
 	
 	return false;
+}
+List<String> getUserMissionList( String userId )
+{
+  if(userMissionsList==null ) userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );		
+	
+	return userMissionsList;
+}
+List<String> getUserPlacesList( String userId )
+{
+	if(userPlacesList==null )
+	{		
+		userPlacesList = LDAPWSUtils.getUserPlacesList( getUserMissionList( userId ) );
+	} 
+	return userPlacesList;
 }
 
 String getUserId(){
@@ -1427,6 +1475,28 @@ String getAuthorUrl(){
                             <value><![CDATA[autocomplete]]></value>
                         </section>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[organisation]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[mission]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[Text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[autocomplete]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -1485,6 +1555,9 @@ String getAuthorUrl(){
                     <value><![CDATA[summarydashboard]]></value>
                 </section>
                 <section name="datamashups"/>
+                <section name="helpcontent">
+                    <value><![CDATA[http://rm.globalepic.lu/projects/beta-mt-guk/wiki/Warehouses?parent=Default_layers_of_Location_Services_Geo_Portal]]></value>
+                </section>
                 <section name="isshowcontrolbar">
                     <value><![CDATA[true]]></value>
                 </section>
@@ -1546,7 +1619,7 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[address]]></value>
+                            <value><![CDATA[description]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
@@ -1560,7 +1633,21 @@ String getAuthorUrl(){
                     </section>
                     <section name="row">
                         <section name="column">
-                            <value><![CDATA[description]]></value>
+                            <value><![CDATA[organisation]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[address]]></value>
                         </section>
                         <section name="column">
                             <value><![CDATA[text]]></value>
@@ -1617,7 +1704,7 @@ String getAuthorUrl(){
                             <value><![CDATA[expandall]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -2370,7 +2457,7 @@ String getAuthorUrl(){
                             <value><![CDATA[expandall]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -2866,7 +2953,7 @@ String getAuthorUrl(){
                             <value><![CDATA[expandall]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">
@@ -2891,6 +2978,71 @@ String getAuthorUrl(){
                         </section>
                         <section name="value">
                             <value><![CDATA[50]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Dynamic List]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <value><![CDATA[swf/ArtifactSelectionDashboard.swf]]></value>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_artifactselection.png]]></value>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[artifactselectiondashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="dashboarddata">
+                    <section name="dashboarddataparameters"/>
+                </section>
+                <section name="syncservice">
+                    <value><![CDATA[com.spacetimeinsight.services.dashboard.renderer.ArtifactSelectionSyncDashboardService]]></value>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Dynamic List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
                         </section>
                     </section>
                 </section>

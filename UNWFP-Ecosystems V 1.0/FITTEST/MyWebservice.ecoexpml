@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="MyWebservice">
+    <section name="artefact">
+        <section name="name">
+            <value><![CDATA[webservice]]></value>
+        </section>
+        <section name="type">
+            <value><![CDATA[com.enterprisehorizons.magma.designtime.artifact.GeoArtifact]]></value>
+        </section>
+        <section name="cache">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="sortchildren">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="enableexpressions">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="experiencedef">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[webservice]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
+                </section>
+                <section name="selected">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="expand">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[Never]]></value>
+                </section>
+                <section name="autozoom">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="timesensitive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="params">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[entrypoint]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Artefact]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[ecoexpmodel]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[MyWebservice.ecoexpml]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[artefactname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[webservice]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="blinkrate">
+            <value><![CDATA[1]]></value>
+        </section>
+        <section name="blinkloopcount">
+            <value><![CDATA[2]]></value>
+        </section>
+        <section name="listeners"/>
+        <section name="layout">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[getName()]]></value>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[Placemark]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.PlacemarkFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="extrude">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="globalstyleid">
+                    <value><![CDATA[webservicestyle]]></value>
+                </section>
+                <section name="isblink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="preprocessor">
+                    <section name="script">
+                        <value><![CDATA[getName()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="scriptor">
+            <section name="body">
+                <value><![CDATA[private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
+private com.enterprisehorizons.magma.datamashup.WebServiceDataDriver $webservicemashupdriver;
+
+void bindData() {
+	Object[] data = (Object[])$webservicemashupdatamodel;
+	int count = data == null ? 0 : data.length;
+	System.out.println("Printing... Data= "+data[0]+ "::"+data[1]+"::"+data[2]);
+	$artefact.setCoordinates(data[0],data[1],"0");
+	$artefact.addAttribute($webservicemashupdriver.getMetaData()[2],data[2]);
+	$artefact.addAttribute($webservicemashupdriver.getMetaData()[3],data[3]);
+	$artefact.addAttribute($webservicemashupdriver.getMetaData()[4],data[4]);
+	$artefact.addAttribute($webservicemashupdriver.getMetaData()[5],data[5]);
+
+}
+
+
+String getName() {
+	return $artefact.getAttributeValue(2).toString();
+}
+
+String showCity() {
+	return $artefact.getAttributeValue(3).toString();
+}
+
+String showState() {
+	return $artefact.getAttributeValue(4).toString();
+}
+
+String showZip() {
+	return $artefact.getAttributeValue(5).toString();
+}
+String showCountry() {
+	return $artefact.getAttributeValue(5).toString();
+}]]></value>
+                <section name="type">
+                    <value><![CDATA[1]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="globalstyle">
+            <section name="style">
+                <value><![CDATA[webservicestyle]]></value>
+                <section name="name">
+                    <value><![CDATA[webservicestyle]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconurl">
+                    <value><![CDATA[images/pin.png]]></value>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconscale">
+                    <value><![CDATA[0.8]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="legends"/>
+        <section name="datamashups">
+            <section name="datamashup">
+                <value><![CDATA[webservicemashup]]></value>
+                <section name="driver">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.WebServiceDataDriver]]></value>
+                </section>
+                <section name="datasource">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.WebServiceDataSource]]></value>
+                    <section name="params">
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[dataTableScope]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[EcosystemSession]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[childsOf]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[sequence]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="databinding">
+            <section name="bindingdefinition">
+                <section name="datamashup">
+                    <value><![CDATA[webservicemashup]]></value>
+                </section>
+                <section name="script">
+                    <value><![CDATA[bindData()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section name="reload">
+        <value><![CDATA[true]]></value>
+    </section>
+    <section name="enablelogging">
+        <value><![CDATA[false]]></value>
+    </section>
+    <section name="namespace">
+        <value><![CDATA[]]></value>
+    </section>
+</configuration>

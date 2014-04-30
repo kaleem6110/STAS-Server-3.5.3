@@ -31,8 +31,8 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 	private static Map<String, Map<String, Map<String, List<DeviceBean>>>> soapServiceMap = new HashMap<String, Map<String, Map<String, List<DeviceBean>>>>();
 	private static String lastRefreshTime = null;
 	private static Map<String, String> paramsMap = new HashMap<String, String>();
-	private Date startDateTime = null;
-	private Date endDateTime = null;
+	private static Date startDateTime = null;
+	private static Date endDateTime = null;
 	public SoapTrackingJob () {
 			
 	}
@@ -80,12 +80,12 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	  
 	
-	public Date getStartDateTime() {
+	public static Date getStartDateTime() {
 		return startDateTime;
 	}
 
 
-	public Date getEndDateTime() {
+	public static Date getEndDateTime() {
 		return endDateTime;
 	}
 
@@ -96,6 +96,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 		Map<String, List<DeviceBean>> map = SensorServiceUtils.getEmergencySpotDtls(getStartDate().getTime(), getEndDate().getTime(), lpCount, paramsMap);
 		startDateTime = getStartDate().getTime();
 		endDateTime = getEndDate().getTime();
+		System.out.println( CommonUtils.getUTCdatetimeAsString()+" : map : "+map );
 		//System.out.println("Soap Tracking "+map.size());
 		if(map != null){
 			for (Map.Entry<String, List<DeviceBean>> entry : map.entrySet())	{

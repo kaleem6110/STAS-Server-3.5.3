@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+    package="com.spacetimeinsight.arra.db.models">
+    <class name="Vendors" table="STI_C_ARRA_VENDORS">
+        <id name="id" type="long">
+            <generator class="native" />
+        </id>
+       
+        <property name="subAwardNumber" type="string" column="SUB_AWARD_NUMBER"/>
+        <property name="dunsNumber" type="string" column="DUNS_NUMBER" />
+        
+        <property name="name" type="string" column="NAME" />
+        <property name="zipCode" type="string" column="ZIP_CODE"/>
+        
+        <property name="serviceDesc" type="string" column="SERVICE_DESC" />
+        <property name="amount" type="double" column="AMOUNT"/>
+        
+    </class>
+</hibernate-mapping>

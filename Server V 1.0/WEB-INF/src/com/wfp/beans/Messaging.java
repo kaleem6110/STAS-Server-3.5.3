@@ -5,6 +5,35 @@ public class Messaging {
 	private String msn;
 	private String gtalk;
 	private String other;
+	private String hf_CallSign;
+	private String vhf_CallSign;
+	private String iridium;
+	private String thuraya;
+	
+	public String getHf_CallSign() {
+		return hf_CallSign;
+	}
+	public void setHf_CallSign(String hf_CallSign) {
+		this.hf_CallSign = hf_CallSign;
+	}
+	public String getVhf_CallSign() {
+		return vhf_CallSign;
+	}
+	public void setVhf_CallSign(String vhf_CallSign) {
+		this.vhf_CallSign = vhf_CallSign;
+	}
+	public String getIridium() {
+		return iridium;
+	}
+	public void setIridium(String iridium) {
+		this.iridium = iridium;
+	}
+	public String getThuraya() {
+		return thuraya;
+	}
+	public void setThuraya(String thuraya) {
+		this.thuraya = thuraya;
+	}
 	/**
 	 * @return the other
 	 */

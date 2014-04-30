@@ -325,7 +325,7 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._8_x.LocationValue;
+                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._11_x.LocationValue;
 import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 
@@ -402,21 +402,21 @@ String getName() {
 
 double getAltitude(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
 	
 	return l.getAlt();
 }
 
 double getLat(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLat();
 }
 
 double getLng(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._8_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
 	return l.getLng();
 }
 
