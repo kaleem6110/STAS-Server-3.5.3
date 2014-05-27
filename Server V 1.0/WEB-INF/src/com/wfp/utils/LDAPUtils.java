@@ -128,10 +128,10 @@ public class LDAPUtils implements IEPICConstants {
 	 * @throws NamingException
 	 */
 	public static LdapContext getLDAPContext() throws NamingException{
-		return getLDAPContext(LDAPConfigUtils.getProviderUrl(), 
-			LDAPConfigUtils.getSecurityPrincipal(), SecurityDBUtils.getDecreptedPassword(LDAPConfigUtils.getSecurityCredentials()));
+		//return getLDAPContext(LDAPConfigUtils.getProviderUrl(), 
+			//LDAPConfigUtils.getSecurityPrincipal(), SecurityDBUtils.getDecreptedPassword(LDAPConfigUtils.getSecurityCredentials()));
 		
-		//return getLDAPContext("ldaps://ldap-dev.globalepic.lu:636","cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu", "Sti4Stas2Read?" );
+		return getLDAPContext("ldaps://ldap-dev.globalepic.lu:636","cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu", "Sti4Stas2Read?" );
 	}
 	
 	/**
@@ -404,7 +404,7 @@ public class LDAPUtils implements IEPICConstants {
 
 	public static void main(String a[])
 	{
-		
+		System.out.println( getAllFencesByType("safe-zone").size() );
 	}
 	/**
 	 * returns all the devices
@@ -1309,12 +1309,12 @@ public class LDAPUtils implements IEPICConstants {
 								.hasMore(); totalResultLogger++) {
 							String attrValue = (String) e.next();
 							List<String> attrValuesList = null;
-							if(listValues.indexOf(attr.getID()) >=0){
+							if(listValues.indexOf(attr.getID()) >=0){ System.out.println(attr.getID());
 								attrValuesList =  resultAttrMap.get(attr.getID())== null?null:(List<String>) resultAttrMap.get(attr.getID());
 								if(attrValuesList == null){
 									attrValuesList = new ArrayList<String>();
 								}
-								attrValuesList.add(attrValue);
+								attrValuesList.add(attrValue); System.out.println(attrValuesList);
 								resultAttrMap.put(attr.getID(), attrValuesList);
 							}else {
 								resultAttrMap.put(attr.getID(), attrValue);
@@ -1419,6 +1419,12 @@ public class LDAPUtils implements IEPICConstants {
 		String allGroupNamesFilter = "(member=uid="+userId+",ou=users,ou=people,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = "ou=acl_profiles,ou=people,dc=emergency,dc=lu";
 		return parseDataAsList(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
+	}
+	public static Map<String,Object> getAllFencesByType( String type ){
+		String allGroupNamesFilter = "(description=Islamabad Warden Zone - F8)";
+		String allGroupsSearchBase = "ou=fences,dc=emergency,dc=lu";
+		return parseDataAsMap(getSearchResults(new String[] {"cn","listOfPoints"},allGroupNamesFilter, allGroupsSearchBase), "cn");
+		
 	}
 
 	public static boolean validateDeviceByUser(String deviceId, String userId){

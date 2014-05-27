@@ -1,88 +1,0 @@
-8
-
-dir
-195
-https://svn.code.sf.net/u/veladitya/code/trunk/Server%20V%201.0/stascore/WEB-INF/src/mappings
-https://svn.code.sf.net/u/veladitya/code
-
-
-
-2012-09-27T09:41:34.434536Z
-181
-veladitya
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-03ecc1b0-7920-44d3-af5b-e2233cfab883
-
-log4j
-dir
-
-sap
-dir
-
-platform
-dir
-
-masterdata
-dir
-
-arra
-dir
-
-dashboard
-dir
-
-rules
-dir
-
-alerts
-dir
-
-wfp
-dir
-
-nature
-dir
-
-config
-dir
-
-testdbschema
-dir
-
-security
-dir
-
-mobile
-dir
-
-cep
-dir
-
-pi
-dir
-
-stem
-dir
-
-compliance
-dir
-
-tiger
-dir
-
-scheduler
-dir
-

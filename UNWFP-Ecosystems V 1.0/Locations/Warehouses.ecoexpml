@@ -1322,7 +1322,7 @@ String getAuthorUrl(){
                             <value><![CDATA[expandall]]></value>
                         </section>
                         <section name="value">
-                            <value><![CDATA[false]]></value>
+                            <value><![CDATA[true]]></value>
                         </section>
                     </section>
                     <section name="param">

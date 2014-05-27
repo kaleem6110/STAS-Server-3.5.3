@@ -327,28 +327,28 @@ void bindData() {
     $artefact.setCoordinates(data.getCoordinates());
     com.enterprisehorizons.magma.models.util.Coordinate[] c = data.getCoordinates();
  	
-    $artefact.addAttribute("Author", data.getAttributeValue("Author"));
-	$artefact.addAttribute("Title", data.getAttributeValue("Title"));
+    $artefact.addAttribute("Author", data.getAttributeValue("author"));
+	$artefact.addAttribute("Title", data.getAttributeValue("title"));
 	
 	String gmtDate = formatDate(data.getAttributeValue("Updated Date").toString()) ;
 	
-	$artefact.addAttribute("Updated_Date", data.getAttributeValue("Updated Date") );
-	$artefact.addAttribute("Updated_Date_Text", com.wfp.utils.CommonUtils.formatDate((Date)data.getAttributeValue("Updated Date") ) );
+	$artefact.addAttribute("Updated_Date", data.getAttributeValue("updated") );
+	$artefact.addAttribute("Updated_Date_Text", com.wfp.utils.CommonUtils.formatDate((Date)data.getAttributeValue("updated") ) );
 	  
 	String localTime =CommonUtils.getTimeZoneByLatLong( c[0].y+"", c[0].x+"" ,gmtDate , "dd MMM yyyy hh:mm:ss" );
 	localTime=CommonUtils.getLocalTime( localTime, (String)data.getAttributeValue("Updated_Date"), 
 	IEPICConstants.PORTAL_DATE_FORMAT_MM );
 	$artefact.addAttribute("localTimes", localTime );
 	$artefact.addAttribute("localTimeText", localTime );
-	$artefact.addAttribute("Link", data.getAttributeValue("Link"));
+	$artefact.addAttribute("Link", data.getAttributeValue("link"));
 	
-	addAttribute((String)data.getAttributeValue("Description"));
+	addAttribute((String)data.getAttributeValue("summary"));
 	//System.out.println(c[0].y+": " +c[0].x+"" );
              
 }
 
 void addAttribute(String desc){
-	//String desc = (String)data.getAttributeValue("Description");
+	//String desc = (String)data.getAttributeValue("summary");
 	//System.out.println(desc);
 	List<String> list = com.wfp.utils.CommonUtils.pullLinks(desc);
 	
@@ -378,7 +378,7 @@ void addAttribute(String desc){
 }
 
 String getName() {
-	return $artefact.getAttributeValueAsString("Title");
+	return $artefact.getAttributeValueAsString("title");
 }
 
 void getFormattedGEString(String desc){
@@ -1073,7 +1073,7 @@ String formatDate(String date) {
                                 <value><![CDATA[feedUrl]]></value>
                             </section>
                             <section name="value">
-                                <value><![CDATA[http://trackme.globalepic.org/kml.rss]]></value>
+                                <value><![CDATA[http://trackme.globalepic.lu/kml.rss]]></value>
                             </section>
                         </section>
                     </section>

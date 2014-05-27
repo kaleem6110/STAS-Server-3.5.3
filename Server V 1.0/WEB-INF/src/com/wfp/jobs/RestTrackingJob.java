@@ -43,8 +43,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 	@SuppressWarnings("unchecked")
 	private static Map<String, List> restServiceMap = new HashMap<String, List>();
 	private static String lastRefreshTime = null;
-	private static Map<String, String> paramsMap = new HashMap();
-	private static Map<String, String> deviceOffset = new HashMap();
+	private static Map<String, String> paramsMap = new HashMap<String, String>();
+	private static Map<String, String> deviceOffset = new HashMap<String, String>();
 	public RestTrackingJob () {}
 	
 	/* (non-Javadoc)

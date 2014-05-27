@@ -20,6 +20,7 @@ import lu.hitec.pss.soap.ds.out._15_x.CrudEnum;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_PortType;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_ServiceLocator;
 import lu.hitec.pss.soap.ds.out._15_x.DtoMission;
+import lu.hitec.pss.soap.ds.out._15_x.PssuFence;
 import lu.hitec.pss.soap.ds.out._15_x.PssuUnit;
 import lu.hitec.pss.soap.ds.out._15_x.PssuUser;
 import lu.hitec.pss.soap.ds.out._15_x.PssuVehicle;
@@ -157,6 +158,48 @@ public class LDAPWSUtils implements IEPICConstants {
 	public static DtoMission[] getAllMissions( String token ) throws AuthorizationException, AuthenticationException, RemoteException, IllegalArgumentException
 	{
 		return getLDAPStub().getMissionsForCrud(token, CrudEnum.fromValue( CrudEnum._READ ) );
+		
+	}
+	public static MissionFenceWrapper getAllFencesWrapper( String token ) throws AuthorizationException, AuthenticationException, RemoteException, IllegalArgumentException
+	{
+		MissionFenceWrapper wrapper = new MissionFenceWrapper();
+		DtoMission[] missions = getAllMissions(token);
+		if(missions!=null)
+		{
+			for( DtoMission mission: missions )
+			{
+				PssuFence[]  fences =getLDAPStub().getFencesAssignedToMissionForCrud(token, mission.getUniqueId(),  CrudEnum.fromValue( CrudEnum._READ ) );
+				if( fences!=null )
+					{
+						wrapper.setMission( mission.getUniqueId() );
+						wrapper.setFences(fences);
+					}
+				
+			}
+		}
+		return wrapper;
+		
+	}
+	public static List<PssuFence> getAllFences( String token ) throws AuthorizationException, AuthenticationException, RemoteException, IllegalArgumentException
+	{
+		List<PssuFence> wrapper = new ArrayList<PssuFence>();
+		DtoMission[] missions = getAllMissions(token);
+		if(missions!=null)
+		{
+			for( DtoMission mission: missions )
+			{
+				PssuFence[]  fences =getLDAPStub().getFencesAssignedToMissionForCrud(token, mission.getUniqueId(),  CrudEnum.fromValue( CrudEnum._READ ) );
+				if( fences!=null )
+					{
+						for(PssuFence f : fences )
+						{
+							wrapper.add(f  );
+						}
+					}
+				
+			}
+		}
+		return wrapper;
 		
 	}
 	public static String[]  getUnitIdsByMission(String token,String missionId) throws AuthorizationException, AuthenticationException, ResourceNotFoundException, RemoteException, IllegalArgumentException

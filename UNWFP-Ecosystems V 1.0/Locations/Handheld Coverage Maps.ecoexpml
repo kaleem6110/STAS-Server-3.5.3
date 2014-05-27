@@ -340,7 +340,6 @@ String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLa
 List<String> userMissionsList = null;
 List<String> userPlacesList = null;
 
-
 String getDatasource(){
 	return datasource;
 }

@@ -585,7 +585,7 @@ public String buildPopupText(com.wfp.security.form.DeviceBean data)
 	userLegend.setName("Profile");
 	attribMap.put( CommonUtils.getPersonalTitle( data.getGender() ), userProfilesList.contains("admin")?getFullName(data)+ " LDAPUSER"+data.getUid(): getFullName(data) );
 	attribMap.put("Title", data.getTitle()!=""?data.getTitle():"-" );
-	attribMap.put("Residence", data.getInternalID()!=""?getResidentId( data.getInternalID() ) :"N/A" );
+	//attribMap.put("Residence", data.getInternalID()!=""?getResidentId( data.getInternalID() ) :"N/A" );
 	
 	attribMap.put("jpegPhoto", data.getPhotoString()!=null?data.getPhotoString():"-" );
 	if(  data.getDepartment()!="" )attribMap.put("Department", data.getDepartment() );
@@ -1110,6 +1110,9 @@ Date getFromDate()
                 </section>
                 <section name="labelcolorshader">
                     <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
                 </section>
                 <section name="linecolorshader">
                     <value><![CDATA[false]]></value>

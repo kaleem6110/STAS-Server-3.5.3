@@ -56,13 +56,29 @@
             </section>
             <section name="row">
                 <section name="column">
+                    <value><![CDATA[organisation]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Organisation]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
                     <value><![CDATA[address]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[java.lang.String]]></value>
                 </section>
                 <section name="column">
-                    <value><![CDATA[Address]]></value>
+                    <value><![CDATA[Street]]></value>
                 </section>
                 <section name="column">
                     <value><![CDATA[false]]></value>
@@ -71,6 +87,38 @@
                 <section name="column">
                     <value><![CDATA[]]></value>
                 </section>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[city]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Locality]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
+            </section>
+            <section name="row">
+                <section name="column">
+                    <value><![CDATA[country]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[java.lang.String]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[Country]]></value>
+                </section>
+                <section name="column">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="column"/>
+                <section name="column"/>
             </section>
             <section name="row">
                 <section name="column">
@@ -235,7 +283,7 @@
             <section name="body">
                 <value><![CDATA[import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.wfp.beans.*;
-import com.wfp.utils.CommonUtils;
+import com.wfp.utils.*;
 
 String serverRootUrl = ServerUtils.getServerBaseUrl();
 private com.enterprisehorizons.magma.designtime.artifact.GeoArtifact $artefact;
@@ -244,20 +292,20 @@ private com.enterprisehorizons.magma.datamashup.CacheDataDriver $ldapplacesdrive
 String description = "Residences are cache using WarehouseCache job from LDAP";
 String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
+List<String> userMissionsList = null;
+List<String> userPlacesList = null;
 
 String getDatasource(){
 	return datasource;
 } 
 
 String getLastRefreshTime(){
-	return lastRefreshTime;
+	return lastRefreshTime;  
 }
 
 String getDescription(){
-	return description;
+	return description; 
 }
-
-
 
 void bindData() {
 	Map dataMap = (Map) $ldapplacesdatamodel;
@@ -270,8 +318,10 @@ void bindData() {
 		$artefact.addAttribute("address", dataMap.get("street").toString().replaceAll("[\\t\\n\\r]"," ") );	
 		$artefact.addAttribute("email", dataMap.get("mail"));
 		$artefact.addAttribute("city", dataMap.get("locality"));
+		$artefact.addAttribute("country", dataMap.get("c").toString().toUpperCase() );
 		$artefact.addAttribute("type", dataMap.get("type"));
 		$artefact.addAttribute("mobile", dataMap.get("otherPhones")  );
+		$artefact.addAttribute("organisation", LDAPUtils.getOrgMap().get( dataMap.get("o") )  );
 		//$artefact.addAttribute("compasId", dataMap.get("compasId"));
 		$artefact.addAttribute("description", dataMap.get("description"));
 		//$artefact.addAttribute("skype", dataMap.get("skype"));
@@ -279,7 +329,7 @@ void bindData() {
 		$artefact.addAttribute("json", buildPopupText(dataMap) );		
 	}
 		 
-}
+} 
 
  public String buildPopupText(Map<String,String> dataMap)
 {
@@ -296,10 +346,10 @@ profileTab.setName("Residence");
 //Creating a Legend
 Legend residenceLegend = new Legend();
 residenceLegend.setName("Residence");
-attribMap.put( "Name",dataMap.get("cn") ); 
+attribMap.put( "ID",dataMap.get("cn") ); 
 attribMap.put( "Type","Residence" );
-attribMap.put( "Description",dataMap.get("description")!=""?dataMap.get("description"):"-" );
-
+attribMap.put( "Resident Name",dataMap.get("description")!=""?dataMap.get("description"):"-" );
+attribMap.put( "Organisation",LDAPUtils.getOrgMap().get( dataMap.get("o") ) );
 residenceLegend.setAttribMap( attribMap );
 residenceLegendList.add( residenceLegend );
 
@@ -308,6 +358,7 @@ Legend deviceLegend = new Legend();
 deviceLegend.setName("Address");
 attribMap.put("Street", dataMap.get("street")!=""?dataMap.get("street"):"-" );
 attribMap.put("Locality", dataMap.get("locality")!=""?dataMap.get("locality"):"-" );
+attribMap.put("Country",dataMap.get("c").toString().toUpperCase() );
 if(dataMap.get("email")!=null) attribMap.put("Email", dataMap.get("email")!=""?dataMap.get("email"):"-" );
 if(dataMap.get("Phone")!=null)attribMap.put("Phone", "-" );
 
@@ -315,7 +366,7 @@ deviceLegend.setAttribMap( attribMap );
 residenceLegendList.add( deviceLegend );
  
 profileTab.setLegendList( residenceLegendList );
-tabList.add( profileTab );
+tabList.add( profileTab );  
 
 attribMap = new LinkedHashMap<String,String>();
 
@@ -358,7 +409,24 @@ void addAttribute(){
     
     
 }
+String getURL()
+{
+	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
+	String serverRootUrl = ServerUtils.getServerBaseUrl();
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	String url = "swf/GeofenceDashboard.swf?domainId="+userbean.getDomainId()+"&languageId="+userbean.getLanguageId()+"&userId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId())+"&userUniqueId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId())+"&moduleId="+moduleId+"&regionPrefix="+getLayerName()+"_DZ"+"&serverUrl="+com.enterprisehorizons.util.URLUtils.encode(serverRootUrl);
+	return url;
+}
+   
+String getMAURL()
+{
+	long moduleId = RBRegionsUtils.getModuleId(getLayerId());
+	String serverRootUrl = ServerUtils.getServerBaseUrl();
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	String url = "serverresources/ManualAlert.swf?domainId="+userbean.getDomainId()+"&languageId="+userbean.getLanguageId()+"&userId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserId())?"":userbean.getUserId())+"&userUniqueId="+(com.enterprisehorizons.util.StringUtils.isNull(userbean.getUserUniqueId())?"":userbean.getUserUniqueId())+"&moduleId="+moduleId+"&regionPrefix="+getLayerName()+"_MA"+"&serverUrl="+com.enterprisehorizons.util.URLUtils.encode(serverRootUrl);
 
+	return url;
+}
 void fireDashboardRefreshEvent(){
 	fireEvent(com.spacetimeinsight.events.EventConstants.REFRESH_DASHBOARDS);
 }
@@ -368,13 +436,40 @@ String getType() {
 	return $artefact.getAttributeValueAsString("type");
 }
 
-boolean authorizePlaces(){
-	if(getType().indexOf("residence") >= 0){
-		com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
-		return com.wfp.utils.LDAPUtils.validatePlaceByUser($artefact.getAttributeValueAsString("name"), userbean.getUserUniqueId());
-	}
+
+
+boolean authorizePlaces()
+{
+	if(getType().indexOf("residence") >= 0)
+	{
+		List<String> placesList = getUserPlacesList( getUserId() );
+		if(placesList!=null&&placesList.size()>0 ) 
+			return placesList.contains( $artefact.getAttributeValueAsString("name") );			
+		return false;
+	} 
 	
 	return false;
+}
+List<String> getUserMissionList( String userId )
+{
+  if(userMissionsList==null ) userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );		
+	
+	return userMissionsList;
+}
+List<String> getUserPlacesList( String userId )
+{
+	if(userPlacesList==null )
+	{		
+		userPlacesList = LDAPWSUtils.getUserPlacesList( getUserMissionList( userId ) );
+	} 
+	return userPlacesList;
+}
+String getUserId(){
+	com.spacetimeinsight.security.bean.UserBean userbean =  getUserBean();
+	if(userbean != null){
+		return userbean.getUserUniqueId();
+	}
+	return null;		
 }
 
 String getAuthorUrl(){	
@@ -697,6 +792,48 @@ String getAuthorUrl(){
                             <value><![CDATA[false]]></value>
                         </section>
                     </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[organisation]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[city]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="row">
+                        <section name="column">
+                            <value><![CDATA[country]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[text]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[0]]></value>
+                        </section>
+                        <section name="column">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
                 </section>
                 <section name="flashparameters">
                     <section name="param">
@@ -928,6 +1065,130 @@ String getAuthorUrl(){
                         </section>
                         <section name="value">
                             <value><![CDATA[Dynamic List]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[loadbydefault]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[false]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[lookatfunction]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[_lookat]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[Configure a Geo-fence]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[flash]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="flashurl">
+                    <section name="script">
+                        <value><![CDATA[getMAURL()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashwidth">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="flashheight">
+                    <value><![CDATA[100]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.DashboardCanvasFeature]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[never]]></value>
+                </section>
+                <section name="dashboardiconurl">
+                    <value><![CDATA[images/dashboards/icon_customdashboard.png]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <section name="script">
+                        <value><![CDATA[hasGeofenceAccess()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="loadbydefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboardtype">
+                    <value><![CDATA[customdashboard]]></value>
+                </section>
+                <section name="datamashups"/>
+                <section name="isshowcontrolbar">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="ishidedashoardbutton">
+                    <section name="script">
+                        <value><![CDATA[hasGeofenceAccess()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="isreloadconfiguration">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isallowtimeselection">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isattributelink">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="dashboarddata">
+                    <section name="datasourcetype">
+                        <value><![CDATA[artifact]]></value>
+                    </section>
+                    <section name="iscamerasensitive">
+                        <value><![CDATA[false]]></value>
+                    </section>
+                    <section name="refreshtype">
+                        <value><![CDATA[never]]></value>
+                    </section>
+                    <section name="dashboarddataparameters">
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablerenderer]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                        <section name="row">
+                            <section name="column">
+                                <value><![CDATA[datatablequery]]></value>
+                            </section>
+                            <section name="column">
+                                <value><![CDATA[]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section name="flashparameters">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[dashboardname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Configure a Geo-fence]]></value>
                         </section>
                     </section>
                     <section name="param">

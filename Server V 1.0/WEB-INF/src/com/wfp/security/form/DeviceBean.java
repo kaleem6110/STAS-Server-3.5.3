@@ -47,10 +47,8 @@ public class DeviceBean extends GeoArtifact implements Serializable,IArtifact, C
 	private String gender;
 	private String shortOrganization;
 	private List<String> vehicleID = null;
-	private String internalID;
-		/**
-		 * @return the shortOrganization
-		 */
+	private String internalID; 
+		
 	public String getShortOrganization() {
 			return shortOrganization;
 		}

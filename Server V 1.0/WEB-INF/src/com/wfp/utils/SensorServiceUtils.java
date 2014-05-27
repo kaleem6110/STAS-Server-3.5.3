@@ -60,14 +60,17 @@ public class SensorServiceUtils implements IEPICConstants {
 			List<DeviceBean> allAirplaneDevices = new ArrayList<DeviceBean>();
 			String token = EventServiceUtils.getLDAPToken();System.out.println("61 token :"+token );
 			List<String> allMissions = LDAPUtils.getAllMissions();
-			LDAPUtils.getAllDeviceInDomain();
+			System.out.println(" allMissions : "+ allMissions );
+			//LDAPUtils.getAllDeviceInDomain();
 		
 			if (allMissions != null) 
 			{
 				map = new HashMap<String, List<DeviceBean>>();
 				for (String mission : allMissions)
-				{
+				{	System.out.println(" mission : "+ mission );
 					UnitsReports unitReports= stub.getAllUnitsReports( token , mission );	
+					
+					System.out.println(" unitReports : "+ unitReports );
 					if(unitReports!=null)
 					{
 						UnitReport[] userReports = unitReports.getUsersReports();

@@ -487,7 +487,8 @@ void bindData()
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());		
 			
 			//Setting the GMT time
-			$artefact.addAttribute("time",(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			//$artefact.addAttribute("time",(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
+			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime(), IEPICConstants.EPIC_DATE_FORMAT )  );
 			$artefact.addAttribute("pTime",CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
 			 
 			//Setting the LocalTime
@@ -665,13 +666,16 @@ String getDeviceCaption(){
 	return  $artefact.getAttributeValueAsString("vehicleID");
 }
 String getIconUrl(){ 
-	return "serverresources/icons/epic/Vehicle_Tracking.png"; 
+	return "serverresources/icons/epic/Vehicle_Tracking_K.png"; 
 }
 String getIconUrl_G(){ 
 	return "serverresources/icons/epic/Vehicle_Tracking_G.png"; 
 }
 String getIconUrl_C(){ 
 	return "serverresources/icons/epic/Vehicle_Tracking_C.png";
+}
+String getIconUrl_Y(){ 
+	return "serverresources/icons/epic/Vehicle_Tracking_Y.png";
 }
 String legendURL(){    
 	return "serverresources/icons/epic/Vehicles_Legend.png";		
@@ -684,7 +688,8 @@ String getStyle(){
 		Date current = Calendar.getInstance().getTime();
 		int hrs = (int)((current.getTime()-time.getTime())/(1000 * 60 * 60 ) );
 		if( hrs <6  ) return "latestReported";
-		else if(hrs <24 ) return "lastDayReported";		
+		else if(hrs <24 ) return "lastDayReported";	
+		else if(hrs>23&&hrs <120 ) return "lastWeekReported";			
 	}
 	return "placemarkstyle";
 }
@@ -888,7 +893,7 @@ String getAllMissionFromList (List<String> missionList)
                 </section>
                 <section name="iconurl">
                     <section name="script">
-                        <value><![CDATA[getIconUrl_C()]]></value>
+                        <value><![CDATA[getIconUrl_Y()]]></value>
                         <section name="type">
                             <value><![CDATA[1]]></value>
                         </section>
@@ -900,6 +905,9 @@ String getAllMissionFromList (List<String> missionList)
                 <section name="labelcolorshader">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
                 <section name="linecolorshader">
                     <value><![CDATA[false]]></value>
                 </section>
@@ -908,6 +916,44 @@ String getAllMissionFromList (List<String> missionList)
                 </section>
                 <section name="showhighlightstyles">
                     <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_Y()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="shadertype">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
+                </section>
+            </section>
+            <section name="style">
+                <value><![CDATA[lastWeekReported]]></value>
+                <section name="name">
+                    <value><![CDATA[lastWeekReported]]></value>
+                </section>
+                <section name="makeasglobalstyle">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="iconcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
+                <section name="linecolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="fillcolorshader">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="showhighlightstyles">
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="shadertype">
                     <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>
@@ -935,6 +981,9 @@ String getAllMissionFromList (List<String> missionList)
                 <section name="labelcolorshader">
                     <value><![CDATA[false]]></value>
                 </section>
+                <section name="labelscale">
+                    <value><![CDATA[0.0]]></value>
+                </section>
                 <section name="linecolorshader">
                     <value><![CDATA[false]]></value>
                 </section>
@@ -943,6 +992,17 @@ String getAllMissionFromList (List<String> missionList)
                 </section>
                 <section name="showhighlightstyles">
                     <value><![CDATA[true]]></value>
+                </section>
+                <section name="highlighticonurl">
+                    <section name="script">
+                        <value><![CDATA[getIconUrl_G()]]></value>
+                        <section name="type">
+                            <value><![CDATA[1]]></value>
+                        </section>
+                    </section>
+                </section>
+                <section name="highlighticonscale">
+                    <value><![CDATA[1.0]]></value>
                 </section>
                 <section name="shadertype">
                     <value><![CDATA[com.enterprisehorizons.magma.models.util.Shader]]></value>

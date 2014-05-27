@@ -190,12 +190,12 @@ public interface IEPICConstants {
 	public static final String TRN_TOKEN="adulovic-20131114-2478b95c6e23404685af7edfde315724";
 	
 	//kmohammed
-	public static final String LDAP_FILTER_URL =  "ldaps://ldap-dev.globalepic.lu:636/";
-	public static final String LDAP_USER_ID = "aleksandar.dulovic";
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap-qa.globalepic.lu:636/";
+	public static final String LDAP_USER_ID = "adulovic";
 	public static final String LDAP_USER_PWD_ENCRYPTED = "CCvmkG2dxAM=";
 	public static final String TOKEN=DEV_TOKEN;	
-	public static final String STAS_Engine ="STAS_Engine-dev";
-	public static final String MIDDLEWARE_ID="mw-dev";
+	public static final String STAS_Engine ="STAS_Engine-qa";
+	public static final String MIDDLEWARE_ID="mw-qa";
 	
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";
