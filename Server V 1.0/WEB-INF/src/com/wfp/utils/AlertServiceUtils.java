@@ -20,7 +20,8 @@ import com.wfp.security.form.DeviceBean;
 import com.wfp.security.form.LDAPUserBean;
 import java.util.ArrayList;
 public class AlertServiceUtils implements IEPICConstants {
- 
+	
+	
 	public static void publishAlert(String deviceId, String dangerZoneName,  Double lat, Double lng, List<String> emailList){
 		System.out.println("## START AlertServiceUtils.publishAlert :deviceId : "+deviceId +" :dangerZoneName :"+dangerZoneName +" :lat :"+lat+": long :"+lng );
 	
