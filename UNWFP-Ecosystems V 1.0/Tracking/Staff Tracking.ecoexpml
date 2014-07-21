@@ -538,13 +538,14 @@ void bindData() {
 	 	{
 	 	 	
 	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
-			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime(), IEPICConstants.EPIC_DATE_FORMAT )  );
-		
-		    $artefact.addAttribute("pTime",  CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+	 		
+			$artefact.addAttribute("time",  CommonUtils.parseSensorDate(data.getTime() )  );		
+		    $artefact.addAttribute("pTime",  CommonUtils.formatWSDate((Date)$artefact.getAttributeValue("time") ) );
 								
 			$artefact.addAttribute("title", data.getTitle());							
 			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );			        		
+			$artefact.addAttribute("pLocalTime", data.getDeviceLocalTime() );	
+					        		
 			$artefact.addAttribute("deviceId", data.getName());	
 			$artefact.addAttribute("userID", data.getUid()); 			
 			//$artefact.addAttribute("Contact", CommonUtils.getContactDtls(data.getSkypePager(), data.getMail(),  data.getMobilesList(),  getFullName(data)) );
@@ -803,8 +804,10 @@ String getStyle()
 boolean isInDangerZone()
 {
 	String[] allZones = RBRegionsUtils.getZoneNames($artefact, getUserBean(), getLayerName(), getLayerId(), getLayerName()+"_DZ", "_SZ");
+	//if( allZones!=null) { for(String s:allZones) System.out.println(s ); }
 	String deviceId = $artefact.getAttributeValueAsString("deviceId");	
 	boolean needToAlert = RBRegionsUtils.isDeviceTraced($artefact, allZones, getSessionId(), deviceId);
+	if( needToAlert )System.out.println("needToAlert:"+needToAlert  );
 	return (!com.enterprisehorizons.util.StringUtils.isNull(allZones) );		
 }
 String getDangerZoneName()
@@ -944,7 +947,7 @@ List<String> getUserProfilesList( String userId )
 {
 	if(userMissionsList==null )
 	{
-		userMissionsList= LDAPUtils.getAllMisisons4rUser( userId );
+		userMissionsList= LDAPUtils.getAllProfiles4rUser( userId );
 	} //System.out.println("userMissionsList"+ userMissionsList );
 	return userMissionsList;
 }

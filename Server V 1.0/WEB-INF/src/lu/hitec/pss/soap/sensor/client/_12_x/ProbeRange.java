@@ -8,7 +8,7 @@
 package lu.hitec.pss.soap.sensor.client._12_x;
 
 public class ProbeRange  implements java.io.Serializable {
-    private lu.hitec.pss.soap.sensor.client._12_x.RangeDetails details;
+    private int missingValues;
 
     private lu.hitec.pss.soap.sensor.client._12_x.ProbeValue[] val;
 
@@ -16,30 +16,30 @@ public class ProbeRange  implements java.io.Serializable {
     }
 
     public ProbeRange(
-           lu.hitec.pss.soap.sensor.client._12_x.RangeDetails details,
+           int missingValues,
            lu.hitec.pss.soap.sensor.client._12_x.ProbeValue[] val) {
-           this.details = details;
+           this.missingValues = missingValues;
            this.val = val;
     }
 
 
     /**
-     * Gets the details value for this ProbeRange.
+     * Gets the missingValues value for this ProbeRange.
      * 
-     * @return details
+     * @return missingValues
      */
-    public lu.hitec.pss.soap.sensor.client._12_x.RangeDetails getDetails() {
-        return details;
+    public int getMissingValues() {
+        return missingValues;
     }
 
 
     /**
-     * Sets the details value for this ProbeRange.
+     * Sets the missingValues value for this ProbeRange.
      * 
-     * @param details
+     * @param missingValues
      */
-    public void setDetails(lu.hitec.pss.soap.sensor.client._12_x.RangeDetails details) {
-        this.details = details;
+    public void setMissingValues(int missingValues) {
+        this.missingValues = missingValues;
     }
 
 
@@ -82,9 +82,7 @@ public class ProbeRange  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.details==null && other.getDetails()==null) || 
-             (this.details!=null &&
-              this.details.equals(other.getDetails()))) &&
+            this.missingValues == other.getMissingValues() &&
             ((this.val==null && other.getVal()==null) || 
              (this.val!=null &&
               java.util.Arrays.equals(this.val, other.getVal())));
@@ -99,9 +97,7 @@ public class ProbeRange  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getDetails() != null) {
-            _hashCode += getDetails().hashCode();
-        }
+        _hashCode += getMissingValues();
         if (getVal() != null) {
             for (int i=0;
                  i<java.lang.reflect.Array.getLength(getVal());
@@ -124,9 +120,9 @@ public class ProbeRange  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/12.x", "probeRange"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("details");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "details"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/12.x", "rangeDetails"));
+        elemField.setFieldName("missingValues");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "missingValues"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();

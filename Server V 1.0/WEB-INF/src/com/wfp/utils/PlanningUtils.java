@@ -303,20 +303,20 @@ public class PlanningUtils implements IEPICConstants{
 		return data;
 	}
 	
-	public static void getWarehouseStocks(String stockFilepath, String keyLocation){
+	public static void getWarehouseStocks(String stockFilepath, String keyLocation, Map<String, Map<String,String>> placesMap ){
 		Map stockMap = PlanningUtils.readStockItems(stockFilepath, keyLocation);
 		Logger.info("Read all stocks from ["+stockFilepath+"] Data Object: ["+stockMap+"] ", PlanningUtils.class);
 		//System.out.println("planningutils:305:Read all stocks from ["+stockFilepath+"] Data Object: ["+stockMap+"] ");
 		//setWHStockCacheMap(concatWHStocks(PlanningUtils.getWarehouseDtls(whFilepath), stockMap));	
-		setWHStockCacheMap(concatLDAPWHStocks(LDAPUtils.getAllPlaces(), stockMap));
+		setWHStockCacheMap(concatLDAPWHStocks( placesMap , stockMap));
 		
 	}
 	
-	public static void getWaybillDtls(String waybillFile){
+	public static void getWaybillDtls(String waybillFile, Map<String, Map<String,String>> placesMap ){
 		//setWaybillCacheMap(concatWHStocks(PlanningUtils.getWarehouseDtls(whFilepath), readWaybillDtls(waybillFile)));
 		//setWaybillCacheMap(readWaybillDtls(waybillFile));
 		System.out.println(" START getWaybillDtls waybillFile "+waybillFile);
-		setWaybillCacheMap(concatLDAPWHStocks(LDAPUtils.getAllPlaces(), readWaybillDtls(waybillFile)));
+		setWaybillCacheMap(concatLDAPWHStocks( placesMap, readWaybillDtls(waybillFile)));
 	}
 	
 	private static Map readWaybillDtls(String waybillFile) {

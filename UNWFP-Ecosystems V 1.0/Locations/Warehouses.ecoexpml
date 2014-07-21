@@ -217,7 +217,7 @@
                     <value><![CDATA[6600]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[false]]></value>

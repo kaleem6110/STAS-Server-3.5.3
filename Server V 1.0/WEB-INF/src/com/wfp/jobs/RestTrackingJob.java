@@ -2,34 +2,29 @@ package com.wfp.jobs;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_ServiceLocator;
-import lu.hitec.pss.soap.sensor.client._12_x.LocationRange;
-import lu.hitec.pss.soap.sensor.client._12_x.RangeLimit;
-import lu.hitec.pss.soap.sensor.client._12_x.SubRangeType;
-import lu.hitec.pss.soap.sensor.client._12_x.UnitId;
-import lu.hitec.pss.soap.sensor.client._12_x.UnitType;
+import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
 
 import org.jdom.Element;
 
 import com.enterprisehorizons.magma.ecosystem.model.Cache;
 import com.enterprisehorizons.util.StringUtils;
 import com.enterprisehorizons.util.XMLUtils;
+import com.primavera.integration.client.bo.enm.UnitType;
 import com.spacetimeinsight.config.scheduler.Parameter;
 import com.spacetimeinsight.config.scheduler.Parameters;
 import com.spacetimeinsight.magma.job.CustomJobTask;
 
 import com.wfp.security.form.DeviceBean;
+import com.wfp.security.form.LDAPUserBean;
 import com.wfp.utils.CommonUtils;
 import com.wfp.utils.EventServiceUtils;
 import com.wfp.utils.IEPICConstants;
 import com.wfp.utils.LDAPUtils;
-import com.wfp.utils.SensorServiceUtils;
+import com.wfp.utils.LDAPWSUtils;
 import com.wfp.utils.ValidateCertificateCall;
 /**
  * 
@@ -43,8 +38,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 	@SuppressWarnings("unchecked")
 	private static Map<String, List> restServiceMap = new HashMap<String, List>();
 	private static String lastRefreshTime = null;
-	private static Map<String, String> paramsMap = new HashMap<String, String>();
-	private static Map<String, String> deviceOffset = new HashMap<String, String>();
+	private static Map<String, String> paramsMap = new HashMap();
+	private static Map<String, String> deviceOffset = new HashMap();
 	public RestTrackingJob () {}
 	
 	/* (non-Javadoc)
@@ -67,49 +62,54 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 	 */
 	@SuppressWarnings("unchecked")
 	private void getRestTrackingDtls()
-	{
-		List<DeviceBean> staffList =null;
-		List<DeviceBean> vehicleList =null;
-		List<DeviceBean> airplaneList =null;
-		Element rootNode = null;
-		String expression = null;
-		//getRestServiceMapCache().clear();
-		//Retreives all devices from the REST as xmlString.
-		String xmlString = ValidateCertificateCall.callSecureURI();		
-
-		//Getting all the devices from the LDAP.
+	{	
+		List<DeviceBean> staffList =new ArrayList<DeviceBean>();;
+		List<DeviceBean> vehicleList =new ArrayList<DeviceBean>();;
+		List<DeviceBean> airplaneList =new ArrayList<DeviceBean>();
+		//Getting the middleware token.
+		String token = EventServiceUtils.getLDAPToken();
+		int devices=0,staff=0,vehicle=0,airplane=0;
+		
+		//Getting all the ldap devices from the Cache.
 		List<String> ldapDeviceList =( List<String>)LDAPCacheJob.getLDAPCacheData(PARAM_ALLGROUPS);	
 		
-		if(StringUtils.isNull(xmlString)) return ;		
-		rootNode = XMLUtils.getRootNode(xmlString,true);
-		expression = PARAM_XPR;	
+		Map<String, LDAPUserBean> ldapUserMap = LDAPUtils.getLDAPUserDtlsMap();
 		
-		List<Element> list =  XMLUtils.evaluate(rootNode, expression);		
-		if(list != null)
-		{
-			System.out.println(" list size:"+list.size() );
-			staffList = new ArrayList<DeviceBean>();
-			vehicleList =  new ArrayList<DeviceBean>();
-			airplaneList = new ArrayList<DeviceBean>();
-		}
-		else  return;
-		//Object lists = getDataInput();
-		
-		//Iterate the list obtained from REST.
-		for (int i=0;i <list.size(); i++)
-		{
-			Element element = list.get(i); int size = element.getContentSize();
-			String deviceId = element.getContent(size-1).getValue();			
-			//check the device is added in LDAP.
-			if( deviceId!=null && ( ldapDeviceList==null || (ldapDeviceList!=null&& ldapDeviceList.contains(deviceId.trim() ) ) ) )
-			{
-				if(  LDAPUtils.validateVehicle(deviceId ) )	addDevice(element, vehicleList, KEY_VEHICLE);
-				else if( LDAPUtils.validateStaff(deviceId)) addDevice(element, staffList,KEY_STAFF); 
-				else if( LDAPUtils.validatePlane(deviceId ))addDevice(element, airplaneList, KEY_AIRPLANE); 
-				//list unassigned devices and send email if required.
+		for (Map.Entry<String, LDAPUserBean> entry : ldapUserMap.entrySet()) 
+		{devices++;
+			System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+			
+			LDAPUserBean userBean = entry.getValue();
+			List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get( userBean.getDeviceId() ).getAuthorizedGroupsList();
+			//System.out.println(" userBean.getDeviceId() "+ userBean.getDeviceId() +" deviceMissionList :  "+deviceMissionList  );
+			if( deviceMissionList!=null&& userBean!=null && userBean.getUnit().equals( KEY_STAFF )&&
+					userBean.getDeviceId()!=null&& !userBean.getDeviceId().isEmpty())
+			{			
+				staff++;
+				addLocalization( userBean, staffList,KEY_STAFF , token,
+						deviceMissionList.size()>0?deviceMissionList.get(0):"AE" ,lu.hitec.pss.soap.sensor.client._12_x.UnitType.USER );				
+			}
+			else if( userBean!=null && userBean.getUnit().equals( KEY_VEHICLE )&& userBean.getDeviceId()!=null&& !userBean.getDeviceId().isEmpty())
+			{vehicle++;
+				addLocalization( userBean, vehicleList ,KEY_VEHICLE , token, 
+						deviceMissionList.size()>0?deviceMissionList.get(0):"AE", lu.hitec.pss.soap.sensor.client._12_x.UnitType.VEHICLE );
+				
+			}
+			else if( userBean!=null && userBean.getUnit().equals( KEY_AIRPLANE )&& userBean.getDeviceId()!=null&& !userBean.getDeviceId().isEmpty())
+			{airplane++;
+				addLocalization( userBean, airplaneList,KEY_AIRPLANE , token, 
+						deviceMissionList.size()>0?deviceMissionList.get(0):"AE", lu.hitec.pss.soap.sensor.client._12_x.UnitType.VEHICLE );
 			}
 		}
-		String getAllDevices = paramsMap.get("getAllVehicleDevices") ;		
+		
+		//TODO clearing cache
+		getRestServiceMapCache().clear();
+		
+		//Retreiving the parameter value from JOB Parameters
+		String getAllDevices = paramsMap.get("getAllVehicleDevices") ;	
+		
+		//Storing Staff, Vehicle and Airplane list to cache.
+		//Removing secondary devices if GETALLDEVICES property is set FALSE in job config.
 		if(getAllDevices!=null&&getAllDevices.equals("false"))
 				getRestServiceMapCache().put(KEY_VEHICLE,  removeSecondaryDevices( vehicleList ) );		
 		else
@@ -120,15 +120,83 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 		if( ! (LDAPCacheJob.getDeviceOffsetMap().size() >0 ) )		
 				LDAPCacheJob.setDeviceOffsetMap( deviceOffset  );
 		
+		System.out.println( " Count :Devices "+devices+" : Staff :"+staff+": Vehicles :"+vehicle+" :Airplanes :"+airplane );
+		
 	}
+	
+	
+	private void addLocalization( LDAPUserBean userBean, List<DeviceBean> indigoList, String type, String token ,String missionId,
+			lu.hitec.pss.soap.sensor.client._12_x.UnitType unitType)
+	{
+		String offset="";	
+		try 
+		{
+			DeviceBean is = new DeviceBean(); 
+			String id = type.equals(KEY_STAFF)?userBean.getUid():userBean.getCn();
+			LDAPUtils.populateDeviceBean( userBean , is ); 
+			LocationValue lv = LDAPWSUtils.getUnitLastLocation(id , token, missionId, unitType);
+			if( lv!=null )
+			{
+				is.setLatitude( ""+lv.getLat() );
+				is.setLongitude( lv.getLng()+"" );
+				is.setTime( lv.getTime().getTime().toString() );
+				is.setName( userBean.getDeviceId() );
+				if( LDAPCacheJob.getDeviceOffsetMap().size() >0 && LDAPCacheJob.getDeviceOffsetMap().containsKey(is.getName() ) )
+				{
+					offset= LDAPCacheJob.getDeviceOffsetMap().get( is.getName() ); //System.out.println("time : "+ is.getTime()  );
+					is.setDeviceLocalTime( CommonUtils.getLocalTime(offset ,is.getTime(),CALENDAR_DATE_FORMAT) ) ;
+				}
+				else
+				{   
+					if(is.getLatitude()!=null &&is.getLongitude()!=null)
+					{	//calculating the device offset.
+						offset = CommonUtils.getOffsetByLatLong(is.getLatitude(),is.getLongitude() );
+						is.setDeviceLocalTime( CommonUtils.getLocalTime( offset,is.getTime(),CALENDAR_DATE_FORMAT) );
+					}				
+				}
+				if(is.getCn()!=null&&!is.getCn().isEmpty()) indigoList.add(is);
+				//Storing the offset for each device as Map.
+				if( is.getName()!=null )deviceOffset.put(is.getName(), offset );
+			}//else System.out.println(" deviceID : "+is.getName() +" : lv :"+lv  +": type : "+ type +" : "+is.getCn());
+			
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * @param vehicleList
+	 * @return
+	 */
 	public List<DeviceBean> removeSecondaryDevices(List<DeviceBean> vehicleList)
 	{
 		List<DeviceBean> list = null;
 		if( vehicleList!=null&&vehicleList.size()>0)
 		{
 			 list = new ArrayList<DeviceBean>();
-			for( int i=0;i<vehicleList.size()-1;i++ )
-			{ 	int ok=0;
+			 int ok=0;			 
+			 for( DeviceBean bean: vehicleList )
+			 {
+				 ok=0;
+				 for( DeviceBean bean2:vehicleList )
+				 {
+					 if( bean.getName()!= bean2.getName() && bean.getCn().equals( bean2.getCn() ))
+					 {
+						 	ok=1;
+							System.out.println(" ** Found : "+bean.getCn() +" has multiple devices ****");
+							System.out.println(bean.getTime() + ":****: " +bean2.getTime() );
+							if( CommonUtils.parseDate(bean.getTime(), EPIC_DATE_FORMAT).after(CommonUtils.parseDate(bean2.getTime() ) ) )
+								list.add( bean );
+							else  list.add( bean2 );
+							break;	 
+					 }
+				 }
+				 if(ok==0)list.add( bean );
+			 }
+			/*for( int i=0;i<vehicleList.size()-1;i++ )
+			{ 	ok=0;
 				for(int j=i+1;j<vehicleList.size();j++ )
 				{
 					if(vehicleList.get(i).getCn().equals(vehicleList.get(j).getCn() ) )
@@ -144,53 +212,10 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 					
 				}
 				if(ok==0)list.add(vehicleList.get(i));
-			}
+			}*/
 		} System.out.println(" removeSecondaryDevices : list : size : "+list.size());
 		return list;
 	}
-	@SuppressWarnings("unchecked")
-	private void addDevice( Element element, List indigoList, String type ) 
-	{
-		String offset="";		
-		DeviceBean is = new DeviceBean(); 
-		is.setLatitude(element.getAttribute(ATTR_LAT).getValue());
-		is.setLongitude(element.getAttribute(ATTR_LNG).getValue());
-		is.setTime(element.getContent(0).getValue());
-		is.setName(element.getContent(element.getContentSize()-1).getValue());		
-		//Commented Localtime calculation
-		if( LDAPCacheJob.getDeviceOffsetMap().size() >0 && LDAPCacheJob.getDeviceOffsetMap().containsKey(is.getName() ) )
-		{
-			offset= LDAPCacheJob.getDeviceOffsetMap().get( is.getName() );
-			is.setDeviceLocalTime( CommonUtils.getLocalTime(offset ,is.getTime(),EPIC_DATE_FORMAT) ) ;
-		}
-		else
-		{   
-			if(is.getLatitude()!=null &&is.getLongitude()!=null)
-			{	//calculating the device offset.
-				offset = CommonUtils.getOffsetByLatLong(is.getLatitude(),is.getLongitude() );
-				is.setDeviceLocalTime( CommonUtils.getLocalTime( offset,is.getTime(),EPIC_DATE_FORMAT) );
-			}				
-		}		
-		//is.setDeviceLocalTime( is.getTime() );		
-		LDAPUtils.setLDAPUserDtls(is);
-		if(is.getCn()!=null&&!is.getCn().isEmpty()) indigoList.add(is);
-		//Storing the offset for each device as Map.
-		if( is.getName()!=null )deviceOffset.put(is.getName(), offset );
-		
-	}
-
-	public static Calendar getStartDate(){
-		Calendar startDate = Calendar.getInstance();
-		startDate.set(Calendar.MONTH, 9 );
-		startDate.set(Calendar.YEAR, 2013 );
-		startDate.set(Calendar.DATE, 1 );
-		startDate.set(Calendar.MINUTE, 0);
-		startDate.set(Calendar.SECOND, 0);
-		startDate.set(Calendar.HOUR, 0);
-		
-		return startDate;
-	}
-	
 	public static String getLastRefreshTime() {
 		return lastRefreshTime;
 	}
@@ -200,19 +225,17 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 			instance = new RestTrackingJob();
 		}
 	}
-
-	public static RestTrackingJob getInstance() {
+	public static RestTrackingJob getInstance() 
+	{
 		if (instance == null) {
 			initializeInstance();
 		}
 		return instance;
-	}
-	
+	}	
 	
 	public  Map<String, List> getRestServiceMapCache() {
 		return restServiceMap;
 	}
-
 	
 	public  List<DeviceBean> getRestServiceList(String key){
 		return getRestServiceMapCache().get(key);

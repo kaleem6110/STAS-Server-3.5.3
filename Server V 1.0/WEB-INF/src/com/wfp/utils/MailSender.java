@@ -23,8 +23,9 @@ public class MailSender implements IEPICConstants {
 	public static void main(String args[]) {
 		List<String> toAddressList = new ArrayList<String>();
 		toAddressList.add("kaleem6110@gmail.com");
-		// toAddressList.add("kaleem6110@gmail.com"); //		
-		//sendEmail(toAddressList, "", 	":9080 testing from Java Mailprogram-sent multipart mimetype sent" );
+		// toAddressList.add("kaleem6110@gmail.com"); //
+		sendEmail(toAddressList, "",
+				":9080 testing from Java Mailprogram-sent multipart mimetype sent" );
 		sendHTMLEmail(toAddressList, "hi", "This is message body");
 	}
 
@@ -60,7 +61,7 @@ public class MailSender implements IEPICConstants {
 				// a while loop
 				toAddress[i] = new InternetAddress(toEmailAddress[i]);
 			}
-			//System.out.println(Message.RecipientType.TO);
+			System.out.println(Message.RecipientType.TO);
 
 			for (int i = 0; i < toAddress.length; i++) { // changed from a
 				// while loop
@@ -108,7 +109,8 @@ public class MailSender implements IEPICConstants {
 	    }
 	    catch(Exception e){ e.printStackTrace(); };
 
-		System.out.println("@@@@@@@@@  END MailSender.sendHTMLEmail @@@@@@@@@@@@@@@@@@@@ ");
+		System.out
+				.println("@@@@@@@@@  END MailSender.sendHTMLEmail @@@@@@@@@@@@@@@@@@@@ ");
 	}
 
 }

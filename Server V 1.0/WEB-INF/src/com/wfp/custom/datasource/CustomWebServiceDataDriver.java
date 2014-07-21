@@ -64,6 +64,7 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 			List<DeviceBean> currentDeviceList = null;
 			setCustomSearchCriteria();
 			currentDeviceList = getList();
+			//System.out.println(" currentDeviceList : "+ currentDeviceList );
 			Logger.info(
 					"Actual number of objects before filtering for the layer ["
 							+ dataSource.getLayerName()
@@ -123,14 +124,17 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 		List<DeviceBean> currentDeviceList = null;
  		if (dataSource.getLayerName().toLowerCase().contains(KEY_STAFF)) {
 			currentDeviceList = RestTrackingJob.getInstance().getRestServiceMapCache().get(KEY_STAFF);
+			System.out.println(" STAFF LIST : "+ currentDeviceList!=null?currentDeviceList.size():"0" );
 		} else if (dataSource.getLayerName().toLowerCase().contains(
 				KEY_VEHICLE)) {
 			currentDeviceList = RestTrackingJob.getInstance()
 					.getRestServiceList(KEY_VEHICLE);
+			System.out.println(" KEY_VEHICLE LIST : "+ currentDeviceList!=null?currentDeviceList.size():"0" );
 		} else if (dataSource.getLayerName().toLowerCase().contains(
 				KEY_AIRPLANE)) {
 			currentDeviceList = RestTrackingJob.getInstance()
 					.getRestServiceList(KEY_AIRPLANE);
+			System.out.println(" KEY_AIRPLANE LIST : "+ currentDeviceList!=null?currentDeviceList.size():"0" );
 		} 		
  		if( currentDeviceList!=null) System.out.println(" currentDeviceList :"+currentDeviceList.size() );
  		return currentDeviceList;
@@ -142,7 +146,7 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 		{
 			boolean isValid = false;
 			for (String deviceId : dataSource.getDeviceIds()) {
-				Date date = CommonUtils.parseDate(device.getTime());
+				Date date = CommonUtils.parseSensorDate(device.getTime());
 				if (deviceId.equalsIgnoreCase(device.getName()) && date
 						.compareTo(getStartTime() != null? getStartTime() :date) >= 0 && date
 						.compareTo(getEndTime() != null ? getEndTime() : date) <= 0) {
@@ -155,9 +159,10 @@ public class CustomWebServiceDataDriver extends BaseGeoDataDriver implements
 				return;
 			}
 		}else{
-			boolean isValid = false;
-			Date date = CommonUtils.parseDate(device.getTime());
-			if (date.compareTo(getStartTime() != null? getStartTime() : date) >= 0 && date
+			boolean isValid = false; //System.out.println(" 162 : time : "+device.getTime() );
+			Date date = CommonUtils.parseSensorDate(device.getTime());
+			//System.out.println(" 164 : date : "+date  );
+			if (date!=null && date.compareTo(getStartTime() != null? getStartTime() : date) >= 0 && date
 					.compareTo(getEndTime() != null ? getEndTime() : date) <= 0) {
 				isValid = true;
 			}

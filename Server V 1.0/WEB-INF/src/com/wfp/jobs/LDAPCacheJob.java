@@ -1,25 +1,14 @@
 package com.wfp.jobs;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.xml.rpc.ServiceException;
 
-import lu.hitec.pss.soap.ds.out._15_x.AuthenticationException;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_PortType;
 import lu.hitec.pss.soap.ds.out._15_x.DtoMission;
-import lu.hitec.pss.soap.sensor.client._12_x.LocationRange;
-import lu.hitec.pss.soap.sensor.client._12_x.RangeLimit;
-import lu.hitec.pss.soap.sensor.client._12_x.SensorSrvClientPortBindingStub;
-import lu.hitec.pss.soap.sensor.client._12_x.SubRangeType;
-import lu.hitec.pss.soap.sensor.client._12_x.UnitReport;
-import lu.hitec.pss.soap.sensor.client._12_x.UnitType;
-import lu.hitec.pss.soap.sensor.client._12_x.UnitsReports;
 
-import com.enterprisehorizons.util.Logger;
 import com.spacetimeinsight.config.scheduler.Parameter;
 import com.spacetimeinsight.config.scheduler.Parameters;
 import com.spacetimeinsight.magma.job.CustomJobTask;
@@ -27,7 +16,6 @@ import com.wfp.utils.CommonUtils;
 import com.wfp.utils.EventServiceUtils;
 import com.wfp.utils.IEPICConstants;
 import com.wfp.utils.LDAPUtils;
-import com.wfp.utils.SensorServiceUtils;
 
 /**
  * 
@@ -45,9 +33,7 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 	public static Map<String,String> deviceOffsetMap = new HashMap();
 	private static Map<String,DtoMission[]> placeMissionMap = new HashMap<String,DtoMission[]>();
 	
-	public LDAPCacheJob () {
-			
-	}
+	public LDAPCacheJob(){ }
 	
 	private static synchronized void initializeInstance() 
 	{
@@ -74,10 +60,8 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 		DirectoryServiceOutInterface_PortType stub=null;
 		try {
 			 stub= EventServiceUtils.getLDAPStub();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (ServiceException e) { 	e.printStackTrace(); }
+		
 		//SensorSrvClientPortBindingStub stub = SensorServiceUtils.getServiceLocatorStub();
 		if( LDAPUtils.getOrgMap()==null ) LDAPUtils.getAllOrganizations();		
 		
@@ -87,10 +71,10 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 			for (int i=0; i<  params.length ; i++) 
 				paramsMap.put(params[i].getName(), params[i].getValue());	
 		}
+		//"### Cache Cleared: clearing the LDAP user details service Job
 		if(paramsMap.get("clearcache") != null && "true".equalsIgnoreCase(paramsMap.get("clearcache")))
 		{
-			LDAPUtils.getLDAPUserDtlsMap().clear();
-			System.out.println("### Cache Cleared: clearing the LDAP user details service Job: "+CommonUtils.getUTCdatetimeAsString() );
+			LDAPUtils.getLDAPUserDtlsMap().clear();			
 		}
 		userMisionsMap.clear();
 		@SuppressWarnings("unchecked")
@@ -98,7 +82,9 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 		List<String> allStaffDevices = LDAPUtils.getAllStaffDevices();
 		List<String> allVehicleDevices = LDAPUtils.getAllVehicleDevices();
 		List<String> allAirplaneDevices = LDAPUtils.getAllAirplaneDevices();
-		ldapServiceMap.put(PARAM_ALLGROUPS, allDevices);		
+		ldapServiceMap.put(PARAM_ALLGROUPS, allDevices);	
+		System.out.println( "allStaffDevices : "+allStaffDevices.size()+"allVehicleDevices : "+
+				allVehicleDevices.size()+"allAirplaneDevices : "+allAirplaneDevices.size() );
 		if( allStaffDevices!=null && allStaffDevices.size()>0)
 		{	
 			for(String device: allStaffDevices ){staff++;
@@ -159,7 +145,7 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 		LDAPCacheJob.deviceOffsetMap = deviceOffsetMap;
 	}
 
-	/**
+/**
 	 * @return the placeMissionMap
 	 */
 	public static Map<String, DtoMission[]> getPlaceMissionMap() {
@@ -172,6 +158,5 @@ public class LDAPCacheJob implements CustomJobTask, IEPICConstants {
 	public static void setPlaceMissionMap(Map<String, DtoMission[]> placeMissionMap) {
 		LDAPCacheJob.placeMissionMap = placeMissionMap;
 	}
-
 	
 }

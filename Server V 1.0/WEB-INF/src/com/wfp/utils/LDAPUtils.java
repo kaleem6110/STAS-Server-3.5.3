@@ -17,12 +17,12 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
-import javax.xml.rpc.ServiceException;
+
+import sun.security.util.Cache.CacheVisitor;
 
 import lu.hitec.pss.soap.ds.out._15_x.AuthenticationException;
 import lu.hitec.pss.soap.ds.out._15_x.AuthorizationException;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_PortType;
-import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_ServiceLocator;
 import lu.hitec.pss.soap.ds.out._15_x.DtoMission;
 import lu.hitec.pss.soap.ds.out._15_x.ResourceNotFoundException;
 import lu.hitec.pss.soap.ds.out._15_x.UnitType;
@@ -40,7 +40,11 @@ import com.wfp.security.form.LDAPUserBean;
 
 /**
  * Utility class for connecting & retrieveing the groups/devices/user information  from the LDAP
- * @author sti-user
+ * @author kmohammed
+ *
+ */
+/**
+ * @author kaleem.mohammed
  *
  */
 @SuppressWarnings("unchecked")
@@ -128,10 +132,10 @@ public class LDAPUtils implements IEPICConstants {
 	 * @throws NamingException
 	 */
 	public static LdapContext getLDAPContext() throws NamingException{
-		//return getLDAPContext(LDAPConfigUtils.getProviderUrl(), 
-			//LDAPConfigUtils.getSecurityPrincipal(), SecurityDBUtils.getDecreptedPassword(LDAPConfigUtils.getSecurityCredentials()));
+		return getLDAPContext(LDAPConfigUtils.getProviderUrl(), 
+			LDAPConfigUtils.getSecurityPrincipal(), SecurityDBUtils.getDecreptedPassword(LDAPConfigUtils.getSecurityCredentials()));
 		
-		return getLDAPContext("ldaps://ldap-dev.globalepic.lu:636","cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu", "Sti4Stas2Read?" );
+		//return getLDAPContext("ldaps://ldap-dev.globalepic.lu:636","cn=sti-read,ou=ldapAccess,dc=emergency,dc=lu", "Sti4Stas2Read?" );
 	}
 	
 	/**
@@ -370,14 +374,10 @@ public class LDAPUtils implements IEPICConstants {
     	Logger.info("Retrieving members from users for a device id ["+deviceId+"]", LDAPUtils.class);    	
     	return parseDataAsList( getSearchResults( CONSTRAINT_DEVICE_MEMBER,FILTER_AIRPLANE_UNIT.replace(REPLACE_DEVICE_TOKEN, deviceId ), VEHICLE_BASE ) );
     }
-    public static List getUserProfilesList( String uid )
-    {
-    	Logger.info("Retrieving user profiles from users for a user id ["+uid+"]", LDAPUtils.class);    	
-    	return parseDataAsList( getSearchResults( CONSTRAINT_CN,FILTER_ACL_PROFILE.replace(REPLACE_UID_TOKEN, uid ), ACL_PROFILES_BASE ) );
-    }
+   
+	
 	
 	/**
-	 * Returns the user domain for a device id
 	 * @param deviceId
 	 * @return
 	 */
@@ -404,7 +404,6 @@ public class LDAPUtils implements IEPICConstants {
 
 	public static void main(String a[])
 	{
-		System.out.println( getAllFencesByType("safe-zone").size() );
 	}
 	/**
 	 * returns all the devices
@@ -501,12 +500,13 @@ public class LDAPUtils implements IEPICConstants {
 			String userDomain = getUserDomain(deviceId); 
 			if(userDomain != null)
 			{
-				Logger.info("Caching started for device ["+deviceId+"]", LDAPUtils.class);
-				cacheLDAPUserDtls(deviceId, getUserAttributes(userDomain, null)); 
+				//Caching started for device
+				cacheLDAPUserDtls(deviceId, getUserAttributes(userDomain, null), token, type ); 
 				missionsList = getTrackMeMissionsList(deviceId, token, stub ); 
 				Logger.info("Available Mission from  ["+deviceId+"] are ["+missionsList+"]", LDAPUtils.class);
 			}
-		}else  if(KEY_VEHICLE.equalsIgnoreCase(type) || KEY_AIRPLANE.equalsIgnoreCase(type))
+		}
+		else  if(KEY_VEHICLE.equalsIgnoreCase(type) || KEY_AIRPLANE.equalsIgnoreCase(type))
 		{
 			List<String> membersList = getVehicleByDevice(deviceId); 
 			if(membersList != null)
@@ -514,36 +514,14 @@ public class LDAPUtils implements IEPICConstants {
 				for(String member:membersList) 
 				{
 					Map<String,Object> map=getVehicleAttributes(FILTER_VEHICLES.replace(FILTER_VEHICLE_ID, member ), FILTER_LDAP_VEHICLES);
-					cacheLDAPUserDtls(deviceId, map );	
+					cacheLDAPVehicleDtls( deviceId, map, token, type );	
 				}	
 			}
-			
-//			try {
-//				PssuVehicle vehicle = LDAPWSUtils.getVehicleFromDevice(token, deviceId, stub);
-//				
-//				Map<String, Object> map = populateVehicle( deviceId,vehicle  );
-//				
-//				cacheLDAPUserDtls(deviceId , map );
-//			} catch (AuthorizationException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (AuthenticationException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (RemoteException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IllegalArgumentException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (ServiceException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 			missionsList = getVehiclesMissionsList( deviceId, token, stub );			
 		}
 		LDAPUserBean userbean = LDAPUtils.getLDAPUserBean(deviceId); 
-		if(userbean != null){
+		if(userbean != null)
+		{
 			userbean.setDeviceId(deviceId);	
 			userbean.setAuthorizedGroupsList(missionsList);
 		}
@@ -576,7 +554,31 @@ public class LDAPUtils implements IEPICConstants {
 			}
 		}
 	}
-
+	public static void populateDeviceBean(LDAPUserBean userbean, DeviceBean deviceBean)
+	{
+		if(userbean != null && deviceBean!=null)
+		{
+			deviceBean.setCn(userbean.getCn());
+			deviceBean.setHomePhone(userbean.getHomePhone());
+			deviceBean.setMail(userbean.getMail());
+			deviceBean.setMobilesList(userbean.getMobilesList());
+			deviceBean.setOrganization(userbean.getOrganization());
+			deviceBean.setSkypePager(userbean.getSkypePager());
+			deviceBean.setUid(userbean.getUid());
+			deviceBean.setSn(userbean.getSn());
+			deviceBean.setDescription(userbean.getDescription());
+			deviceBean.setLicensePlate(userbean.getLicensePlate());
+			deviceBean.setTitle(userbean.getTitle()); //()
+			deviceBean.setPersonalTitle(userbean.getPersonalTitle());
+			deviceBean.setDepartment(userbean.getDepartment());
+			deviceBean.setPrimaryEmail(userbean.getPrimaryEmail());
+			deviceBean.setPhotoString( userbean.getPhotoString() );
+			deviceBean.setGender( userbean.getGender() );
+			deviceBean.setShortOrganization(userbean.getShortOrganization());
+			deviceBean.setUnit( userbean.getUnit() );
+			deviceBean.setDeviceId( userbean.getDeviceId() );
+		}
+	}
 	/**
 	 * @param deviceBean
 	 */
@@ -604,8 +606,6 @@ public class LDAPUtils implements IEPICConstants {
 				deviceBean.setPhotoString( userbean.getPhotoString() );
 				deviceBean.setGender( userbean.getGender() );
 				deviceBean.setShortOrganization(userbean.getShortOrganization());
-				deviceBean.setMobilesList( userbean.getMobilesList() );
-				deviceBean.setInternalID( userbean.getInternalID() );
 			} //System.out.println(" ### "+deviceBean.getCn()+" "+deviceBean.getSn()+" "+deviceBean.getPrimaryEmail() );
 		}		
 	}
@@ -639,7 +639,6 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setPhotoString( getUserImageAsString( deviceBean.getUid()) );
 			deviceBean.setGender(userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
 			deviceBean.setShortOrganization(deviceBean.getOrganization() );
-			deviceBean.setInternalID( userAttributes.get(PROPERTY_INTERNAL_ID)== null?"":userAttributes.get(PROPERTY_INTERNAL_ID).toString() ); 
 	}
  public static String getLicensePlate(String str)
  {
@@ -656,19 +655,47 @@ public class LDAPUtils implements IEPICConstants {
 	 * @param userAttributes
 	 */
 	public static void cacheLDAPUserDtls(String deviceId,
-			Map<String, Object> userAttributes) 
+			Map<String, Object> userAttributes, String token , String type ) 
 	{
 		Logger.info("LDAP User Details: ["+deviceId+"]  ["+userAttributes+"]", LDAPUtils.class);
-		LDAPUserBean userBean = getLDAPUserBean(userAttributes);
-		getLDAPUserDtlsMap().put(deviceId, userBean ); 
-		
+		if( deviceId!=null && !deviceId.isEmpty() )
+		{
+			LDAPUserBean userBean = getLDAPUserBean(userAttributes);
+			userBean.setDeviceId( deviceId );		
+			userBean.setUnit( type );
+			//if( isUniqueDevice(getLDAPUserDtlsMap(), userBean ) );
+				getLDAPUserDtlsMap().put(deviceId, userBean );
+			//System.out.println(" OUtput : deviceId "+deviceId+" :uid :"+ userBean.getUid() + " :cn:" + userBean.getCn()+": unit:"+userBean.getUnit() +":userBean.getDeviceId() :"+userBean.getDeviceId()  );
+		}
+	}
+	public static boolean isUniqueDevice( Map<String, LDAPUserBean> map, LDAPUserBean currentBean )
+	{
+		for (Map.Entry<String, LDAPUserBean> entry : map.entrySet()) 
+		{
+			//System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());			
+			LDAPUserBean userBean = entry.getValue();
+			if( userBean.getPrimaryEmail().equals( currentBean.getPrimaryEmail() ) ) 
+			{   
+				userBean.setDeviceId( userBean.getDeviceId()+" "+ currentBean.getDeviceId() );
+				return false;
+			}
+		}
+		return true;
 	}
 	public static void cacheLDAPVehicleDtls(String deviceId,
-			Map<String, Object> vehicleAttributes) 
-	{
+			Map<String, Object> vehicleAttributes ,String token , String type ) 
+	{		
 		Logger.info("LDAP Vehicle Details: ["+deviceId+"]  ["+vehicleAttributes+"]", LDAPUtils.class);
-		LDAPUserBean userBean = getLDAPUserBean(vehicleAttributes);System.out.println(" vehicleAttributes :"+ vehicleAttributes );
-		getLDAPUserDtlsMap().put(deviceId, userBean ); 
+		if( deviceId!=null && !deviceId.isEmpty() )
+		{
+			LDAPUserBean userBean = getLDAPUserBean(vehicleAttributes);//System.out.println(" vehicleAttributes :"+ vehicleAttributes );
+			userBean.setUnit( type );
+			userBean.setDeviceId(deviceId);
+			getLDAPUserDtlsMap().put(deviceId, userBean ); 
+			
+			
+		}
+		
 		
 	}
 
@@ -714,7 +741,8 @@ public class LDAPUtils implements IEPICConstants {
 			//System.out.println(" Pager: "+userBean.getSkypePager()   );
 			userBean.setGender( userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
 			userBean.setPhotoString( getUserImageAsString( userBean.getUid()) );
-			userBean.setInternalID( userAttributes.get(PROPERTY_INTERNAL_ID)== null?"":userAttributes.get(PROPERTY_INTERNAL_ID).toString() ); 
+			userBean.setInternalID( userAttributes.get(PROPERTY_INTERNAL_ID)== null?"":userAttributes.get(PROPERTY_INTERNAL_ID).toString() );
+			
 			return userBean;
 		}
 		return null;
@@ -1309,12 +1337,12 @@ public class LDAPUtils implements IEPICConstants {
 								.hasMore(); totalResultLogger++) {
 							String attrValue = (String) e.next();
 							List<String> attrValuesList = null;
-							if(listValues.indexOf(attr.getID()) >=0){ System.out.println(attr.getID());
+							if(listValues.indexOf(attr.getID()) >=0){
 								attrValuesList =  resultAttrMap.get(attr.getID())== null?null:(List<String>) resultAttrMap.get(attr.getID());
 								if(attrValuesList == null){
 									attrValuesList = new ArrayList<String>();
 								}
-								attrValuesList.add(attrValue); System.out.println(attrValuesList);
+								attrValuesList.add(attrValue);
 								resultAttrMap.put(attr.getID(), attrValuesList);
 							}else {
 								resultAttrMap.put(attr.getID(), attrValue);
@@ -1351,7 +1379,6 @@ public class LDAPUtils implements IEPICConstants {
 		//System.out.println("validatePlaceByUser : placeId : "+placeId +userId +isValid );
 		return isValid;
 	}
-
  
 	public static boolean validateVehiclesByUser(String vehicleId, String userId){
 		
@@ -1378,7 +1405,7 @@ public class LDAPUtils implements IEPICConstants {
 		try
 		{
 			DtoMission[] deviceMissionList = LDAPWSUtils.getMissionsForDevice(EventServiceUtils.getLDAPToken(), deviceId, 
-					/*new DirectoryServiceOutInterface_ServiceLocator().getDirectoryServiceOutInterfacePort( ),*/ UnitType.VEHICLE );
+					 UnitType.VEHICLE );
 			if( deviceMissionList!=null&&missionsList!=null)
 			{
 				for( DtoMission mission : deviceMissionList )
@@ -1402,35 +1429,31 @@ public class LDAPUtils implements IEPICConstants {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-
-		
 		return false;
 	}
 
-	public static List  getAllMisisons4rUser(String userId){
+	public static List  getAllMisisons4rUser(String userId)
+	{
 		String allGroupNamesFilter = getLDAPConfigValue("user.member.identifier").replace("<replacestr>", userId);//"(member=uid="+userId+",ou=users,ou=people,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("missions.search.base");//"ou=missions,dc=emergency,dc=lu";
 		return parseDataAsList(getSearchResults(new String[] {"uniqueId"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	public static List getAllProfiles4rUser( String userId){
+	public static List getAllProfiles4rUser( String userId)
+	{
 		String allGroupNamesFilter = "(member=uid="+userId+",ou=users,ou=people,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = "ou=acl_profiles,ou=people,dc=emergency,dc=lu";
 		return parseDataAsList(getSearchResults(new String[] {"cn"},allGroupNamesFilter, allGroupsSearchBase));
 	}
-	public static Map<String,Object> getAllFencesByType( String type ){
+	public static Map<String,Object> getAllFencesByType( String type )
+	{
 		String allGroupNamesFilter = "(description=Islamabad Warden Zone - F8)";
 		String allGroupsSearchBase = "ou=fences,dc=emergency,dc=lu";
-		return parseDataAsMap(getSearchResults(new String[] {"cn","listOfPoints"},allGroupNamesFilter, allGroupsSearchBase), "cn");
-		
+		return parseDataAsMap(getSearchResults(new String[] {"cn","listOfPoints"},allGroupNamesFilter, allGroupsSearchBase), "cn");		
 	}
 
-	public static boolean validateDeviceByUser(String deviceId, String userId){
-		if(StringUtils.isNull(deviceId)){
-			return false;
-		}
+	public static boolean validateDeviceByUser(String deviceId, String userId)
+	{
+		if(StringUtils.isNull(deviceId)){ return false; }
 
 		String allGroupNamesFilter =  getLDAPConfigValue("device.member.identifier").replace("<replacestr>", deviceId);// "(member=cn="+deviceId+",ou=devices,dc=emergency,dc=lu)";
 		String allGroupsSearchBase = getLDAPConfigValue("groups.search.base");// "ou=groups,dc=emergency,dc=lu";
@@ -1474,7 +1497,7 @@ public class LDAPUtils implements IEPICConstants {
 	}*/
 			try 
 			{
-				DtoMission[] missionList = LDAPWSUtils.getMissionsForDevice(token, deviceId, UnitType.USER ); 
+				DtoMission[] missionList = LDAPWSUtils.getMissionsForDevice(token, deviceId,  UnitType.USER ); 
 				if(missionList!=null )
 				{
 					for( DtoMission mission: missionList )  allMissionsList.add( mission.getUniqueId() );
@@ -1523,7 +1546,7 @@ public class LDAPUtils implements IEPICConstants {
 //		}
 
 		try {
-			DtoMission[] missionList = LDAPWSUtils.getMissionsForDevice(token, deviceId,  UnitType.VEHICLE );
+			DtoMission[] missionList = LDAPWSUtils.getMissionsForDevice(token, deviceId, UnitType.VEHICLE );
 			if(missionList!=null )
 			{
 				for( DtoMission mission: missionList ) allMissionsList.add( mission.getUniqueId() );
@@ -1649,7 +1672,17 @@ public class LDAPUtils implements IEPICConstants {
 		}
 		return base64String;
 	}
-
+	public static String getRadioServerEmail(String value)
+	{
+		
+		return getLDAPConfigValue("radio.server.email."+value );
+		
+	}
+	 public static List getUserProfilesList( String uid )
+	    {
+	    	Logger.info("Retrieving user profiles from users for a user id ["+uid+"]", LDAPUtils.class);    	
+	    	return parseDataAsList( getSearchResults( CONSTRAINT_CN,FILTER_ACL_PROFILE.replace(REPLACE_UID_TOKEN, uid ), ACL_PROFILES_BASE ) );
+	}
 	public static List<String> getLdapDeviceList() {
 		if(ldapDeviceList==null ) return getDevices();
 		else return ldapDeviceList;

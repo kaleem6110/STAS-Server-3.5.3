@@ -16,7 +16,7 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
 
     private int syncMissionExpirationHours;
 
-    private int valueLimitForMissionDiff;
+    private int valueLimitForDomainDiff;
 
     public ServiceLimitsImpl() {
     }
@@ -26,12 +26,12 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
            int localProbeExpirationHours,
            int maxHistoryValues,
            int syncMissionExpirationHours,
-           int valueLimitForMissionDiff) {
+           int valueLimitForDomainDiff) {
            this.localLocationExpirationHours = localLocationExpirationHours;
            this.localProbeExpirationHours = localProbeExpirationHours;
            this.maxHistoryValues = maxHistoryValues;
            this.syncMissionExpirationHours = syncMissionExpirationHours;
-           this.valueLimitForMissionDiff = valueLimitForMissionDiff;
+           this.valueLimitForDomainDiff = valueLimitForDomainDiff;
     }
 
 
@@ -116,22 +116,22 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
 
 
     /**
-     * Gets the valueLimitForMissionDiff value for this ServiceLimitsImpl.
+     * Gets the valueLimitForDomainDiff value for this ServiceLimitsImpl.
      * 
-     * @return valueLimitForMissionDiff
+     * @return valueLimitForDomainDiff
      */
-    public int getValueLimitForMissionDiff() {
-        return valueLimitForMissionDiff;
+    public int getValueLimitForDomainDiff() {
+        return valueLimitForDomainDiff;
     }
 
 
     /**
-     * Sets the valueLimitForMissionDiff value for this ServiceLimitsImpl.
+     * Sets the valueLimitForDomainDiff value for this ServiceLimitsImpl.
      * 
-     * @param valueLimitForMissionDiff
+     * @param valueLimitForDomainDiff
      */
-    public void setValueLimitForMissionDiff(int valueLimitForMissionDiff) {
-        this.valueLimitForMissionDiff = valueLimitForMissionDiff;
+    public void setValueLimitForDomainDiff(int valueLimitForDomainDiff) {
+        this.valueLimitForDomainDiff = valueLimitForDomainDiff;
     }
 
     private java.lang.Object __equalsCalc = null;
@@ -150,7 +150,7 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
             this.localProbeExpirationHours == other.getLocalProbeExpirationHours() &&
             this.maxHistoryValues == other.getMaxHistoryValues() &&
             this.syncMissionExpirationHours == other.getSyncMissionExpirationHours() &&
-            this.valueLimitForMissionDiff == other.getValueLimitForMissionDiff();
+            this.valueLimitForDomainDiff == other.getValueLimitForDomainDiff();
         __equalsCalc = null;
         return _equals;
     }
@@ -166,7 +166,7 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
         _hashCode += getLocalProbeExpirationHours();
         _hashCode += getMaxHistoryValues();
         _hashCode += getSyncMissionExpirationHours();
-        _hashCode += getValueLimitForMissionDiff();
+        _hashCode += getValueLimitForDomainDiff();
         __hashCodeCalc = false;
         return _hashCode;
     }
@@ -202,8 +202,8 @@ public class ServiceLimitsImpl  implements java.io.Serializable {
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("valueLimitForMissionDiff");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "valueLimitForMissionDiff"));
+        elemField.setFieldName("valueLimitForDomainDiff");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "valueLimitForDomainDiff"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

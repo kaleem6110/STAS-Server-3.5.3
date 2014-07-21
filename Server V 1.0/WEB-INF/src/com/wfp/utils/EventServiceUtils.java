@@ -7,25 +7,20 @@ import java.util.Calendar;
 import javax.naming.AuthenticationException;
 import javax.xml.rpc.ServiceException;
 
-import lu.hitec.pss.soap.ds.out._15_x.AuthorizationException;
 import lu.hitec.pss.soap.ds.out._15_x.CrudEnum;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterfacePortBindingStub;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_PortType;
 import lu.hitec.pss.soap.ds.out._15_x.DirectoryServiceOutInterface_ServiceLocator;
-import lu.hitec.pss.soap.ds.out._15_x.DtoMission;
 import lu.hitec.pss.soap.ds.out._15_x.PssuDevice;
 import lu.hitec.pss.soap.ds.out._15_x.PssuVehicle;
-import lu.hitec.pss.soap.ds.out._15_x.ResourceNotFoundException;
 import lu.hitec.pss.soap.ds.out._15_x.UnitId;
 import lu.hitec.pss.soap.ds.out._15_x.UnitType;
 import lu.hitec.pss.soap.event.provider._21_x.Desc;
-import lu.hitec.pss.soap.event.provider._21_x.DtoDomain;
 import lu.hitec.pss.soap.event.provider._21_x.EventSrvProviderPortBindingStub;
 import lu.hitec.pss.soap.event.provider._21_x.EventSrvProvider_Service;
 import lu.hitec.pss.soap.event.provider._21_x.EventSrvProvider_ServiceLocator;
 import lu.hitec.pss.soap.event.provider._21_x.Logbook;
 import lu.hitec.pss.soap.event.provider._21_x.NotificationStatusSummary;
-import lu.hitec.pss.soap.event.provider._21_x.NotificationsProcessingEventStatus;
 import lu.hitec.pss.soap.event.provider._21_x.Recipient;
 import lu.hitec.pss.soap.event.provider._21_x.Severity;
 import lu.hitec.pss.soap.event.provider._21_x.Status;
@@ -39,13 +34,13 @@ import lu.hitec.pss.soap.event.provider._5_x.Evt;
 import org.apache.axis.AxisFault;
 
 import com.enterprisehorizons.util.Logger;
-import com.spacetimeinsight.db.model.util.SecurityDBUtils;
 
 //import lu.hitec.pss.soap.ds.out._7_x.DirectoryServiceOutInterfaceProxy;
 
 public class EventServiceUtils {
 
 	private static String token= IEPICConstants.TOKEN ; //TRN->"adulovic-20131114-2478b95c6e23404685af7edfde315724"; 
+	
 	
 	//QA-token :adulovic-20131107-5984aab55c9d4176a4b24ba0d4635d0f";
 	// private static DirectoryServiceOutInterfaceProxy directoryService = new
@@ -178,7 +173,7 @@ public class EventServiceUtils {
 		{
 			
 			token=  getLDAPStub().authenticate(IEPICConstants.LDAP_USER_ID, 
-					SecurityDBUtils.getDecreptedPassword( IEPICConstants.LDAP_USER_PWD_ENCRYPTED), "");
+					com.spacetimeinsight.db.model.util.SecurityDBUtils.getDecreptedPassword( IEPICConstants.LDAP_USER_PWD_ENCRYPTED), "");
 			//stub.getMissionIdsAssignedToUnitForCrud(token, UnitId, crud)
 			
 	    	//PssuVehicle v = stub.getVehicle(token, "5Y-BNH");
@@ -206,7 +201,7 @@ public class EventServiceUtils {
 			// ["+WFPConfigUtils.getWFPConfigValue("alertservice")+" ]");
 			return new EventSrvProviderPortBindingStub(
 					new java.net.URL(
-							WFPConfigUtils.getWFPConfigValue("alertservice") == null ? "http://middleware-dev.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl"
+							WFPConfigUtils.getWFPConfigValue("alertservice") == null ? "http://middleware.service.emergency.lu/eventservice/in/soap/EventSrvProvider?wsdl"
 									: WFPConfigUtils
 											.getWFPConfigValue("alertservice")),
 					service);
@@ -247,7 +242,7 @@ public class EventServiceUtils {
 		System.out.println("#### START publishEventService : userUniqueId"
 				+ userUniqueId + " : subject :" + subject + ":body: " + body);
 		EventSrvProviderPortBindingStub stub = getServiceLocatorStub();
-		NotificationsProcessingEventStatus n = NotificationsProcessingEventStatus.fromValue( NotificationsProcessingEventStatus._NEW );
+
 		EventRecipient er = new EventRecipient();
 		er.setType("USER");
 		er.setUserOrGroupUID(userUniqueId);
@@ -266,33 +261,8 @@ public class EventServiceUtils {
 		//evt.setMissionName("");
 		Calendar cal = Calendar.getInstance();
 		evt.setDate(cal);
-		evt.setNotificationsProcessingEventStatus( n );
 		evt.setSeverity(Severity.CRITICAL);
-		DtoDomain dtoDomain = new DtoDomain();
-		dtoDomain.setMwId( IEPICConstants.MIDDLEWARE_ID  );
-		dtoDomain.setName("PK");
-		try {
-			DtoMission mission[] = LDAPWSUtils.getMissionsForUser( EventServiceUtils.getLDAPToken(), userUniqueId, UnitType.fromValue( UnitType._USER) );
-			if(mission!=null&&mission.length>0) dtoDomain.setName( mission[0].getUniqueId() );
-		} catch (AuthorizationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (lu.hitec.pss.soap.ds.out._15_x.AuthenticationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ResourceNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IllegalArgumentException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		evt.setDtoDomain(dtoDomain);
-		
+	
 		evt.setStatus( Status.OPEN );
 
 		try {
@@ -362,6 +332,6 @@ public class EventServiceUtils {
 		// printEventDetails();
 		// publishEvent();
 		// checkEventStatus(publishEvent());
-		System.out.println( getLDAPToken() );
+		getLDAPToken();
 	}
 }

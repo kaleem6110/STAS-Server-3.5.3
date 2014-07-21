@@ -18,12 +18,16 @@ public class ResourcesTypesEnum implements java.io.Serializable {
     }
 
     public static final java.lang.String _ACL_PERMISSION_TYPES = "ACL_PERMISSION_TYPES";
-    public static final java.lang.String _CERTIFICATE_TYPES = "CERTIFICATE_TYPES";
+    public static final java.lang.String _CERTIFICATION_TYPES = "CERTIFICATION_TYPES";
     public static final java.lang.String _COMMUNICATION_URI_TYPES = "COMMUNICATION_URI_TYPES";
     public static final java.lang.String _COUNTRY_TYPES = "COUNTRY_TYPES";
+    public static final java.lang.String _EQUIPMENT_STATUS_TYPES = "EQUIPMENT_STATUS_TYPES";
+    public static final java.lang.String _EQUIPMENT_TYPES = "EQUIPMENT_TYPES";
     public static final java.lang.String _EVENT_TYPES = "EVENT_TYPES";
     public static final java.lang.String _EXTERNAL_ID_TYPES = "EXTERNAL_ID_TYPES";
     public static final java.lang.String _FENCE_TYPES = "FENCE_TYPES";
+    public static final java.lang.String _KIT_STATUS_TYPES = "KIT_STATUS_TYPES";
+    public static final java.lang.String _KIT_TYPES = "KIT_TYPES";
     public static final java.lang.String _MISSION_CATEGORY_TYPES = "MISSION_CATEGORY_TYPES";
     public static final java.lang.String _MISSION_CERTAINTY_TYPES = "MISSION_CERTAINTY_TYPES";
     public static final java.lang.String _MISSION_SCOPE_TYPES = "MISSION_SCOPE_TYPES";
@@ -42,12 +46,16 @@ public class ResourcesTypesEnum implements java.io.Serializable {
     public static final java.lang.String _VEHICLE_ID_TYPES = "VEHICLE_ID_TYPES";
     public static final java.lang.String _VEHICLE_TYPES = "VEHICLE_TYPES";
     public static final ResourcesTypesEnum ACL_PERMISSION_TYPES = new ResourcesTypesEnum(_ACL_PERMISSION_TYPES);
-    public static final ResourcesTypesEnum CERTIFICATE_TYPES = new ResourcesTypesEnum(_CERTIFICATE_TYPES);
+    public static final ResourcesTypesEnum CERTIFICATION_TYPES = new ResourcesTypesEnum(_CERTIFICATION_TYPES);
     public static final ResourcesTypesEnum COMMUNICATION_URI_TYPES = new ResourcesTypesEnum(_COMMUNICATION_URI_TYPES);
     public static final ResourcesTypesEnum COUNTRY_TYPES = new ResourcesTypesEnum(_COUNTRY_TYPES);
+    public static final ResourcesTypesEnum EQUIPMENT_STATUS_TYPES = new ResourcesTypesEnum(_EQUIPMENT_STATUS_TYPES);
+    public static final ResourcesTypesEnum EQUIPMENT_TYPES = new ResourcesTypesEnum(_EQUIPMENT_TYPES);
     public static final ResourcesTypesEnum EVENT_TYPES = new ResourcesTypesEnum(_EVENT_TYPES);
     public static final ResourcesTypesEnum EXTERNAL_ID_TYPES = new ResourcesTypesEnum(_EXTERNAL_ID_TYPES);
     public static final ResourcesTypesEnum FENCE_TYPES = new ResourcesTypesEnum(_FENCE_TYPES);
+    public static final ResourcesTypesEnum KIT_STATUS_TYPES = new ResourcesTypesEnum(_KIT_STATUS_TYPES);
+    public static final ResourcesTypesEnum KIT_TYPES = new ResourcesTypesEnum(_KIT_TYPES);
     public static final ResourcesTypesEnum MISSION_CATEGORY_TYPES = new ResourcesTypesEnum(_MISSION_CATEGORY_TYPES);
     public static final ResourcesTypesEnum MISSION_CERTAINTY_TYPES = new ResourcesTypesEnum(_MISSION_CERTAINTY_TYPES);
     public static final ResourcesTypesEnum MISSION_SCOPE_TYPES = new ResourcesTypesEnum(_MISSION_SCOPE_TYPES);

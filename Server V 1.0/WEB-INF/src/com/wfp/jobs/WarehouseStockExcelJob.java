@@ -27,37 +27,15 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 	
 	private static WarehouseStockExcelJob instance = null;
 	private static String lastRefreshTime = null;
-	private static Map<String, List<String>> placeMissionsMap=null;
-	public WarehouseStockExcelJob () {
-			
-	}
 	
+	public WarehouseStockExcelJob () {}	
+		
+	public static Map<String, List> getWarehouseStocksCache() { return PlanningUtils.getWHStockCacheMap(); }
 	
-	private static synchronized void initializeInstance() {
-		if (instance == null) {
-			instance = new WarehouseStockExcelJob();
-		}
-	}
-
-	public static WarehouseStockExcelJob getInstance() {
-		if (instance == null) {
-			initializeInstance();
-		}
-		return instance;
-	}
-	
-	
-	public static Map<String, List> getWarehouseStocksCache() {
-		return PlanningUtils.getWHStockCacheMap();
-	}
-
-	
-	
-	
-	
-	public boolean executeCustomTask(Parameters parameters) {
-		System.out.println(" ## START WarehouseStockExcelJob ## "+CommonUtils.getUTCdatetimeAsString() );
+	public boolean executeCustomTask(Parameters parameters) 
+	{
 		// TODO Auto-generated method stub
+		System.out.println("####### WarehouseStockExcelJob START - TimeStamp: "+ CommonUtils.getUTCdatetimeAsString());	
 		Parameter[] params = parameters.getParameter();
 		String filepath = null;
 		long datecorrection = 0;
@@ -65,7 +43,8 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 		String waybillFile = null;
 		String appendDate= null;
 		
-		for (int i=0; i< params.length ; i++){
+		for (int i=0; i< params.length ; i++)
+		{
 			if(PARAM_DATECORRECTION.equalsIgnoreCase(params[i].getName())){
 				datecorrection = NumberUtils.getLongValue(params[i].getValue());
 			}
@@ -85,16 +64,18 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 				appendDate = params[i].getValue();
 			}
 		}
-		if( appendDate!=null){
+		if( appendDate!=null)
+		{
 			filepath =  updateFilePath(filepath,datecorrection);
 			waybillFile = updateFilePath(waybillFile,datecorrection);
-		}
-		
+		}		
+		//Getting all the places from LDAP.
 		Map<String, Map<String,String>> placesMap = LDAPUtils.getAllPlaces();
 		
 		//setting missions to Places
 		com.wfp.utils.LDAPWSUtils.setMissionToPlaces( placesMap  );
 		
+		//Caching the LDAP Places.
 		Cache.store(CACHE_WAREHOUSES_KEY, placesMap  );
 		
 		if(Cache.retrieve(CACHE_WAREHOUSES_KEY) != null){
@@ -103,12 +84,13 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 			//System.out.println("Total places objects from LDAP ["+((Map) Cache.retrieve(CACHE_WAREHOUSES_KEY)).size()+"]");
 		}else System.out.println(" WarehouseExcelJob :98 :Cache.retrieve(CACHE_WAREHOUSES_KEY)"+Cache.retrieve(CACHE_WAREHOUSES_KEY));
 		//reading the stock items & cacheing all the items in map
-		PlanningUtils.getWarehouseStocks(filepath, keyLocation);
+		PlanningUtils.getWarehouseStocks(filepath, keyLocation, placesMap );
 		System.out.println("stocks over");
-		PlanningUtils.getWaybillDtls(waybillFile);
+		PlanningUtils.getWaybillDtls(waybillFile, placesMap );
 		System.out.println("waybills over");
 		lastRefreshTime = CommonUtils.getUTCdatetimeAsString();
-		System.out.println(" ## END WarehouseStockExcelJob ## "+lastRefreshTime );
+		
+		System.out.println("####### WarehouseStockExcelJob END - TimeStamp: "+ lastRefreshTime );	
 		return true;
 	}
 	
@@ -141,8 +123,6 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 				
 			}
 		}
-		
-		
 		return qualityStocksMap;
 	}
 	
@@ -164,38 +144,24 @@ public class WarehouseStockExcelJob implements CustomJobTask, IEPICConstants {
 				
 			}
 		}
-		
-		
 		return stockitemsMap;
 	}
 	
 	public static String getLastRefreshTime() {
 		return lastRefreshTime;
 	}
-
-
-	/**
-	 * @return the placeMissionsMap
-	 */
-	public static Map<String, List<String>> getPlaceMissionsMap() {
-		return placeMissionsMap;
+	private static synchronized void initializeInstance() 
+	{
+		if (instance == null) {
+			instance = new WarehouseStockExcelJob();
+		}
 	}
-
-
-	/**
-	 * @param placeMissionsMap the placeMissionsMap to set
-	 */
-	public static void setPlaceMissionsMap(
-			Map<String, List<String>> placeMissionsMap) {
-		WarehouseStockExcelJob.placeMissionsMap = placeMissionsMap;
-	}
-
-
-	/**
-	 * @param lastRefreshTime the lastRefreshTime to set
-	 */
-	public static void setLastRefreshTime(String lastRefreshTime) {
-		WarehouseStockExcelJob.lastRefreshTime = lastRefreshTime;
-	}
+	public static WarehouseStockExcelJob getInstance() 
+	{
+		if (instance == null) {
+			initializeInstance();
+		}
+		return instance;
+	}	
 	
 }

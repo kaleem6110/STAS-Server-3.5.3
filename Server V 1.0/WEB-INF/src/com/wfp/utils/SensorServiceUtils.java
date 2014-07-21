@@ -166,7 +166,7 @@ public class SensorServiceUtils implements IEPICConstants {
 					deviceId = userDeviceMap.get( unitId );
 					if( deviceId==null|| unitId.isEmpty() )
 						{
-							deviceId= LDAPWSUtils.getDeviceByUID( token,unitId, unitType );
+							deviceId= LDAPWSUtils.getDeviceByUID( token,unitId, unitType ); 
 							userDeviceMap.put( unitId, deviceId );
 						}
 				} catch (AuthorizationException e) {

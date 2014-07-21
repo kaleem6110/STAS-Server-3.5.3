@@ -446,7 +446,7 @@
         </section>
         <section name="scriptor">
             <section name="body">
-                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._11_x.LocationValue;
+                <value><![CDATA[import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
 import com.enterprisehorizons.magma.server.util.ServerUtils;
 import com.enterprisehorizons.magma.server.util.Cache;
 import com.wfp.beans.*;
@@ -615,21 +615,21 @@ String getName() {
 
 double getAltitude(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	
 	return l.getAlt();
 }
 
 double getLat(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLat();
 }
 
 double getLng(){
 	data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-	lu.hitec.pss.soap.sensor.client._11_x.LocationValue l = data.getLocationValue();
+	lu.hitec.pss.soap.sensor.client._12_x.LocationValue l = data.getLocationValue();
 	
 	return l.getLng();
 }
@@ -659,9 +659,7 @@ String getLineColor(){
 	try{
 	
 		com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean)$timetrackingdatamodel;
-		System.out.println("data:"+data );
 		String deviceId =getName();
-		System.out.println(" # deviceId : "+ deviceId );
 	 	if(deviceId!=null && com.enterprisehorizons.magma.server.util.Cache.contains("$colorCache$")  ){
 	 		Map map = (HashMap) com.enterprisehorizons.magma.server.util.Cache.retrieve("$colorCache$");
 	 		String color = (String) map.get(deviceId);

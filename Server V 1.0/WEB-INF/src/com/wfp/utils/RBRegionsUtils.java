@@ -407,7 +407,7 @@ public class RBRegionsUtils implements IEPICConstants {
 	public synchronized static boolean isDeviceTraced(GeoArtifact artifact, String[] allZones, String sessionid, String deviceId){
 		if(allZones == null ){
 			return false; 
-		}
+		} 
 		if(allZones.length <= 0){
 			return false; 
 		}
@@ -438,6 +438,7 @@ public class RBRegionsUtils implements IEPICConstants {
 			for(int i =0; i< allZones.length ;i++){
 				//get the Region Stas Bean for that particular zone
 				DeviceStatisticsBean.RegionStatsBean regionBean = regionStatsMap.get(allZones[i]);
+				//System.out.println(" allZones[i] :"+allZones[i] + " :regionBean:  "+regionBean );
 				//if its for the first timme.....cache it ....
 				if(regionBean == null){
 					regionBean =  new DeviceStatisticsBean.RegionStatsBean();
@@ -449,7 +450,7 @@ public class RBRegionsUtils implements IEPICConstants {
 				regionBean.setZoneName(allZones[i]);
 				
 				//checking whether its in the same place
-				isInSamePlace = (isInUnsafeZone == regionBean.isInSameZone());
+				isInSamePlace = (isInUnsafeZone == regionBean.isInSameZone()); 
 				
 				//update the property which indicates whther its in the same region
 				regionBean.setInSameZone(isInSamePlace?isInSamePlace:(!isInSamePlace && isInUnsafeZone));
@@ -462,6 +463,7 @@ public class RBRegionsUtils implements IEPICConstants {
 					regionBean.setEventFired(false);
 					cache.put(deviceId, statisticsBean);
 					boolean isTraced = (!isInSamePlace && isInUnsafeZone);
+					//if( isTraced ) validateFireEvent(allZones, deviceId, sessionid, regionBean, artifact);
 					return isTraced;
 					/*if(isSendMail)	{
 						for(String zone:allZones){
@@ -494,8 +496,9 @@ public class RBRegionsUtils implements IEPICConstants {
 	 * @param artifact 
 	 */
 	public static void validateFireEvent(String[] allZones, String deviceId, String sessionId, RegionStatsBean regionBean, GeoArtifact artifact){
+		//System.out.println(" START validateFireEvent ");
 		if(allZones != null){
-			for (String zoneName: allZones){
+			for (String zoneName: allZones){ //System.out.println( " 500: zoneName "+ zoneName );
 				//getting the message template 
 				com.wfp.db.platform.model.MessageTemplate mt = com.wfp.utils.RBRegionsUtils.getMessageTemplate(zoneName);
 				
@@ -512,7 +515,7 @@ public class RBRegionsUtils implements IEPICConstants {
 					cal.add(Calendar.SECOND, mt.getTriggerTime().intValue());
 					
 					//validate whether this is the right time to trigger the alert
-					int timeDiff = new Date().compareTo(cal.getTime());
+					int timeDiff = new Date().compareTo(cal.getTime()); 
 					if(timeDiff > 0){
 						//yup...now, i can trigger/publish the alert /email  
 						com.wfp.utils.AlertServiceUtils.publishAlert(deviceId, zoneName, artifact.getFirstPoint().x, artifact.getFirstPoint().y,parseEmails(mt.getEmail() ));
@@ -716,9 +719,9 @@ public class RBRegionsUtils implements IEPICConstants {
 			crud.setId(mt.getId());
 			syncTypeId = ISynchronizationServiceConstants.SYNC_TYPE_UPDATE;
 		}else crud.setCreatedDate(CommonUtils.getUTCdatetimeAsDate() );
-		System.out.println("b4 insertorupdate:"+mt.getId());
+		//System.out.println("b4 insertorupdate:"+mt.getId());
 		boolean isInserted =  crud.insertOrUpdateData();
-		System.out.println(" isInserted : "+isInserted );
+		//System.out.println(" isInserted : "+isInserted );
 		if(isInserted){
 			HttpFlexSession httpFlexSession = (HttpFlexSession) FlexContext.getFlexSession();
 			if(httpFlexSession != null){
@@ -967,7 +970,7 @@ public class RBRegionsUtils implements IEPICConstants {
 			}
 			else emailList.add(email);
 		}
-		System.out.println("emailList"+emailList.size() );
+		//System.out.println("emailList"+emailList.size() );
 		return emailList;
 	}
 	public static ArrayCollection sendAlertsByUID(ArrayCollection allDevicesList, String regionName, String subject, String message){

@@ -96,7 +96,6 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 		Map<String, List<DeviceBean>> map = SensorServiceUtils.getEmergencySpotDtls(getStartDate().getTime(), getEndDate().getTime(), lpCount, paramsMap);
 		startDateTime = getStartDate().getTime();
 		endDateTime = getEndDate().getTime();
-		System.out.println( CommonUtils.getUTCdatetimeAsString()+" : map : "+map );
 		//System.out.println("Soap Tracking "+map.size());
 		if(map != null){
 			for (Map.Entry<String, List<DeviceBean>> entry : map.entrySet())	{
@@ -153,7 +152,11 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 	}
 	
 
-	
+	Calendar getEndDate(){
+		Calendar endDate = Calendar.getInstance();
+		
+		return endDate;
+	}
 	
 	Calendar getStartDate(){
 		Calendar startDate = Calendar.getInstance();
@@ -181,11 +184,7 @@ public class SoapTrackingJob implements CustomJobTask,IEPICConstants {
 		tempEndDate.set(Calendar.HOUR, 23);
 		return tempEndDate.getTime();
 	}
-	Calendar getEndDate(){
-		Calendar endDate = Calendar.getInstance();
-		
-		return endDate;
-	}
+	
 	
 	Calendar incrementStartDate(Calendar curday){
 		

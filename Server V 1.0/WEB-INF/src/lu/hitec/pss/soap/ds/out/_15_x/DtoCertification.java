@@ -12,9 +12,9 @@ public class DtoCertification  implements java.io.Serializable {
 
     private java.lang.String organisationProvider;
 
-    private java.lang.String uniqueId;
+    private java.lang.String type;
 
-    private java.lang.String userId;
+    private java.lang.String uniqueId;
 
     private java.util.Calendar validFrom;
 
@@ -26,14 +26,14 @@ public class DtoCertification  implements java.io.Serializable {
     public DtoCertification(
            boolean infinite,
            java.lang.String organisationProvider,
+           java.lang.String type,
            java.lang.String uniqueId,
-           java.lang.String userId,
            java.util.Calendar validFrom,
            java.util.Calendar validTo) {
            this.infinite = infinite;
            this.organisationProvider = organisationProvider;
+           this.type = type;
            this.uniqueId = uniqueId;
-           this.userId = userId;
            this.validFrom = validFrom;
            this.validTo = validTo;
     }
@@ -80,6 +80,26 @@ public class DtoCertification  implements java.io.Serializable {
 
 
     /**
+     * Gets the type value for this DtoCertification.
+     * 
+     * @return type
+     */
+    public java.lang.String getType() {
+        return type;
+    }
+
+
+    /**
+     * Sets the type value for this DtoCertification.
+     * 
+     * @param type
+     */
+    public void setType(java.lang.String type) {
+        this.type = type;
+    }
+
+
+    /**
      * Gets the uniqueId value for this DtoCertification.
      * 
      * @return uniqueId
@@ -96,26 +116,6 @@ public class DtoCertification  implements java.io.Serializable {
      */
     public void setUniqueId(java.lang.String uniqueId) {
         this.uniqueId = uniqueId;
-    }
-
-
-    /**
-     * Gets the userId value for this DtoCertification.
-     * 
-     * @return userId
-     */
-    public java.lang.String getUserId() {
-        return userId;
-    }
-
-
-    /**
-     * Sets the userId value for this DtoCertification.
-     * 
-     * @param userId
-     */
-    public void setUserId(java.lang.String userId) {
-        this.userId = userId;
     }
 
 
@@ -174,12 +174,12 @@ public class DtoCertification  implements java.io.Serializable {
             ((this.organisationProvider==null && other.getOrganisationProvider()==null) || 
              (this.organisationProvider!=null &&
               this.organisationProvider.equals(other.getOrganisationProvider()))) &&
+            ((this.type==null && other.getType()==null) || 
+             (this.type!=null &&
+              this.type.equals(other.getType()))) &&
             ((this.uniqueId==null && other.getUniqueId()==null) || 
              (this.uniqueId!=null &&
               this.uniqueId.equals(other.getUniqueId()))) &&
-            ((this.userId==null && other.getUserId()==null) || 
-             (this.userId!=null &&
-              this.userId.equals(other.getUserId()))) &&
             ((this.validFrom==null && other.getValidFrom()==null) || 
              (this.validFrom!=null &&
               this.validFrom.equals(other.getValidFrom()))) &&
@@ -201,11 +201,11 @@ public class DtoCertification  implements java.io.Serializable {
         if (getOrganisationProvider() != null) {
             _hashCode += getOrganisationProvider().hashCode();
         }
+        if (getType() != null) {
+            _hashCode += getType().hashCode();
+        }
         if (getUniqueId() != null) {
             _hashCode += getUniqueId().hashCode();
-        }
-        if (getUserId() != null) {
-            _hashCode += getUserId().hashCode();
         }
         if (getValidFrom() != null) {
             _hashCode += getValidFrom().hashCode();
@@ -237,15 +237,15 @@ public class DtoCertification  implements java.io.Serializable {
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("uniqueId");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "uniqueId"));
+        elemField.setFieldName("type");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "type"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("userId");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "userId"));
+        elemField.setFieldName("uniqueId");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "uniqueId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);

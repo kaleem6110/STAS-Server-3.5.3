@@ -11,9 +11,6 @@ import java.util.Map;
 
 import javax.xml.rpc.ServiceException;
 
-import com.enterprisehorizons.util.Logger;
-import com.wfp.security.form.DeviceBean;
-
 import lu.hitec.pss.soap.ds.out._15_x.AuthenticationException;
 import lu.hitec.pss.soap.ds.out._15_x.AuthorizationException;
 import lu.hitec.pss.soap.ds.out._15_x.CrudEnum;
@@ -27,7 +24,12 @@ import lu.hitec.pss.soap.ds.out._15_x.PssuVehicle;
 import lu.hitec.pss.soap.ds.out._15_x.ResourceNotFoundException;
 import lu.hitec.pss.soap.ds.out._15_x.UnitId;
 import lu.hitec.pss.soap.ds.out._15_x.UnitType;
+import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._12_x.SensorSrvClient_PortType;
+import lu.hitec.pss.soap.sensor.client._12_x.SensorSrvClient_ServiceLocator;
 
+import com.enterprisehorizons.util.Logger;
+import com.wfp.security.form.DeviceBean;
 /**
  * @author kaleem.mohammed
  *
@@ -35,6 +37,8 @@ import lu.hitec.pss.soap.ds.out._15_x.UnitType;
 public class LDAPWSUtils implements IEPICConstants {
 	
 	static DirectoryServiceOutInterface_PortType ldapStub;
+	
+	static SensorSrvClient_PortType sensorStub;
 	
 	public static DirectoryServiceOutInterface_PortType getLDAPStub()
 	{
@@ -46,6 +50,18 @@ public class LDAPWSUtils implements IEPICConstants {
 				e.printStackTrace();
 			}
 		return ldapStub;
+	}
+	
+	public static SensorSrvClient_PortType getSensorStub()
+	{
+		if( sensorStub==null  )
+			try {
+				sensorStub= new SensorSrvClient_ServiceLocator().getSensorSrvClientPort( );
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return sensorStub;
 	}
 	
 
@@ -298,5 +314,12 @@ public class LDAPWSUtils implements IEPICConstants {
 		}
 		System.out.println( " ## END LDAPWSUtils.setMissionToPlaces :"+CommonUtils.getUTCdatetimeAsString() );
 		
+	}
+	public static LocationValue getUnitLastLocation( String unitId, String token, String missionId, 
+			lu.hitec.pss.soap.sensor.client._12_x.UnitType unitType  ) throws RemoteException
+	{  // System.out.println(" 320 : unitId "+unitId+" unitType " + unitType );
+		lu.hitec.pss.soap.sensor.client._12_x.UnitId unitIdObj = new lu.hitec.pss.soap.sensor.client._12_x.UnitId(unitId, unitType );
+		//System.out.println(" unitIdObj "+unitIdObj + " mission :" + missionId );  
+		return getSensorStub().getUnitLastLocation(token, unitIdObj, missionId  );
 	}
 }

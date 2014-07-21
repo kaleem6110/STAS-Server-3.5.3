@@ -180,7 +180,7 @@
                     <value><![CDATA[20]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[false]]></value>
@@ -338,7 +338,7 @@ Legend guestHouseLegend = new Legend();
 guestHouseLegend.setName("Guest House");
 attribMap.put( "Name",dataMap.get("cn") ); 
 attribMap.put( "Type","Guest House" );
-attribMap.put( "Description",dataMap.get("description") );
+attribMap.put( "Description",dataMap.get("description")!=""?dataMap.get("description"):"-" );
 attribMap.put( "Organisation",LDAPUtils.getOrgMap().get( dataMap.get("o"))  );
 attribMap.put( "Mission",dataMap.get("mission") );
 

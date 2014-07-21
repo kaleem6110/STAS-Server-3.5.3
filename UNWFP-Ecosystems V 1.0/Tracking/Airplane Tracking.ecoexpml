@@ -403,12 +403,12 @@ void bindData() {
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 			
 			//Setting the GMT time
-			$artefact.addAttribute("time",(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
-			$artefact.addAttribute("pTime",CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+			$artefact.addAttribute("time",  CommonUtils.parseSensorDate(data.getTime() )  );
+			$artefact.addAttribute("pTime",  CommonUtils.formatWSDate((Date)$artefact.getAttributeValue("time") ) );
 			 
 			//Setting the LocalTime
 			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+			$artefact.addAttribute("pLocalTime", data.getDeviceLocalTime() );
 			
 			//Setting the Missions of the Vehicle  
 			$artefact.addAttribute("mission", getDeviceMissionList( data.getName() ).get(0) );			

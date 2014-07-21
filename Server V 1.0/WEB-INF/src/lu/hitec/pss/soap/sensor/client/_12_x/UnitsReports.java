@@ -8,6 +8,8 @@
 package lu.hitec.pss.soap.sensor.client._12_x;
 
 public class UnitsReports  implements java.io.Serializable {
+    private java.lang.String missionId;
+
     private lu.hitec.pss.soap.sensor.client._12_x.UnitReport[] placesReports;
 
     private lu.hitec.pss.soap.sensor.client._12_x.UnitReport[] usersReports;
@@ -18,12 +20,34 @@ public class UnitsReports  implements java.io.Serializable {
     }
 
     public UnitsReports(
+           java.lang.String missionId,
            lu.hitec.pss.soap.sensor.client._12_x.UnitReport[] placesReports,
            lu.hitec.pss.soap.sensor.client._12_x.UnitReport[] usersReports,
            lu.hitec.pss.soap.sensor.client._12_x.UnitReport[] vehiclesReports) {
+           this.missionId = missionId;
            this.placesReports = placesReports;
            this.usersReports = usersReports;
            this.vehiclesReports = vehiclesReports;
+    }
+
+
+    /**
+     * Gets the missionId value for this UnitsReports.
+     * 
+     * @return missionId
+     */
+    public java.lang.String getMissionId() {
+        return missionId;
+    }
+
+
+    /**
+     * Sets the missionId value for this UnitsReports.
+     * 
+     * @param missionId
+     */
+    public void setMissionId(java.lang.String missionId) {
+        this.missionId = missionId;
     }
 
 
@@ -122,6 +146,9 @@ public class UnitsReports  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
+            ((this.missionId==null && other.getMissionId()==null) || 
+             (this.missionId!=null &&
+              this.missionId.equals(other.getMissionId()))) &&
             ((this.placesReports==null && other.getPlacesReports()==null) || 
              (this.placesReports!=null &&
               java.util.Arrays.equals(this.placesReports, other.getPlacesReports()))) &&
@@ -142,6 +169,9 @@ public class UnitsReports  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
+        if (getMissionId() != null) {
+            _hashCode += getMissionId().hashCode();
+        }
         if (getPlacesReports() != null) {
             for (int i=0;
                  i<java.lang.reflect.Array.getLength(getPlacesReports());
@@ -186,6 +216,13 @@ public class UnitsReports  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/12.x", "unitsReports"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("missionId");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "missionId"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("placesReports");
         elemField.setXmlName(new javax.xml.namespace.QName("", "placesReports"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://hitec.lu/pss/soap/sensor/client/12.x", "unitReport"));

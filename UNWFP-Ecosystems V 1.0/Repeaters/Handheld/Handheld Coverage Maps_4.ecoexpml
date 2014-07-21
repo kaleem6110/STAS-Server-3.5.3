@@ -195,7 +195,7 @@
                     <value><![CDATA[Never]]></value>
                 </section>
                 <section name="autozoom">
-                    <value><![CDATA[true]]></value>
+                    <value><![CDATA[false]]></value>
                 </section>
                 <section name="timesensitive">
                     <value><![CDATA[false]]></value>
@@ -339,6 +339,7 @@ String datasource = "LDAP";
 String lastRefreshTime = com.wfp.jobs.WarehouseStockExcelJob.getInstance().getLastRefreshTime();
 List<String> userMissionsList = null;
 List<String> userPlacesList = null;
+String missionName="Pakistan_support";
 
 String getDatasource(){
 	return datasource;
@@ -465,7 +466,8 @@ String getType() {
 
 boolean authorizePlaces()
 {	String name = $artefact.getAttributeValueAsString("displayName") ;
-	if(getType().indexOf("repeater") >= 0 && (name.contains("Site 4")||name.contains("Site-4") ) )
+	if(getType().indexOf("repeater") >= 0 && (name.contains("Site 4")||name.contains("Site-4") )&& 
+					$artefact.getAttributeValueAsString("mission").equals( missionName ) )
 	{
 		List<String> placesList = getUserPlacesList( getUserId() );
 		if(placesList!=null&&placesList.size()>0 ) 

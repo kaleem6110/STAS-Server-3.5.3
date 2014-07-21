@@ -479,21 +479,24 @@ void bindData()
 	 	com.wfp.security.form.DeviceBean data = (com.wfp.security.form.DeviceBean )$trackingdatamodel;	 	
 	 	if (data != null) 	
 	 	{
-	 	
+	 	  
 	 		//Setting the Device ID
 	 		$artefact.addAttribute("deviceId", data.getName());
 	 		
 	 		//Setting the Artifact Co-ordinates
 			$artefact.setCoordinates(data.getLatitude(), data.getLongitude());		
 			
-			//Setting the GMT time
+			//Setting the GMT time 
 			//$artefact.addAttribute("time",(Date) com.wfp.utils.CommonUtils.stringDateToDate(data.getTime().replace("T"," ").replace(".000Z","" ) )  );
-			$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime(), IEPICConstants.EPIC_DATE_FORMAT )  );
-			$artefact.addAttribute("pTime",CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+			//$artefact.addAttribute("time",  (Date)CommonUtils.stringDateToDate(data.getTime(), IEPICConstants.SENSOR_WS_DATE_FORMAT )  );
+			$artefact.addAttribute("time",  CommonUtils.parseSensorDate(data.getTime() )  );
+			
+			//$artefact.addAttribute("pTime",CommonUtils.formatDate((Date)$artefact.getAttributeValue("time") ) );
+			$artefact.addAttribute("pTime",  CommonUtils.formatWSDate((Date)$artefact.getAttributeValue("time") ) );
 			 
 			//Setting the LocalTime
 			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
-			$artefact.addAttribute("pLocalTime", CommonUtils.formatDate((Date)$artefact.getAttributeValue("localTime") ) );
+			$artefact.addAttribute("pLocalTime", data.getDeviceLocalTime() );	
 			
 			//Setting Vehicle ID
 			$artefact.addAttribute("vehicleID", data.getCn());

@@ -18,7 +18,7 @@ import com.wfp.utils.MailRetrieverUtils;
 
 /**
  * 
- * @author sti-user
+ * @author kmohammed
  *
  */
 public class EventServiceJob implements CustomJobTask {
