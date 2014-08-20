@@ -70,7 +70,7 @@ public class SensorServiceUtils implements IEPICConstants {
 				{	System.out.println(" mission : "+ mission );
 					UnitsReports unitReports= stub.getAllUnitsReports( token , mission );	
 					
-					System.out.println(" unitReports : "+ unitReports );
+					//System.out.println(" unitReports : "+ unitReports );
 					if(unitReports!=null)
 					{
 						UnitReport[] userReports = unitReports.getUsersReports();

@@ -540,7 +540,8 @@ void bindData() {
 	 		$artefact.setCoordinates(data.getLatitude(), data.getLongitude());
 	 		
 			$artefact.addAttribute("time",  CommonUtils.parseSensorDate(data.getTime() )  );		
-		    $artefact.addAttribute("pTime",  CommonUtils.formatWSDate((Date)$artefact.getAttributeValue("time") ) );
+		    $artefact.addAttribute("pTime",  CommonUtils.formatDate( data.getTime(), IEPICConstants.CALENDAR_DATE_FORMAT,
+		    		IEPICConstants.NEW_PORTAL_DATE_FORMAT) );
 								
 			$artefact.addAttribute("title", data.getTitle());							
 			$artefact.addAttribute("localTime", CommonUtils.stringDateToDate(data.getDeviceLocalTime()) );
@@ -736,7 +737,7 @@ public String buildPopupText(com.wfp.security.form.DeviceBean data)
  	return "-";
  }
  String getDMission(){
- 	String miss= "PK";
+ 	String miss= "Pakistan_support";
 	String deviceID = $artefact.getAttributeValueAsString("deviceId");	
 	List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get( deviceID ).getAuthorizedGroupsList();	
 	if( deviceMissionList!=null && deviceMissionList.size()>0 ) miss = deviceMissionList.get(0);

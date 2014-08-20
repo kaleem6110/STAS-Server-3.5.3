@@ -76,8 +76,8 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 		Map<String, LDAPUserBean> ldapUserMap = LDAPUtils.getLDAPUserDtlsMap();
 		
 		for (Map.Entry<String, LDAPUserBean> entry : ldapUserMap.entrySet()) 
-		{devices++;
-			System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+		{	devices++;
+			//System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
 			
 			LDAPUserBean userBean = entry.getValue();
 			List<String> deviceMissionList = LDAPUtils.getLDAPUserDtlsMap().get( userBean.getDeviceId() ).getAuthorizedGroupsList();
@@ -128,7 +128,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 	private void addLocalization( LDAPUserBean userBean, List<DeviceBean> indigoList, String type, String token ,String missionId,
 			lu.hitec.pss.soap.sensor.client._12_x.UnitType unitType)
 	{
-		String offset="";	
+		
 		try 
 		{
 			DeviceBean is = new DeviceBean(); 
@@ -141,6 +141,7 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 				is.setLongitude( lv.getLng()+"" );
 				is.setTime( lv.getTime().getTime().toString() );
 				is.setName( userBean.getDeviceId() );
+				String offset=null;	
 				if( LDAPCacheJob.getDeviceOffsetMap().size() >0 && LDAPCacheJob.getDeviceOffsetMap().containsKey(is.getName() ) )
 				{
 					offset= LDAPCacheJob.getDeviceOffsetMap().get( is.getName() ); //System.out.println("time : "+ is.getTime()  );

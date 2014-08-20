@@ -45,7 +45,7 @@ public class RBRegionsDataDriver extends BaseGeoDataDriver implements
 	 */
 	@SuppressWarnings("unchecked")
 	public List getData() {
-		try {
+		try { 
 			List<Rubberband> rbRegions = null;
 			//setCustomSearchCriteria();
 			String[] allModules = dataSource.getModuleId() != null ? dataSource

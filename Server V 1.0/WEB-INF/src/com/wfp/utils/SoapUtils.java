@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.Calendar;
 
 import lu.hitec.pss.soap.sensor.client._12_x.LocationRange;
+import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
 import lu.hitec.pss.soap.sensor.client._12_x.RangeLimit;
 import lu.hitec.pss.soap.sensor.client._12_x.SubRangeType;
 import lu.hitec.pss.soap.sensor.client._12_x.UnitId;
@@ -40,10 +41,11 @@ public class SoapUtils implements IEPICConstants {
 			System.out.println( locationRange +" lr : val : "+ locationRange.getVal() );
 			if (locationRange != null && locationRange.getVal() != null) 
 			{
-				count = locationRange.getVal().length + "";
-				Calendar start = locationRange.getVal()[locationRange.getVal().length - 1]
-						.getTime();
-				Calendar end = locationRange.getVal()[0].getTime();
+				int i= locationRange.getVal().length;
+				count = i + "";
+				Calendar start = getStartEnd( locationRange.getVal(), true );
+				Calendar end = getStartEnd( locationRange.getVal(), false );
+				System.out.println( " ## start : "+start +" End : "+end );
 				Double timeinMilli = Math.ceil((end.getTime().getTime() - start.getTime().getTime())/ (1000 * 60 * 60 * 24.0));
 
 				return CommonUtils.formatDate(start.getTime())+"DELIM"+ count + "DELIM" + timeinMilli.intValue();
@@ -59,7 +61,32 @@ public class SoapUtils implements IEPICConstants {
 		return count;
 
 	}
-
+ public static Calendar getStartEnd( lu.hitec.pss.soap.sensor.client._12_x.LocationValue[] values, boolean isStart )
+ {
+	 Calendar c = values[0].getTime();
+	 if( values!=null && values.length >1  )
+	 {
+		 c = values[0].getTime();
+		 for( LocationValue v : values )
+		 {
+			 if( isStart)
+			 {
+				 if(  v.getTime().before( c ) ) 
+				 {
+					 c= v.getTime();
+				 } 
+			 }else
+			 {
+				 if(  v.getTime().after( c ) ) 
+				 {
+					 c= v.getTime();
+				 } 
+			 }
+			
+		 }
+	 }
+	 return c;
+ }
 	public static void main(String a[]) {
 		System.out.println(getAllWaypointsCount("PK-UN-67-1704", "VEHICLE",
 				"Pakistan_support", 10000));
