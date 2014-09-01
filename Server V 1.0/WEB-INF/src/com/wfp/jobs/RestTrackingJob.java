@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import lu.hitec.pss.soap.sensor.client._12_x.LocationValue;
+import lu.hitec.pss.soap.sensor.client._12_x.UnitId;
 
 import org.jdom.Element;
 
@@ -90,13 +91,13 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 						deviceMissionList.size()>0?deviceMissionList.get(0):"AE" ,lu.hitec.pss.soap.sensor.client._12_x.UnitType.USER );				
 			}
 			else if( userBean!=null && userBean.getUnit().equals( KEY_VEHICLE )&& userBean.getDeviceId()!=null&& !userBean.getDeviceId().isEmpty())
-			{vehicle++;
+			{	vehicle++;
 				addLocalization( userBean, vehicleList ,KEY_VEHICLE , token, 
 						deviceMissionList.size()>0?deviceMissionList.get(0):"AE", lu.hitec.pss.soap.sensor.client._12_x.UnitType.VEHICLE );
 				
 			}
 			else if( userBean!=null && userBean.getUnit().equals( KEY_AIRPLANE )&& userBean.getDeviceId()!=null&& !userBean.getDeviceId().isEmpty())
-			{airplane++;
+			{	airplane++;
 				addLocalization( userBean, airplaneList,KEY_AIRPLANE , token, 
 						deviceMissionList.size()>0?deviceMissionList.get(0):"AE", lu.hitec.pss.soap.sensor.client._12_x.UnitType.VEHICLE );
 			}
@@ -134,7 +135,9 @@ public class RestTrackingJob implements CustomJobTask,IEPICConstants
 			DeviceBean is = new DeviceBean(); 
 			String id = type.equals(KEY_STAFF)?userBean.getUid():userBean.getCn();
 			LDAPUtils.populateDeviceBean( userBean , is ); 
-			LocationValue lv = LDAPWSUtils.getUnitLastLocation(id , token, missionId, unitType);
+			//TODO Kaleem7
+			//LocationValue lv = LDAPWSUtils.getUnitLastLocation(id , token, missionId, unitType);
+			LocationValue lv = LDAPWSUtils.getSensorStub().getUnitLastLocationForDevice(token, new UnitId( id, unitType) , missionId, userBean.getDeviceId() );
 			if( lv!=null )
 			{
 				is.setLatitude( ""+lv.getLat() );
