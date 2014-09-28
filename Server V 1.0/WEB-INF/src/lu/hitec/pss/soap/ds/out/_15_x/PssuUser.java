@@ -38,8 +38,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
 
     private java.lang.String primaryMail;
 
-    private long quota;
-
     private int quotaInMb;
 
     private java.lang.String streetAddress;
@@ -78,7 +76,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
            java.lang.String postalCode,
            java.lang.String preferredLanguage,
            java.lang.String primaryMail,
-           long quota,
            int quotaInMb,
            java.lang.String streetAddress,
            java.lang.String surfaceID,
@@ -107,7 +104,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
         this.postalCode = postalCode;
         this.preferredLanguage = preferredLanguage;
         this.primaryMail = primaryMail;
-        this.quota = quota;
         this.quotaInMb = quotaInMb;
         this.streetAddress = streetAddress;
         this.surfaceID = surfaceID;
@@ -419,26 +415,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
 
 
     /**
-     * Gets the quota value for this PssuUser.
-     * 
-     * @return quota
-     */
-    public long getQuota() {
-        return quota;
-    }
-
-
-    /**
-     * Sets the quota value for this PssuUser.
-     * 
-     * @param quota
-     */
-    public void setQuota(long quota) {
-        this.quota = quota;
-    }
-
-
-    /**
      * Gets the quotaInMb value for this PssuUser.
      * 
      * @return quotaInMb
@@ -640,7 +616,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
             ((this.primaryMail==null && other.getPrimaryMail()==null) || 
              (this.primaryMail!=null &&
               this.primaryMail.equals(other.getPrimaryMail()))) &&
-            this.quota == other.getQuota() &&
             this.quotaInMb == other.getQuotaInMb() &&
             ((this.streetAddress==null && other.getStreetAddress()==null) || 
              (this.streetAddress!=null &&
@@ -710,7 +685,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
         if (getPrimaryMail() != null) {
             _hashCode += getPrimaryMail().hashCode();
         }
-        _hashCode += new Long(getQuota()).hashCode();
         _hashCode += getQuotaInMb();
         if (getStreetAddress() != null) {
             _hashCode += getStreetAddress().hashCode();
@@ -846,12 +820,6 @@ public class PssuUser  extends lu.hitec.pss.soap.ds.out._15_x.PssuUnit  implemen
         elemField.setXmlName(new javax.xml.namespace.QName("", "primaryMail"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("quota");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "quota"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();

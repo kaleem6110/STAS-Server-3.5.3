@@ -2,6 +2,7 @@ package com.wfp.custom.datasource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.enterprisehorizons.exception.EHRuntimeException;
@@ -63,7 +64,19 @@ public class RBRegionsDataDriver extends BaseGeoDataDriver implements
 					rbRegions.addAll(Arrays.asList(rubberbandregions));
 				}
 			}
-
+			Rubberband dummyBand = new Rubberband();
+			dummyBand.setCreatedBy("kmohammed");
+			dummyBand.setCreatedDate(new Date() );
+			dummyBand.setDescription("dummy Geofence");
+			dummyBand.setLabel("Staff Tracking_DZ_IHC01");
+			dummyBand.setName("Staff Tracking_DZ_IHC01");
+			dummyBand.setId(0L);
+			dummyBand.setListType("moduleList");
+			dummyBand.setUserId(-1L);
+			dummyBand.setValueXML("");
+			
+			
+			
 			return rbRegions;
 
 		} catch (Exception exception) {

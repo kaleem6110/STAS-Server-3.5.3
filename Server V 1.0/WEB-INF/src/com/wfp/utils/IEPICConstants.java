@@ -78,6 +78,7 @@ public interface IEPICConstants {
 	public static final String FILTER_VEHICLES = "cn=<vehicleId>,ou=vehicles,ou=resources,dc=emergency,dc=lu";
 	public static final String FILTER_DEVICE = "(deviceMember=cn=<deviceId>,ou=devices,dc=emergency,dc=lu)";
 	public static final String FILTER_USER ="uid=<uid>,ou=users,ou=people,dc=emergency,dc=lu";
+	public static final String FILTER_FENCE ="cn=<cn>,ou=fences,dc=emergency,dc=lu";
 	public static final String FILTER_UID ="(uid=<uid>)";
 	public static final String FILTER_CN ="(cn=<cn>)";
 	public static final String REPLACE_UID_TOKEN="<uid>";
@@ -103,11 +104,14 @@ public interface IEPICConstants {
 	public static final String FILTER_LDAP_USERS =  "(objectClass=person)";
 	public static final String FILTER_LDAP_VEHICLES =  "(objectClass=vehicle)";
 	public static final String FILTER_ORGANIZATIONS =  "(objectClass=resourcestype)";
+	public static final String FILTER_LDAP_FENCE =  "(objectClass=fence)";
 	public static final String USERS_SEARCHBASE =  "ou=users,ou=people,dc=emergency,dc=lu";
 	public static final String ORGANIZATION_SEARCHBASE =  "organization.search.base";
 	public static final String GROUP_SEARCHBASE =  "groups.search.base";
+	public static final String FENCE_SEARCHBASE =  "fence.search.base";
 	public static final String[] CONSTRAINT_ATTR_USERS= new String[] {"mail", /*"homePhone", "mobile",*/ "uid", "cn", "communicationUri", "sn", "description", "licencePlate", "o","ou","primaryMail", "communicationURI", "title", /*"telephoneNumber",*/"personalTitle","gender","otherPhones","vehicleID","deviceMember","internalID"};
 	public static final String[] CONSTRAINT_ATTR_VEHICLE= new String[] {"cn","displayName","o","type","communicationUri","description","deviceMember","vehicleID" };
+	public static final String[] CONSTRAINT_ATTR_FENCE= new String[] {"cn","listOfPoints","type","description","member"};
 	public static final String PROPERTY_CN =  "cn";
 	public static final String PROPERTY_HOME_PHONE =  "homePhone";
 	public static final String PROPERTY_MAIL =  "mail";
@@ -192,12 +196,12 @@ public interface IEPICConstants {
 	public static final String TRN_TOKEN="adulovic-20131114-2478b95c6e23404685af7edfde315724";
 	
 	//kmohammed
-	public static final String LDAP_FILTER_URL =  "ldaps://ldap.globalepic.lu:636/";
+	public static final String LDAP_FILTER_URL =  "ldaps://ldap-qa.globalepic.lu:636/";
 	public static final String LDAP_USER_ID = "adulovic";
 	public static final String LDAP_USER_PWD_ENCRYPTED = "CCvmkG2dxAM=";
 	public static final String TOKEN=DEV_TOKEN;	
 	public static final String STAS_Engine ="STAS_Engine";
-	public static final String MIDDLEWARE_ID="mw-c2";
+	public static final String MIDDLEWARE_ID="mw-d2";
 	
 	public static final String STAS_EVENT_TYPE ="Alert WARNING!!";
 	public static final String EARTH_TOOLS_URL ="http://www.earthtools.org/timezone/";

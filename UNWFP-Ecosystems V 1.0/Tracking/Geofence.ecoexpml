@@ -184,6 +184,9 @@
         </section>
         <section name="constraints">
             <section name="constraint">
+                <value><![CDATA[cameraboundary]]></value>
+            </section>
+            <section name="constraint">
                 <value><![CDATA[visibility]]></value>
                 <section name="script">
                     <value><![CDATA[isActiveGeofence()]]></value>

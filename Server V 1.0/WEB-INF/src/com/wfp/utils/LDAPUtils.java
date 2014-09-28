@@ -488,6 +488,13 @@ public class LDAPUtils implements IEPICConstants {
 		Logger.info("Retrieving Vehicle ["+vehicleDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
 		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_VEHICLE, node, vehicleDomain), "communicationUri,o");
 	}
+	public static Map<String, Object> getFenceAttributes(String fenceDomain, String node)
+	{		
+		if(StringUtils.isNull(node)) node = FILTER_LDAP_FENCE;
+		Logger.info("Retrieving Fence ["+fenceDomain+"] attributes from Node ["+node+"]", LDAPUtils.class);
+		return parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_FENCE, node, fenceDomain ), 
+				"cn,listOfPoints,type,description,member");
+	}
 	/**
 	 * setting the user bean details after requesting the LDAP
 	 * @param deviceId
@@ -639,6 +646,13 @@ public class LDAPUtils implements IEPICConstants {
 			deviceBean.setPhotoString( getUserImageAsString( deviceBean.getUid()) );
 			deviceBean.setGender(userAttributes.get(PROPERTY_GENDER)== null?"":userAttributes.get(PROPERTY_GENDER).toString() );
 			deviceBean.setShortOrganization(deviceBean.getOrganization() );
+	}
+	public static void retrieveFences( Map<String,Object> fenceAttributes)
+	{
+		if( fenceAttributes!=null )
+		{
+			
+		}
 	}
  public static String getLicensePlate(String str)
  {
@@ -946,6 +960,15 @@ public class LDAPUtils implements IEPICConstants {
 				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [cn,externalID, description, street, type, coord-latitude,coord-longitude, ocs, skype ]", LDAPUtils.class);
 		return  parseDataAsMap(getSearchResults(attrArray,allGroupNamesFilter, allGroupsSearchBase), "externalID", "cn", attrArray);	
 	}
+	
+	public static Map getAllFences()
+	{
+		String allGroupsSearchBase = getLDAPConfigValue("fence.search.base");//"ou=places,ou=resources,dc=emergency,dc=lu";
+		Logger.info("Retrieve all fences from ldap with Search Filter = ["+FILTER_LDAP_FENCE+"] " +
+				"and Search Base = ["+allGroupsSearchBase+"] on Constraint = [ ]", LDAPUtils.class);
+		return  parseDataAsMap(getSearchResults(CONSTRAINT_ATTR_FENCE,FILTER_LDAP_FENCE, allGroupsSearchBase), null, "cn", CONSTRAINT_ATTR_FENCE );	
+	}
+	
 	public static void getAllOrganizations()
 	{
 		System.out.println(" # START getAllOrganizations : ");
@@ -1067,19 +1090,25 @@ public class LDAPUtils implements IEPICConstants {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static Map<String, Map<String,String>>  parseDataAsMap(NamingEnumeration searchResults, String key, String optionalKey, String[] attrArray){
+	public static Map<String, Map<String,String>>  parseDataAsMap(NamingEnumeration searchResults, String optionalKey,
+			String uniqueKey, String[] attrArray )
+	{
 		Logger.info("Formatting the data as MAP", LDAPUtils.class);
+		
 		Map<String, Map<String,String>> resultMap = null;
+		
 		int totalResultLogger = 0;
-		if(searchResults == null){
-			return null;
-		}
+		if(searchResults == null){ 	return null; 	}
+		
 		// Loop through the search results
-		while (searchResults.hasMoreElements()) {
+		while (searchResults.hasMoreElements()) 
+		{
 			SearchResult sr = null;
-			try {
+			try
+			{
 				sr = (SearchResult) searchResults.next();
-			} catch (NamingException e1) {
+			} 
+			catch (NamingException e1) {
 				Logger.error("No Search results on LDAP ", LDAPUtils.class);
 			}
 			if(sr == null ){
@@ -1088,39 +1117,42 @@ public class LDAPUtils implements IEPICConstants {
 			}
 
 			Attributes attrs = sr.getAttributes();
-			if (attrs != null) {
+			if (attrs != null) 
+			{
 				if(resultMap == null){
 					resultMap = new HashMap<String, Map<String, String>>();
 				}
-				try {
+				try 
+				{
 					Map<String, String> resultAttrMap = new HashMap();
-					for(String attr:attrArray){
-						if(resultAttrMap.get(attr) == null){
+					for(String attr:attrArray)
+					{
+						if(resultAttrMap.get(attr) == null)
+						{
 							attrs.get(attr);
 							resultAttrMap.put(attr, "");
 						}
 					}
-					for (NamingEnumeration ae = attrs.getAll(); ae
-							.hasMore();) {
+					for (NamingEnumeration ae = attrs.getAll(); ae.hasMore();) 
+					{
 						Attribute attr = (Attribute) ae.next();
-						for (NamingEnumeration e = attr.getAll(); e
-								.hasMore(); totalResultLogger++) {
+						for (NamingEnumeration e = attr.getAll(); e.hasMore(); totalResultLogger++)
+						{
 							String attrValue = (String) e.next();
-
+							//if it is external id
 							if( attr.getID().equals( EXTERNAL_ID )  )
-								{
-										if( attrValue.contains( COMPASS_ID )){ resultAttrMap.put(attr.getID(), attrValue.replace(COMPASS_ID, "")); break;}
-										else resultAttrMap.put(attr.getID(), "inValidFormat" );
-								}
+							{
+								if( attrValue.contains( COMPASS_ID )){ resultAttrMap.put(attr.getID(), attrValue.replace(COMPASS_ID, "")); break;}
+								else resultAttrMap.put(attr.getID(), "inValidFormat" );
+							}
 							resultAttrMap.put(attr.getID(), attrValue);
 						}
 					}
-
-					if(!StringUtils.isNull(resultAttrMap.get(key))){
-						resultMap.put(resultAttrMap.get(key), resultAttrMap);
+					if(optionalKey!=null&&!StringUtils.isNull(resultAttrMap.get( optionalKey ))){
+						resultMap.put(resultAttrMap.get( optionalKey ), resultAttrMap);
 					}else {
 						resultAttrMap.put("compasId", "");
-						resultMap.put(resultAttrMap.get(optionalKey), resultAttrMap);
+						resultMap.put(resultAttrMap.get(uniqueKey), resultAttrMap);
 					}
 
 				} catch (NamingException e) {

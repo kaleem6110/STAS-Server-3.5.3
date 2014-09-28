@@ -1028,6 +1028,14 @@ public class RBRegionsUtils implements IEPICConstants {
 		System.out.println(" ### END hasAclProfile :hasAclProfile: "+hasAclProfile );
 		return hasAclProfile;
 	}
+	
+	public static String getRubberBandValueXML( Rubberband rubberBand, String coordinates )
+	{
+		return "<rubberbandregions><rubberbandregion regionTypeId='0' regionName='"+rubberBand.getName()+"' " +
+		"label='"+rubberBand.getName()+"' regionColor='ff0000' coordinates='"+coordinates+"' " +
+		"viewPort='0gr-3E06lwKAw2nDw8G2EA' ecoexpmlIds='' refreshInterval='0' listType='moduleList'/></rubberbandregions>";	
+		
+	}
 }
 
 
